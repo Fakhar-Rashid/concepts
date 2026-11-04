@@ -6,7 +6,8 @@
 <meta name="robots" content="noindex, nofollow">
 <title>A&amp;E Technologies | Homepage concept</title>
 <script>
-  /* Motion is opt-in: only when JS runs and the visitor hasn't asked for reduced motion. */
+  /* "js" builds the decorative 3D; "motion" (only without reduced motion) lets things move. */
+  document.documentElement.classList.add("js");
   if (window.matchMedia && matchMedia("(prefers-reduced-motion: no-preference)").matches) document.documentElement.classList.add("motion");
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -190,6 +191,45 @@
   footer { background: var(--graphite); color: #9aa4ac; font-size: 13px; padding: 22px 0; }
   footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
 
+  /* ---------- Depth and 3D. Decorative layers are built by the script; without JS the page is the static design. ---------- */
+  .truss, .rack { display: none; }
+  .js .truss, .js .rack { display: block; }
+
+  /* Spec rows lift off the sheet */
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .spec tbody tr { transform-origin: 50% 100%; transition: transform .35s cubic-bezier(.2, .7, .2, 1); }
+    .spec tbody tr:hover, .spec tbody tr:focus-within { transform: perspective(1000px) translateZ(12px) rotateX(-4deg); }
+    .spec tbody tr:hover > *, .spec tbody tr:focus-within > * { box-shadow: 0 14px 16px -16px rgba(32, 36, 39, .55); }
+  }
+
+  /* Spaceflight: a generic transport frame and tongue, drawn as a turning wireframe */
+  .truss { height: 250px; margin: -16px 0 14px; }
+  .truss canvas { display: block; width: 100%; height: 100%; }
+  .motion .feature .wrap { opacity: 0; transform: perspective(1400px) rotateX(16deg) translateY(64px); transform-origin: 50% 0; transition: transform 1.2s cubic-bezier(.16, .8, .2, 1), opacity .9s ease; }
+  .motion .feature.in .wrap { opacity: 1; transform: none; }
+  .motion .feature.in .wrap.more { transition-delay: .18s; }
+
+  /* Metal for sale: the stock shapes on a drafting-grid floor, in brushed steel with heat-tinted cut ends */
+  .pick { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; text-align: left; }
+  .pick::before { content: ""; width: 14px; height: 3px; background: var(--graphite); transform: scaleX(.45); transform-origin: left; transition: transform .25s ease, background-color .25s ease; }
+  .pick:hover::before, .pick:focus-visible::before, .pick[aria-pressed="true"]::before { transform: none; background: var(--bronze); }
+  .pick:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+  .metal .rack { grid-column: 1 / -1; position: relative; height: 380px; margin-top: -16px; overflow: hidden; perspective: 1500px; perspective-origin: 50% 22%; }
+  .scene { position: absolute; left: 50%; top: 54%; transform-style: preserve-3d; will-change: transform; }
+  .scene div { position: absolute; transform-style: preserve-3d; }
+  .piece { transform: translate3d(var(--x), 0, var(--z)); transition: transform .7s cubic-bezier(.2, .8, .2, 1); }
+  .piece.on { transform: translate3d(var(--x), -34px, calc(var(--z) + 80px)) rotateY(-30deg); }
+  .shade { transform: translate3d(var(--x), 0, var(--z)) rotateX(90deg); background: radial-gradient(closest-side, rgba(32, 36, 39, .28), rgba(32, 36, 39, 0)); transition: opacity .35s ease; }
+  .f { position: absolute; display: block; backface-visibility: hidden; transition: opacity .35s ease; }
+  .f.t { background: repeating-linear-gradient(90deg, rgba(255, 255, 255, .24) 0 1px, rgba(255, 255, 255, 0) 1px 4px), linear-gradient(180deg, #e3e7e9, #c3c9cd); }
+  .f.s { background: repeating-linear-gradient(0deg, rgba(255, 255, 255, .1) 0 1px, rgba(255, 255, 255, 0) 1px 3px), linear-gradient(90deg, #8e979d, #737c83); }
+  .f.l { background: repeating-linear-gradient(0deg, rgba(255, 255, 255, .16) 0 1px, rgba(255, 255, 255, 0) 1px 3px), linear-gradient(90deg, #a2aab0, #bcc3c8); }
+  .f.c { background: linear-gradient(160deg, #f1d695, #d39a57 50%, #a0623f); }
+  .rack.picking .piece:not(.on) .f, .rack.picking .shade { opacity: .25; }
+  .floor { width: 1400px; height: 640px; margin: -320px 0 0 -700px; transform: translateY(1px) rotateX(90deg);
+    background: repeating-linear-gradient(90deg, rgba(32, 36, 39, .1) 0 1px, rgba(32, 36, 39, 0) 1px 56px), repeating-linear-gradient(0deg, rgba(32, 36, 39, .1) 0 1px, rgba(32, 36, 39, 0) 1px 56px);
+    -webkit-mask-image: radial-gradient(closest-side, #000 35%, transparent); mask-image: radial-gradient(closest-side, #000 35%, transparent); }
+
   @media (max-width: 900px) {
     header nav { display: none; }
     .hero .row, .head, .feature .wrap, .metal .wrap, .reviews .wrap, .contact .wrap, .after { grid-template-columns: 1fr; }
@@ -207,6 +247,8 @@
     .spec tbody th { margin-bottom: 4px; }
     .spec td:nth-child(2) { width: auto; }
     .titleblock { grid-template-columns: 1fr 1fr; }
+    .truss { height: 220px; margin-top: 0; }
+    .metal .rack { height: 340px; margin-top: -24px; }
   }
   @media (max-width: 520px) {
     .industries { columns: 1; }
@@ -221,11 +263,16 @@
     .contact dl { grid-template-columns: 1fr; gap: 0; }
     .contact dt { font-size: 15px; margin-top: 14px; }
     .contact dt:first-child { margin-top: 0; }
+    .truss { height: 190px; }
+    .metal .rack { height: 300px; }
+    .scene { top: 60%; }
   }
   @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
   @media (prefers-reduced-motion: reduce) {
     .torch, .cover, .arc { display: none !important; }
     .heatline { transform: none !important; }
+    .piece.on { transform: translate3d(var(--x), 0, var(--z)) !important; }
+    .spec tbody tr { transform: none !important; }
     *, *::before, *::after { transition: none !important; animation: none !important; }
   }
 </style>
@@ -325,11 +372,14 @@
         <p class="watch"><a href="https://www.youtube.com/watch?v=jgfO6D-dNx8" target="_blank" rel="noopener">See these components in action in the test flight video</a></p>
         <div class="heatline" aria-hidden="true"></div>
       </div>
-      <ul class="parts">
-        <li><span>Test-flight support hanger</span><span>Dream Chaser program</span></li>
-        <li><span>Transport frame</span><span>Dream Chaser program</span></li>
-        <li><span>Transport tongue</span><span>Dream Chaser program</span></li>
-      </ul>
+      <div>
+        <div class="truss" aria-hidden="true"><canvas></canvas></div>
+        <ul class="parts">
+          <li><span>Test-flight support hanger</span><span>Dream Chaser program</span></li>
+          <li><span>Transport frame</span><span>Dream Chaser program</span></li>
+          <li><span>Transport tongue</span><span>Dream Chaser program</span></li>
+        </ul>
+      </div>
     </div>
     <div class="wrap more">
       <h3 id="more-title">More from the shop floor</h3>
@@ -364,9 +414,10 @@
       </div>
       <div class="stock">
         <div><h3>Materials</h3><ul><li>Hot rolled steel</li><li>Cold rolled steel</li><li>Stainless steel</li><li>Aluminum</li></ul></div>
-        <div><h3>Shapes</h3><ul><li>Tube</li><li>Bar</li><li>Sheet</li><li>Plate</li><li>Structural</li></ul></div>
+        <div><h3>Shapes</h3><ul><li data-k="tube">Tube</li><li data-k="bar">Bar</li><li data-k="sheet">Sheet</li><li data-k="plate">Plate</li><li data-k="structural">Structural</li></ul></div>
         <div class="also"><h3>Machines and parts</h3><p>We also sell machines and parts, like used CAT 40 CNC tool holders (collet chucks, shell mill holders and drill chucks) and powder-coated industrial stairways. Stop by the shop and have a look at our inventory.</p></div>
       </div>
+      <div class="rack" aria-hidden="true"><div class="scene"></div></div>
     </div></section>
 
     <section class="reviews" aria-labelledby="rev-title"><div class="wrap">
@@ -409,34 +460,190 @@
 
 <script>
 (function () {
+  var d = document, root = d.documentElement, motion = root.classList.contains("motion");
+  var fine = !!(window.matchMedia && matchMedia("(hover: hover) and (pointer: fine)").matches) && innerWidth > 900;
+
   /* During shop hours in Golden (Mountain time), the top bar says the torch is on. */
   try {
     var parts = new Intl.DateTimeFormat("en-US", { timeZone: "America/Denver", weekday: "short", hour: "numeric", minute: "numeric", hourCycle: "h23" }).formatToParts(new Date());
     var get = function (t) { for (var i = 0; i < parts.length; i++) if (parts[i].type === t) return parts[i].value; return ""; };
     var mins = (parseInt(get("hour"), 10) % 24) * 60 + parseInt(get("minute"), 10);
     if (/^(Mon|Tue|Wed|Thu|Fri)/.test(get("weekday")) && mins >= 450 && mins < 960) {
-      document.getElementById("hours").innerHTML = '<span class="lit" aria-hidden="true"></span><strong>The torch is on.</strong> Open until 4:00 pm today in Golden, Colorado';
+      d.getElementById("hours").innerHTML = '<span class="lit" aria-hidden="true"></span><strong>The torch is on.</strong> Open until 4:00 pm today in Golden, Colorado';
     }
   } catch (e) {}
 
-  var root = document.documentElement;
-  if (!root.classList.contains("motion")) return;
-  var bead = document.querySelector(".bead");
-  var heat = document.querySelector(".heatline");
+  /* Helpers: run a callback when an element enters or leaves the viewport; a rAF loop that can pause. */
+  function watch(el, cb, th) {
+    if (!("IntersectionObserver" in window)) { cb(true); return; }
+    new IntersectionObserver(function (es) { es.forEach(function (e) { cb(e.isIntersecting); }); }, { threshold: th || 0 }).observe(el);
+  }
+  function loop(fn) {
+    var on = false, id = 0, last = 0, acc = 0;
+    function f(t) {
+      id = 0; if (!on) return;
+      acc += last ? Math.min(0.05, (t - last) / 1000) : 0; last = t;
+      fn(acc); if (on) id = requestAnimationFrame(f);
+    }
+    return function (v) { on = v; if (!v) last = 0; if (v && !id) id = requestAnimationFrame(f); };
+  }
 
-  /* When the last cooling step ends, drop the moving layers entirely. */
-  var wake = bead.querySelector(".wake");
-  wake.addEventListener("animationend", function () { bead.classList.add("laid"); });
+  /* Ambient 3D waits until the bead has been laid, so the signature plays on its own first. */
+  var go = false, queue = [];
+  function ambient(el, run) {
+    var vis = false;
+    watch(el, function (v) { vis = v; if (go) run(v); });
+    queue.push(function () { run(vis); });
+  }
+  if (motion) setTimeout(function () { go = true; queue.forEach(function (f) { f(); }); }, 2800);
 
-  var start = function (el) { el.classList.add("lay"); };
-  if (!("IntersectionObserver" in window)) { start(bead); start(heat); return; }
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting) { start(e.target); io.unobserve(e.target); }
+  var bead = d.querySelector(".bead"), heat = d.querySelector(".heatline"), feat = d.querySelector(".feature");
+
+  /* One-time entrances: lay the bead, draw the heat line, set the dark section into place. */
+  if (motion) {
+    bead.querySelector(".wake").addEventListener("animationend", function () { bead.classList.add("laid"); });
+    [[bead, "lay", 0.75], [heat, "lay", 0.5], [feat, "in", 0.12]].forEach(function (a) {
+      var done = false;
+      watch(a[0], function (v) { if (v && !done) { done = true; a[0].classList.add(a[1]); } }, a[2]);
     });
-  }, { threshold: 0.75 });
-  io.observe(bead);
-  io.observe(heat);
+  }
+
+  /* Hero: the headline and bead lean toward a fine pointer. */
+  if (motion && fine) {
+    var hero = d.querySelector(".hero"), h1 = hero.querySelector("h1"), tx = 0, ty = 0, cx = 0, cy = 0;
+    var tilt = loop(function () {
+      cx += (tx - cx) * 0.07; cy += (ty - cy) * 0.07;
+      h1.style.transform = "perspective(1600px) rotateX(" + (-cy * 6).toFixed(2) + "deg) rotateY(" + (cx * 8).toFixed(2) + "deg)";
+      bead.style.transform = "perspective(1100px) rotateX(" + (-cy * 14).toFixed(2) + "deg) rotateY(" + (cx * 10).toFixed(2) + "deg)";
+      if (Math.abs(tx - cx) + Math.abs(ty - cy) < 0.001) tilt(false);
+    });
+    hero.addEventListener("pointermove", function (e) { var r = hero.getBoundingClientRect(); tx = (e.clientX - r.left) / r.width - 0.5; ty = (e.clientY - r.top) / r.height - 0.5; tilt(true); });
+    hero.addEventListener("pointerleave", function () { tx = ty = 0; tilt(true); });
+  }
+
+  /* Metal for sale: the stock shapes they sell, extruded in CSS 3D. Boxes are [width, height, centre x, bottom y]. */
+  (function () {
+    var rack = d.querySelector(".rack");
+    if (!rack) return;
+    var scene = rack.firstElementChild, els = [], btns = [], cur = null, S = 1, yaw = 24, pitch = -20, tx2 = 0, ty2 = 0, px = 0, py = 0;
+    var SH = [
+      ["tube", 236, [[56, 6, 0, 50], [56, 6, 0, 0], [6, 44, -25, 6], [6, 44, 25, 6]]],
+      ["bar", 252, [[36, 36, 0, 0]]],
+      ["sheet", 240, [[110, 3, 0, 0]]],
+      ["plate", 224, [[96, 14, 0, 0]]],
+      ["structural", 238, [[8, 52, -26, 8], [60, 8, 0, 0]]],
+      ["structural", 246, [[46, 8, 0, 62], [46, 8, 0, 0], [8, 54, -19, 8]]],
+      ["structural", 252, [[66, 9, 0, 71], [66, 9, 0, 0], [8, 62, 0, 9]]]
+    ];
+    function face(p, c, w, h, tf) {
+      var e = d.createElement("i"); e.className = "f " + c;
+      e.style.cssText = "width:" + w + "px;height:" + h + "px;margin:" + (-h / 2) + "px 0 0 " + (-w / 2) + "px;transform:" + tf;
+      p.appendChild(e);
+    }
+    function div(c) { var e = d.createElement("div"); e.className = c; scene.appendChild(e); return e; }
+    div("floor");
+    SH.forEach(function (s) {
+      var L = s[1], sh = div("shade"), p = div("piece"), wm = 0;
+      p.setAttribute("data-k", s[0]);
+      s[2].forEach(function (b) {
+        var w = b[0], h = b[1], t = "translate3d(" + b[2] + "px," + -(b[3] + h / 2) + "px,0) ";
+        wm = Math.max(wm, Math.abs(b[2]) + w / 2);
+        face(p, "c", w, h, t + "translateZ(" + L / 2 + "px)");
+        face(p, "s", L, h, t + "rotateY(90deg) translateZ(" + w / 2 + "px)");
+        face(p, "s l", L, h, t + "rotateY(-90deg) translateZ(" + w / 2 + "px)");
+        face(p, "t", w, L, t + "rotateX(90deg) translateZ(" + h / 2 + "px)");
+      });
+      sh.style.cssText = "width:" + (wm * 2 + 44) + "px;height:" + (L + 44) + "px;margin:" + -(L / 2 + 22) + "px 0 0 " + -(wm + 22) + "px";
+      els.push([p, sh]);
+    });
+    function layout() {
+      var w = rack.clientWidth, cols = w < 700 ? 4 : 7;
+      S = Math.min(1, w / (cols * 150 + (cols < 7 ? 100 : 150)));
+      els.forEach(function (a, i) {
+        var r = Math.floor(i / cols), n = Math.min(cols, els.length - r * cols);
+        var x = ((i % cols) - (n - 1) / 2) * 150 + "px", z = (cols < 7 ? 170 : 0) - r * 340 + "px";
+        a.forEach(function (e) { e.style.setProperty("--x", x); e.style.setProperty("--z", z); });
+      });
+    }
+    function pose(t) {
+      px += (tx2 - px) * 0.05; py += (ty2 - py) * 0.05;
+      scene.style.transform = "scale(" + S.toFixed(3) + ") rotateX(" + (pitch - py * 6).toFixed(2) + "deg) rotateY(" +
+        (yaw + Math.sin(t * 0.32) * (fine ? 10 : 7) + px * 14).toFixed(2) + "deg)";
+    }
+    layout(); pose(0);
+    addEventListener("resize", function () { layout(); if (!motion) pose(0); });
+    if (motion) {
+      ambient(rack, loop(pose));
+      if (fine) {
+        rack.addEventListener("pointermove", function (e) { var r = rack.getBoundingClientRect(); tx2 = (e.clientX - r.left) / r.width - 0.5; ty2 = (e.clientY - r.top) / r.height - 0.5; });
+        rack.addEventListener("pointerleave", function () { tx2 = ty2 = 0; });
+      }
+    }
+    /* Hovering, focusing or tapping a shape name brings that shape forward. */
+    function pick(k) {
+      rack.classList.toggle("picking", !!k);
+      els.forEach(function (a) { a[0].classList.toggle("on", a[0].getAttribute("data-k") === k); });
+      btns.forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-k") === cur ? "true" : "false"); });
+    }
+    Array.prototype.forEach.call(d.querySelectorAll("li[data-k]"), function (li) {
+      var b = d.createElement("button"), k = li.getAttribute("data-k");
+      b.type = "button"; b.className = "pick"; b.setAttribute("data-k", k); b.setAttribute("aria-pressed", "false"); b.textContent = li.textContent;
+      li.textContent = ""; li.appendChild(b); btns.push(b);
+      b.addEventListener("pointerenter", function () { pick(k); });
+      b.addEventListener("pointerleave", function () { pick(cur); });
+      b.addEventListener("focus", function () { pick(k); });
+      b.addEventListener("blur", function () { pick(cur); });
+      b.addEventListener("click", function () { cur = cur === k ? null : k; pick(cur || k); });
+    });
+  })();
+
+  /* Spaceflight: a generic steel transport frame with its tongue, as a turning wireframe with heat-tinted weld nodes. */
+  (function () {
+    var cv = d.querySelector(".truss canvas");
+    if (!cv || !cv.getContext) return;
+    var g = cv.getContext("2d"), N = [], E = [], HT = [], B = [[], []], T = [[], []], W = 0, H = 0, ang = 0.7;
+    var PAL = ["227,189,95", "184,116,58", "150,110,190", "110,150,215"];
+    function n(x, y, z) { return N.push([x, y, z]) - 1; }
+    [-1.2, 1.2].forEach(function (z, s) { [-4, -2, 0, 2, 4].forEach(function (x, i) { B[s][i] = n(x, 0, z); T[s][i] = n(x, 1.1, z); }); });
+    for (var s = 0; s < 2; s++) for (var i = 0; i < 5; i++) {
+      E.push([B[s][i], T[s][i]]);
+      if (i < 4) E.push([B[s][i], B[s][i + 1]], [T[s][i], T[s][i + 1]], i % 2 ? [B[s][i], T[s][i + 1]] : [T[s][i], B[s][i + 1]]);
+      if (s) { E.push([B[0][i], B[1][i]]); if (i % 2 === 0) E.push([T[0][i], T[1][i]]); }
+    }
+    E.push([B[0][1], B[1][2]], [B[1][1], B[0][2]], [B[0][2], B[1][3]], [B[1][2], B[0][3]]);
+    var hp = n(6.6, 0, 0);
+    HT.push([B[0][4], hp], [B[1][4], hp], [n(5.3, 0, -0.6), n(5.3, 0, 0.6)], [hp, n(7.1, 0, 0)]);
+    function fit() {
+      var r = Math.min(2, window.devicePixelRatio || 1);
+      W = cv.clientWidth; H = cv.clientHeight; cv.width = Math.round(W * r); cv.height = Math.round(H * r);
+      g.setTransform(r, 0, 0, r, 0, 0);
+    }
+    function draw(a) {
+      ang = a;
+      var ca = Math.cos(a), sa = Math.sin(a), cp = Math.cos(0.38), sp = Math.sin(0.38), k = Math.min(W / 12, H / 4.6), P = [];
+      N.forEach(function (q) {
+        var x = q[0] - 1.55, y = q[1] - 0.4, z = q[2], X = x * ca + z * sa, Z = z * ca - x * sa, Y = y * cp + Z * sp;
+        Z = Z * cp - y * sp;
+        var f = 16 / (16 + Z); P.push([W / 2 + X * f * k, H / 2 - Y * f * k, Z]);
+      });
+      g.clearRect(0, 0, W, H);
+      function seg(e, c, lw) {
+        var p = P[e[0]], q = P[e[1]], al = Math.max(0.2, Math.min(0.95, 0.62 - (p[2] + q[2]) * 0.05));
+        g.strokeStyle = "rgba(" + c + "," + al.toFixed(2) + ")"; g.lineWidth = lw;
+        g.beginPath(); g.moveTo(p[0], p[1]); g.lineTo(q[0], q[1]); g.stroke();
+      }
+      E.forEach(function (e) { seg(e, "214,220,224", 1.25); });
+      HT.forEach(function (e) { seg(e, "227,189,95", 2); });
+      P.forEach(function (p, j) {
+        var c = PAL[Math.max(0, Math.min(3, Math.floor((N[j][0] + 4) / 2.8)))];
+        g.fillStyle = "rgba(" + c + "," + Math.max(0.4, Math.min(1, 0.85 - p[2] * 0.06)).toFixed(2) + ")";
+        g.beginPath(); g.arc(p[0], p[1], 2.6, 0, 6.2832); g.fill();
+      });
+    }
+    fit(); draw(ang);
+    addEventListener("resize", function () { fit(); draw(ang); });
+    if (motion) ambient(cv, loop(function (t) { draw(0.7 + t * 0.22); }));
+  })();
 })();
 </script>
 </body>

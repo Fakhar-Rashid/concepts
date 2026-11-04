@@ -35,15 +35,17 @@
   .logo { text-decoration: none; font-weight: 700; font-stretch: 75%; font-size: 30px; letter-spacing: .02em; line-height: 1; }
   .logo span { display: block; font-stretch: 100%; font-weight: 500; font-size: 13px; letter-spacing: 0; color: var(--muted); margin-top: 4px; }
   header nav { display: flex; gap: 26px; font-weight: 600; font-size: 15px; }
-  header nav a { text-decoration: none; }
+  header nav a { text-decoration: none; position: relative; padding: 4px 0; }
+  header nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--line); transform: scaleX(0); transform-origin: 0 50%; transition: transform .28s cubic-bezier(.3,.7,.2,1); }
   header nav a:hover { color: var(--line); }
+  header nav a:hover::after, header nav a:focus-visible::after { transform: scaleX(1); }
   .btn { display: inline-block; font-weight: 650; font-size: 16px; text-decoration: none; padding: 13px 22px; border: 2px solid var(--ink); }
   .btn-orange { background: var(--orange); border-color: var(--orange); color: #fff; }
   .btn-orange:hover { background: #c4501a; border-color: #c4501a; }
   .btn-line:hover { background: var(--ink); color: #fff; }
 
   /* Drawing sheet hero */
-  .sheet { margin: 12px auto 0; position: relative; border: 2px solid var(--ink); padding: 72px 72px 0 96px; background: #fff; }
+  .sheet { margin: 12px auto 0; position: relative; overflow: hidden; border: 2px solid var(--ink); padding: 72px 72px 0 96px; background: #fff; }
   .sheet > * { position: relative; z-index: 1; }
   .sheet > .grid { position: absolute; z-index: 0; left: 96px; top: 72px; right: 0; bottom: 0; }
   .grid svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; transform: translate(.75px, .75px); }
@@ -61,6 +63,7 @@
   .titleblock div:nth-last-child(-n+2) { border-bottom: 0; }
   .titleblock span { display: block; color: var(--muted); font-size: 12px; }
   .titleblock strong { font-weight: 650; }
+  .titleblock .tb-sheet strong { display: block; font-size: 24px; font-stretch: 75%; font-weight: 700; line-height: 1.1; }
   .sheet-wrap { padding-top: 8px; padding-bottom: 8px; }
 
   section { padding: 96px 0; }
@@ -72,10 +75,10 @@
   .types div { padding: 22px 18px 22px 0; border-bottom: 1px solid var(--concrete); font-size: 20px; font-weight: 600; font-stretch: 85%; }
   .scope { margin-top: 28px; color: var(--muted); }
 
-  /* Pricing formats */
+  /* Pricing formats: each format is its own sheet, framed in ink */
   .formats { background: var(--concrete); }
-  .format-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: var(--ink); border: 2px solid var(--ink); }
-  .format-grid div { background: #fff; padding: 26px 22px 30px; }
+  .format-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; padding: 2px; }
+  .format-grid > div { background: #fff; padding: 26px 22px 30px; box-shadow: 0 0 0 2px var(--ink); }
   .format-grid h3 { font-size: 26px; font-stretch: 80%; margin-bottom: 10px; }
   .format-grid p { color: var(--muted); font-size: 16px; }
   .bonded { margin-top: 24px; font-weight: 600; }
@@ -83,15 +86,33 @@
   /* Process */
   .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; counter-reset: s; }
   .steps li { counter-increment: s; position: relative; padding-top: 58px; }
-  .steps li::before { content: counter(s); position: absolute; top: 0; left: 0; width: 38px; height: 38px; border: 1.5px solid var(--line); border-radius: 50%; display: grid; place-items: center; color: var(--line); font-weight: 600; }
+  .steps li::before { content: counter(s); position: absolute; top: 0; left: 0; width: 38px; height: 38px; border: 1.5px solid var(--line); border-radius: 50%; display: grid; place-items: center; color: var(--line); font-weight: 600; background: #fff; }
   .steps li::after { content: ""; position: absolute; top: 19px; left: 46px; right: -20px; height: 1.5px; background: var(--line-soft); }
   .steps li:last-child::after { display: none; }
+  .steps li.is-on::before { background: var(--line); color: #fff; }
   .steps h3 { font-size: 24px; font-stretch: 85%; margin-bottom: 8px; }
   .steps p { color: var(--muted); font-size: 16px; }
+  .process-body { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 56px; align-items: center; }
+
+  /* Massing study: a generic plan whose walls rise into an axonometric model */
+  .massing { margin: 0; min-width: 0; border: 2px solid var(--ink); background: var(--concrete); }
+  .m-stage { position: relative; height: 440px; overflow: hidden; perspective: 2600px; perspective-origin: 50% 10%; }
+  .m-rig { position: absolute; left: 50%; top: 50%; width: 480px; height: 320px; margin: -160px 0 0 -240px; transform-style: preserve-3d; transform: translateY(28px) scale(var(--ms, .8)); }
+  .m-plan { position: relative; width: 480px; height: 320px; transform-style: preserve-3d; transform: rotateX(56deg) rotateZ(-42deg); }
+  .m-paper { position: absolute; inset: -62px -40px -50px -62px; background: #fff; border: 1px solid var(--line-soft); }
+  .m-plan svg { position: absolute; left: 0; top: 0; overflow: visible; }
+  .m-ln { position: absolute; height: 6px; margin-top: -3px; background: var(--ink); transform-origin: 0 50%; }
+  .m-ln.v { width: 6px; margin: 0 0 0 -3px; transform-origin: 50% 0; }
+  .w { position: absolute; transform-origin: 0 0; border: 1.5px solid var(--ink); background: #fff; }
+  .w.x { height: 64px; transform: rotateX(90deg); }
+  .w.y { width: 64px; transform: rotateY(-90deg); background: #eef0f2; }
+  .w.x.i { height: 44px; } .w.y.i { width: 44px; }
+  .massing figcaption { display: flex; justify-content: space-between; gap: 4px 16px; flex-wrap: wrap; border-top: 1px solid var(--ink); background: #fff; padding: 9px 14px; font-size: 13px; color: var(--muted); }
+  .massing figcaption strong { color: var(--ink); font-weight: 650; }
 
   /* Projects placeholder */
   .projects-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 220px 220px; gap: 14px; }
-  .ph { border: 1.5px dashed var(--line); display: flex; align-items: flex-end; padding: 16px; color: var(--line); font-size: 15px; font-weight: 600;
+  .ph { border: 1.5px dashed var(--line); display: flex; align-items: flex-end; padding: 16px; color: var(--line); font-size: 15px; font-weight: 600; background-color: #fff;
     background-image: linear-gradient(135deg, transparent 49.6%, var(--line-soft) 50%, transparent 50.4%), linear-gradient(45deg, transparent 49.6%, var(--line-soft) 50%, transparent 50.4%); }
   .ph:first-child { grid-row: span 2; }
 
@@ -116,6 +137,25 @@
   footer { border-top: 2px solid var(--ink); font-size: 13px; color: var(--muted); padding: 22px 0; }
   footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
 
+  /* Sheet number that follows you through the set (shown by the script on wider screens) */
+  .sheet-tab { display: none; }
+  .sheet-tab > div { padding: 7px 12px 8px; }
+  .sheet-tab .st-a { width: 152px; }
+  .sheet-tab .st-b { border-left: 1px solid var(--ink); min-width: 76px; }
+  .sheet-tab span { display: block; color: var(--muted); font-size: 11px; }
+  .sheet-tab strong { display: block; font-weight: 650; font-size: 14px; white-space: nowrap; }
+  .sheet-tab .st-no { font-size: 22px; font-stretch: 75%; font-weight: 700; line-height: 1.1; }
+  @media (min-width: 761px) {
+    .js .sheet-tab { display: flex; position: fixed; right: 18px; bottom: 18px; z-index: 40; background: #fff; border: 2px solid var(--ink); line-height: 1.25; pointer-events: none;
+      opacity: 0; transform: translateY(14px); transition: opacity .3s, transform .3s cubic-bezier(.3,.7,.2,1); }
+    .js .sheet-tab.show { opacity: 1; transform: none; }
+  }
+
+  @media (min-width: 901px) {
+    .process-body .steps { grid-template-columns: 1fr; gap: 30px; }
+    .process-body .steps li { padding: 6px 0 0 62px; }
+    .process-body .steps li::after { top: 46px; left: 18.25px; right: auto; bottom: -22px; width: 1.5px; height: auto; }
+  }
   @media (max-width: 900px) {
     header nav { display: none; }
     .sheet { padding: 64px 22px 0 22px; }
@@ -126,15 +166,24 @@
     .types { grid-template-columns: 1fr 1fr; }
     .format-grid, .steps { grid-template-columns: 1fr 1fr; }
     .steps li::after { display: none; }
+    .process-body { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+    .massing { order: -1; }
+    .m-stage { height: 400px; }
     .team { grid-template-columns: 1fr; }
     .projects-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 140px 140px; }
     .ph:first-child { grid-column: span 2; grid-row: auto; }
     section { padding: 64px 0; }
   }
+  @media (max-width: 700px) {
+    .m-stage { height: 330px; }
+    .m-rig { --ms: .62; }
+  }
   @media (max-width: 520px) {
     .format-grid, .steps, .types { grid-template-columns: 1fr; }
     header .btn { padding: 9px 14px; font-size: 14px; }
     .titleblock { grid-template-columns: 1fr 1fr; font-size: 13px; }
+    .m-stage { height: 250px; }
+    .m-rig { --ms: .47; transform: translateY(18px) scale(var(--ms)); }
   }
 
   /* On load the sheet plots itself: each bubble is set, then its gridline is drawn like a pen plotter.
@@ -147,8 +196,13 @@
     @keyframes set-bubble { from { opacity: 0; scale: .55; } }
     @keyframes plot-line { from { stroke-dasharray: 1 1; stroke-dashoffset: 1; } to { stroke-dasharray: 1 1; stroke-dashoffset: 0; } }
   }
+  @media (prefers-reduced-motion: reduce) {
+    header nav a::after, .js .sheet-tab { transition: none; }
+    .js .sheet-tab { transform: none; }
+  }
 </style>
 <script>
+  document.documentElement.classList.add('js');
   if (window.matchMedia && matchMedia('(prefers-reduced-motion: no-preference)').matches) document.documentElement.classList.add('plot');
 </script>
 </head>
@@ -168,7 +222,7 @@
 
   <main id="top">
     <div class="wrap sheet-wrap">
-      <section class="sheet" aria-labelledby="hero-title" style="padding-bottom:0">
+      <section class="sheet" aria-labelledby="hero-title" style="padding-bottom:0" data-sheet="A-101" data-sheet-title="Cover sheet">
         <div class="grid" aria-hidden="true"><svg focusable="false">
           <line class="gx" style="--i:0" x1="0" y1="0" x2="0" y2="100%" pathLength="1"/>
           <line class="gx" style="--i:1" x1="25%" y1="0" x2="25%" y2="100%" pathLength="1"/>
@@ -192,11 +246,13 @@
           <div><span>Location</span><strong>Georgetown, TX</strong></div>
           <div><span>Founded</span><strong>2015</strong></div>
           <div><span>Coverage</span><strong>Bonded and insured</strong></div>
+          <div><span>Drawing</span><strong>Cover sheet</strong></div>
+          <div class="tb-sheet"><span>Sheet</span><strong>A-101</strong></div>
         </div>
       </section>
     </div>
 
-    <section id="build" aria-labelledby="build-title"><div class="wrap">
+    <section id="build" aria-labelledby="build-title" data-sheet="A-102" data-sheet-title="What we build"><div class="wrap">
       <div class="head">
         <h2 id="build-title">Buildings we deliver</h2>
         <p>New construction, renovations and interior finish-outs for the businesses and public bodies of Central Texas.</p>
@@ -207,7 +263,7 @@
       </div>
     </div></section>
 
-    <section id="pricing" class="formats" aria-labelledby="pricing-title"><div class="wrap">
+    <section id="pricing" class="formats" aria-labelledby="pricing-title" data-sheet="A-103" data-sheet-title="How we price"><div class="wrap">
       <div class="head">
         <h2 id="pricing-title">Proposals in the format you need</h2>
         <p>Every owner and lender works differently. Tell us how you want the numbers and we'll price the job that way.</p>
@@ -221,20 +277,57 @@
       <p class="bonded">Bonded and insured on every project.</p>
     </div></section>
 
-    <section aria-labelledby="process-title"><div class="wrap">
+    <section id="process" aria-labelledby="process-title" data-sheet="A-104" data-sheet-title="How we run a job"><div class="wrap">
       <div class="head">
         <h2 id="process-title">How we run a job</h2>
         <p>Detailed planning, schedules set early and constant communication with your design team.</p>
       </div>
-      <ol class="steps">
-        <li><h3>Pre-construction</h3><p>Budget, constructability review and scheduling with your architect and engineers.</p></li>
-        <li><h3>Permitting</h3><p>We take the project through permitting so the start date holds.</p></li>
-        <li><h3>Construction</h3><p>A superintendent on site, safety first, and regular updates to the owner.</p></li>
-        <li><h3>Punch list</h3><p>Final walk-through, corrections and closeout, then the keys are yours.</p></li>
-      </ol>
+      <div class="process-body">
+        <ol class="steps">
+          <li><h3>Pre-construction</h3><p>Budget, constructability review and scheduling with your architect and engineers.</p></li>
+          <li><h3>Permitting</h3><p>We take the project through permitting so the start date holds.</p></li>
+          <li><h3>Construction</h3><p>A superintendent on site, safety first, and regular updates to the owner.</p></li>
+          <li><h3>Punch list</h3><p>Final walk-through, corrections and closeout, then the keys are yours.</p></li>
+        </ol>
+        <figure class="massing" aria-hidden="true">
+          <div class="m-stage"><div class="m-rig"><div class="m-plan">
+            <div class="m-paper"></div>
+            <svg width="480" height="320" viewBox="0 0 480 320" focusable="false">
+              <g class="m-fade" fill="none" stroke="#3f6f9f" stroke-opacity=".55" stroke-width="1" stroke-dasharray="10 4 2 4"><path d="M40 -14V334M173 -14V334M306 -14V334M440 -14V334M-14 40H494M-14 160H494M-14 280H494"/></g>
+              <g class="m-fade" font-family="Instrument Sans, system-ui, sans-serif" font-size="12" font-weight="600" text-anchor="middle">
+                <g fill="#fff" stroke="#3f6f9f" stroke-width="1.2"><circle cx="40" cy="-27" r="13"/><circle cx="173" cy="-27" r="13"/><circle cx="306" cy="-27" r="13"/><circle cx="440" cy="-27" r="13"/><circle cx="-27" cy="40" r="13"/><circle cx="-27" cy="160" r="13"/><circle cx="-27" cy="280" r="13"/></g>
+                <g fill="#3f6f9f"><text x="40" y="-23">A</text><text x="173" y="-23">B</text><text x="306" y="-23">C</text><text x="440" y="-23">D</text><text x="-27" y="44">1</text><text x="-27" y="164">2</text><text x="-27" y="284">3</text></g>
+              </g>
+              <g class="m-fade" fill="none" stroke="#3f6f9f" stroke-width="1.2"><path d="M30 306H450M35 311L45 301M168 311L178 301M301 311L311 301M435 311L445 301"/></g>
+              <g class="m-fade" fill="none" stroke="#3f6f9f" stroke-width="1.2"><path d="M200 280V232A48 48 0 0 1 248 280M306 215H341A35 35 0 0 0 306 180M140 120V153A33 33 0 0 0 173 120"/></g>
+            </svg>
+            <i class="m-ln" style="left:37px;top:40px;width:406px"></i>
+            <i class="m-ln v" style="left:440px;top:37px;height:246px"></i>
+            <i class="m-ln" style="left:250px;top:280px;width:193px"></i>
+            <i class="m-ln" style="left:37px;top:280px;width:163px"></i>
+            <i class="m-ln v" style="left:40px;top:37px;height:246px"></i>
+            <i class="m-ln v" style="left:306px;top:40px;height:140px"></i>
+            <i class="m-ln v" style="left:306px;top:215px;height:65px"></i>
+            <i class="m-ln" style="left:340px;top:160px;width:100px"></i>
+            <i class="m-ln v" style="left:173px;top:40px;height:80px"></i>
+            <i class="m-ln" style="left:40px;top:120px;width:100px"></i>
+            <i class="w x" style="left:40px;top:40px;width:400px"></i>
+            <i class="w y" style="left:440px;top:40px;height:240px"></i>
+            <i class="w x" style="left:250px;top:280px;width:190px"></i>
+            <i class="w x" style="left:40px;top:280px;width:160px"></i>
+            <i class="w y" style="left:40px;top:40px;height:240px"></i>
+            <i class="w y i" style="left:306px;top:40px;height:140px"></i>
+            <i class="w y i" style="left:306px;top:215px;height:65px"></i>
+            <i class="w x i" style="left:340px;top:160px;width:100px"></i>
+            <i class="w y i" style="left:173px;top:40px;height:80px"></i>
+            <i class="w x i" style="left:40px;top:120px;width:100px"></i>
+          </div></div></div>
+          <figcaption><strong>Illustrative massing study</strong><span>A generic example, not a Breck project</span></figcaption>
+        </figure>
+      </div>
     </div></section>
 
-    <section style="padding-top:0" aria-labelledby="projects-title"><div class="wrap">
+    <section id="projects" style="padding-top:0" aria-labelledby="projects-title" data-sheet="A-105" data-sheet-title="Recent projects"><div class="wrap">
       <div class="head">
         <h2 id="projects-title">Recent projects</h2>
         <p>In the full site, this gallery would show your own finished work, with the building type, square footage and scope for each project.</p>
@@ -244,7 +337,7 @@
       </div>
     </div></section>
 
-    <section id="team" style="padding-top:0" aria-labelledby="team-title"><div class="wrap">
+    <section id="team" style="padding-top:0" aria-labelledby="team-title" data-sheet="A-106" data-sheet-title="Team"><div class="wrap">
       <div class="head">
         <h2 id="team-title">The people on your project</h2>
         <p>Founded in 2015 by Nicole and Reese Bruechner.</p>
@@ -256,12 +349,12 @@
       </div>
     </div></section>
 
-    <div class="hiring"><div class="wrap">
+    <div class="hiring" data-sheet="A-107" data-sheet-title="We're hiring"><div class="wrap">
       <div><h2 style="font-size:clamp(28px,3.4vw,38px)">We're hiring</h2><p>Construction superintendent, and a summer construction management internship.</p></div>
       <a class="btn" href="#contact">Send your resume</a>
     </div></div>
 
-    <section id="contact" class="contact" aria-labelledby="contact-title"><div class="wrap">
+    <section id="contact" class="contact" aria-labelledby="contact-title" data-sheet="A-108" data-sheet-title="Contact"><div class="wrap">
       <div>
         <h2 id="contact-title">Developers, architects and engineers: let's talk</h2>
         <p>Send us drawings or a project brief. We'd like to bid on your next commercial project.</p>
@@ -281,5 +374,193 @@
     <span>Breck General Contracting, Georgetown, Texas</span>
     <span>Concept by Fakhar Rashid. Content is taken from breckgc.com.</span>
   </div></footer>
+
+  <div class="sheet-tab" aria-hidden="true">
+    <div class="st-a"><span>Drawing</span><strong class="st-title">Cover sheet</strong></div>
+    <div class="st-b"><span>Sheet</span><strong class="st-no">A-101</strong></div>
+  </div>
+
+<script>
+/* Motion layer. Everything above is the finished, static page; this only animates transform and opacity
+   with requestAnimationFrame, sleeps when settled or off-screen, and does nothing under reduced motion. */
+(function () {
+  var d = document, w = window;
+  var mm = function (q) { return !!(w.matchMedia && w.matchMedia(q).matches); };
+  if (!w.requestAnimationFrame || !('IntersectionObserver' in w)) return;
+  var still = mm('(prefers-reduced-motion: reduce)');
+  var fine = mm('(hover: hover) and (pointer: fine)'), wide = mm('(min-width: 901px)');
+  var raf = function (f) { w.requestAnimationFrame(f); };
+  var clamp = function (v, a, b) { return v < a ? a : v > b ? b : v; };
+  var seg = function (p, a, b) { return clamp((p - a) / (b - a), 0, 1); };
+  var out = function (t) { return 1 - Math.pow(1 - t, 3); };
+  var inout = function (t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(2 - 2 * t, 3) / 2; };
+  var each = function (list, fn) { Array.prototype.forEach.call(list, fn); };
+  var f2 = function (n) { return n.toFixed(3); };
+  // Only things that arrive from below the fold get animated; anything on screen at load stays finished.
+  var below = function (el) { return el.getBoundingClientRect().top > w.innerHeight; };
+  function tween(ms, step, done) {
+    var t0 = null;
+    raf(function f(now) { if (t0 === null) t0 = now; var t = Math.min(1, (now - t0) / ms); step(t); if (t < 1) raf(f); else if (done) done(); });
+  }
+  function watch(el, fn, opt) {
+    if (el) new IntersectionObserver(function (es) { es.forEach(function (e) { fn(e.isIntersecting); }); }, opt).observe(el);
+  }
+  // Eases toward a pointer target, then sleeps until the next move.
+  function follower(apply, k) {
+    var s = { x: 0, y: 0, tx: 0, ty: 0, on: false };
+    function f() {
+      s.x += (s.tx - s.x) * k; s.y += (s.ty - s.y) * k;
+      var done = Math.abs(s.tx - s.x) < .002 && Math.abs(s.ty - s.y) < .002;
+      if (done) { s.x = s.tx; s.y = s.ty; }
+      apply(s.x, s.y);
+      if (done) s.on = false; else raf(f);
+    }
+    s.go = function (x, y) { s.tx = x; s.ty = y; if (!s.on) { s.on = true; raf(f); } };
+    return s;
+  }
+  function pointer(el, s) {
+    el.addEventListener('pointermove', function (e) {
+      if (e.pointerType !== 'mouse') return;
+      var r = el.getBoundingClientRect();
+      s.go(clamp((e.clientX - r.left) / r.width * 2 - 1, -1, 1), clamp((e.clientY - r.top) / r.height * 2 - 1, -1, 1));
+    });
+    el.addEventListener('pointerleave', function () { s.go(0, 0); });
+  }
+
+  /* 1. The title block follows you: sheet number flips as each section reaches mid-screen. */
+  var tab = d.querySelector('.sheet-tab');
+  if (tab) {
+    var no = tab.querySelector('.st-no'), ti = tab.querySelector('.st-title'), cur = no.textContent, want = null, busy = false;
+    var put = function (sec) { no.textContent = sec.getAttribute('data-sheet'); ti.textContent = sec.getAttribute('data-sheet-title'); };
+    var flip = function (sec) {
+      want = sec;
+      if (busy || sec.getAttribute('data-sheet') === cur) return;
+      cur = sec.getAttribute('data-sheet');
+      if (still || !tab.classList.contains('show')) { put(sec); return; }
+      busy = true;
+      tween(380, function (t) {
+        var a = t < .5 ? t * 2 : 2 - t * 2;
+        if (t >= .5 && no.textContent !== cur) put(sec);
+        no.style.transform = ti.style.transform = 'perspective(300px) rotateX(' + f2(t < .5 ? -80 * a : 80 * a) + 'deg)';
+        no.style.opacity = ti.style.opacity = f2(1 - a);
+      }, function () {
+        no.style.transform = ti.style.transform = no.style.opacity = ti.style.opacity = '';
+        busy = false;
+        if (want && want.getAttribute('data-sheet') !== cur) flip(want);
+      });
+    };
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) flip(e.target); }); }, { rootMargin: '-50% 0px -49% 0px' });
+    each(d.querySelectorAll('[data-sheet]'), function (s) { io.observe(s); });
+    watch(d.querySelector('.titleblock'), function (v) { tab.classList.toggle('show', !v); });
+  }
+  if (still) return;
+
+  /* 2. Hero: the grid layer drifts behind the copy and the sheet tilts a little toward the pointer. */
+  var sheet = d.querySelector('.sheet');
+  if (sheet && fine && wide) {
+    var layers = sheet.querySelectorAll('.grid, .bubbles-x, .bubbles-y'), heroIn = true, sy = 0;
+    var hs = follower(function (x, y) {
+      var t = 'translate3d(' + f2(-x * 12) + 'px,' + f2(-y * 9 + sy) + 'px,0)';
+      each(layers, function (el) { el.style.transform = t; });
+      sheet.style.transform = (x || y) ? 'perspective(2400px) rotateX(' + f2(-y * 1.6) + 'deg) rotateY(' + f2(x * 2.2) + 'deg)' : '';
+    }, .08);
+    pointer(sheet, hs);
+    watch(sheet, function (v) { heroIn = v; });
+    w.addEventListener('scroll', function () { if (heroIn) { sy = Math.min(w.scrollY, 700) * .045; hs.go(hs.tx, hs.ty); } }, { passive: true });
+  }
+
+  /* 3. Massing study: plan line work draws, then walls rise. Scroll-linked with pointer rotation on
+     desktop; on touch or narrow screens it simply plays once when it comes into view. */
+  var M = d.querySelector('.massing');
+  if (M) {
+    var plan = M.querySelector('.m-plan'), lns = M.querySelectorAll('.m-ln'), fades = M.querySelectorAll('.m-fade'),
+        walls = M.querySelectorAll('.w'), steps = d.querySelectorAll('.process-body .steps li');
+    var m = { p: 0, x: 0, y: 0, tx: 0, ty: 0, vis: false, on: false };
+    var draw = function () {
+      var p = m.p;
+      each(fades, function (el, i) { el.style.opacity = f2(seg(p, i * .07, .16 + i * .07)); });
+      each(lns, function (el, i) {
+        var k = out(seg(p, .05 + i * .022, .22 + i * .022));
+        el.style.transform = (el.classList.contains('v') ? 'scaleY(' : 'scaleX(') + f2(k) + ')';
+      });
+      each(walls, function (el, i) {
+        var k = inout(seg(p, .38 + i * .04, .58 + i * .04));
+        el.style.opacity = k > 0 ? '1' : '0';
+        el.style.transform = (el.classList.contains('y') ? 'rotateY(-90deg) scaleX(' : 'rotateX(90deg) scaleY(') + Math.max(k, .001).toFixed(4) + ')';
+      });
+      plan.style.transform = 'rotateX(' + f2(56 - m.y * 5) + 'deg) rotateZ(' + f2(-32 - 10 * p + m.x * 9) + 'deg)';
+      var a = p < .26 ? 0 : p < .38 ? 1 : p < .88 ? 2 : p < .995 ? 3 : -1;
+      each(steps, function (li, i) { li.classList.toggle('is-on', i === a); });
+    };
+    var build = below(M);
+    if (build) draw(); else m.p = 1;
+    if (fine && wide) {
+      var target = function () {
+        if (!build) return 1;
+        var r = M.getBoundingClientRect(), vh = w.innerHeight;
+        return clamp((vh * .95 - r.top) / Math.min(vh * .62, 560), 0, 1);
+      };
+      var loop = function () {
+        var tp = target();
+        m.p += (tp - m.p) * .085; m.x += (m.tx - m.x) * .08; m.y += (m.ty - m.y) * .08;
+        var done = Math.abs(tp - m.p) < .0008 && Math.abs(m.tx - m.x) < .002 && Math.abs(m.ty - m.y) < .002;
+        if (done) { m.p = tp; m.x = m.tx; m.y = m.ty; }
+        draw();
+        if (done || !m.vis) m.on = false; else raf(loop);
+      };
+      var kick = function () { if (m.vis && !m.on) { m.on = true; raf(loop); } };
+      watch(M, function (v) { m.vis = v; if (build) kick(); });
+      if (build) w.addEventListener('scroll', kick, { passive: true });
+      M.addEventListener('pointermove', function (e) {
+        if (e.pointerType !== 'mouse') return;
+        var r = M.getBoundingClientRect();
+        m.tx = clamp((e.clientX - r.left) / r.width * 2 - 1, -1, 1); m.ty = clamp((e.clientY - r.top) / r.height * 2 - 1, -1, 1); kick();
+      });
+      M.addEventListener('pointerleave', function () { m.tx = m.ty = 0; kick(); });
+    } else if (build) {
+      var played = false;
+      watch(M, function (v) { if (!v || played) return; played = true; tween(2400, function (t) { m.p = t; draw(); }); }, { threshold: .3 });
+    }
+  }
+
+  /* 4. Pricing: the four formats arrive as a stack of sheets and fan out into place. */
+  var fg = d.querySelector('.format-grid'), fanning = false;
+  if (fg && wide && below(fg)) {
+    var cards = Array.prototype.slice.call(fg.children), offs = [], R = [-3, 2.2, -1.4, .8];
+    var pose = function (c, i, k) {
+      var o = offs[i], j = 1 - k;
+      c.style.transform = 'perspective(1200px) translate3d(' + f2(o.x * j) + 'px,' + f2(o.y * j) + 'px,0) rotateZ(' + f2(R[i] * j) + 'deg) rotateY(' + f2(-16 * Math.sin(Math.PI * k)) + 'deg)';
+    };
+    var r0 = cards[0].getBoundingClientRect();
+    cards.forEach(function (c, i) {
+      var r = c.getBoundingClientRect();
+      offs[i] = { x: r0.left - r.left + i * 8, y: r0.top - r.top + i * 6 };
+      c.style.position = 'relative'; c.style.zIndex = 9 - i; pose(c, i, 0);
+    });
+    fanning = true;
+    watch(fg, function (v) {
+      if (!v || !fanning || fg.dataset.fanned) return;
+      fg.dataset.fanned = '1';
+      tween(1500, function (t) {
+        cards.forEach(function (c, i) { pose(c, i, out(clamp((t * 1500 - 120 - i * 130) / 950, 0, 1))); });
+      }, function () {
+        cards.forEach(function (c) { c.style.transform = c.style.zIndex = c.style.position = ''; });
+        fanning = false;
+      });
+    }, { threshold: .25 });
+  }
+
+  /* 5. A light tilt toward the pointer on the format sheets and the photo frames. */
+  if (fine) each(d.querySelectorAll('.format-grid > div, .ph'), function (el) {
+    var s = follower(function (x, y) {
+      if (fanning) return;
+      el.style.transform = (x || y) ? 'perspective(900px) rotateX(' + f2(-y * 4) + 'deg) rotateY(' + f2(x * 5) + 'deg)' : '';
+    }, .12);
+    pointer(el, s);
+    el.addEventListener('pointerenter', function () { if (!fanning) { el.style.position = 'relative'; el.style.zIndex = 3; } });
+    el.addEventListener('pointerleave', function () { if (!fanning) el.style.zIndex = ''; });
+  });
+})();
+</script>
 </body>
 </html>

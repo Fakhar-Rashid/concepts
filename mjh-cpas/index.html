@@ -58,8 +58,9 @@
   .btn-line:hover { background: var(--sage); }
 
   /* Hero with the client front desk */
-  .hero { padding: 72px 0 88px; }
-  .hero .wrap { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 64px; align-items: start; }
+  .hero { position: relative; overflow: clip; padding: 72px 0 88px; }
+  .hero-bg { position: absolute; inset: -60px 0; pointer-events: none; background: repeating-linear-gradient(to bottom, transparent 0 39px, rgba(18,68,75,.06) 39px 40px); -webkit-mask-image: linear-gradient(to bottom, transparent, #000 20%, #000 65%, transparent); mask-image: linear-gradient(to bottom, transparent, #000 20%, #000 65%, transparent); }
+  .hero .wrap { position: relative; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 64px; align-items: start; }
   .hero h1 { font-size: clamp(38px, 5vw, 60px); color: var(--teal); }
   .hero .lede { font-size: 20px; color: var(--muted); margin-top: 22px; max-width: 32em; }
   .hero .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
@@ -75,6 +76,16 @@
   @keyframes draw { from { stroke-dashoffset: 1.05; } to { stroke-dashoffset: 0; } }
 
   .desk { background: var(--sage); border-radius: 14px; padding: 28px; }
+  .motion .desk { animation: rise 1s cubic-bezier(.2,.7,.2,1) .15s backwards; }
+  @keyframes rise { from { opacity: 0; transform: perspective(1200px) rotateX(12deg) translateY(28px); } }
+
+  /* Depth: pointer tilt with a shadow that moves away from the pointer */
+  .tilt { position: relative; isolation: isolate; }
+  .tilt::after { content: ""; position: absolute; inset: 16px; z-index: -2; border-radius: 12px; pointer-events: none; box-shadow: 0 26px 44px rgba(18,68,75,.2), 0 8px 16px rgba(18,68,75,.1); opacity: 0; transform: translate(var(--sx, 0px), var(--sy, 6px)); transition: opacity .35s ease; }
+  .desk.tilt { background: none; }
+  .desk.tilt::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; background: var(--sage); pointer-events: none; }
+  .desk.tilt::after { opacity: .55; }
+  .tilt.lifted::after { opacity: 1; }
   .desk h2 { font-size: 26px; }
   .desk .season { margin-top: 10px; font-size: 15px; color: var(--muted); }
   .desk ul { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 10px; }
@@ -108,7 +119,9 @@
   .svc li:nth-child(3n+2) .tick { transform: rotate(-7deg); }
   .svc li:nth-child(3n) .tick { transform: rotate(5deg) translateX(1px); }
   .motion .svc .tick { stroke-dashoffset: 1.05; }
-  .motion .svc .ticked .tick { stroke-dashoffset: 0; transition: stroke-dashoffset .3s cubic-bezier(.65,0,.35,1); transition-delay: calc(var(--d0, 0ms) + var(--i, 0) * 105ms); }
+  .motion .svc .ticked .tick { stroke-dashoffset: 0; transition: stroke-dashoffset .3s cubic-bezier(.65,0,.35,1); transition-delay: calc(450ms + var(--d0, 0ms) + var(--i, 0) * 105ms); }
+  .motion .services .wrap { opacity: 0; transform: perspective(1600px) rotateX(9deg) translate3d(0, 56px, 0); transform-origin: 50% 0; transition: transform 1.2s cubic-bezier(.2,.7,.2,1), opacity .9s ease; }
+  .motion .services.in .wrap { opacity: 1; transform: none; }
 
   /* Partners */
   .partners { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
@@ -116,6 +129,9 @@
   .partner h3 { font-size: 26px; color: var(--teal); }
   .partner .role { font-weight: 600; color: var(--muted); font-size: 15px; margin: 4px 0 12px; }
   .partner p { color: var(--muted); font-size: 16px; }
+  .partner.tilt::before { content: ""; position: absolute; inset: -18px -22px -20px; z-index: -1; border-radius: 12px; background: #fff; opacity: 0; transition: opacity .35s ease; pointer-events: none; }
+  .partner.tilt.lifted::before { opacity: 1; }
+  .partner.tilt::after { inset: -2px -6px -4px; }
   .more { margin-top: 14px; }
   .more summary { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; list-style: none; font-weight: 700; font-size: 15px; color: var(--teal); }
   .more summary::-webkit-details-marker { display: none; }
@@ -142,11 +158,66 @@
   blockquote { margin: 0; font-family: "Literata", serif; font-size: 25px; line-height: 1.4; color: var(--teal); }
   blockquote cite { display: block; font-family: "Hanken Grotesk", sans-serif; font-style: normal; font-size: 15px; color: var(--muted); margin-top: 10px; }
 
-  /* Tax time */
+  /* Tax time: a folder and papers in CSS 3D, following the steps */
   .taxtime { border-top: 1px solid var(--rule); }
+  .tt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  .tt-stage { position: sticky; top: calc(50vh - 210px); height: 420px; }
+  .scene { position: absolute; inset: 0; perspective: 1400px; perspective-origin: 50% 30%; }
+  .sway { position: absolute; inset: 0; transform-style: preserve-3d; }
+  .tabletop { position: absolute; left: 50%; top: 50%; width: 420px; height: 300px; margin: -150px 0 0 -210px; background: var(--sage); border-radius: 22px; transform-style: preserve-3d; transform: rotateX(46deg) rotateZ(-20deg); transition: transform 1.2s cubic-bezier(.22,.75,.2,1); }
+  .tabletop > div { position: absolute; left: 50%; top: 50%; }
+  .fold-back { width: 150px; height: 194px; margin: -97px 0 0 -75px; background: var(--teal); border-radius: 3px 10px 10px 3px; transform: translate3d(75px, 0, 1px); }
+  .fold-back::before { content: ""; position: absolute; top: -13px; right: 20px; width: 58px; height: 15px; background: var(--teal); border-radius: 6px 6px 0 0; }
+  .fold-cover { width: 150px; height: 194px; margin: -97px 0 0 -75px; transform-style: preserve-3d; transform-origin: 100% 50%; transform: translate3d(-75px, 0, 2px) rotateY(0deg); transition: transform 1.1s cubic-bezier(.3,.7,.2,1); }
+  .fold-cover i { position: absolute; inset: 0; backface-visibility: hidden; border-radius: 10px 3px 3px 10px; background: var(--teal-2); }
+  .fold-cover i + i { background: var(--teal); transform: rotateY(180deg); }
+  .fold-cover i + i::after { content: ""; position: absolute; top: 24px; left: 22px; width: 64px; height: 12px; border-radius: 2px; background: var(--marigold); }
+  .sheet { width: 128px; height: 166px; margin: -83px 0 0 -64px; background: #fff; border-radius: 3px; box-shadow: 0 0 0 1px rgba(18,68,75,.1), 0 2px 3px rgba(18,68,75,.12); transition: transform 1s cubic-bezier(.22,.75,.2,1), opacity .5s ease; transition-delay: calc(var(--k) * 70ms); }
+  .sheet::before { content: ""; position: absolute; inset: 0; border-radius: 3px; box-shadow: 0 26px 30px -6px rgba(18,68,75,.3); opacity: 0; transition: opacity .7s ease; }
+  .sheet b { position: absolute; left: 14px; top: 14px; width: 46px; height: 7px; border-radius: 2px; background: #a9bab6; }
+  .sheet i { position: absolute; left: 14px; right: 36px; top: 32px; bottom: 16px; background: repeating-linear-gradient(to bottom, var(--rule) 0 1px, transparent 1px 12px); }
+  .sheet.org b { width: 100px; height: 14px; background: var(--teal); }
+  .sheet.org i { top: 40px; right: 14px; }
+  .rt { position: absolute; right: 10px; top: 26px; width: 22px; height: 80px; stroke-width: 2; }
+  .rt path { transition: stroke-dashoffset .3s cubic-bezier(.65,0,.35,1); }
+  .rt path:nth-child(1) { transition-delay: 1.1s; }
+  .rt path:nth-child(2) { transition-delay: 1.25s; }
+  .rt path:nth-child(3) { transition-delay: 1.4s; }
+  /* Finished state: the papers filed and ticked. This is also the no-JS and reduced-motion look. */
+  .s1 { transform: translate3d(72px, 6px, 4px) rotateX(0deg) rotateZ(-2deg); }
+  .s2 { transform: translate3d(78px, 2px, 7px) rotateX(0deg) rotateZ(1.4deg); }
+  .s3 { transform: translate3d(74px, 5px, 10px) rotateX(0deg) rotateZ(-.8deg); }
+  .s4 { transform: translate3d(77px, 3px, 13px) rotateX(0deg) rotateZ(1deg); }
+  .s5 { transform: translate3d(75px, 4px, 16px) rotateX(0deg) rotateZ(0deg); }
+  /* Step 1: the organizer arrives over a closed folder */
+  .scene[data-step="0"] .tabletop { transform: rotateX(54deg) rotateZ(-30deg); }
+  .scene[data-step="0"] .fold-cover { transform: translate3d(-75px, 0, 3px) rotateY(180deg); }
+  .scene[data-step="0"] .sheet { transform: translate3d(62px, -16px, 96px) rotateX(-16deg) rotateZ(-8deg); opacity: 0; }
+  .scene[data-step="0"] .sheet.org { opacity: 1; }
+  /* Step 2: the folder opens and the documents fan out */
+  .scene[data-step="1"] .tabletop { transform: rotateX(50deg) rotateZ(-22deg); }
+  .scene[data-step="1"] .s1 { transform: translate3d(-66px, 10px, 44px) rotateX(-6deg) rotateZ(-28deg); }
+  .scene[data-step="1"] .s2 { transform: translate3d(-34px, -2px, 47px) rotateX(-6deg) rotateZ(-14deg); }
+  .scene[data-step="1"] .s3 { transform: translate3d(0px, -6px, 50px) rotateX(-6deg) rotateZ(0deg); }
+  .scene[data-step="1"] .s4 { transform: translate3d(34px, -2px, 53px) rotateX(-6deg) rotateZ(14deg); }
+  .scene[data-step="1"] .s5 { transform: translate3d(66px, 10px, 56px) rotateX(-6deg) rotateZ(28deg); }
+  /* Step 3: gathered into one neat stack, all at once */
+  .scene[data-step="2"] .tabletop { transform: rotateX(54deg) rotateZ(-28deg); }
+  .scene[data-step="2"] .s1 { transform: translate3d(75px, 2px, 60px) rotateX(0deg) rotateZ(-1.5deg); }
+  .scene[data-step="2"] .s2 { transform: translate3d(75px, 2px, 63px) rotateX(0deg) rotateZ(1deg); }
+  .scene[data-step="2"] .s3 { transform: translate3d(75px, 2px, 66px) rotateX(0deg) rotateZ(-.6deg); }
+  .scene[data-step="2"] .s4 { transform: translate3d(75px, 2px, 69px) rotateX(0deg) rotateZ(.8deg); }
+  .scene[data-step="2"] .s5 { transform: translate3d(75px, 2px, 72px) rotateX(0deg) rotateZ(0deg); }
+  .scene[data-step="1"] .sheet::before, .scene[data-step="2"] .sheet::before { opacity: 1; }
+  /* Step 4: filed, and the reviewer's pencil ticks the top page */
+  .scene[data-step="3"] .tabletop { transform: rotateX(56deg) rotateZ(-32deg); }
+  .scene[data-step="0"] .rt path, .scene[data-step="1"] .rt path, .scene[data-step="2"] .rt path { stroke-dashoffset: 1.05; transition-delay: 0s; }
+
   .ledger { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--rule); }
-  .ledger li { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 20px 0; border-top: 1px solid var(--rule); }
-  .ledger h3 { font-size: 22px; color: var(--teal); }
+  .ledger li { position: relative; padding: 26px 0 26px 22px; border-top: 1px solid var(--rule); }
+  .ledger li::before { content: ""; position: absolute; left: 0; top: 28px; bottom: 28px; width: 3px; border-radius: 2px; background: var(--marigold); transform: scaleY(0); transform-origin: 50% 0; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+  .ledger li.on::before { transform: scaleY(1); }
+  .ledger h3 { font-size: 22px; color: var(--teal); margin-bottom: 6px; }
   .ledger p { color: var(--muted); font-size: 17px; }
 
   /* Resources */
@@ -171,14 +242,18 @@
     header nav { display: none; }
     .hero .wrap, .head, .why, .contact .wrap, .quotes { grid-template-columns: 1fr; }
     .svc { grid-template-columns: 1fr 1fr; }
-    .partners, .team { grid-template-columns: 1fr; }
+    .partners, .team, .tt-grid { grid-template-columns: 1fr; }
+    .tt-stage { position: relative; top: auto; height: 300px; }
+    .ledger li { padding-left: 0; }
+    .sway { transform: scale(.72); }
     .team div + div { grid-column: auto; }
     .res-list { grid-template-columns: 1fr 1fr; }
     section { padding: 64px 0; }
     .hero { padding: 48px 0 64px; }
   }
-  @media (max-width: 600px) {
-    .ledger li { grid-template-columns: 1fr; gap: 6px; }
+  @media (max-width: 420px) {
+    .tt-stage { height: 260px; }
+    .sway { transform: scale(.62); }
   }
   @media (max-width: 520px) {
     .svc, .res-list { grid-template-columns: 1fr; }
@@ -209,7 +284,7 @@
   </div></header>
 
   <main id="top">
-    <section class="hero" aria-labelledby="hero-title"><div class="wrap">
+    <section class="hero" aria-labelledby="hero-title"><div class="hero-bg" aria-hidden="true"></div><div class="wrap">
       <div>
         <h1 id="hero-title">Tax and accounting in Parker, with a CPA who knows your name.</h1>
         <p class="lede">Three partners and a small team who answer your questions in plain English, for individuals, families and growing businesses.</p>
@@ -220,7 +295,7 @@
         <div class="stars"><b>5.0<svg class="pencil foot" viewBox="0 0 58 14" aria-hidden="true" focusable="false"><path pathLength="1" d="M1.5 4.6C15 3.4 33 3.7 56.5 2.6"/><path pathLength="1" d="M6 10.6C20 9.7 37 9.9 52.5 9.1"/></svg></b><i aria-hidden="true">★★★★★</i><span>From 11 reviews on Google</span></div>
       </div>
 
-      <aside id="desk" class="desk" aria-labelledby="desk-title">
+      <div class="desk-par"><aside id="desk" class="desk tilt" aria-labelledby="desk-title">
         <h2 id="desk-title">Already a client?</h2>
         <p class="season">2026 tax season: please upload all of your documents at once, and your tax partner will reach out with any questions.</p>
         <ul>
@@ -230,7 +305,7 @@
           <li><a href="#contact">Ask your CPA a question <span>Email or phone</span></a></li>
         </ul>
         <p class="hours">In the real site, these buttons go straight to the tools you already use. Office hours from April 16: Monday to Wednesday, 9:00 am to 3:00 pm.</p>
-      </aside>
+      </aside></div>
     </div></section>
 
     <section id="services" class="services" aria-labelledby="svc-title"><div class="wrap">
@@ -270,16 +345,16 @@
         <p>Decades of combined experience in public and private accounting, and your own tax partner reviews your return.</p>
       </div>
       <div class="partners">
-        <article class="partner"><h3>Traci L. May, CPA</h3><p class="role">Partner, tax and tax consulting</p><p>University of Northern Colorado, B.S. in Accounting. More than 20 years of experience in the public and private accounting sectors.</p>
+        <article class="partner tilt"><h3>Traci L. May, CPA</h3><p class="role">Partner, tax and tax consulting</p><p>University of Northern Colorado, B.S. in Accounting. More than 20 years of experience in the public and private accounting sectors.</p>
           <details class="more"><summary><span class="pm" aria-hidden="true"></span>More about Traci</summary><div class="body">
             <p>Traci graduated in 1990, and has practiced in the Parker area for the last several years.</p>
           </div></details></article>
-        <article class="partner"><h3>Lenae A. Jackson, CPA</h3><p class="role">Partner, bookkeeping and tax</p><p>University of Colorado, B.S. in Accounting. Over 20 years in the Denver metro area with large CPA firms and industry, and active on many local boards.</p>
+        <article class="partner tilt"><h3>Lenae A. Jackson, CPA</h3><p class="role">Partner, bookkeeping and tax</p><p>University of Colorado, B.S. in Accounting. Over 20 years in the Denver metro area with large CPA firms and industry, and active on many local boards.</p>
           <details class="more"><summary><span class="pm" aria-hidden="true"></span>More about Lenae</summary><div class="body">
             <p>Lenae graduated in 1988, and has worked for large CPA firms as well as industry leaders.</p>
             <p>She has always been committed to giving back to the community, and serves on many boards and committees in the Denver area.</p>
           </div></details></article>
-        <article class="partner"><h3>Lori K. Hendrick, CPA</h3><p class="role">Partner, financial statements</p><p>University of Nebraska, B.S. in Business Administration with a triple major in accounting, banking and finance, and business finance.</p>
+        <article class="partner tilt"><h3>Lori K. Hendrick, CPA</h3><p class="role">Partner, financial statements</p><p>University of Nebraska, B.S. in Business Administration with a triple major in accounting, banking and finance, and business finance.</p>
           <details class="more"><summary><span class="pm" aria-hidden="true"></span>More about Lori</summary><div class="body">
             <p>Lori graduated in 1994 and has a substantial amount of knowledge in the financial accounting arena, specializing in compiled, reviewed and audited financial statement preparation.</p>
             <p>She enjoys volunteering for the Colorado Society of CPAs, Girl Scouts, Boy Scouts and other organizations.</p>
@@ -305,6 +380,16 @@
         <h2 id="tt-title">How tax time works</h2>
         <p>The CPAs are available by email or phone to answer questions while you gather your tax documents.</p>
       </div>
+      <div class="tt-grid">
+      <div class="tt-stage" aria-hidden="true"><div class="scene"><div class="sway"><div class="tabletop">
+        <div class="fold-back"></div>
+        <div class="fold-cover"><i></i><i></i></div>
+        <div class="sheet s1 org" style="--k:0"><b></b><i></i></div>
+        <div class="sheet s2" style="--k:1"><b></b><i></i></div>
+        <div class="sheet s3" style="--k:2"><b></b><i></i></div>
+        <div class="sheet s4" style="--k:3"><b></b><i></i></div>
+        <div class="sheet s5" style="--k:4"><b></b><i></i><svg class="pencil rt" viewBox="0 0 22 80" focusable="false"><path pathLength="1" d="M3 8.6c1.3.8 2.3 2 3.2 3.8 1.8-4.2 4.6-7.4 9.4-10"/><path pathLength="1" d="M3.4 33c1.2.6 2.2 1.8 3 3.6 1.9-4.3 4.4-7.2 9.2-9.6"/><path pathLength="1" d="M2.8 56.8c1.4.9 2.4 2.1 3.3 4 1.7-4.1 4.7-7.6 9.5-10.2"/></svg></div>
+      </div></div></div></div>
       <ol class="ledger">
         <li><h3>Ask for your organizer</h3><p>Request this year's tax organizer. Email is our preferred way to send it, and mail or fax work too.</p></li>
         <li><h3>Gather your documents</h3><p>Wait until you've received all of your tax documents for the year. The checklists below show what to bring together.</p></li>
@@ -312,6 +397,7 @@
         <li><h3>Your tax partner reviews</h3><p>Your tax partner will reach out with any questions or concerns while reviewing your documents.</p></li>
         <li><h3>Go over it together</h3><p>Call 303-841-4220 to set up an appointment to go over your tax documents together on the phone.</p></li>
       </ol>
+      </div>
     </div></section>
 
     <section id="resources" class="resources" aria-labelledby="res-title"><div class="wrap">
@@ -359,26 +445,120 @@
   </svg>
 
   <script>
-    /* Tick each service as its column comes into view, working down the page like a reviewer. */
+    /* All motion is progressive: without JS, or with reduced motion, the page is already in its finished state. */
     (function () {
-      if (!document.documentElement.classList.contains('motion')) return;
-      var cols = [].slice.call(document.querySelectorAll('.svc > div'));
-      var step = 105;
+      var root = document.documentElement;
+      if (!root.classList.contains('motion')) return;
+      var $ = function (s) { return document.querySelector(s); };
+      var $$ = function (s) { return [].slice.call(document.querySelectorAll(s)); };
+      var wide = matchMedia('(min-width: 901px)').matches;
+      var fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+      /* Services: the band settles in perspective, then the pencil ticks each item, column by column */
+      var band = $('.services');
+      var bandIO = new IntersectionObserver(function (es) {
+        if (es[0].isIntersecting) { band.classList.add('in'); bandIO.disconnect(); }
+      }, { threshold: 0.12 });
+      bandIO.observe(band);
+      var cols = $$('.svc > div'), step = 105;
       cols.forEach(function (col) {
         [].forEach.call(col.querySelectorAll('li'), function (li, i) { li.style.setProperty('--i', i); });
       });
-      var io = new IntersectionObserver(function (entries) {
+      var tickIO = new IntersectionObserver(function (es) {
         var offset = 0;
-        entries.filter(function (e) { return e.isIntersecting; })
+        es.filter(function (e) { return e.isIntersecting; })
           .sort(function (a, b) { return cols.indexOf(a.target) - cols.indexOf(b.target); })
           .forEach(function (e) {
             e.target.style.setProperty('--d0', offset + 'ms');
             e.target.classList.add('ticked');
             offset += e.target.querySelectorAll('li').length * step + 140;
-            io.unobserve(e.target);
+            tickIO.unobserve(e.target);
           });
       }, { threshold: 0.4, rootMargin: '0px 0px -8% 0px' });
-      cols.forEach(function (col) { io.observe(col); });
+      cols.forEach(function (col) { tickIO.observe(col); });
+
+      /* Tax time: the folder scene follows the steps */
+      var scene = $('.scene'), sway = $('.sway'), ledger = $('.ledger'), rows = $$('.ledger li');
+      var tt = $('#tax-time'), hero = $('.hero'), heroBg = $('.hero-bg'), deskPar = $('.desk-par');
+      function setStep(n) { if (scene.getAttribute('data-step') !== String(n)) scene.setAttribute('data-step', n); }
+      setStep(0);
+
+      if (!wide) {
+        /* Phones and tablets: a lighter version that plays the story once, then rests */
+        var playIO = new IntersectionObserver(function (es) {
+          if (!es[0].isIntersecting) return;
+          playIO.disconnect();
+          var n = 0;
+          (function next() { if (n < 4) { setStep(++n); setTimeout(next, 1100); } })();
+        }, { threshold: 0.6 });
+        playIO.observe($('.tt-stage'));
+        return;
+      }
+
+      /* Desktop: scroll-linked depth, computed once per frame and only for sections on screen */
+      var queued = false;
+      function queue() { if (!queued) { queued = true; requestAnimationFrame(update); } }
+      var seen = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { e.target._on = e.isIntersecting; });
+        queue();
+      });
+      seen.observe(hero); seen.observe(tt);
+
+      function update() {
+        queued = false;
+        var vh = innerHeight;
+        if (hero._on) {
+          var y = Math.max(0, -hero.getBoundingClientRect().top);
+          heroBg.style.transform = 'translate3d(0,' + (y * 0.3).toFixed(1) + 'px,0)';
+          deskPar.style.transform = 'translate3d(0,' + (y * -0.08).toFixed(1) + 'px,0)';
+        }
+        if (tt._on) {
+          var lr = ledger.getBoundingClientRect(), n = -1, fits = vh > lr.height * 1.6 + 400;
+          if (fits) n = 4; /* the whole story fits on screen, so show it finished */
+          else rows.forEach(function (r) { if (r.getBoundingClientRect().top < vh * 0.6) n++; });
+          n = Math.max(0, Math.min(4, n));
+          setStep(n);
+          rows.forEach(function (r, i) { r.classList.toggle('on', !fits && i === n); });
+          var tr = tt.getBoundingClientRect();
+          var p = Math.min(1, Math.max(0, (vh - tr.top) / (vh + tr.height))) - 0.5;
+          sway.style.transform = 'rotateX(' + (p * -6).toFixed(2) + 'deg) rotateY(' + (p * 12).toFixed(2) + 'deg)';
+        }
+      }
+      addEventListener('scroll', queue, { passive: true });
+      addEventListener('resize', queue);
+
+      /* Client panel and partner cards lean toward a mouse pointer; never on touch */
+      if (!fine) return;
+      $$('.tilt').forEach(function (el) {
+        var max = el.classList.contains('desk') ? 5 : 4;
+        var tx = 0, ty = 0, cx = 0, cy = 0, box = null, raf = 0;
+        /* the client panel waits until its rise-in has finished before it starts to lean */
+        var ready = !el.classList.contains('desk');
+        if (!ready) {
+          el.addEventListener('animationend', function () { ready = true; }, { once: true });
+          setTimeout(function () { ready = true; }, 1500);
+        }
+        function frame() {
+          cx += (tx - cx) * 0.14; cy += (ty - cy) * 0.14;
+          var done = Math.abs(tx - cx) < 0.002 && Math.abs(ty - cy) < 0.002;
+          if (done) { cx = tx; cy = ty; }
+          el.style.transform = (cx || cy) ? 'perspective(900px) rotateX(' + (-cy * max * 2).toFixed(2) + 'deg) rotateY(' + (cx * max * 2).toFixed(2) + 'deg)' : '';
+          el.style.setProperty('--sx', (-cx * 16).toFixed(1) + 'px');
+          el.style.setProperty('--sy', (10 - cy * 16).toFixed(1) + 'px');
+          raf = done ? 0 : requestAnimationFrame(frame);
+        }
+        function kick() { if (!raf) raf = requestAnimationFrame(frame); }
+        el.addEventListener('pointermove', function (e) {
+          if (!ready || e.pointerType !== 'mouse') return;
+          if (!box) { box = el.getBoundingClientRect(); el.classList.add('lifted'); }
+          tx = (e.clientX - box.left) / box.width - 0.5;
+          ty = (e.clientY - box.top) / box.height - 0.5;
+          kick();
+        });
+        el.addEventListener('pointerleave', function () {
+          box = null; tx = ty = 0; el.classList.remove('lifted'); kick();
+        });
+      });
     })();
   </script>
 </body>
