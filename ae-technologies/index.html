@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>A&amp;E Technologies | Homepage concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --plate: #eff1f2;
+    --white: #ffffff;
+    --graphite: #202427;
+    --steel: #5f686f;
+    --rule: #cfd4d8;
+    --straw: #e3bd5f;
+    --bronze: #b8743a;
+    --violet: #6f3f8a;
+    --blue: #2f5ea3;
+    --heat: linear-gradient(90deg, #cfd4d8 0%, var(--straw) 18%, var(--bronze) 40%, var(--violet) 62%, var(--blue) 82%, #cfd4d8 100%);
+    --max: 1180px;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "IBM Plex Sans", system-ui, sans-serif; font-size: 17px; line-height: 1.6; color: var(--graphite); background: var(--white); }
+  a { color: inherit; }
+  a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+  h1, h2, h3 { font-family: "Big Shoulders Display", Impact, sans-serif; font-weight: 800; line-height: .95; margin: 0; }
+  h2 { font-size: clamp(40px, 5.5vw, 64px); }
+  p { margin: 0; }
+
+  .concept { background: var(--graphite); color: #c8cfd4; font-size: 13px; text-align: center; padding: 8px 16px; }
+  .concept strong { color: #fff; font-weight: 600; }
+
+  .bar { background: var(--plate); font-size: 14px; color: var(--steel); }
+  .bar .wrap { display: flex; justify-content: space-between; gap: 16px; padding-top: 8px; padding-bottom: 8px; flex-wrap: wrap; }
+  .bar strong { color: var(--graphite); }
+
+  header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 18px; padding-bottom: 18px; }
+  .logo { font-family: "Big Shoulders Display", sans-serif; font-weight: 900; font-size: 30px; text-decoration: none; line-height: 1; }
+  .logo span { font-family: "IBM Plex Sans", sans-serif; font-weight: 500; font-size: 13px; color: var(--steel); display: block; margin-top: 2px; }
+  header nav { display: flex; gap: 26px; font-weight: 600; font-size: 15px; }
+  header nav a { text-decoration: none; }
+  header nav a:hover { color: var(--blue); }
+  .btn { display: inline-block; font-weight: 600; font-size: 16px; text-decoration: none; padding: 13px 22px; border: 2px solid var(--graphite); }
+  .btn-dark { background: var(--graphite); color: #fff; }
+  .btn-dark:hover { background: #000; }
+  .btn-ghost:hover { background: var(--graphite); color: #fff; }
+
+  /* Hero */
+  .hero { padding: 64px 0 0; }
+  .hero h1 { font-size: clamp(64px, 12vw, 168px); font-weight: 900; letter-spacing: -0.01em; max-width: 9.5em; }
+  .hero .row { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: end; margin-top: 28px; }
+  .hero .lede { font-size: 21px; color: var(--steel); max-width: 30em; }
+  .hero .actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
+  .bead { margin-top: 56px; height: 46px; position: relative; overflow: hidden; }
+  .bead svg { display: block; width: 100%; height: 46px; }
+  .bead .draw { animation: draw 1.6s ease-out .2s both; }
+  @keyframes draw { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+
+  .proof { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .proof ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); }
+  .proof li { padding: 22px 20px 22px 0; font-size: 15px; color: var(--steel); }
+  .proof li + li { padding-left: 20px; border-left: 1px solid var(--rule); }
+  .proof strong { display: block; font-family: "Big Shoulders Display", sans-serif; font-size: 30px; font-weight: 800; color: var(--graphite); line-height: 1.1; }
+
+  section { padding: 96px 0; }
+  .head { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; margin-bottom: 44px; }
+  .head p { color: var(--steel); font-size: 18px; }
+
+  /* Capabilities as a spec sheet */
+  table.spec { width: 100%; border-collapse: collapse; font-size: 16px; }
+  .spec th, .spec td { text-align: left; vertical-align: top; padding: 18px 16px 18px 0; border-bottom: 1px solid var(--rule); }
+  .spec thead th { font-size: 14px; color: var(--steel); font-weight: 600; border-bottom: 2px solid var(--graphite); }
+  .spec tbody th { font-family: "Big Shoulders Display", sans-serif; font-size: 28px; font-weight: 800; width: 26%; line-height: 1.05; }
+  .spec td:last-child { color: var(--steel); }
+
+  /* Dream Chaser */
+  .feature { background: var(--graphite); color: #fff; }
+  .feature .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .feature p { color: #c3cad0; margin-top: 18px; font-size: 18px; }
+  .parts { list-style: none; margin: 0; padding: 0; }
+  .parts li { padding: 18px 0; border-bottom: 1px solid #3a4146; display: flex; justify-content: space-between; gap: 16px; }
+  .parts li span:first-child { font-family: "Big Shoulders Display", sans-serif; font-size: 28px; font-weight: 800; }
+  .parts li span:last-child { color: #9aa4ac; font-size: 15px; text-align: right; }
+  .heatline { height: 4px; background: var(--heat); margin-top: 28px; width: 220px; }
+  .more-work { margin-top: 56px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .more-work span { border: 1px solid #4a5258; padding: 8px 14px; font-size: 15px; color: #d6dce0; }
+
+  /* Industries */
+  .industries { columns: 3; column-gap: 40px; list-style: none; padding: 0; margin: 0; font-size: 20px; }
+  .industries li { padding: 10px 0; border-bottom: 1px solid var(--rule); break-inside: avoid; }
+  .neighbors { margin-top: 32px; font-size: 18px; color: var(--steel); max-width: 44em; }
+
+  /* Metal for sale */
+  .metal { background: var(--plate); }
+  .metal .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+  .metal p { color: var(--steel); margin-top: 16px; }
+  .stock { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .stock h3 { font-size: 26px; padding-bottom: 8px; border-bottom: 2px solid var(--graphite); margin-bottom: 8px; }
+  .stock ul { margin: 0; padding: 0; list-style: none; }
+  .stock li { padding: 4px 0; }
+
+  /* Reviews */
+  .reviews .wrap { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 64px; align-items: start; }
+  .rating { font-family: "Big Shoulders Display", sans-serif; font-weight: 900; font-size: 120px; line-height: .85; }
+  .rating + p { color: var(--steel); margin-top: 10px; }
+  blockquote { margin: 0 0 28px; font-size: 24px; line-height: 1.4; padding-left: 20px; border-left: 4px solid var(--bronze); }
+  blockquote cite { display: block; font-style: normal; font-size: 15px; color: var(--steel); margin-top: 8px; }
+
+  /* Contact */
+  .contact { border-top: 6px solid transparent; border-image: var(--heat) 1; }
+  .contact .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; }
+  .contact p { color: var(--steel); margin-top: 16px; font-size: 18px; }
+  .contact dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 12px 24px; font-size: 18px; }
+  .contact dt { font-weight: 600; color: var(--steel); }
+  .contact dd { margin: 0; }
+  footer { background: var(--graphite); color: #9aa4ac; font-size: 13px; padding: 22px 0; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+  @media (max-width: 900px) {
+    header nav { display: none; }
+    .hero .row, .head, .feature .wrap, .metal .wrap, .reviews .wrap, .contact .wrap { grid-template-columns: 1fr; }
+    .hero .actions { justify-content: flex-start; }
+    .proof ul { grid-template-columns: 1fr 1fr; }
+    .proof li:nth-child(3) { border-left: 0; padding-left: 0; }
+    .industries { columns: 2; }
+    section { padding: 64px 0; }
+    .spec thead { display: none; }
+    .spec tr { display: block; padding: 16px 0; border-bottom: 1px solid var(--rule); }
+    .spec th, .spec td { display: block; border: 0; padding: 2px 0; width: auto; }
+  }
+  @media (max-width: 520px) {
+    .industries { columns: 1; }
+    .stock { grid-template-columns: 1fr; }
+    header .btn { padding: 9px 14px; font-size: 14px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .bead .draw { animation: none; } }
+</style>
+</head>
+<body>
+  <div class="concept"><strong>Homepage concept</strong> prepared for A&amp;E Technologies, LLC by Fakhar Rashid. This is a design preview, not the live website.</div>
+
+  <div class="bar"><div class="wrap">
+    <span><strong>Open Monday to Friday, 7:30 to 4:00</strong> in Golden, Colorado</span>
+    <span>Call the shop: <strong>(303) 278-1980</strong></span>
+  </div></div>
+
+  <header><div class="wrap">
+    <a class="logo" href="#top">A&amp;E Technologies<span>Welding, fabrication and machining</span></a>
+    <nav aria-label="Main">
+      <a href="#capabilities">Capabilities</a>
+      <a href="#work">Our work</a>
+      <a href="#metal">Metal for sale</a>
+      <a href="#contact">Visit the shop</a>
+    </nav>
+    <a class="btn btn-dark" href="#contact">Get a quote</a>
+  </div></header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title" style="padding-bottom:0"><div class="wrap">
+      <h1 id="hero-title">We'll keep the torch on for you.</h1>
+      <div class="row">
+        <p class="lede">AWS-certified welding, CNC machining and custom fabrication in Golden, Colorado. Jobs big and small, and no minimum shop charge.</p>
+        <div class="actions">
+          <a class="btn btn-dark" href="#contact">Send us your drawing</a>
+          <a class="btn btn-ghost" href="#capabilities">See what we do</a>
+        </div>
+      </div>
+      <div class="bead" aria-hidden="true">
+        <svg class="draw" viewBox="0 0 1200 46" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="tint" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0" stop-color="#cfd4d8"/><stop offset=".18" stop-color="#e3bd5f"/><stop offset=".4" stop-color="#b8743a"/><stop offset=".62" stop-color="#6f3f8a"/><stop offset=".82" stop-color="#2f5ea3"/><stop offset="1" stop-color="#cfd4d8"/>
+            </linearGradient>
+            <pattern id="ripple" width="18" height="46" patternUnits="userSpaceOnUse">
+              <path d="M2 4 C 16 10, 16 36, 2 42" fill="none" stroke="rgba(32,36,39,.28)" stroke-width="2"/>
+            </pattern>
+          </defs>
+          <rect x="0" y="6" width="1200" height="34" rx="17" fill="url(#tint)"/>
+          <rect x="0" y="6" width="1200" height="34" rx="17" fill="url(#ripple)"/>
+        </svg>
+      </div>
+    </div></section>
+
+    <div class="proof"><div class="wrap">
+      <ul>
+        <li><strong>Since 2003</strong>Owner-run shop in Golden</li>
+        <li><strong>AWS certified</strong>Welders on every job</li>
+        <li><strong>4.5 on Google</strong>From 17 customer reviews</li>
+        <li><strong>Federal contractor</strong>Aerospace to railroad</li>
+      </ul>
+    </div></div>
+
+    <section id="capabilities" aria-labelledby="cap-title"><div class="wrap">
+      <div class="head">
+        <h2 id="cap-title">What we can make for you</h2>
+        <p>Steel, aluminum and stainless. Prototypes, one-off repairs and production runs all get the same care.</p>
+      </div>
+      <table class="spec">
+        <thead><tr><th>Service</th><th>What it covers</th><th>Good to know</th></tr></thead>
+        <tbody>
+          <tr><th>Welding</th><td>TIG, MIG, spot and spray arc welding</td><td>AWS-certified welders</td></tr>
+          <tr><th>Cutting</th><td>Flame and plasma cutting, saw cutting</td><td>Cut to your size so nothing is wasted</td></tr>
+          <tr><th>Fabrication</th><td>Bending, forming, shearing, punching and drilling of plate and sheet</td><td>Shears carbon steel plate up to ¼ in by 12 ft</td></tr>
+          <tr><th>Machining</th><td>CNC milling and turning, plus precision manual machines</td><td>Prototype to production quantities</td></tr>
+          <tr><th>Structural</th><td>Tube frames, platforms, stairs and custom structures</td><td>Built to your specification</td></tr>
+          <tr><th>Architectural</th><td>Custom architectural metalwork</td><td>Made to fit the space just right</td></tr>
+        </tbody>
+      </table>
+    </div></section>
+
+    <section id="work" class="feature" aria-labelledby="work-title"><div class="wrap">
+      <div>
+        <h2 id="work-title">Built for spaceflight testing</h2>
+        <p>For the Dream Chaser spaceplane program we fabricated the test-flight support hanger, the transport frame and its tongue. The same shop floor handles a truck bed repair the next morning.</p>
+        <div class="heatline" aria-hidden="true"></div>
+      </div>
+      <ul class="parts">
+        <li><span>Test-flight support hanger</span><span>Dream Chaser program</span></li>
+        <li><span>Transport frame</span><span>Dream Chaser program</span></li>
+        <li><span>Transport tongue</span><span>Dream Chaser program</span></li>
+      </ul>
+    </div>
+    <div class="wrap more-work" aria-label="Other recent work">
+      <span>Cylinder lugs</span><span>Aluminum hydraulic tank</span><span>Tube extensions</span><span>Fairlead support</span><span>Tee brace</span><span>Truck bed modification</span><span>Industrial tube frame</span><span>Pump housing</span><span>Railroad brace</span>
+    </div></section>
+
+    <section aria-labelledby="ind-title"><div class="wrap">
+      <div class="head">
+        <h2 id="ind-title">Who we work for</h2>
+        <p>Big enough to serve you, small enough to know you.</p>
+      </div>
+      <ul class="industries">
+        <li>Aerospace</li><li>Manufacturing</li><li>Transportation</li><li>Automation</li><li>Communications</li><li>Construction</li><li>Food service</li><li>Government</li><li>Merchandising</li><li>Railroad</li><li>Oil and gas</li><li>Our neighbors</li>
+      </ul>
+      <p class="neighbors">We've also made truck beds, storage lockers and even a frying pan handle for people who live down the road. If it's metal, bring it by.</p>
+    </div></section>
+
+    <section id="metal" class="metal" aria-labelledby="metal-title"><div class="wrap">
+      <div>
+        <h2 id="metal-title">Metal for sale, cut to size</h2>
+        <p>Buy stock from your local shop instead of waiting on a supplier. We'll cut it to the size you need, and you can pay with cash or card and pick it up in Golden.</p>
+        <a class="btn btn-dark" href="#contact" style="margin-top:24px">Check stock and pricing</a>
+      </div>
+      <div class="stock">
+        <div><h3>Materials</h3><ul><li>Hot rolled steel</li><li>Cold rolled steel</li><li>Stainless steel</li><li>Aluminum</li></ul></div>
+        <div><h3>Shapes</h3><ul><li>Tube</li><li>Bar</li><li>Sheet</li><li>Plate</li><li>Structural</li></ul></div>
+      </div>
+    </div></section>
+
+    <section class="reviews" aria-labelledby="rev-title"><div class="wrap">
+      <div>
+        <p class="rating" id="rev-title">4.5</p>
+        <p>Average from 17 reviews on Google</p>
+      </div>
+      <div>
+        <blockquote>"Super helpful folks, no matter how small the project."<cite>Google review</cite></blockquote>
+        <blockquote>"They have done excellent work on the small hobby jobs I have given them."<cite>Google review</cite></blockquote>
+      </div>
+    </div></section>
+
+    <section id="contact" class="contact" aria-labelledby="contact-title"><div class="wrap">
+      <div>
+        <h2 id="contact-title">Bring us your idea and your plan</h2>
+        <p>Email a drawing, a sketch or a photo of the part, and we'll come back with a price and a turnaround time.</p>
+        <a class="btn btn-dark" href="#contact" style="margin-top:24px">Request a quote</a>
+      </div>
+      <dl>
+        <dt>Shop</dt><dd>14252 W 44th Avenue, Unit A<br>Golden, CO 80403</dd>
+        <dt>Hours</dt><dd>Monday to Friday, 7:30 am to 4:00 pm</dd>
+        <dt>Phone</dt><dd>(303) 278-1980</dd>
+        <dt>Email</dt><dd>info@aeweldshop.com</dd>
+      </dl>
+    </div></section>
+  </main>
+
+  <footer><div class="wrap">
+    <span>A&amp;E Technologies, LLC, Golden, Colorado</span>
+    <span>Concept by Fakhar Rashid. Content is taken from aeweldshop.com and their public Google listing.</span>
+  </div></footer>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Breck General Contracting | Homepage concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white: #ffffff;
+    --ink: #1e2428;
+    --muted: #5d6770;
+    --line: #3f6f9f;
+    --line-soft: rgba(63,111,159,.28);
+    --concrete: #e6e8ea;
+    --orange: #e0601f;
+    --max: 1180px;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Instrument Sans", system-ui, sans-serif; font-size: 17px; line-height: 1.6; color: var(--ink); background: var(--white); }
+  a { color: inherit; }
+  a:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+  h1, h2, h3 { margin: 0; line-height: 1.05; letter-spacing: -0.02em; font-weight: 650; }
+  h2 { font-size: clamp(32px, 4.4vw, 50px); font-stretch: 80%; }
+  p { margin: 0; }
+
+  .concept { background: var(--ink); color: #c9cfd4; font-size: 13px; text-align: center; padding: 8px 16px; }
+  .concept strong { color: #fff; font-weight: 600; }
+
+  header .wrap { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-top: 20px; padding-bottom: 20px; }
+  .logo { text-decoration: none; font-weight: 700; font-stretch: 75%; font-size: 30px; letter-spacing: .02em; line-height: 1; }
+  .logo span { display: block; font-stretch: 100%; font-weight: 500; font-size: 13px; letter-spacing: 0; color: var(--muted); margin-top: 4px; }
+  header nav { display: flex; gap: 26px; font-weight: 600; font-size: 15px; }
+  header nav a { text-decoration: none; }
+  header nav a:hover { color: var(--line); }
+  .btn { display: inline-block; font-weight: 650; font-size: 16px; text-decoration: none; padding: 13px 22px; border: 2px solid var(--ink); }
+  .btn-orange { background: var(--orange); border-color: var(--orange); color: #fff; }
+  .btn-orange:hover { background: #c4501a; border-color: #c4501a; }
+  .btn-line:hover { background: var(--ink); color: #fff; }
+
+  /* Drawing sheet hero */
+  .sheet { margin: 12px auto 0; position: relative; border: 2px solid var(--ink); padding: 72px 72px 0 96px; background: #fff; }
+  .sheet > * { position: relative; z-index: 1; }
+  .sheet > .grid { position: absolute; z-index: 0; left: 96px; top: 72px; right: 0; bottom: 0;
+    background-image: linear-gradient(var(--line-soft) 1.5px, transparent 1.5px), linear-gradient(90deg, var(--line-soft) 1.5px, transparent 1.5px);
+    background-size: 100% 25%, 25% 100%; }
+  .sheet > .bubbles-x { position: absolute; top: 14px; left: 96px; right: 0; display: grid; grid-template-columns: repeat(4, 1fr); }
+  .sheet > .bubbles-y { position: absolute; left: 22px; top: 72px; bottom: 0; display: grid; grid-template-rows: repeat(4, 1fr); }
+  .bubble { width: 38px; height: 38px; border: 1.5px solid var(--line); border-radius: 50%; display: grid; place-items: center; color: var(--line); font-weight: 600; font-size: 15px; background: #fff; transform: translateX(-19px); }
+  .bubbles-y .bubble { transform: translateY(-19px); }
+  .sheet h1 { font-size: clamp(42px, 6.6vw, 88px); font-stretch: 78%; font-weight: 650; max-width: 11em; background: rgba(255,255,255,.88); }
+  .sheet .lede { margin-top: 24px; font-size: 20px; color: var(--muted); max-width: 32em; background: rgba(255,255,255,.88); }
+  .sheet .actions { margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .titleblock { margin: 64px -72px 0 auto; width: min(520px, 100%); border-left: 2px solid var(--ink); border-top: 2px solid var(--ink); display: grid; grid-template-columns: 1fr 1fr; background: #fff; font-size: 14px; }
+  .titleblock div { padding: 10px 14px; border-right: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+  .titleblock div:nth-child(2n) { border-right: 0; }
+  .titleblock div:nth-last-child(-n+2) { border-bottom: 0; }
+  .titleblock span { display: block; color: var(--muted); font-size: 12px; }
+  .titleblock strong { font-weight: 650; }
+  .sheet-wrap { padding-top: 8px; padding-bottom: 8px; }
+
+  section { padding: 96px 0; }
+  .head { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; margin-bottom: 44px; }
+  .head p { color: var(--muted); font-size: 18px; }
+
+  /* Building types */
+  .types { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 2px solid var(--ink); }
+  .types div { padding: 22px 18px 22px 0; border-bottom: 1px solid var(--concrete); font-size: 20px; font-weight: 600; font-stretch: 85%; }
+  .scope { margin-top: 28px; color: var(--muted); }
+
+  /* Pricing formats */
+  .formats { background: var(--concrete); }
+  .format-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: var(--ink); border: 2px solid var(--ink); }
+  .format-grid div { background: #fff; padding: 26px 22px 30px; }
+  .format-grid h3 { font-size: 26px; font-stretch: 80%; margin-bottom: 10px; }
+  .format-grid p { color: var(--muted); font-size: 16px; }
+  .bonded { margin-top: 24px; font-weight: 600; }
+
+  /* Process */
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; counter-reset: s; }
+  .steps li { counter-increment: s; position: relative; padding-top: 58px; }
+  .steps li::before { content: counter(s); position: absolute; top: 0; left: 0; width: 38px; height: 38px; border: 1.5px solid var(--line); border-radius: 50%; display: grid; place-items: center; color: var(--line); font-weight: 600; }
+  .steps li::after { content: ""; position: absolute; top: 19px; left: 46px; right: -20px; height: 1.5px; background: var(--line-soft); }
+  .steps li:last-child::after { display: none; }
+  .steps h3 { font-size: 24px; font-stretch: 85%; margin-bottom: 8px; }
+  .steps p { color: var(--muted); font-size: 16px; }
+
+  /* Projects placeholder */
+  .projects-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 220px 220px; gap: 14px; }
+  .ph { border: 1.5px dashed var(--line); display: flex; align-items: flex-end; padding: 16px; color: var(--line); font-size: 15px; font-weight: 600;
+    background-image: linear-gradient(135deg, transparent 49.6%, var(--line-soft) 50%, transparent 50.4%), linear-gradient(45deg, transparent 49.6%, var(--line-soft) 50%, transparent 50.4%); }
+  .ph:first-child { grid-row: span 2; }
+
+  /* Team */
+  .team { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .team article { border-top: 2px solid var(--ink); padding-top: 18px; }
+  .team h3 { font-size: 28px; font-stretch: 80%; }
+  .team .role { color: var(--line); font-weight: 600; margin: 4px 0 10px; }
+  .team p { color: var(--muted); font-size: 16px; }
+
+  .hiring { background: var(--ink); color: #fff; padding: 56px 0; }
+  .hiring .wrap { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .hiring p { color: #c3cad0; margin-top: 8px; }
+  .hiring .btn { border-color: #fff; }
+  .hiring .btn:hover { background: #fff; color: var(--ink); }
+
+  .contact .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; }
+  .contact p { color: var(--muted); margin-top: 16px; font-size: 18px; }
+  .contact dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 12px 24px; font-size: 18px; }
+  .contact dt { font-weight: 650; color: var(--muted); }
+  .contact dd { margin: 0; }
+  footer { border-top: 2px solid var(--ink); font-size: 13px; color: var(--muted); padding: 22px 0; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+  @media (max-width: 900px) {
+    header nav { display: none; }
+    .sheet { padding: 64px 22px 0 22px; }
+    .sheet > .grid { left: 22px; top: 64px; }
+    .sheet > .bubbles-x { left: 22px; } .sheet > .bubbles-y { display: none; }
+    .titleblock { margin: 48px -22px 0 auto; }
+    .head, .contact .wrap { grid-template-columns: 1fr; }
+    .types { grid-template-columns: 1fr 1fr; }
+    .format-grid, .steps { grid-template-columns: 1fr 1fr; }
+    .steps li::after { display: none; }
+    .team { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 140px 140px; }
+    .ph:first-child { grid-column: span 2; grid-row: auto; }
+    section { padding: 64px 0; }
+  }
+  @media (max-width: 520px) {
+    .format-grid, .steps, .types { grid-template-columns: 1fr; }
+    header .btn { padding: 9px 14px; font-size: 14px; }
+    .titleblock { grid-template-columns: 1fr 1fr; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+  <div class="concept"><strong>Homepage concept</strong> prepared for Breck General Contracting by Fakhar Rashid. This is a design preview, not the live website.</div>
+
+  <header><div class="wrap">
+    <a class="logo" href="#top">BRECK<span>General Contracting, Georgetown, Texas</span></a>
+    <nav aria-label="Main">
+      <a href="#build">What we build</a>
+      <a href="#pricing">How we price</a>
+      <a href="#team">Team</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-orange" href="#contact">Invite us to bid</a>
+  </div></header>
+
+  <main id="top">
+    <div class="wrap sheet-wrap">
+      <section class="sheet" aria-labelledby="hero-title" style="padding-bottom:0">
+        <div class="grid" aria-hidden="true"></div>
+        <div class="bubbles-x" aria-hidden="true"><span class="bubble">A</span><span class="bubble">B</span><span class="bubble">C</span><span class="bubble">D</span></div>
+        <div class="bubbles-y" aria-hidden="true"><span class="bubble">1</span><span class="bubble">2</span><span class="bubble">3</span><span class="bubble">4</span></div>
+        <h1 id="hero-title">Commercial construction in Central Texas, from permitting to punch list.</h1>
+        <p class="lede">A family-owned general contractor led by an architect and a builder. We manage new construction, renovations and interior finish-outs, so owners can stay focused on their business.</p>
+        <div class="actions">
+          <a class="btn btn-orange" href="#contact">Request a budget estimate</a>
+          <a class="btn btn-line" href="#build">See what we build</a>
+        </div>
+        <div class="titleblock">
+          <div><span>Contractor</span><strong>Breck General Contracting</strong></div>
+          <div><span>Location</span><strong>Georgetown, TX</strong></div>
+          <div><span>Founded</span><strong>2015</strong></div>
+          <div><span>Coverage</span><strong>Bonded and insured</strong></div>
+        </div>
+      </section>
+    </div>
+
+    <section id="build" aria-labelledby="build-title"><div class="wrap">
+      <div class="head">
+        <h2 id="build-title">Buildings we deliver</h2>
+        <p>New construction, renovations and interior finish-outs for the businesses and public bodies of Central Texas.</p>
+      </div>
+      <div class="types">
+        <div>Offices</div><div>Medical, dental and veterinary</div><div>Assisted living</div><div>Restaurants</div>
+        <div>Retail</div><div>Banks</div><div>Community clubhouses</div><div>City, county and ISD projects</div>
+      </div>
+    </div></section>
+
+    <section id="pricing" class="formats" aria-labelledby="pricing-title"><div class="wrap">
+      <div class="head">
+        <h2 id="pricing-title">Proposals in the format you need</h2>
+        <p>Every owner and lender works differently. Tell us how you want the numbers and we'll price the job that way.</p>
+      </div>
+      <div class="format-grid">
+        <div><h3>Budgetary</h3><p>Early numbers for planning, feasibility or a construction loan.</p></div>
+        <div><h3>Cost plus</h3><p>You see the actual cost of the work, plus an agreed fee.</p></div>
+        <div><h3>Hard bid</h3><p>A fixed price against complete drawings and specifications.</p></div>
+        <div><h3>Negotiated</h3><p>We work with you and your design team to reach the price together.</p></div>
+      </div>
+      <p class="bonded">Bonded and insured on every project.</p>
+    </div></section>
+
+    <section aria-labelledby="process-title"><div class="wrap">
+      <div class="head">
+        <h2 id="process-title">How we run a job</h2>
+        <p>Detailed planning, schedules set early and constant communication with your design team.</p>
+      </div>
+      <ol class="steps">
+        <li><h3>Pre-construction</h3><p>Budget, constructability review and scheduling with your architect and engineers.</p></li>
+        <li><h3>Permitting</h3><p>We take the project through permitting so the start date holds.</p></li>
+        <li><h3>Construction</h3><p>A superintendent on site, safety first, and regular updates to the owner.</p></li>
+        <li><h3>Punch list</h3><p>Final walk-through, corrections and closeout, then the keys are yours.</p></li>
+      </ol>
+    </div></section>
+
+    <section style="padding-top:0" aria-labelledby="projects-title"><div class="wrap">
+      <div class="head">
+        <h2 id="projects-title">Recent projects</h2>
+        <p>In the full site, this gallery would show your own finished work, with the building type, square footage and scope for each project.</p>
+      </div>
+      <div class="projects-grid" aria-hidden="true">
+        <div class="ph">Featured project photo</div><div class="ph">Project photo</div><div class="ph">Project photo</div><div class="ph">Project photo</div><div class="ph">Project photo</div>
+      </div>
+    </div></section>
+
+    <section id="team" style="padding-top:0" aria-labelledby="team-title"><div class="wrap">
+      <div class="head">
+        <h2 id="team-title">The people on your project</h2>
+        <p>Founded in 2015 by Nicole and Reese Bruechner.</p>
+      </div>
+      <div class="team">
+        <article><h3>Nicole Bruechner</h3><p class="role">President and co-founder</p><p>Holds a Master of Architecture and acts as the link between design and completion.</p></article>
+        <article><h3>Reese Bruechner</h3><p class="role">Vice president and co-founder</p><p>Texas A&amp;M graduate and Corps of Cadets member, with a background in commercial plumbing, site development and general contracting.</p></article>
+        <article><h3>Mitchell Matkin</h3><p class="role">Superintendent</p><p>Worked his way up from laborer to superintendent. OSHA 30 certified, and safety comes first on every site.</p></article>
+      </div>
+    </div></section>
+
+    <div class="hiring"><div class="wrap">
+      <div><h2 style="font-size:clamp(28px,3.4vw,38px)">We're hiring</h2><p>Construction superintendent, and a summer construction management internship.</p></div>
+      <a class="btn" href="#contact">Send your resume</a>
+    </div></div>
+
+    <section id="contact" class="contact" aria-labelledby="contact-title"><div class="wrap">
+      <div>
+        <h2 id="contact-title">Developers, architects and engineers: let's talk</h2>
+        <p>Send us drawings or a project brief. We'd like to bid on your next commercial project.</p>
+        <a class="btn btn-orange" href="#contact" style="margin-top:24px">Invite us to bid</a>
+      </div>
+      <dl>
+        <dt>Office</dt><dd>1403 Williams Drive, Suite 102<br>Georgetown, TX 78628</dd>
+        <dt>Mail</dt><dd>P.O. Box 5027, Georgetown, TX 78627</dd>
+        <dt>Phone</dt><dd>512-688-5295</dd>
+        <dt>Email</dt><dd>admin@breckgc.com</dd>
+      </dl>
+    </div></section>
+  </main>
+
+  <footer><div class="wrap">
+    <span>Breck General Contracting, Georgetown, Texas</span>
+    <span>Concept by Fakhar Rashid. Content is taken from breckgc.com.</span>
+  </div></footer>
+</body>
+</html>

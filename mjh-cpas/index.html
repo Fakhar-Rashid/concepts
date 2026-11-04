@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>May Jackson Hendrick, LLC | Homepage concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400..700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white: #ffffff;
+    --teal: #12444b;
+    --teal-2: #1d5a62;
+    --sage: #e4eee8;
+    --ink: #1d2a2e;
+    --muted: #586a6e;
+    --rule: #d3ddd8;
+    --marigold: #e3a33b;
+    --max: 1160px;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Hanken Grotesk", system-ui, sans-serif; font-size: 17px; line-height: 1.6; color: var(--ink); background: var(--white); }
+  a { color: inherit; }
+  a:focus-visible { outline: 3px solid var(--marigold); outline-offset: 3px; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+  h1, h2, h3 { font-family: "Literata", Georgia, serif; font-weight: 500; line-height: 1.12; margin: 0; letter-spacing: -0.01em; }
+  h2 { font-size: clamp(30px, 4vw, 44px); }
+  p { margin: 0; }
+
+  .concept { background: var(--teal); color: #cfe0dc; font-size: 13px; text-align: center; padding: 8px 16px; }
+  .concept strong { color: #fff; font-weight: 600; }
+
+  header { border-bottom: 1px solid var(--rule); }
+  header .wrap { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-top: 18px; padding-bottom: 18px; }
+  .logo { text-decoration: none; font-family: "Literata", serif; font-size: 23px; font-weight: 600; color: var(--teal); line-height: 1.1; }
+  .logo span { display: block; font-family: "Hanken Grotesk", sans-serif; font-size: 13px; font-weight: 500; color: var(--muted); margin-top: 3px; }
+  header nav { display: flex; gap: 26px; font-weight: 600; font-size: 15px; }
+  header nav a { text-decoration: none; }
+  header nav a:hover { color: var(--teal-2); }
+  .btn { display: inline-block; font-weight: 700; font-size: 16px; text-decoration: none; padding: 13px 22px; border-radius: 6px; border: 2px solid var(--teal); }
+  .btn-teal { background: var(--teal); color: #fff; }
+  .btn-teal:hover { background: var(--teal-2); }
+  .btn-line { color: var(--teal); }
+  .btn-line:hover { background: var(--sage); }
+
+  /* Hero with the client front desk */
+  .hero { padding: 72px 0 88px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 64px; align-items: start; }
+  .hero h1 { font-size: clamp(38px, 5vw, 60px); color: var(--teal); }
+  .hero .lede { font-size: 20px; color: var(--muted); margin-top: 22px; max-width: 32em; }
+  .hero .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+  .stars { margin-top: 36px; display: flex; align-items: center; gap: 14px; color: var(--muted); font-size: 15px; }
+  .stars b { font-family: "Literata", serif; font-size: 34px; font-weight: 600; color: var(--ink); }
+  .stars i { font-style: normal; color: var(--marigold); font-size: 20px; letter-spacing: 2px; }
+
+  .desk { background: var(--sage); border-radius: 14px; padding: 28px; }
+  .desk h2 { font-size: 26px; }
+  .desk .season { margin-top: 10px; font-size: 15px; color: var(--muted); }
+  .desk ul { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 10px; }
+  .desk a { display: flex; justify-content: space-between; align-items: center; gap: 12px; background: #fff; border-radius: 8px; padding: 16px 18px; text-decoration: none; font-weight: 700; border: 1px solid var(--rule); }
+  .desk a span { font-weight: 500; font-size: 14px; color: var(--muted); }
+  .desk a:hover { border-color: var(--teal); }
+  .desk .first a { background: var(--marigold); border-color: var(--marigold); color: #1c1608; }
+  .desk .first a span { color: #3d2f12; }
+  .desk .hours { margin-top: 18px; font-size: 15px; border-top: 1px solid var(--rule); padding-top: 14px; }
+
+  section { padding: 96px 0; }
+  .head { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; margin-bottom: 44px; }
+  .head p { color: var(--muted); font-size: 18px; }
+
+  /* Services */
+  .services { background: var(--teal); color: #fff; }
+  .services .head p { color: #bfd5d1; }
+  .svc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px; }
+  .svc h3 { font-size: 24px; padding-bottom: 12px; border-bottom: 2px solid var(--marigold); margin-bottom: 12px; }
+  .svc p { color: #bfd5d1; font-size: 15px; margin-bottom: 10px; }
+  .svc ul { list-style: none; padding: 0; margin: 0; }
+  .svc li { padding: 5px 0; }
+
+  /* Partners */
+  .partners { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
+  .partner { border-top: 1px solid var(--rule); padding-top: 22px; }
+  .partner h3 { font-size: 26px; color: var(--teal); }
+  .partner .role { font-weight: 600; color: var(--muted); font-size: 15px; margin: 4px 0 12px; }
+  .partner p { color: var(--muted); font-size: 16px; }
+  .why { margin-top: 56px; background: var(--sage); border-radius: 14px; padding: 36px 40px; display: grid; grid-template-columns: 1fr 1.4fr; gap: 40px; align-items: center; }
+  .why p { font-family: "Literata", serif; font-size: 22px; line-height: 1.45; }
+
+  /* Reviews */
+  .reviews { padding-top: 0; }
+  .quotes { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  blockquote { margin: 0; font-family: "Literata", serif; font-size: 25px; line-height: 1.4; color: var(--teal); }
+  blockquote cite { display: block; font-family: "Hanken Grotesk", sans-serif; font-style: normal; font-size: 15px; color: var(--muted); margin-top: 10px; }
+
+  /* Resources */
+  .resources { background: #f6f8f7; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .res-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 36px; }
+  .res-list li { border-bottom: 1px solid var(--rule); }
+  .res-list a { display: block; padding: 16px 0; text-decoration: none; font-weight: 600; }
+  .res-list a:hover { color: var(--teal-2); text-decoration: underline; text-underline-offset: 4px; }
+
+  .contact .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; }
+  .contact p { color: var(--muted); margin-top: 16px; font-size: 18px; }
+  .contact dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 12px 24px; font-size: 18px; }
+  .contact dt { font-weight: 700; color: var(--muted); }
+  .contact dd { margin: 0; }
+  footer { background: var(--teal); color: #a9c4bf; font-size: 13px; padding: 22px 0; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+  @media (max-width: 900px) {
+    header nav { display: none; }
+    .hero .wrap, .head, .why, .contact .wrap, .quotes { grid-template-columns: 1fr; }
+    .svc { grid-template-columns: 1fr 1fr; }
+    .partners { grid-template-columns: 1fr; }
+    .res-list { grid-template-columns: 1fr 1fr; }
+    section { padding: 64px 0; }
+    .hero { padding: 48px 0 64px; }
+  }
+  @media (max-width: 520px) {
+    .svc, .res-list { grid-template-columns: 1fr; }
+    .why { padding: 26px 22px; }
+    header .btn { padding: 9px 14px; font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+  <div class="concept"><strong>Homepage concept</strong> prepared for May Jackson Hendrick, LLC by Fakhar Rashid. This is a design preview, not the live website.</div>
+
+  <header><div class="wrap">
+    <a class="logo" href="#top">May Jackson Hendrick<span>Certified Public Accountants, Parker, Colorado</span></a>
+    <nav aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#partners">Our CPAs</a>
+      <a href="#resources">Resources</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-teal" href="#desk">Client portal</a>
+  </div></header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title"><div class="wrap">
+      <div>
+        <h1 id="hero-title">Tax and accounting in Parker, with a CPA who knows your name.</h1>
+        <p class="lede">Three partners and a small team who answer your questions in plain English, for individuals, families and growing businesses.</p>
+        <div class="actions">
+          <a class="btn btn-teal" href="#contact">Book an appointment</a>
+          <a class="btn btn-line" href="#services">See our services</a>
+        </div>
+        <div class="stars"><b>5.0</b><i aria-hidden="true">★★★★★</i><span>From 11 reviews on Google</span></div>
+      </div>
+
+      <aside id="desk" class="desk" aria-labelledby="desk-title">
+        <h2 id="desk-title">Already a client?</h2>
+        <p class="season">2026 tax season: please upload all of your documents at once, and your tax partner will reach out with any questions.</p>
+        <ul>
+          <li class="first"><a href="#desk">Upload tax documents <span>Secure upload</span></a></li>
+          <li><a href="#desk">Client portal login <span>ShareFile</span></a></li>
+          <li><a href="#desk">Make a payment <span>Card or Zelle</span></a></li>
+          <li><a href="#desk">Request an organizer <span>For this year's return</span></a></li>
+        </ul>
+        <p class="hours">Office hours from April 16: Monday to Wednesday, 9:00 am to 3:00 pm. Your CPA is always reachable by email or phone.</p>
+      </aside>
+    </div></section>
+
+    <section id="services" class="services" aria-labelledby="svc-title"><div class="wrap">
+      <div class="head">
+        <h2 id="svc-title">How we can help</h2>
+        <p>Every account gets the same attention, no matter how large or small.</p>
+      </div>
+      <div class="svc">
+        <div><h3>Tax</h3><ul><li>Tax planning</li><li>Individual returns</li><li>Partnership returns</li><li>Corporate returns</li><li>Property tax reporting</li></ul></div>
+        <div><h3>Bookkeeping</h3><ul><li>Full-service bookkeeping, monthly or quarterly</li><li>Internal bookkeeping consulting</li><li>Accounting software training</li></ul></div>
+        <div><h3>Assurance</h3><ul><li>Audits</li><li>Reviews</li><li>Compilations</li><li>Attestation engagements</li><li>Workers' compensation audits</li></ul></div>
+        <div><h3>New businesses</h3><p>Starting something? We'll help you set it up right from the first day.</p><ul><li>Business start-up consulting</li></ul></div>
+      </div>
+    </div></section>
+
+    <section id="partners" aria-labelledby="partners-title"><div class="wrap">
+      <div class="head">
+        <h2 id="partners-title">Meet your CPAs</h2>
+        <p>Decades of combined experience in public and private accounting, and your own tax partner reviews your return.</p>
+      </div>
+      <div class="partners">
+        <article class="partner"><h3>Traci L. May, CPA</h3><p class="role">Partner</p><p>University of Northern Colorado, B.S. in Accounting. More than 20 years of experience, specializing in tax and tax consulting in the Parker area.</p></article>
+        <article class="partner"><h3>Lenae A. Jackson, CPA</h3><p class="role">Partner</p><p>University of Colorado, B.S. in Accounting. Over 20 years in the Denver metro area with large CPA firms and industry, and active on many local boards.</p></article>
+        <article class="partner"><h3>Lori K. Hendrick, CPA</h3><p class="role">Partner</p><p>University of Nebraska, B.S. in Business Administration with a triple major in accounting, banking and finance, and business finance.</p></article>
+      </div>
+      <div class="why">
+        <h2>Why clients stay</h2>
+        <p>Tax and bookkeeping can feel like a foreign language. We encourage your questions, give straight answers, and take the headache off your plate so you get your time back.</p>
+      </div>
+    </div></section>
+
+    <section class="reviews" aria-label="Client reviews"><div class="wrap quotes">
+      <blockquote>"Excellent knowledge, customer service, and no delays."<cite>Google review</cite></blockquote>
+      <blockquote>"She is so professional, warm, knowledgeable and clearly knows her stuff!"<cite>Google review</cite></blockquote>
+    </div></section>
+
+    <section id="resources" class="resources" aria-labelledby="res-title"><div class="wrap">
+      <div class="head">
+        <h2 id="res-title">Checklists and guides</h2>
+        <p>Everything you need to gather before your appointment.</p>
+      </div>
+      <ul class="res-list">
+        <li><a href="#resources">Tax return checklist for individuals</a></li>
+        <li><a href="#resources">Tax return checklist for entities</a></li>
+        <li><a href="#resources">New client information sheet</a></li>
+        <li><a href="#resources">Record keeping guide</a></li>
+        <li><a href="#resources">Non-cash charity contributions</a></li>
+        <li><a href="#resources">Rental property (Publication 527)</a></li>
+      </ul>
+    </div></section>
+
+    <section id="contact" class="contact" aria-labelledby="contact-title"><div class="wrap">
+      <div>
+        <h2 id="contact-title">Come see us on Mainstreet</h2>
+        <p>Call to book an appointment, or send us a message and we'll get back to you promptly.</p>
+        <a class="btn btn-teal" href="#contact" style="margin-top:24px">Book an appointment</a>
+      </div>
+      <dl>
+        <dt>Office</dt><dd>18801 E. Mainstreet, Suite 240<br>Parker, Colorado 80134</dd>
+        <dt>Phone</dt><dd>303-841-4220</dd>
+        <dt>Fax</dt><dd>303-841-7393</dd>
+      </dl>
+    </div></section>
+  </main>
+
+  <footer><div class="wrap">
+    <span>© 2026 May Jackson Hendrick, LLC</span>
+    <span>Concept by Fakhar Rashid. Content is taken from mjhcpas.com and their public Google listing.</span>
+  </div></footer>
+</body>
+</html>
