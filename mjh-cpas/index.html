@@ -8,6 +8,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400..700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+  /* Motion is opt-in: pencil marks only start hidden when this class is set. */
+  if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('motion');
+  }
+</script>
 <style>
   :root {
     --white: #ffffff;
@@ -19,11 +25,14 @@
     --rule: #d3ddd8;
     --marigold: #e3a33b;
     --max: 1160px;
+    interpolate-size: allow-keywords;
   }
   * { box-sizing: border-box; }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
   body { margin: 0; font-family: "Hanken Grotesk", system-ui, sans-serif; font-size: 17px; line-height: 1.6; color: var(--ink); background: var(--white); }
   a { color: inherit; }
-  a:focus-visible { outline: 3px solid var(--marigold); outline-offset: 3px; }
+  a:focus-visible, summary:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+  .services a:focus-visible, footer a:focus-visible { outline-color: var(--marigold); }
   .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
   h1, h2, h3 { font-family: "Literata", Georgia, serif; font-weight: 500; line-height: 1.12; margin: 0; letter-spacing: -0.01em; }
   h2 { font-size: clamp(30px, 4vw, 44px); }
@@ -37,9 +46,12 @@
   .logo { text-decoration: none; font-family: "Literata", serif; font-size: 23px; font-weight: 600; color: var(--teal); line-height: 1.1; }
   .logo span { display: block; font-family: "Hanken Grotesk", sans-serif; font-size: 13px; font-weight: 500; color: var(--muted); margin-top: 3px; }
   header nav { display: flex; gap: 26px; font-weight: 600; font-size: 15px; }
-  header nav a { text-decoration: none; }
+  header nav a { text-decoration: none; position: relative; padding: 4px 0; transition: color .15s ease; }
+  header nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--marigold); transform: scaleX(0); transform-origin: left; transition: transform .22s ease; }
   header nav a:hover { color: var(--teal-2); }
-  .btn { display: inline-block; font-weight: 700; font-size: 16px; text-decoration: none; padding: 13px 22px; border-radius: 6px; border: 2px solid var(--teal); }
+  header nav a:hover::after, header nav a:focus-visible::after { transform: scaleX(1); }
+  .btn { display: inline-block; font-weight: 700; font-size: 16px; text-decoration: none; padding: 13px 22px; border-radius: 6px; border: 2px solid var(--teal); transition: background-color .15s ease, transform .1s ease; }
+  .btn:active { transform: translateY(1px); }
   .btn-teal { background: var(--teal); color: #fff; }
   .btn-teal:hover { background: var(--teal-2); }
   .btn-line { color: var(--teal); }
@@ -52,18 +64,29 @@
   .hero .lede { font-size: 20px; color: var(--muted); margin-top: 22px; max-width: 32em; }
   .hero .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
   .stars { margin-top: 36px; display: flex; align-items: center; gap: 14px; color: var(--muted); font-size: 15px; }
-  .stars b { font-family: "Literata", serif; font-size: 34px; font-weight: 600; color: var(--ink); }
+  .stars b { position: relative; font-family: "Literata", serif; font-size: 34px; font-weight: 600; color: var(--ink); line-height: 1.25; }
   .stars i { font-style: normal; color: var(--marigold); font-size: 20px; letter-spacing: 2px; }
+
+  /* The reviewer's pencil: a footed total under 5.0, ticks down the services list */
+  .pencil { fill: none; stroke: var(--marigold); stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1 1.1; stroke-dashoffset: 0; overflow: visible; }
+  .foot { position: absolute; left: -3px; top: calc(100% - 4px); width: 58px; height: 14px; stroke-width: 2; }
+  .motion .foot path { animation: draw .42s cubic-bezier(.6,0,.3,1) .55s both; }
+  .motion .foot path + path { animation-duration: .32s; animation-delay: .95s; }
+  @keyframes draw { from { stroke-dashoffset: 1.05; } to { stroke-dashoffset: 0; } }
 
   .desk { background: var(--sage); border-radius: 14px; padding: 28px; }
   .desk h2 { font-size: 26px; }
   .desk .season { margin-top: 10px; font-size: 15px; color: var(--muted); }
   .desk ul { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 10px; }
-  .desk a { display: flex; justify-content: space-between; align-items: center; gap: 12px; background: #fff; border-radius: 8px; padding: 16px 18px; text-decoration: none; font-weight: 700; border: 1px solid var(--rule); }
-  .desk a span { font-weight: 500; font-size: 14px; color: var(--muted); }
-  .desk a:hover { border-color: var(--teal); }
+  .desk a { position: relative; overflow: hidden; display: flex; justify-content: space-between; align-items: center; gap: 12px; background: #fff; border-radius: 8px; padding: 16px 18px; text-decoration: none; font-weight: 700; border: 1px solid var(--rule); transition: border-color .15s ease; }
+  .desk a::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--teal); transform: scaleY(0); transition: transform .2s ease; }
+  .desk a span { font-weight: 500; font-size: 14px; color: var(--muted); text-align: right; transition: color .15s ease; }
+  .desk a:hover, .desk a:focus-visible { border-color: var(--teal); }
+  .desk a:hover::before, .desk a:focus-visible::before { transform: scaleY(1); }
+  .desk a:hover span, .desk a:focus-visible span { color: var(--teal); }
   .desk .first a { background: var(--marigold); border-color: var(--marigold); color: #1c1608; }
   .desk .first a span { color: #3d2f12; }
+  .desk .first a:hover, .desk .first a:focus-visible { border-color: var(--teal); }
   .desk .hours { margin-top: 18px; font-size: 15px; border-top: 1px solid var(--rule); padding-top: 14px; }
 
   section { padding: 96px 0; }
@@ -73,18 +96,43 @@
   /* Services */
   .services { background: var(--teal); color: #fff; }
   .services .head p { color: #bfd5d1; }
+  .services .head a { color: #fff; text-decoration-color: var(--marigold); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+  .services .head a:hover { text-decoration-color: #fff; }
   .svc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px; }
+  .svc > div { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 0; align-content: start; }
   .svc h3 { font-size: 24px; padding-bottom: 12px; border-bottom: 2px solid var(--marigold); margin-bottom: 12px; }
   .svc p { color: #bfd5d1; font-size: 15px; margin-bottom: 10px; }
   .svc ul { list-style: none; padding: 0; margin: 0; }
-  .svc li { padding: 5px 0; }
+  .svc li { display: grid; grid-template-columns: 20px 1fr; column-gap: 10px; align-items: start; padding: 5px 0; }
+  .tick { width: 20px; height: 20px; margin-top: 3px; stroke-width: 2.4; }
+  .svc li:nth-child(3n+2) .tick { transform: rotate(-7deg); }
+  .svc li:nth-child(3n) .tick { transform: rotate(5deg) translateX(1px); }
+  .motion .svc .tick { stroke-dashoffset: 1.05; }
+  .motion .svc .ticked .tick { stroke-dashoffset: 0; transition: stroke-dashoffset .3s cubic-bezier(.65,0,.35,1); transition-delay: calc(var(--d0, 0ms) + var(--i, 0) * 105ms); }
 
   /* Partners */
   .partners { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
-  .partner { border-top: 1px solid var(--rule); padding-top: 22px; }
+  .partner { border-top: 1px solid var(--rule); padding-top: 22px; display: grid; grid-row: span 4; grid-template-rows: subgrid; row-gap: 0; align-content: start; }
   .partner h3 { font-size: 26px; color: var(--teal); }
   .partner .role { font-weight: 600; color: var(--muted); font-size: 15px; margin: 4px 0 12px; }
   .partner p { color: var(--muted); font-size: 16px; }
+  .more { margin-top: 14px; }
+  .more summary { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; list-style: none; font-weight: 700; font-size: 15px; color: var(--teal); }
+  .more summary::-webkit-details-marker { display: none; }
+  .more summary:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .pm { position: relative; width: 12px; height: 12px; flex: none; }
+  .pm::before, .pm::after { content: ""; position: absolute; left: 0; top: 5px; width: 12px; height: 2px; background: currentColor; border-radius: 1px; transition: transform .25s ease; }
+  .pm::after { transform: rotate(90deg); }
+  .more[open] .pm::after { transform: rotate(0deg); }
+  .more::details-content { block-size: 0; overflow: clip; transition: block-size .3s ease, content-visibility .3s allow-discrete; }
+  .more[open]::details-content { block-size: auto; }
+  .more .body { padding-top: 10px; }
+  .more .body p { font-size: 15px; }
+  .more .body p + p { margin-top: 8px; }
+  .team { margin-top: 44px; padding-top: 22px; border-top: 1px solid var(--rule); display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
+  .team h3 { font-size: 19px; color: var(--teal); margin-bottom: 6px; }
+  .team p { color: var(--muted); font-size: 16px; }
+  .team div + div { grid-column: span 2; }
   .why { margin-top: 56px; background: var(--sage); border-radius: 14px; padding: 36px 40px; display: grid; grid-template-columns: 1fr 1.4fr; gap: 40px; align-items: center; }
   .why p { font-family: "Literata", serif; font-size: 22px; line-height: 1.45; }
 
@@ -94,18 +142,28 @@
   blockquote { margin: 0; font-family: "Literata", serif; font-size: 25px; line-height: 1.4; color: var(--teal); }
   blockquote cite { display: block; font-family: "Hanken Grotesk", sans-serif; font-style: normal; font-size: 15px; color: var(--muted); margin-top: 10px; }
 
+  /* Tax time */
+  .taxtime { border-top: 1px solid var(--rule); }
+  .ledger { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--rule); }
+  .ledger li { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 20px 0; border-top: 1px solid var(--rule); }
+  .ledger h3 { font-size: 22px; color: var(--teal); }
+  .ledger p { color: var(--muted); font-size: 17px; }
+
   /* Resources */
   .resources { background: #f6f8f7; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
   .res-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 36px; }
   .res-list li { border-bottom: 1px solid var(--rule); }
-  .res-list a { display: block; padding: 16px 0; text-decoration: none; font-weight: 600; }
-  .res-list a:hover { color: var(--teal-2); text-decoration: underline; text-underline-offset: 4px; }
+  .res-list a { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 16px 0; text-decoration: none; font-weight: 600; transition: color .15s ease; }
+  .res-list a small { font-size: 13px; font-weight: 500; color: var(--muted); white-space: nowrap; }
+  .res-list a:hover { color: var(--teal-2); }
+  .res-list a:hover .t { text-decoration: underline; text-underline-offset: 4px; }
 
   .contact .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; }
   .contact p { color: var(--muted); margin-top: 16px; font-size: 18px; }
-  .contact dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 12px 24px; font-size: 18px; }
+  .contact dl { margin: 0; display: grid; align-content: start; grid-template-columns: auto 1fr; gap: 12px 24px; font-size: 18px; }
   .contact dt { font-weight: 700; color: var(--muted); }
   .contact dd { margin: 0; }
+  .nowrap { white-space: nowrap; }
   footer { background: var(--teal); color: #a9c4bf; font-size: 13px; padding: 22px 0; }
   footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
 
@@ -113,15 +171,25 @@
     header nav { display: none; }
     .hero .wrap, .head, .why, .contact .wrap, .quotes { grid-template-columns: 1fr; }
     .svc { grid-template-columns: 1fr 1fr; }
-    .partners { grid-template-columns: 1fr; }
+    .partners, .team { grid-template-columns: 1fr; }
+    .team div + div { grid-column: auto; }
     .res-list { grid-template-columns: 1fr 1fr; }
     section { padding: 64px 0; }
     .hero { padding: 48px 0 64px; }
   }
+  @media (max-width: 600px) {
+    .ledger li { grid-template-columns: 1fr; gap: 6px; }
+  }
   @media (max-width: 520px) {
     .svc, .res-list { grid-template-columns: 1fr; }
     .why { padding: 26px 22px; }
-    header .btn { padding: 9px 14px; font-size: 14px; }
+    header .btn { padding: 9px 14px; font-size: 14px; white-space: nowrap; }
+    .desk a { flex-direction: column; align-items: flex-start; gap: 2px; }
+    .desk a span { text-align: left; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+    .pencil, .motion .svc .tick { stroke-dashoffset: 0 !important; }
   }
 </style>
 </head>
@@ -133,6 +201,7 @@
     <nav aria-label="Main">
       <a href="#services">Services</a>
       <a href="#partners">Our CPAs</a>
+      <a href="#tax-time">Tax time</a>
       <a href="#resources">Resources</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -148,7 +217,7 @@
           <a class="btn btn-teal" href="#contact">Book an appointment</a>
           <a class="btn btn-line" href="#services">See our services</a>
         </div>
-        <div class="stars"><b>5.0</b><i aria-hidden="true">★★★★★</i><span>From 11 reviews on Google</span></div>
+        <div class="stars"><b>5.0<svg class="pencil foot" viewBox="0 0 58 14" aria-hidden="true" focusable="false"><path pathLength="1" d="M1.5 4.6C15 3.4 33 3.7 56.5 2.6"/><path pathLength="1" d="M6 10.6C20 9.7 37 9.9 52.5 9.1"/></svg></b><i aria-hidden="true">★★★★★</i><span>From 11 reviews on Google</span></div>
       </div>
 
       <aside id="desk" class="desk" aria-labelledby="desk-title">
@@ -167,13 +236,31 @@
     <section id="services" class="services" aria-labelledby="svc-title"><div class="wrap">
       <div class="head">
         <h2 id="svc-title">How we can help</h2>
-        <p>Every account gets the same attention, no matter how large or small.</p>
+        <p>Every account gets the same attention, no matter how large or small. <a href="#contact">Call us for a free quote.</a></p>
       </div>
       <div class="svc">
-        <div><h3>Tax</h3><ul><li>Tax planning</li><li>Individual returns</li><li>Partnership returns</li><li>Corporate returns</li><li>Property tax reporting</li></ul></div>
-        <div><h3>Bookkeeping</h3><ul><li>Full-service bookkeeping, monthly or quarterly</li><li>Internal bookkeeping consulting</li><li>Accounting software training</li></ul></div>
-        <div><h3>Assurance</h3><ul><li>Audits</li><li>Reviews</li><li>Compilations</li><li>Attestation engagements</li><li>Workers' compensation audits</li></ul></div>
-        <div><h3>New businesses</h3><p>Starting something? We'll help you set it up right from the first day.</p><ul><li>Business start-up consulting</li></ul></div>
+        <div><h3>Tax</h3><p>We keep up with the new tax laws. Traci L. May specializes in tax and tax consulting.</p><ul>
+          <li><svg class="pencil tick" aria-hidden="true" focusable="false"><use href="#tk1"/></svg>Tax planning</li>
+          <li><svg class="pencil tick" aria-hidden="true" focusable="false"><use href="#tk2"/></svg>Individual returns</li>
+          <li><svg class="pencil tick" aria-hidden="true" focusable="false"><use href="#tk3"/></svg>Partnership returns</li>
+          <li><svg class="pencil tick" aria-hidden="true" focusable="false"><use href="#tk1"/></svg>Corporate returns</li>
+          <li><svg class="pencil tick" aria-hidden="true" focusable="false"><use href="#tk2"/></svg>Property tax reporting</li>
+        </ul></div>
+        <div><h3>Bookkeeping</h3><p>Lenae A. Jackson brings vast experience in bookkeeping and tax.</p><ul>
+          <li><svg class="pencil tick" aria-hidden="true" focusable="false"><use href="#tk3"/></svg>Full-service bookkeeping, monthly or quarterly</li>
+          <li><svg class="pencil tick" aria-hidden="true" focusable="false"><use href="#tk1"/></svg>Internal bookkeeping consulting</li>
+          <li><svg class="pencil tick" aria-hidden="true" focusable="false"><use href="#tk2"/></svg>Accounting software training</li>
+        </ul></div>
+        <div><h3>Assurance</h3><p>Lori K. Hendrick specializes in compiled, reviewed and audited financial statements.</p><ul>
+          <li><svg class="pencil tick" aria-hidden="true" focusable="false"><use href="#tk2"/></svg>Audits</li>
+          <li><svg class="pencil tick" aria-hidden="true" focusable="false"><use href="#tk3"/></svg>Reviews</li>
+          <li><svg class="pencil tick" aria-hidden="true" focusable="false"><use href="#tk1"/></svg>Compilations</li>
+          <li><svg class="pencil tick" aria-hidden="true" focusable="false"><use href="#tk2"/></svg>Attestation engagements</li>
+          <li><svg class="pencil tick" aria-hidden="true" focusable="false"><use href="#tk3"/></svg>Workers' compensation audits</li>
+        </ul></div>
+        <div><h3>New businesses</h3><p>Starting something? We'll help you set it up right from the first day.</p><ul>
+          <li><svg class="pencil tick" aria-hidden="true" focusable="false"><use href="#tk1"/></svg>Business start-up consulting</li>
+        </ul></div>
       </div>
     </div></section>
 
@@ -183,9 +270,24 @@
         <p>Decades of combined experience in public and private accounting, and your own tax partner reviews your return.</p>
       </div>
       <div class="partners">
-        <article class="partner"><h3>Traci L. May, CPA</h3><p class="role">Partner</p><p>University of Northern Colorado, B.S. in Accounting. More than 20 years of experience, specializing in tax and tax consulting in the Parker area.</p></article>
-        <article class="partner"><h3>Lenae A. Jackson, CPA</h3><p class="role">Partner</p><p>University of Colorado, B.S. in Accounting. Over 20 years in the Denver metro area with large CPA firms and industry, and active on many local boards.</p></article>
-        <article class="partner"><h3>Lori K. Hendrick, CPA</h3><p class="role">Partner</p><p>University of Nebraska, B.S. in Business Administration with a triple major in accounting, banking and finance, and business finance.</p></article>
+        <article class="partner"><h3>Traci L. May, CPA</h3><p class="role">Partner, tax and tax consulting</p><p>University of Northern Colorado, B.S. in Accounting. More than 20 years of experience in the public and private accounting sectors.</p>
+          <details class="more"><summary><span class="pm" aria-hidden="true"></span>More about Traci</summary><div class="body">
+            <p>Traci graduated in 1990, and has practiced in the Parker area for the last several years.</p>
+          </div></details></article>
+        <article class="partner"><h3>Lenae A. Jackson, CPA</h3><p class="role">Partner, bookkeeping and tax</p><p>University of Colorado, B.S. in Accounting. Over 20 years in the Denver metro area with large CPA firms and industry, and active on many local boards.</p>
+          <details class="more"><summary><span class="pm" aria-hidden="true"></span>More about Lenae</summary><div class="body">
+            <p>Lenae graduated in 1988, and has worked for large CPA firms as well as industry leaders.</p>
+            <p>She has always been committed to giving back to the community, and serves on many boards and committees in the Denver area.</p>
+          </div></details></article>
+        <article class="partner"><h3>Lori K. Hendrick, CPA</h3><p class="role">Partner, financial statements</p><p>University of Nebraska, B.S. in Business Administration with a triple major in accounting, banking and finance, and business finance.</p>
+          <details class="more"><summary><span class="pm" aria-hidden="true"></span>More about Lori</summary><div class="body">
+            <p>Lori graduated in 1994 and has a substantial amount of knowledge in the financial accounting arena, specializing in compiled, reviewed and audited financial statement preparation.</p>
+            <p>She enjoys volunteering for the Colorado Society of CPAs, Girl Scouts, Boy Scouts and other organizations.</p>
+          </div></details></article>
+      </div>
+      <div class="team">
+        <div><h3>Also on the team</h3><p>Scott E. Jackson and Sam Halbrook. Ask Scott if you'd like a client folder set up.</p></div>
+        <div><h3>In our offices</h3><p>John Diak of Oatley &amp; Diak, LLC, a fee-only registered investment advisor, works from our offices and offers May Jackson Hendrick clients a free initial meeting.</p></div>
       </div>
       <div class="why">
         <h2>Why clients stay</h2>
@@ -198,18 +300,35 @@
       <blockquote>"She is so professional, warm, knowledgeable and clearly knows her stuff!"<cite>Google review</cite></blockquote>
     </div></section>
 
+    <section id="tax-time" class="taxtime" aria-labelledby="tt-title"><div class="wrap">
+      <div class="head">
+        <h2 id="tt-title">How tax time works</h2>
+        <p>The CPAs are available by email or phone to answer questions while you gather your tax documents.</p>
+      </div>
+      <ol class="ledger">
+        <li><h3>Ask for your organizer</h3><p>Request this year's tax organizer. Email is our preferred way to send it, and mail or fax work too.</p></li>
+        <li><h3>Gather your documents</h3><p>Wait until you've received all of your tax documents for the year. The checklists below show what to bring together.</p></li>
+        <li><h3>Send them all at once</h3><p>Upload everything in one go, or drop it off at the office during office hours. After hours, slide it under the door. Envelopes are provided if you didn't bring one.</p></li>
+        <li><h3>Your tax partner reviews</h3><p>Your tax partner will reach out with any questions or concerns while reviewing your documents.</p></li>
+        <li><h3>Go over it together</h3><p>Call 303-841-4220 to set up an appointment to go over your tax documents together on the phone.</p></li>
+      </ol>
+    </div></section>
+
     <section id="resources" class="resources" aria-labelledby="res-title"><div class="wrap">
       <div class="head">
         <h2 id="res-title">Checklists and guides</h2>
         <p>Everything you need to gather before your appointment.</p>
       </div>
       <ul class="res-list">
-        <li><a href="#resources">Tax return checklist for individuals</a></li>
-        <li><a href="#resources">Tax return checklist for entities</a></li>
-        <li><a href="#resources">New client information sheet</a></li>
-        <li><a href="#resources">Record keeping guide</a></li>
-        <li><a href="#resources">Non-cash charity contributions</a></li>
-        <li><a href="#resources">Rental property (Publication 527)</a></li>
+        <li><a href="#resources"><span class="t">Tax return checklist for individuals</span><small>PDF</small></a></li>
+        <li><a href="#resources"><span class="t">Tax return checklist for entities</span><small>PDF</small></a></li>
+        <li><a href="#resources"><span class="t">New client information sheet</span><small>Online</small></a></li>
+        <li><a href="#resources"><span class="t">Changes for 2025</span><small>PDF</small></a></li>
+        <li><a href="#resources"><span class="t">2025 tax facts and figures</span><small>PDF</small></a></li>
+        <li><a href="#resources"><span class="t">Non-cash charity contributions</span><small>PDF</small></a></li>
+        <li><a href="#resources"><span class="t">Record keeping guide</span><small>IRS</small></a></li>
+        <li><a href="#resources"><span class="t">Rental property (Publication 527)</span><small>IRS</small></a></li>
+        <li><a href="#resources"><span class="t">Our 2024 peer review report</span><small>PDF</small></a></li>
       </ul>
     </div></section>
 
@@ -220,7 +339,7 @@
         <a class="btn btn-teal" href="#contact" style="margin-top:24px">Book an appointment</a>
       </div>
       <dl>
-        <dt>Office</dt><dd>18801 E. Mainstreet, Suite 240<br>Parker, Colorado 80134</dd>
+        <dt>Office</dt><dd>18801 E. Mainstreet, <span class="nowrap">Suite 240</span><br>Parker, Colorado 80134</dd>
         <dt>Phone</dt><dd>303-841-4220</dd>
         <dt>Fax</dt><dd>303-841-7393</dd>
       </dl>
@@ -231,5 +350,36 @@
     <span>© 2026 May Jackson Hendrick, LLC</span>
     <span>Concept by Fakhar Rashid. Content is taken from mjhcpas.com and their public Google listing.</span>
   </div></footer>
+
+  <!-- Three hand-drawn tick marks, reused so no two neighbours look stamped -->
+  <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+    <symbol id="tk1" viewBox="0 0 24 24"><path pathLength="1" d="M3.4 12.9c1.7 1 3.1 2.7 4.4 5 2.4-5.7 6.3-10.2 12.8-13.8"/></symbol>
+    <symbol id="tk2" viewBox="0 0 24 24"><path pathLength="1" d="M4 13.8c1.3.5 2.6 1.9 3.7 4.2 2.5-5.9 5.9-10.1 12.5-13.2"/></symbol>
+    <symbol id="tk3" viewBox="0 0 24 24"><path pathLength="1" d="M3 12.2c1.9 1.2 3.3 3 4.7 5.7 2-5 5.8-9.8 13-12.9"/></symbol>
+  </svg>
+
+  <script>
+    /* Tick each service as its column comes into view, working down the page like a reviewer. */
+    (function () {
+      if (!document.documentElement.classList.contains('motion')) return;
+      var cols = [].slice.call(document.querySelectorAll('.svc > div'));
+      var step = 105;
+      cols.forEach(function (col) {
+        [].forEach.call(col.querySelectorAll('li'), function (li, i) { li.style.setProperty('--i', i); });
+      });
+      var io = new IntersectionObserver(function (entries) {
+        var offset = 0;
+        entries.filter(function (e) { return e.isIntersecting; })
+          .sort(function (a, b) { return cols.indexOf(a.target) - cols.indexOf(b.target); })
+          .forEach(function (e) {
+            e.target.style.setProperty('--d0', offset + 'ms');
+            e.target.classList.add('ticked');
+            offset += e.target.querySelectorAll('li').length * step + 140;
+            io.unobserve(e.target);
+          });
+      }, { threshold: 0.4, rootMargin: '0px 0px -8% 0px' });
+      cols.forEach(function (col) { io.observe(col); });
+    })();
+  </script>
 </body>
 </html>

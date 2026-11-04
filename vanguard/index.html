@@ -18,15 +18,18 @@
     --signal: #c8102e;
     --signal-dark: #a10c24;
     --tag: #f3c623;
+    --ink: #1d1a10;
     --max: 1180px;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { margin: 0; font-family: "Archivo", system-ui, sans-serif; font-size: 17px; line-height: 1.6; color: var(--graphite); background: var(--white); }
   a { color: inherit; }
-  a:focus-visible, button:focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; }
+  a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; }
+  .service a:focus-visible, .service summary:focus-visible { outline-color: var(--tag); }
+  .contact a:focus-visible { outline-color: var(--white); }
   .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
-  h1, h2, h3 { font-stretch: 112%; line-height: 1.05; margin: 0; letter-spacing: -0.01em; }
+  h1, h2, h3, h4 { font-stretch: 112%; line-height: 1.05; margin: 0; letter-spacing: -0.01em; }
   h2 { font-size: clamp(30px, 4vw, 44px); font-weight: 800; }
   p { margin: 0; }
 
@@ -36,6 +39,11 @@
   .utility { border-bottom: 1px solid var(--line); font-size: 14px; color: var(--steel); }
   .utility .wrap { display: flex; justify-content: space-between; gap: 16px; padding-top: 8px; padding-bottom: 8px; flex-wrap: wrap; }
   .utility a { color: var(--signal); font-weight: 700; text-decoration: none; }
+  .utility a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+  /* 24/7 beacon */
+  .live { position: relative; display: inline-block; width: 8px; height: 8px; margin-right: 9px; border-radius: 50%; background: var(--signal); vertical-align: 1px; }
+  .live::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--signal); opacity: 0; }
 
   header.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 18px; padding-bottom: 18px; }
   .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
@@ -43,9 +51,12 @@
   .brand-name { font-stretch: 118%; font-weight: 800; font-size: 20px; line-height: 1; }
   .brand-name span { display: block; font-stretch: 100%; font-weight: 500; font-size: 13px; color: var(--steel); margin-top: 4px; }
   nav ul { list-style: none; display: flex; gap: 28px; margin: 0; padding: 0; font-weight: 600; font-size: 15px; }
-  nav a { text-decoration: none; }
-  nav a:hover { color: var(--signal); }
-  .btn { display: inline-block; font: inherit; font-weight: 700; font-size: 16px; text-decoration: none; padding: 14px 22px; border-radius: 3px; border: 2px solid transparent; cursor: pointer; }
+  nav a { position: relative; display: inline-block; padding: 4px 0; text-decoration: none; transition: color .2s ease; }
+  nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px; background: var(--signal); transform: scaleX(0); transform-origin: 0 50%; }
+  nav a:hover, nav a:focus-visible { color: var(--signal); }
+  nav a:hover::after, nav a:focus-visible::after { transform: scaleX(1); }
+  .btn { display: inline-block; font: inherit; font-weight: 700; font-size: 16px; text-decoration: none; padding: 14px 22px; border-radius: 3px; border: 2px solid transparent; cursor: pointer; transition: background-color .18s ease, color .18s ease, border-color .18s ease; }
+  .btn:active { transform: translateY(1px); }
   .btn-red { background: var(--signal); color: var(--white); }
   .btn-red:hover { background: var(--signal-dark); }
   .btn-line { border-color: var(--graphite); }
@@ -58,23 +69,39 @@
   .hero .lede { font-size: 20px; color: var(--steel); max-width: 34em; margin-top: 24px; }
   .hero .actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 32px; }
 
-  /* The inspection tag */
-  .tag-area { position: relative; display: flex; justify-content: center; padding-top: 24px; }
-  .tag { position: relative; width: min(340px, 100%); background: var(--tag); color: #1d1a10; padding: 64px 26px 26px; border-radius: 6px 6px 14px 14px; clip-path: polygon(18% 0, 82% 0, 100% 9%, 100% 100%, 0 100%, 0 9%); box-shadow: 0 30px 50px -28px rgba(35,41,47,.55); transform: rotate(-4deg); transform-origin: 50% 0; animation: swing 2.4s ease-out 1; }
-  .tag::before { content: ""; position: absolute; top: 20px; left: 50%; width: 22px; height: 22px; margin-left: -11px; border-radius: 50%; background: var(--white); box-shadow: 0 0 0 5px #d9ab12; }
-  .string { position: absolute; top: -12px; left: 50%; width: 2px; height: 70px; background: #8a8f95; transform: rotate(-4deg); transform-origin: top; }
-  .tag h3 { font-size: 15px; font-stretch: 125%; font-weight: 900; letter-spacing: .04em; text-transform: uppercase; border-bottom: 2px solid #1d1a10; padding-bottom: 10px; }
-  .tag dl { margin: 14px 0 0; display: grid; grid-template-columns: auto 1fr; gap: 8px 14px; font-size: 14px; }
+  /* The inspection tag: hangs from a wire, month and year punched out */
+  .tag-area { position: relative; display: flex; justify-content: center; }
+  .hanger { position: relative; width: min(340px, 100%); padding-top: 36px; transform-origin: 50% 0; transform: rotate(-4deg); filter: drop-shadow(0 20px 18px rgba(35,41,47,.18)); }
+  .wire { position: absolute; top: 0; left: 50%; margin-left: -12px; z-index: 2; overflow: visible; }
+  .tag { position: relative; background: var(--tag); color: var(--ink); padding: 64px 26px 26px; border-radius: 6px 6px 14px 14px; clip-path: polygon(18% 0, 82% 0, 100% 9%, 100% 100%, 0 100%, 0 9%); transform-origin: 50% 31px; }
+  .tag::before { content: ""; position: absolute; top: 20px; left: 50%; width: 22px; height: 22px; margin-left: -11px; border-radius: 50%; background: var(--white); box-shadow: 0 0 0 5px #d9ab12, inset 0 2px 3px rgba(29,26,16,.35); }
+  .tag h3 { font-size: 15px; font-stretch: 125%; font-weight: 900; letter-spacing: .04em; text-transform: uppercase; border-bottom: 2px solid var(--ink); padding-bottom: 10px; }
+  .tag dl { margin: 14px 0 0; display: grid; grid-template-columns: auto 1fr; gap: 7px 14px; font-size: 14px; }
   .tag dt { font-weight: 800; }
   .tag dd { margin: 0; border-bottom: 1px dashed rgba(29,26,16,.45); }
-  .tag .stamp { margin-top: 18px; display: inline-block; border: 3px solid var(--signal); color: var(--signal); font-weight: 900; font-stretch: 125%; padding: 6px 12px; transform: rotate(-6deg); letter-spacing: .06em; }
-  @keyframes swing { 0% { transform: rotate(6deg); } 35% { transform: rotate(-7deg); } 65% { transform: rotate(-2deg); } 100% { transform: rotate(-4deg); } }
+  .punch { margin-top: 18px; }
+  .punch p { font-size: 12px; font-weight: 800; margin-bottom: 6px; }
+  .punch-row { display: grid; border: 1.5px solid var(--ink); }
+  .punch-row + .punch-row { border-top: 0; }
+  .months { grid-template-columns: repeat(12, 1fr); }
+  .years { grid-template-columns: repeat(6, 1fr); }
+  .cell { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 5px 0 6px; font-size: 11px; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+  .cell + .cell { border-left: 1px solid rgba(29,26,16,.35); }
+  .cell i { position: relative; display: block; width: 11px; height: 11px; border-radius: 50%; border: 1.25px solid rgba(29,26,16,.5); }
+  .cell.punched i { width: 15px; height: 15px; margin: -2px 0; border: 0; background: var(--white); box-shadow: inset 0 2px 2.5px rgba(29,26,16,.55), 0 0 0 1px rgba(29,26,16,.22); }
+  /* the chad: the disc of tag the punch removes, printed ring included */
+  .cell i::after { content: ""; position: absolute; inset: -1px; border-radius: 50%; background: var(--tag); box-shadow: inset 0 0 0 3px var(--tag), inset 0 0 0 4.25px rgba(29,26,16,.5); opacity: 0; }
+  .tag .stamp { margin-top: 20px; display: inline-block; border: 3px solid var(--signal); color: var(--signal); font-weight: 900; font-stretch: 125%; padding: 6px 12px; transform: rotate(-6deg); letter-spacing: .06em; }
 
-  /* Credentials */
-  .creds { background: var(--concrete); padding: 36px 0 44px; }
-  .creds ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); border-top: 2px solid var(--graphite); }
-  .creds li { padding: 16px 16px 0 0; font-size: 15px; color: var(--steel); }
-  .creds strong { display: block; color: var(--graphite); font-size: 18px; font-stretch: 112%; }
+  /* Credentials and licenses */
+  .creds { background: var(--concrete); padding: 36px 0 40px; }
+  .cred-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); border-top: 2px solid var(--graphite); }
+  .cred-list li { padding: 16px 16px 0 0; font-size: 15px; color: var(--steel); }
+  .cred-list strong { display: block; color: var(--graphite); font-size: 18px; font-stretch: 112%; }
+  .licenses { display: flex; align-items: baseline; gap: 12px 32px; margin-top: 28px; padding-top: 16px; border-top: 1px solid #c5cbd1; font-size: 15px; color: var(--steel); }
+  .licenses > p { font-weight: 700; color: var(--graphite); white-space: nowrap; }
+  .licenses ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 32px; }
+  .licenses strong { color: var(--graphite); font-weight: 800; font-variant-numeric: tabular-nums; letter-spacing: .02em; margin-right: 7px; }
 
   section { padding: 88px 0; }
   .section-head { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; margin-bottom: 48px; }
@@ -82,21 +109,34 @@
 
   /* Systems */
   .systems { border-top: 1px solid var(--line); }
-  .system { display: grid; grid-template-columns: 1fr 1.4fr 1fr; gap: 32px; padding: 30px 0; border-bottom: 1px solid var(--line); }
+  .system { display: grid; grid-template-columns: 1fr 1.4fr 1fr; gap: 20px 32px; padding: 30px 0; border-bottom: 1px solid var(--line); }
   .system h3 { font-size: 26px; font-weight: 800; }
   .system p { color: var(--steel); }
   .system ul { margin: 0; padding-left: 18px; font-size: 15px; }
+  .more { grid-column: 2 / -1; }
+  .more summary { display: inline-flex; align-items: center; gap: 10px; list-style: none; cursor: pointer; font-weight: 700; font-size: 15px; color: var(--signal); padding: 2px 0; border-radius: 2px; }
+  .more summary::-webkit-details-marker { display: none; }
+  .more summary:hover { color: var(--signal-dark); }
+  .plus { position: relative; width: 20px; height: 20px; border: 2px solid currentColor; border-radius: 50%; flex: none; }
+  .plus::before, .plus::after { content: ""; position: absolute; left: 50%; top: 50%; width: 10px; height: 2px; margin: -1px 0 0 -5px; background: currentColor; }
+  .plus::after { transform: rotate(90deg); }
+  .more[open] .plus::after { transform: rotate(90deg) scaleX(0); }
+  .more-body { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 18px; padding: 22px 0 4px; border-top: 1px dashed #b8bfc6; }
+  .more-body h4 { font-size: 16px; font-weight: 800; margin-bottom: 6px; }
+  .more-body p { font-size: 15px; line-height: 1.55; }
 
   /* Service (dark) */
   .service { background: var(--graphite); color: var(--white); }
   .service .section-head p { color: #b9c1c8; }
-  .service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: #3a434b; border: 2px solid #3a434b; }
+  .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: #3a434b; border: 2px solid #3a434b; }
   .service-grid div { background: var(--graphite); padding: 30px; }
   .service-grid h3 { font-size: 22px; font-weight: 800; margin-bottom: 10px; }
   .service-grid p { color: #c3cad0; }
   .call-strip { margin-top: 40px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; border-left: 6px solid var(--signal); padding: 8px 0 8px 24px; }
   .call-strip p { font-size: 20px; }
-  .call-strip a.phone { font-size: clamp(28px, 4vw, 40px); font-weight: 900; font-stretch: 115%; color: var(--white); text-decoration: none; }
+  .call-strip .on-call { font-size: 15px; color: #b9c1c8; margin-top: 4px; }
+  .call-strip a.phone { font-size: clamp(28px, 4vw, 40px); font-weight: 900; font-stretch: 115%; color: var(--white); text-decoration: none; transition: color .2s ease; }
+  .call-strip a.phone:hover { color: var(--tag); }
 
   /* Process */
   .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; counter-reset: step; }
@@ -104,6 +144,13 @@
   .steps li::before { content: "Step " counter(step); display: block; font-size: 14px; font-weight: 700; color: var(--signal); margin-bottom: 6px; }
   .steps h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
   .steps p { color: var(--steel); font-size: 16px; }
+  .safety { display: grid; grid-template-columns: 1fr 1.25fr; gap: 28px 56px; margin-top: 72px; padding-top: 30px; border-top: 2px solid var(--graphite); }
+  .safety h3 { font-size: 26px; font-weight: 800; }
+  .safety p { color: var(--steel); margin-top: 12px; }
+  .safety .award { color: var(--graphite); font-size: 15px; margin-top: 18px; padding-left: 14px; border-left: 4px solid var(--tag); }
+  .safety ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 28px; align-content: center; }
+  .safety li { position: relative; padding-left: 24px; font-weight: 600; font-size: 16px; line-height: 1.4; }
+  .safety li::before { content: ""; position: absolute; left: 0; top: .2em; width: 13px; height: 12px; background: var(--signal); clip-path: polygon(50% 0, 100% 100%, 0 100%); }
 
   /* Markets */
   .markets { background: var(--concrete); }
@@ -113,34 +160,83 @@
   /* Careers + contact */
   .careers .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
   .careers p { color: var(--steel); margin-top: 16px; }
-  .careers ul { margin: 16px 0 0; padding-left: 20px; }
+  .careers h3 { font-size: 15px; font-stretch: 100%; font-weight: 700; color: var(--steel); letter-spacing: 0; }
+  .careers ul { list-style: none; margin: 10px 0 0; padding: 0; border-bottom: 1px solid var(--line); }
+  .careers li { border-top: 1px solid var(--line); padding: 12px 0; font-size: 20px; font-weight: 700; font-stretch: 108%; }
   .contact { background: var(--signal); color: var(--white); }
   .contact .wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; }
   .contact h2 { color: var(--white); }
   .contact p { margin-top: 16px; font-size: 18px; }
+  .contact .gc { font-size: 16px; }
   .contact dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 12px 20px; font-size: 17px; }
   .contact dt { font-weight: 800; }
   .contact dd { margin: 0; }
   .contact .btn { background: var(--white); color: var(--signal); margin-top: 28px; }
+  .contact .btn:hover { background: var(--graphite); color: var(--white); }
   footer { background: var(--graphite); color: #aab3bb; font-size: 14px; padding: 28px 0; }
   footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 
+  /* Motion. Only when the visitor has not asked for reduced motion.
+     Hiding-for-animation rules all require the .motion class, which the script sets. */
+  @media (prefers-reduced-motion: no-preference) {
+    nav a::after { transition: transform .25s ease; }
+    .plus::after { transition: transform .25s ease; }
+    .live::after { animation: beacon 2.8s cubic-bezier(.2,.6,.35,1) infinite; }
+    .more[open] .more-body { animation: unfold .32s cubic-bezier(.2,.7,.3,1); }
+
+    .hanger { animation: hang 2.5s cubic-bezier(.45,0,.55,1) both; }
+    .motion .tag-area:not(.go) .hanger { animation: none; transform: translateY(-12px) rotate(8deg); }
+    .motion .cell.punched i::after { opacity: 1; }
+    .motion .go .tag { animation: jolt .36s ease-out 1.55s, jolt-2 .36s ease-out 1.95s; }
+    .motion .go .months .punched i::after { animation: chad .7s cubic-bezier(.5,0,.85,.55) 1.55s forwards; }
+    .motion .go .years .punched i::after { animation: chad .7s cubic-bezier(.5,0,.85,.55) 1.95s forwards; }
+  }
+  @keyframes hang {
+    0%   { transform: translateY(-12px) rotate(8deg); }
+    16%  { transform: translateY(0) rotate(-12.5deg); }
+    32%  { transform: translateY(0) rotate(1.5deg); }
+    48%  { transform: translateY(0) rotate(-8deg); }
+    64%  { transform: translateY(0) rotate(-1.6deg); }
+    80%  { transform: translateY(0) rotate(-5.4deg); }
+    100% { transform: translateY(0) rotate(-4deg); }
+  }
+  @keyframes jolt { 0% { transform: none; } 30% { transform: translateY(1.5px) rotate(1.3deg); } 65% { transform: rotate(-.5deg); } 100% { transform: none; } }
+  @keyframes jolt-2 { 0% { transform: none; } 30% { transform: translateY(1.5px) rotate(-1.1deg); } 65% { transform: rotate(.4deg); } 100% { transform: none; } }
+  @keyframes chad {
+    0%   { opacity: 1; transform: none; }
+    14%  { opacity: 1; transform: scale(.84); }
+    100% { opacity: 0; transform: translate(3px, 26px) rotate(70deg) scale(.6); }
+  }
+  @keyframes beacon { 0% { opacity: .55; transform: scale(1); } 70%, 100% { opacity: 0; transform: scale(3.2); } }
+  @keyframes unfold { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+
   @media (max-width: 900px) {
     nav ul { display: none; }
-    .hero .wrap, .section-head, .careers .wrap, .contact .wrap { grid-template-columns: 1fr; }
-    .creds ul { grid-template-columns: repeat(2, 1fr); }
+    .hero .wrap, .section-head, .careers .wrap, .contact .wrap, .safety { grid-template-columns: 1fr; }
+    .cred-list { grid-template-columns: repeat(2, 1fr); }
+    .licenses { flex-direction: column; gap: 10px; }
     .system { grid-template-columns: 1fr; gap: 10px; }
+    .more { grid-column: auto; margin-top: 6px; }
+    .more-body { grid-template-columns: 1fr; gap: 18px; }
     .service-grid { grid-template-columns: 1fr; }
     .steps { grid-template-columns: 1fr 1fr; }
     section { padding: 64px 0; }
   }
   @media (max-width: 520px) {
     header.nav .btn { padding: 10px 14px; font-size: 14px; }
-    .tag { width: min(300px, 88%); }
+    .hanger { width: min(300px, 88%); }
+    .tag { padding: 60px 20px 22px; }
+    .cell { font-size: 10px; }
     .steps { grid-template-columns: 1fr; }
-    .creds ul { grid-template-columns: 1fr; }
+    .cred-list { grid-template-columns: 1fr; }
+    .licenses ul { display: grid; grid-template-columns: 1fr; gap: 6px; }
+    .safety { margin-top: 56px; }
+    .safety ul { grid-template-columns: 1fr; }
   }
-  @media (prefers-reduced-motion: reduce) { .tag { animation: none; } html { scroll-behavior: auto; } }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
 </style>
 </head>
 <body>
@@ -148,7 +244,7 @@
 
   <div class="utility"><div class="wrap">
     <span>Fire and life safety contractor in Pflugerville, serving Central Texas since 1998</span>
-    <span>24/7 emergency service: <a href="#contact">512-989-1600</a></span>
+    <span><span class="live" aria-hidden="true"></span>24/7 emergency service: <a href="#contact">512-989-1600</a></span>
   </div></div>
 
   <header class="nav"><div class="wrap">
@@ -176,29 +272,53 @@
         </div>
       </div>
       <div class="tag-area" aria-hidden="true">
-        <span class="string"></span>
-        <div class="tag">
-          <h3>Vanguard service record</h3>
-          <dl>
-            <dt>Systems</dt><dd>Alarm, sprinkler, suppression, security</dd>
-            <dt>Sprinkler</dt><dd>TX reg. SCR-0484</dd>
-            <dt>Fire alarm</dt><dd>TX reg. ACR-2445</dd>
-            <dt>Codes</dt><dd>NFPA, state and local</dd>
-            <dt>Service</dt><dd>24/7, 512-989-1600</dd>
-          </dl>
-          <span class="stamp">Since 1998</span>
+        <div class="hanger">
+          <div class="tag">
+            <h3>Vanguard service record</h3>
+            <dl>
+              <dt>Systems</dt><dd>Alarm, sprinkler, suppression, security</dd>
+              <dt>Sprinkler</dt><dd>TX reg. SCR-0484</dd>
+              <dt>Fire alarm</dt><dd>TX reg. ACR-2445</dd>
+              <dt>Codes</dt><dd>NFPA, state and local</dd>
+              <dt>Service</dt><dd>24/7, 512-989-1600</dd>
+            </dl>
+            <div class="punch">
+              <p>Service date</p>
+              <div class="punch-row months">
+                <span class="cell">J<i></i></span><span class="cell">F<i></i></span><span class="cell">M<i></i></span><span class="cell">A<i></i></span><span class="cell">M<i></i></span><span class="cell">J<i></i></span><span class="cell">J<i></i></span><span class="cell">A<i></i></span><span class="cell">S<i></i></span><span class="cell">O<i></i></span><span class="cell punched">N<i></i></span><span class="cell">D<i></i></span>
+              </div>
+              <div class="punch-row years">
+                <span class="cell punched"><span>2026</span><i></i></span><span class="cell"><span>2027</span><i></i></span><span class="cell"><span>2028</span><i></i></span><span class="cell"><span>2029</span><i></i></span><span class="cell"><span>2030</span><i></i></span><span class="cell"><span>2031</span><i></i></span>
+              </div>
+            </div>
+            <span class="stamp">Since 1998</span>
+          </div>
+          <svg class="wire" width="24" height="76" viewBox="0 0 24 76" focusable="false">
+            <path d="M12 2V38C7.5 46 7 65 12 70C17 65 16.5 46 12 38" fill="none" stroke="#7d838a" stroke-width="1.6" stroke-linecap="round"/>
+            <rect x="9.25" y="21" width="5.5" height="10" rx="1.5" fill="#9aa1a8"/>
+            <circle cx="12" cy="2" r="2.6" fill="#59636d"/>
+          </svg>
         </div>
       </div>
     </div></section>
 
     <div class="creds"><div class="wrap">
-      <ul>
+      <ul class="cred-list">
         <li><strong>Since 1998</strong>Locally owned in Pflugerville</li>
         <li><strong>NICET certified</strong>Design and inspection staff</li>
         <li><strong>Siemens &amp; Silent Knight</strong>Authorized partner</li>
         <li><strong>Inc. 5000</strong>Listed in 2009</li>
         <li><strong>Aggie 100</strong>2008 and 2009</li>
       </ul>
+      <div class="licenses">
+        <p>Texas registrations</p>
+        <ul>
+          <li><strong>SCR-0484</strong>Fire sprinkler</li>
+          <li><strong>ACR-2445</strong>Fire alarm</li>
+          <li><strong>ECR-1751614</strong>Fire extinguisher</li>
+          <li><strong>B15698</strong>Security</li>
+        </ul>
+      </div>
     </div></div>
 
     <section id="systems" aria-labelledby="systems-title"><div class="wrap">
@@ -211,21 +331,53 @@
           <h3>Fire alarm</h3>
           <p>Detection, voice evacuation and mass notification, designed by NICET-certified engineers to current national and local code.</p>
           <ul><li>Cellular monitoring with no phone lines</li><li>Wireless devices for retrofits</li></ul>
+          <details class="more">
+            <summary><span class="plus" aria-hidden="true"></span>More on fire alarm</summary>
+            <div class="more-body">
+              <div><h4>Cellular monitoring</h4><p>Current life safety codes allow cellular as the sole path to the central station. It is less exposed to weather, can't be cut off by falling trees, and can save hundreds of dollars a year.</p></div>
+              <div><h4>Wireless devices</h4><p>For areas where wiring is difficult or undesirable, wireless devices avoid unsightly runs and still meet life safety requirements.</p></div>
+              <div><h4>Service</h4><p>Testing and inspection, smoke detector cleaning and sensitivity testing, critical parts stocking, repair, replacement and emergency service.</p></div>
+            </div>
+          </details>
         </article>
         <article class="system">
           <h3>Fire sprinklers</h3>
           <p>Wet, dry, pre-action and fire pump systems, modeled in 3D/BIM and coordinated with the other building trades before install.</p>
           <ul><li>Tenant finish-outs to high-rises</li><li>OSHA-certified field crews</li></ul>
+          <details class="more">
+            <summary><span class="plus" aria-hidden="true"></span>More on sprinklers</summary>
+            <div class="more-body">
+              <div><h4>Our own crews</h4><p>Installation and service are done by our own licensed, factory-trained and union-trained people. Field technicians and superintendents average 10 years in the industry.</p></div>
+              <div><h4>What we service</h4><p>Fire pumps, dry and pre-action systems, standpipes, private fire hydrants, deluge, antifreeze loops, backflow prevention and certification, and any wet system.</p></div>
+              <div><h4>Around your tenants</h4><p>All major equipment brands, including systems installed by others. We can work after hours or on weekends to avoid disruption.</p></div>
+            </div>
+          </details>
         </article>
         <article class="system">
           <h3>Clean-agent suppression</h3>
           <p>FM-200 and Novec 1230 systems for server rooms, labs, records storage and telecom, where sprinkler water would do the damage.</p>
           <ul><li>Custom design per room</li><li>Siemens systems</li></ul>
+          <details class="more">
+            <summary><span class="plus" aria-hidden="true"></span>More on clean agent</summary>
+            <div class="more-body">
+              <div><h4>Why not water</h4><p>A sprinkler can save the building, but the water damage stays. The bigger cost is downtime, lost client information, and equipment and software you can't replace.</p></div>
+              <div><h4>Designed per room</h4><p>Each Siemens FM-200 or Novec 1230 system is designed around health and environmental concerns, space limitations and serviceability.</p></div>
+              <div><h4>Service</h4><p>Tested, inspected and maintained by the same licensed, NICET-certified staff who look after your fire alarm.</p></div>
+            </div>
+          </details>
         </article>
         <article class="system">
           <h3>Security</h3>
           <p>Access control, IP video surveillance and intrusion detection, integrated into one platform you can manage from anywhere.</p>
           <ul><li>Access and attendance logs</li><li>No re-keying when staff leave</li></ul>
+          <details class="more">
+            <summary><span class="plus" aria-hidden="true"></span>More on security</summary>
+            <div class="more-body">
+              <div><h4>Intrusion detection</h4><p>Touch-screen keypads, door and window contacts, motion and glass-break detectors, and cellular alarm communication. User codes show who armed and disarmed the system.</p></div>
+              <div><h4>Video surveillance</h4><p>IP video and digital CCTV that deter theft and fraud, document events in your business, and can be viewed from anywhere.</p></div>
+              <div><h4>Monitoring</h4><p>UL Listed monitoring, professionally staffed 24/7/365, for alarms, trouble signals, unauthorized openings and critical equipment.</p></div>
+            </div>
+          </details>
         </article>
       </div>
     </div></section>
@@ -233,16 +385,21 @@
     <section id="service" class="service" aria-labelledby="service-title"><div class="wrap">
       <div class="section-head">
         <h2 id="service-title">Inspection and service that keeps you in compliance</h2>
-        <p>Licensed technicians test, inspect and maintain alarm, sprinkler and suppression systems of any make, with as little disruption to tenants as possible.</p>
+        <p>Licensed technicians test, inspect and maintain alarm, sprinkler, suppression and security systems of any make, including ones other contractors installed. Work can be scheduled after hours or on weekends so tenants aren't disrupted.</p>
       </div>
       <div class="service-grid">
         <div><h3>Code inspections</h3><p>Scheduled testing to NFPA and local requirements, with a written report after every visit.</p></div>
         <div><h3>Fewer false alarms</h3><p>Smoke detectors cleaned and kept at the right sensitivity, so the building isn't evacuated for nothing.</p></div>
         <div><h3>Emergency response</h3><p>Crews dispatched around the clock in fully equipped service vehicles.</p></div>
+        <div><h3>Central station monitoring</h3><p>Backed by a UL and Factory Mutual facility. Put systems on test, view history and check status from your phone or computer in real time.</p></div>
+        <div><h3>Maintenance agreements</h3><p>A service representative tours your facility and sets up one program for testing, inspection, preventive maintenance, repair and emergency service.</p></div>
         <div><h3>One-year guarantee</h3><p>Every system we install is covered for a year, and we train your staff on it before we leave.</p></div>
       </div>
       <div class="call-strip">
-        <p>System trouble right now?</p>
+        <div>
+          <p>System trouble right now?</p>
+          <p class="on-call"><span class="live" aria-hidden="true"></span>Service teams are on call 24/7 for prompt dispatch.</p>
+        </div>
         <a class="phone" href="#contact">512-989-1600</a>
       </div>
     </div></section>
@@ -258,12 +415,27 @@
         <li><h3>Training</h3><p>On-site training for the people who will run the system every day.</p></li>
         <li><h3>Service</h3><p>Inspections, maintenance and 24/7 support for the life of the system.</p></li>
       </ol>
+      <div class="safety">
+        <div>
+          <h3>A zero-tolerance safety program</h3>
+          <p>Our goal on every job site is zero accidents and zero injuries.</p>
+          <p class="award">First-place winner, Specialty Contractor Division (100,000 work hours), in the Associated General Contractors of America Construction Safety Excellence Awards.</p>
+        </div>
+        <ul>
+          <li>OSHA 10 required for all field technicians</li>
+          <li>Hard hats, safety vests and glasses on every job</li>
+          <li>Weekly toolbox talks</li>
+          <li>Quarterly safety training</li>
+          <li>No cell phone use while driving</li>
+          <li>A return-to-work program</li>
+        </ul>
+      </div>
     </div></section>
 
     <section id="markets" class="markets" aria-labelledby="markets-title"><div class="wrap">
       <div class="section-head">
         <h2 id="markets-title">Buildings we protect</h2>
-        <p>Single-tenant and multi-tenant, new construction and retrofits.</p>
+        <p>Single-floor facilities, office towers and corporate campuses. Single-tenant and multi-tenant, new construction and retrofits.</p>
       </div>
       <ul class="market-list">
         <li>Office</li><li>Industrial</li><li>High technology</li><li>Health care</li><li>Education</li><li>Hospitality</li><li>Government</li><li>Retail</li><li>Residential</li>
@@ -273,11 +445,13 @@
     <section id="careers" class="careers" aria-labelledby="careers-title"><div class="wrap">
       <div>
         <h2 id="careers-title">We're hiring in Central Texas</h2>
-        <p>Competitive pay, health and life insurance, paid time off and 401(k) matching.</p>
+        <p>Join a team of fire and life safety professionals focused on quality work and serving our customers.</p>
+        <p>Competitive salaries, health and life insurance, paid holidays, paid time off and 401(k) matching.</p>
       </div>
       <div>
+        <h3>Open positions</h3>
         <ul><li>Security technician</li><li>Service sales representative</li><li>Sprinkler technician apprentice</li></ul>
-        <p>Send your resume to careers@vgfire.com.</p>
+        <p>Send your resume or application to careers@vgfire.com. Vanguard Fire &amp; Security is an equal opportunity employer.</p>
       </div>
     </div></section>
 
@@ -285,6 +459,7 @@
       <div>
         <h2 id="contact-title">Tell us about your building</h2>
         <p>Send plans or a short description and we'll come back with a scope and an estimate.</p>
+        <p class="gc">Qualifying us as a subcontractor? Ask info@vgfire.com for our corporate fact sheet.</p>
         <a class="btn" href="#contact">Request an estimate</a>
       </div>
       <dl>
@@ -298,8 +473,35 @@
   </main>
 
   <footer><div class="wrap">
-    <span>Vanguard Fire &amp; Security, Pflugerville, Texas</span>
+    <span>Vanguard Fire &amp; Security (Vanguard Fire Systems, L.P.), Pflugerville, Texas</span>
     <span>Concept by Fakhar Rashid. Content is taken from vgfire.com.</span>
   </div></footer>
+
+  <script>
+  /* Punch this month and year on the tag, then run the hang-and-punch animation once the tag is in view.
+     Without this script the tag simply shows its finished state. */
+  (function () {
+    var area = document.querySelector('.tag-area');
+    if (!area) return;
+    var now = new Date(), month = now.getMonth(), year = now.getFullYear();
+    var months = area.querySelectorAll('.months .cell'), years = area.querySelectorAll('.years .cell');
+    var first = parseInt(years[0].textContent, 10);
+    if (year < first || year > first + years.length - 1) {
+      first = year;
+      for (var i = 0; i < years.length; i++) years[i].querySelector('span').textContent = first + i;
+    }
+    function punch(list, index) { for (var j = 0; j < list.length; j++) list[j].classList.toggle('punched', j === index); }
+    punch(months, month);
+    punch(years, year - first);
+
+    if (!window.matchMedia || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    document.documentElement.classList.add('motion');
+    if (!('IntersectionObserver' in window)) { area.classList.add('go'); return; }
+    var io = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) { area.classList.add('go'); io.disconnect(); }
+    }, { threshold: 0.45 });
+    io.observe(area);
+  })();
+  </script>
 </body>
 </html>

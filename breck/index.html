@@ -45,9 +45,9 @@
   /* Drawing sheet hero */
   .sheet { margin: 12px auto 0; position: relative; border: 2px solid var(--ink); padding: 72px 72px 0 96px; background: #fff; }
   .sheet > * { position: relative; z-index: 1; }
-  .sheet > .grid { position: absolute; z-index: 0; left: 96px; top: 72px; right: 0; bottom: 0;
-    background-image: linear-gradient(var(--line-soft) 1.5px, transparent 1.5px), linear-gradient(90deg, var(--line-soft) 1.5px, transparent 1.5px);
-    background-size: 100% 25%, 25% 100%; }
+  .sheet > .grid { position: absolute; z-index: 0; left: 96px; top: 72px; right: 0; bottom: 0; }
+  .grid svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; transform: translate(.75px, .75px); }
+  .grid line { stroke: var(--line-soft); stroke-width: 1.5; }
   .sheet > .bubbles-x { position: absolute; top: 14px; left: 96px; right: 0; display: grid; grid-template-columns: repeat(4, 1fr); }
   .sheet > .bubbles-y { position: absolute; left: 22px; top: 72px; bottom: 0; display: grid; grid-template-rows: repeat(4, 1fr); }
   .bubble { width: 38px; height: 38px; border: 1.5px solid var(--line); border-radius: 50%; display: grid; place-items: center; color: var(--line); font-weight: 600; font-size: 15px; background: #fff; transform: translateX(-19px); }
@@ -136,7 +136,21 @@
     header .btn { padding: 9px 14px; font-size: 14px; }
     .titleblock { grid-template-columns: 1fr 1fr; font-size: 13px; }
   }
+
+  /* On load the sheet plots itself: each bubble is set, then its gridline is drawn like a pen plotter.
+     Runs only when the script below adds .plot (JS on, motion allowed). Otherwise the sheet is simply shown. */
+  @media (prefers-reduced-motion: no-preference) {
+    .plot .bubbles-x { --b: .1s; } .plot .bubbles-y { --b: .3s; }
+    .plot .bubble { animation: set-bubble .32s cubic-bezier(.2,.7,.3,1.2) backwards; animation-delay: calc(var(--b) + var(--i) * .12s); }
+    .plot .grid line { animation: plot-line .8s cubic-bezier(.6,0,.3,1) backwards; animation-delay: calc(.28s + var(--i) * .12s); }
+    .plot .grid .gy { animation-duration: 1s; animation-delay: calc(.48s + var(--i) * .12s); }
+    @keyframes set-bubble { from { opacity: 0; scale: .55; } }
+    @keyframes plot-line { from { stroke-dasharray: 1 1; stroke-dashoffset: 1; } to { stroke-dasharray: 1 1; stroke-dashoffset: 0; } }
+  }
 </style>
+<script>
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: no-preference)').matches) document.documentElement.classList.add('plot');
+</script>
 </head>
 <body>
   <div class="concept"><strong>Homepage concept</strong> prepared for Breck General Contracting by Fakhar Rashid. This is a design preview, not the live website, and it is not affiliated with or approved by Breck General Contracting.</div>
@@ -155,9 +169,18 @@
   <main id="top">
     <div class="wrap sheet-wrap">
       <section class="sheet" aria-labelledby="hero-title" style="padding-bottom:0">
-        <div class="grid" aria-hidden="true"></div>
-        <div class="bubbles-x" aria-hidden="true"><span class="bubble">A</span><span class="bubble">B</span><span class="bubble">C</span><span class="bubble">D</span></div>
-        <div class="bubbles-y" aria-hidden="true"><span class="bubble">1</span><span class="bubble">2</span><span class="bubble">3</span><span class="bubble">4</span></div>
+        <div class="grid" aria-hidden="true"><svg focusable="false">
+          <line class="gx" style="--i:0" x1="0" y1="0" x2="0" y2="100%" pathLength="1"/>
+          <line class="gx" style="--i:1" x1="25%" y1="0" x2="25%" y2="100%" pathLength="1"/>
+          <line class="gx" style="--i:2" x1="50%" y1="0" x2="50%" y2="100%" pathLength="1"/>
+          <line class="gx" style="--i:3" x1="75%" y1="0" x2="75%" y2="100%" pathLength="1"/>
+          <line class="gy" style="--i:0" x1="0" y1="0" x2="100%" y2="0" pathLength="1"/>
+          <line class="gy" style="--i:1" x1="0" y1="25%" x2="100%" y2="25%" pathLength="1"/>
+          <line class="gy" style="--i:2" x1="0" y1="50%" x2="100%" y2="50%" pathLength="1"/>
+          <line class="gy" style="--i:3" x1="0" y1="75%" x2="100%" y2="75%" pathLength="1"/>
+        </svg></div>
+        <div class="bubbles-x" aria-hidden="true"><span class="bubble" style="--i:0">A</span><span class="bubble" style="--i:1">B</span><span class="bubble" style="--i:2">C</span><span class="bubble" style="--i:3">D</span></div>
+        <div class="bubbles-y" aria-hidden="true"><span class="bubble" style="--i:0">1</span><span class="bubble" style="--i:1">2</span><span class="bubble" style="--i:2">3</span><span class="bubble" style="--i:3">4</span></div>
         <h1 id="hero-title">Commercial construction in Central Texas, from permitting to punch list.</h1>
         <p class="lede">A family-owned general contractor led by an architect and a builder. We manage new construction, renovations and interior finish-outs, so owners can stay focused on their business.</p>
         <div class="actions">
@@ -228,7 +251,7 @@
       </div>
       <div class="team">
         <article><h3>Nicole Bruechner</h3><p class="role">President and co-founder</p><p>Holds a Master of Architecture and acts as the link between design and completion.</p></article>
-        <article><h3>Reese Bruechner</h3><p class="role">Vice president and co-founder</p><p>Texas A&amp;M graduate and Corps of Cadets member, with a background in commercial plumbing, site development and general contracting.</p></article>
+        <article><h3>Reese Bruechner</h3><p class="role">Vice president and co-founder</p><p>Texas A&amp;M graduate and Corps of Cadets member, with over 10 years in commercial plumbing and mechanical, site development and general contracting.</p></article>
         <article><h3>Mitchell Matkin</h3><p class="role">Superintendent</p><p>Worked his way up from laborer to superintendent. OSHA 30 certified, and safety comes first on every site.</p></article>
       </div>
     </div></section>
@@ -248,6 +271,7 @@
         <dt>Office</dt><dd>1403 Williams Drive, Suite 102<br>Georgetown, TX 78628</dd>
         <dt>Mail</dt><dd>P.O. Box 5027, Georgetown, TX 78627</dd>
         <dt>Phone</dt><dd>512-688-5295</dd>
+        <dt>Fax</dt><dd>512-597-8716</dd>
         <dt>Email</dt><dd>admin@breckgc.com</dd>
       </dl>
     </div></section>

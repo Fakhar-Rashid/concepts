@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>A&amp;E Technologies | Homepage concept</title>
+<script>
+  /* Motion is opt-in: only when JS runs and the visitor hasn't asked for reduced motion. */
+  if (window.matchMedia && matchMedia("(prefers-reduced-motion: no-preference)").matches) document.documentElement.classList.add("motion");
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -26,6 +30,7 @@
   body { margin: 0; font-family: "IBM Plex Sans", system-ui, sans-serif; font-size: 17px; line-height: 1.6; color: var(--graphite); background: var(--white); }
   a { color: inherit; }
   a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+  .feature a:focus-visible, footer a:focus-visible { outline-color: var(--straw); }
   .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
   h1, h2, h3 { font-family: "Big Shoulders Display", Impact, sans-serif; font-weight: 800; line-height: .95; margin: 0; }
   h2 { font-size: clamp(40px, 5.5vw, 64px); }
@@ -35,16 +40,25 @@
   .concept strong { color: #fff; font-weight: 600; }
 
   .bar { background: var(--plate); font-size: 14px; color: var(--steel); }
-  .bar .wrap { display: flex; justify-content: space-between; gap: 16px; padding-top: 8px; padding-bottom: 8px; flex-wrap: wrap; }
+  .bar .wrap { display: flex; justify-content: space-between; gap: 4px 16px; padding-top: 8px; padding-bottom: 8px; flex-wrap: wrap; }
   .bar strong { color: var(--graphite); }
+  .bar a { text-decoration: none; }
+  .bar a:hover { text-decoration: underline; }
+  /* Shown only by the script, during shop hours in Golden */
+  .lit { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--straw); box-shadow: 0 0 0 3px rgba(227, 189, 95, .32); margin-right: 9px; vertical-align: 1px; }
 
   header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 18px; padding-bottom: 18px; }
   .logo { font-family: "Big Shoulders Display", sans-serif; font-weight: 900; font-size: 30px; text-decoration: none; line-height: 1; }
   .logo span { font-family: "IBM Plex Sans", sans-serif; font-weight: 500; font-size: 13px; color: var(--steel); display: block; margin-top: 2px; }
   header nav { display: flex; gap: 26px; font-weight: 600; font-size: 15px; }
-  header nav a { text-decoration: none; }
-  header nav a:hover { color: var(--blue); }
-  .btn { display: inline-block; font-weight: 600; font-size: 16px; text-decoration: none; padding: 13px 22px; border: 2px solid var(--graphite); }
+  header nav a { text-decoration: none; position: relative; }
+  header nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 2px; background: var(--heat); transform: scaleX(0); transform-origin: left; transition: transform .3s cubic-bezier(.2, .7, .2, 1); }
+  header nav a:hover::after, header nav a:focus-visible::after { transform: scaleX(1); }
+
+  .btn { display: inline-block; position: relative; font-weight: 600; font-size: 16px; text-decoration: none; padding: 13px 22px; border: 2px solid var(--graphite); transition: background-color .2s ease, color .2s ease; }
+  /* A strip of heat tint runs along the bottom edge when a button is hovered or focused */
+  .btn::after { content: ""; position: absolute; left: -2px; right: -2px; bottom: -2px; height: 3px; background: var(--heat); transform: scaleX(0); transform-origin: left; transition: transform .35s cubic-bezier(.2, .7, .2, 1); }
+  .btn:hover::after, .btn:focus-visible::after { transform: scaleX(1); }
   .btn-dark { background: var(--graphite); color: #fff; }
   .btn-dark:hover { background: #000; }
   .btn-ghost:hover { background: var(--graphite); color: #fff; }
@@ -55,10 +69,36 @@
   .hero .row { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: end; margin-top: 28px; }
   .hero .lede { font-size: 21px; color: var(--steel); max-width: 30em; }
   .hero .actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
-  .bead { margin-top: 56px; height: 46px; position: relative; overflow: hidden; }
-  .bead svg { display: block; width: 100%; height: 46px; }
-  .bead .draw { animation: draw 1.6s ease-out .2s both; }
-  @keyframes draw { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+
+  /* The weld bead. Finished by default; the script only animates it when motion is allowed. */
+  .bead { margin-top: 56px; height: 46px; position: relative; overflow: hidden; overflow: clip; overflow-clip-margin: 24px; }
+  .bead-body { position: absolute; left: 0; right: 0; top: 6px; height: 34px; border-radius: 17px; overflow: hidden; }
+  .bead svg { display: block; width: 100%; height: 34px; }
+  .torch, .cover, .arc { display: none; }
+  .motion .bead:not(.laid) .torch, .motion .bead:not(.laid) .cover, .motion .bead:not(.laid) .arc { display: block; position: absolute; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none; will-change: transform; }
+  .torch .wake { position: absolute; top: 0; bottom: 0; right: calc(100% - 17px); width: calc(20% + 17px);
+    /* behind the tip the metal cools: white-hot, straw, bronze, violet, blue, then settles into the finished tint */
+    background: linear-gradient(90deg, rgba(47,94,163,0) 0%, rgba(47,94,163,.8) 14%, #2f5ea3 26%, #6f3f8a 40%, #b8743a 56%, #e3bd5f 71%, #f6d98c 82%, #fff4d2 91%, #fffbef 100%); }
+  /* Unlaid metal is hidden by a white cover, cut back by a 17px half-circle: the rounded front of the puddle */
+  .motion .bead .cover { top: 5px; height: 36px;
+    background: radial-gradient(circle 17px at 0 50%, rgba(255,255,255,0) 16px, var(--white) 17px) 0 0 / 17px 100% no-repeat, linear-gradient(var(--white), var(--white)) 17px 0 / 100% 100% no-repeat; }
+  .arc .glow { position: absolute; left: -19px; top: 4px; width: 38px; height: 38px; border-radius: 50%; opacity: 0;
+    background: radial-gradient(closest-side, #fffef8 0 22%, #ffefb8 38%, rgba(244, 190, 84, .78) 58%, rgba(227, 160, 70, .3) 80%, rgba(227, 160, 70, 0) 100%); }
+  .arc i { position: absolute; left: 4px; top: 21px; width: 3px; height: 3px; border-radius: 50%; background: #f7c45e; box-shadow: 0 0 3px rgba(227, 189, 95, .9); opacity: 0; }
+  .arc i:nth-child(2) { --dx: -16px; --dy: -19px; --d: .5s; --s: .42s; }
+  .arc i:nth-child(3) { --dx: 9px; --dy: -15px; --d: .78s; --s: .36s; }
+  .arc i:nth-child(4) { --dx: -7px; --dy: -22px; --d: 1.12s; --s: .48s; }
+  .bead { --t0: .25s; --t1: .4s; --pass: 1.55s; --end: 1.95s; }
+  .bead.lay .torch, .bead.lay .cover, .bead.lay .arc { animation: travel var(--pass) linear var(--t1) both; }
+  .bead.lay .glow { animation: strike .15s ease-out var(--t0) both, flicker .08s linear var(--t1) 19 alternate, quench .45s ease-in var(--end) forwards; }
+  .bead.lay .wake { animation: cool .6s ease-out var(--end) forwards; }
+  .bead.lay .arc i { animation: spark var(--s) ease-out var(--d) 2; }
+  @keyframes travel { from { transform: translateX(0); } to { transform: translateX(100%); } }
+  @keyframes strike { from { opacity: 0; transform: scale(.3); } to { opacity: 1; transform: scale(1); } }
+  @keyframes flicker { from { transform: scale(1); } to { transform: scale(.92); } }
+  @keyframes quench { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(.4); } }
+  @keyframes cool { from { opacity: 1; } to { opacity: 0; } }
+  @keyframes spark { 0% { opacity: 1; transform: translate(0, 0); } 75% { opacity: .9; } 100% { opacity: 0; transform: translate(var(--dx), var(--dy)); } }
 
   .proof { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
   .proof ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); }
@@ -74,34 +114,61 @@
   table.spec { width: 100%; border-collapse: collapse; font-size: 16px; }
   .spec th, .spec td { text-align: left; vertical-align: top; padding: 18px 16px 18px 0; border-bottom: 1px solid var(--rule); }
   .spec thead th { font-size: 14px; color: var(--steel); font-weight: 600; border-bottom: 2px solid var(--graphite); }
-  .spec tbody th { font-family: "Big Shoulders Display", sans-serif; font-size: 28px; font-weight: 800; width: 26%; line-height: 1.05; }
-  .spec td:last-child { color: var(--steel); }
+  .spec tbody th { font-family: "Big Shoulders Display", sans-serif; font-size: 28px; font-weight: 800; width: 24%; line-height: 1.05; }
+  .spec td:nth-child(2) { width: 40%; }
+  .spec td:last-child { color: var(--steel); transition: color .25s ease; }
+  .spec td strong { color: var(--graphite); font-weight: 600; }
+  /* Reading aid: the row you point at gets a heat-tint rule drawn under it */
+  .spec tbody tr { position: relative; }
+  .spec tbody tr::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--heat); transform: scaleX(0); transform-origin: left; transition: transform .45s cubic-bezier(.2, .7, .2, 1); }
+  .spec tbody tr:hover::after, .spec tbody tr:focus-within::after { transform: scaleX(1); }
+  .spec tbody tr:hover td:last-child { color: var(--graphite); }
+
+  /* Shop terms, set out like the title block on a shop drawing */
+  .titleblock { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin: 36px 0 0; background: var(--graphite); border: 2px solid var(--graphite); }
+  .titleblock div { background: var(--white); padding: 12px 16px 14px; }
+  .titleblock dt { font-size: 13px; color: var(--steel); font-weight: 500; }
+  .titleblock dd { margin: 4px 0 0; font-family: "Big Shoulders Display", sans-serif; font-weight: 800; font-size: 24px; line-height: 1.1; }
 
   /* Dream Chaser */
   .feature { background: var(--graphite); color: #fff; }
   .feature .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
   .feature p { color: #c3cad0; margin-top: 18px; font-size: 18px; }
+  .feature .watch { font-size: 16px; }
+  .feature .watch a { color: #fff; text-decoration-color: var(--straw); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+  .feature .watch a:hover { color: var(--straw); }
   .parts { list-style: none; margin: 0; padding: 0; }
   .parts li { padding: 18px 0; border-bottom: 1px solid #3a4146; display: flex; justify-content: space-between; gap: 16px; }
   .parts li span:first-child { font-family: "Big Shoulders Display", sans-serif; font-size: 28px; font-weight: 800; }
   .parts li span:last-child { color: #9aa4ac; font-size: 15px; text-align: right; }
   .heatline { height: 4px; background: var(--heat); margin-top: 28px; width: 220px; }
-  .more-work { margin-top: 56px; display: flex; flex-wrap: wrap; gap: 10px; }
-  .more-work span { border: 1px solid #4a5258; padding: 8px 14px; font-size: 15px; color: #d6dce0; }
+  .motion .heatline { transform: scaleX(0); transform-origin: left; transition: transform 1.1s cubic-bezier(.3, .1, .2, 1) .15s; }
+  .motion .heatline.lay { transform: none; }
+  .feature .wrap.more { display: block; margin-top: 64px; }
+  .more h3 { font-size: 26px; padding-bottom: 12px; margin-bottom: 18px; border-bottom: 1px solid #3a4146; }
+  .more-work { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+  .more-work li { border: 1px solid #4a5258; padding: 7px 14px; font-size: 15px; color: #d6dce0; }
 
   /* Industries */
   .industries { columns: 3; column-gap: 40px; list-style: none; padding: 0; margin: 0; font-size: 20px; }
   .industries li { padding: 10px 0; border-bottom: 1px solid var(--rule); break-inside: avoid; }
-  .neighbors { margin-top: 32px; font-size: 18px; color: var(--steel); max-width: 44em; }
+  .after { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; align-items: start; }
+  .neighbors { font-size: 18px; color: var(--steel); }
+  .story h3 { font-size: 28px; margin-bottom: 10px; }
+  .story p { color: var(--steel); }
 
   /* Metal for sale */
   .metal { background: var(--plate); }
   .metal .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
   .metal p { color: var(--steel); margin-top: 16px; }
-  .stock { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .metal .note { font-size: 15px; }
+  .metal .note a { color: var(--graphite); }
+  .stock { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-content: start; }
   .stock h3 { font-size: 26px; padding-bottom: 8px; border-bottom: 2px solid var(--graphite); margin-bottom: 8px; }
   .stock ul { margin: 0; padding: 0; list-style: none; }
   .stock li { padding: 4px 0; }
+  .stock .also { grid-column: 1 / -1; }
+  .stock .also p { margin-top: 4px; }
 
   /* Reviews */
   .reviews .wrap { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 64px; align-items: start; }
@@ -114,38 +181,61 @@
   .contact { border-top: 6px solid transparent; border-image: var(--heat) 1; }
   .contact .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; }
   .contact p { color: var(--steel); margin-top: 16px; font-size: 18px; }
-  .contact dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 12px 24px; font-size: 18px; }
+  .contact .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+  .contact dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 12px 24px; font-size: 18px; align-content: start; }
   .contact dt { font-weight: 600; color: var(--steel); }
-  .contact dd { margin: 0; }
+  .contact dd { margin: 0; overflow-wrap: anywhere; }
+  .contact dd a { text-decoration-color: var(--rule); text-underline-offset: 3px; }
+  .contact dd a:hover { text-decoration-color: currentColor; }
   footer { background: var(--graphite); color: #9aa4ac; font-size: 13px; padding: 22px 0; }
   footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
 
   @media (max-width: 900px) {
     header nav { display: none; }
-    .hero .row, .head, .feature .wrap, .metal .wrap, .reviews .wrap, .contact .wrap { grid-template-columns: 1fr; }
+    .hero .row, .head, .feature .wrap, .metal .wrap, .reviews .wrap, .contact .wrap, .after { grid-template-columns: 1fr; }
     .hero .actions { justify-content: flex-start; }
     .proof ul { grid-template-columns: 1fr 1fr; }
     .proof li:nth-child(3) { border-left: 0; padding-left: 0; }
     .industries { columns: 2; }
     section { padding: 64px 0; }
+    .feature .wrap { gap: 40px; }
+    .feature .wrap.more { margin-top: 48px; }
+    .after { gap: 32px; }
     .spec thead { display: none; }
     .spec tr { display: block; padding: 16px 0; border-bottom: 1px solid var(--rule); }
     .spec th, .spec td { display: block; border: 0; padding: 2px 0; width: auto; }
+    .spec tbody th { margin-bottom: 4px; }
+    .spec td:nth-child(2) { width: auto; }
+    .titleblock { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 520px) {
     .industries { columns: 1; }
     .stock { grid-template-columns: 1fr; }
-    header .btn { padding: 9px 14px; font-size: 14px; }
+    header .wrap { gap: 12px; }
+    header .btn { padding: 9px 14px; font-size: 14px; white-space: nowrap; }
+    .logo { font-size: 27px; }
+    .logo span { font-size: 12px; }
+    .parts li span:first-child { font-size: 24px; }
+    .titleblock div { padding: 10px 12px 12px; }
+    .titleblock dd { font-size: 21px; }
+    .contact dl { grid-template-columns: 1fr; gap: 0; }
+    .contact dt { font-size: 15px; margin-top: 14px; }
+    .contact dt:first-child { margin-top: 0; }
   }
-  @media (prefers-reduced-motion: reduce) { .bead .draw { animation: none; } }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+  @media (prefers-reduced-motion: reduce) {
+    .torch, .cover, .arc { display: none !important; }
+    .heatline { transform: none !important; }
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+  }
 </style>
 </head>
 <body>
   <div class="concept"><strong>Homepage concept</strong> prepared for A&amp;E Technologies, LLC by Fakhar Rashid. This is a design preview, not the live website, and it is not affiliated with or approved by A&amp;E Technologies.</div>
 
   <div class="bar"><div class="wrap">
-    <span><strong>Open Monday to Friday, 7:30 to 4:00</strong> in Golden, Colorado</span>
-    <span>Call the shop: <strong>(303) 278-1980</strong></span>
+    <span id="hours"><strong>Open Monday to Friday, 7:30 to 4:00</strong> in Golden, Colorado</span>
+    <span>Call the shop: <a href="tel:+13032781980"><strong>(303) 278-1980</strong></a></span>
   </div></div>
 
   <header><div class="wrap">
@@ -170,25 +260,34 @@
         </div>
       </div>
       <div class="bead" aria-hidden="true">
-        <svg class="draw" viewBox="0 0 1200 46" preserveAspectRatio="none">
-          <defs>
-            <linearGradient id="tint" x1="0" x2="1" y1="0" y2="0">
-              <stop offset="0" stop-color="#cfd4d8"/><stop offset=".18" stop-color="#e3bd5f"/><stop offset=".4" stop-color="#b8743a"/><stop offset=".62" stop-color="#6f3f8a"/><stop offset=".82" stop-color="#2f5ea3"/><stop offset="1" stop-color="#cfd4d8"/>
-            </linearGradient>
-            <pattern id="ripple" width="18" height="46" patternUnits="userSpaceOnUse">
-              <path d="M2 4 C 16 10, 16 36, 2 42" fill="none" stroke="rgba(32,36,39,.28)" stroke-width="2"/>
-            </pattern>
-          </defs>
-          <rect x="0" y="6" width="1200" height="34" rx="17" fill="url(#tint)"/>
-          <rect x="0" y="6" width="1200" height="34" rx="17" fill="url(#ripple)"/>
-        </svg>
+        <div class="bead-body">
+          <svg width="100%" height="34" focusable="false">
+            <defs>
+              <linearGradient id="tint" x1="0" x2="1" y1="0" y2="0">
+                <stop offset="0" stop-color="#cfd4d8"/><stop offset=".18" stop-color="#e3bd5f"/><stop offset=".4" stop-color="#b8743a"/><stop offset=".62" stop-color="#6f3f8a"/><stop offset=".82" stop-color="#2f5ea3"/><stop offset="1" stop-color="#cfd4d8"/>
+              </linearGradient>
+              <pattern id="ripple" width="18" height="34" patternUnits="userSpaceOnUse">
+                <path d="M2 -2 C 16 4, 16 30, 2 36" fill="none" stroke="rgba(32,36,39,.28)" stroke-width="2"/>
+              </pattern>
+              <linearGradient id="crown" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".22" stop-color="#fff" stop-opacity=".26"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#202427" stop-opacity=".14"/>
+              </linearGradient>
+            </defs>
+            <rect width="100%" height="34" fill="url(#tint)"/>
+            <rect width="100%" height="34" fill="url(#ripple)"/>
+            <rect width="100%" height="34" fill="url(#crown)"/>
+          </svg>
+          <div class="torch"><span class="wake"></span></div>
+        </div>
+        <div class="cover"></div>
+        <div class="arc"><span class="glow"></span><i></i><i></i><i></i></div>
       </div>
     </div></section>
 
     <div class="proof"><div class="wrap">
       <ul>
-        <li><strong>Since 2003</strong>Owner-run shop in Golden</li>
-        <li><strong>AWS certified</strong>Welders on every job</li>
+        <li><strong>Since 2003</strong>Welding and fabrication in Golden</li>
+        <li><strong>AWS certified</strong>American Welding Society welders</li>
         <li><strong>4.5 on Google</strong>From 17 customer reviews</li>
         <li><strong>Federal contractor</strong>Aerospace to railroad</li>
       </ul>
@@ -197,25 +296,33 @@
     <section id="capabilities" aria-labelledby="cap-title"><div class="wrap">
       <div class="head">
         <h2 id="cap-title">What we can make for you</h2>
-        <p>Steel, aluminum and stainless. Prototypes, one-off repairs and production runs all get the same care.</p>
+        <p>We're more than a weld and fabrication shop, we're a solution shop. Bring us a drawing, a sketch, or a part you can't find on the shelf.</p>
       </div>
       <table class="spec">
-        <thead><tr><th>Service</th><th>What it covers</th><th>Good to know</th></tr></thead>
+        <thead><tr><th>Service</th><th>What it covers</th><th>Capacity and notes</th></tr></thead>
         <tbody>
-          <tr><th>Welding</th><td>TIG, MIG, spot and spray arc welding</td><td>AWS-certified welders</td></tr>
-          <tr><th>Cutting</th><td>Flame and plasma cutting, saw cutting</td><td>Cut to your size so nothing is wasted</td></tr>
-          <tr><th>Fabrication</th><td>Bending, forming, shearing, punching and drilling of plate and sheet</td><td>Shears carbon steel plate up to ¼ in by 12 ft</td></tr>
-          <tr><th>Machining</th><td>CNC milling and turning, plus precision manual machines</td><td>Prototype to production quantities</td></tr>
-          <tr><th>Structural</th><td>Tube frames, platforms, stairs and custom structures</td><td>Built to your specification</td></tr>
-          <tr><th>Architectural</th><td>Custom architectural metalwork</td><td>Made to fit the space just right</td></tr>
+          <tr><th>Welding</th><td>TIG, MIG, spot and spray arc welding of steel, aluminum and stainless steel</td><td>Welders certified by the American Welding Society</td></tr>
+          <tr><th>Flame cutting</th><td>CNC flame cutting of steel plate</td><td>Up to <strong>4 in</strong> thick and <strong>10 by 10 ft</strong></td></tr>
+          <tr><th>Plasma cutting</th><td>CNC plasma cutting of steel and aluminum</td><td>Up to <strong>2 in</strong> thick and <strong>10 by 10 ft</strong></td></tr>
+          <tr><th>Fabrication</th><td>Bending, forming, shearing, punching and drilling of plate and sheet, plus saw cutting</td><td>Shears carbon steel plate up to <strong>¼ in</strong> by <strong>12 ft</strong></td></tr>
+          <tr><th>Machining</th><td>CNC milling and turning, plus precision manual machines</td><td>Orders large and small, prototype to production</td></tr>
+          <tr><th>Structural</th><td>Tube frames, platforms, stairs and other custom structural work</td><td>For business, industrial and manufacturing applications</td></tr>
+          <tr><th>Architectural</th><td>Railings, steel decks, wine racks, metal counter tops and more</td><td>Made for your home or business, to fit just right</td></tr>
         </tbody>
       </table>
+      <dl class="titleblock" aria-label="Shop terms">
+        <div><dt>Materials</dt><dd>Steel, aluminum, stainless</dd></div>
+        <div><dt>Quantities</dt><dd>One part or dozens</dd></div>
+        <div><dt>Minimum shop charge</dt><dd>None</dd></div>
+        <div><dt>Consultation and estimate</dt><dd>No cost</dd></div>
+      </dl>
     </div></section>
 
     <section id="work" class="feature" aria-labelledby="work-title"><div class="wrap">
       <div>
         <h2 id="work-title">Built for spaceflight testing</h2>
-        <p>For the Dream Chaser spaceplane program we fabricated the test-flight support hanger, the transport frame and its tongue. The same shop floor handles a truck bed repair the next morning.</p>
+        <p>Doing our part to keep America in space: for the Dream Chaser spaceplane program we fabricated the test-flight support hanger, the transport frame and its tongue. Jobs large and small get the same consistent quality.</p>
+        <p class="watch"><a href="https://www.youtube.com/watch?v=jgfO6D-dNx8" target="_blank" rel="noopener">See these components in action in the test flight video</a></p>
         <div class="heatline" aria-hidden="true"></div>
       </div>
       <ul class="parts">
@@ -224,30 +331,41 @@
         <li><span>Transport tongue</span><span>Dream Chaser program</span></li>
       </ul>
     </div>
-    <div class="wrap more-work" aria-label="Other recent work">
-      <span>Cylinder lugs</span><span>Aluminum hydraulic tank</span><span>Tube extensions</span><span>Fairlead support</span><span>Tee brace</span><span>Truck bed modification</span><span>Industrial tube frame</span><span>Pump housing</span><span>Railroad brace</span>
+    <div class="wrap more">
+      <h3 id="more-title">More from the shop floor</h3>
+      <ul class="more-work" aria-labelledby="more-title">
+        <li>Cylinder lugs</li><li>Aluminum hydraulic tank</li><li>Tube extensions</li><li>Fairlead support</li><li>Tee brace</li><li>Truck bed project</li><li>Industrial tube frame</li><li>Wall panel for tube frame</li><li>Railroad brace</li><li>Retail mannequin stand</li><li>Triangle base</li><li>Turn buckles</li><li>Heavy duty umbrella bracket</li><li>Industrial coupling housing</li>
+      </ul>
     </div></section>
 
     <section aria-labelledby="ind-title"><div class="wrap">
       <div class="head">
         <h2 id="ind-title">Who we work for</h2>
-        <p>Big enough to serve you, small enough to know you.</p>
+        <p>Big enough to serve you, small enough to know you. Here you're a name and a face, not just a number.</p>
       </div>
       <ul class="industries">
         <li>Aerospace</li><li>Manufacturing</li><li>Transportation</li><li>Automation</li><li>Communications</li><li>Construction</li><li>Food service</li><li>Government</li><li>Merchandising</li><li>Railroad</li><li>Oil and gas</li><li>Our neighbors</li>
       </ul>
-      <p class="neighbors">We've also made truck beds, storage lockers and even a frying pan handle for people who live down the road. If it's metal, bring it by.</p>
+      <div class="after">
+        <p class="neighbors">We've also made truck beds, storage lockers and even a frying pan handle for people who live down the road. Walk-in customers are always welcome.</p>
+        <div class="story">
+          <h3>How the shop started</h3>
+          <p>Our history opens with a closure. When the company that employed our owners shut its doors, they opened a new welding and fabrication shop to fill a need in our business and residential communities. Since 2003 we've kept moving forward, thanks to a growing family of customers and a superior group of artisans.</p>
+        </div>
+      </div>
     </div></section>
 
     <section id="metal" class="metal" aria-labelledby="metal-title"><div class="wrap">
       <div>
         <h2 id="metal-title">Metal for sale, cut to size</h2>
-        <p>Buy stock from your local shop instead of waiting on a supplier. We'll cut it to the size you need, and you can pay with cash or card and pick it up in Golden.</p>
-        <a class="btn btn-dark" href="#contact" style="margin-top:24px">Check stock and pricing</a>
+        <p>Your local weld, fabrication and machine shop sells metal too, at competitive prices. We'll cut stock to the size you need so you don't waste material or money. Pay with cash, credit or debit card and pick it up in Golden.</p>
+        <a class="btn btn-dark" href="mailto:TKilworth@qwestoffice.net?subject=Metal%20stock%20and%20pricing" style="margin-top:24px">Check stock and pricing</a>
+        <p class="note">Availability and pricing: <a href="mailto:TKilworth@qwestoffice.net">TKilworth@qwestoffice.net</a></p>
       </div>
       <div class="stock">
         <div><h3>Materials</h3><ul><li>Hot rolled steel</li><li>Cold rolled steel</li><li>Stainless steel</li><li>Aluminum</li></ul></div>
         <div><h3>Shapes</h3><ul><li>Tube</li><li>Bar</li><li>Sheet</li><li>Plate</li><li>Structural</li></ul></div>
+        <div class="also"><h3>Machines and parts</h3><p>We also sell machines and parts, like used CAT 40 CNC tool holders (collet chucks, shell mill holders and drill chucks) and powder-coated industrial stairways. Stop by the shop and have a look at our inventory.</p></div>
       </div>
     </div></section>
 
@@ -265,14 +383,21 @@
     <section id="contact" class="contact" aria-labelledby="contact-title"><div class="wrap">
       <div>
         <h2 id="contact-title">Bring us your idea and your plan</h2>
-        <p>Email a drawing, a sketch or a photo of the part, and we'll come back with a price and a turnaround time.</p>
-        <a class="btn btn-dark" href="#contact" style="margin-top:24px">Request a quote</a>
+        <p>Call, email a drawing or a sketch, or stop by the shop. Consultations and job estimates are free, and walk-in customers are always welcome.</p>
+        <div class="actions">
+          <a class="btn btn-dark" href="tel:+13032781980">Call (303) 278-1980</a>
+          <a class="btn btn-ghost" href="mailto:info@aeweldshop.com?subject=Quote%20request">Email a drawing</a>
+        </div>
       </div>
       <dl>
         <dt>Shop</dt><dd>14252 W 44th Avenue, Unit A<br>Golden, CO 80403</dd>
         <dt>Hours</dt><dd>Monday to Friday, 7:30 am to 4:00 pm</dd>
-        <dt>Phone</dt><dd>(303) 278-1980</dd>
-        <dt>Email</dt><dd>info@aeweldshop.com</dd>
+        <dt>Phone</dt><dd><a href="tel:+13032781980">(303) 278-1980</a></dd>
+        <dt>Fax</dt><dd>(303) 278-7454</dd>
+        <dt>Email</dt><dd><a href="mailto:info@aeweldshop.com">info@aeweldshop.com</a></dd>
+        <dt>Metal sales</dt><dd><a href="mailto:TKilworth@qwestoffice.net">TKilworth@qwestoffice.net</a></dd>
+        <dt>Payment</dt><dd>Cash, Visa or MasterCard</dd>
+        <dt>Serving</dt><dd>Golden, Colorado and surrounding areas</dd>
       </dl>
     </div></section>
   </main>
@@ -281,5 +406,38 @@
     <span>A&amp;E Technologies, LLC, Golden, Colorado</span>
     <span>Concept by Fakhar Rashid. Content is taken from aeweldshop.com and their public Google listing.</span>
   </div></footer>
+
+<script>
+(function () {
+  /* During shop hours in Golden (Mountain time), the top bar says the torch is on. */
+  try {
+    var parts = new Intl.DateTimeFormat("en-US", { timeZone: "America/Denver", weekday: "short", hour: "numeric", minute: "numeric", hourCycle: "h23" }).formatToParts(new Date());
+    var get = function (t) { for (var i = 0; i < parts.length; i++) if (parts[i].type === t) return parts[i].value; return ""; };
+    var mins = (parseInt(get("hour"), 10) % 24) * 60 + parseInt(get("minute"), 10);
+    if (/^(Mon|Tue|Wed|Thu|Fri)/.test(get("weekday")) && mins >= 450 && mins < 960) {
+      document.getElementById("hours").innerHTML = '<span class="lit" aria-hidden="true"></span><strong>The torch is on.</strong> Open until 4:00 pm today in Golden, Colorado';
+    }
+  } catch (e) {}
+
+  var root = document.documentElement;
+  if (!root.classList.contains("motion")) return;
+  var bead = document.querySelector(".bead");
+  var heat = document.querySelector(".heatline");
+
+  /* When the last cooling step ends, drop the moving layers entirely. */
+  var wake = bead.querySelector(".wake");
+  wake.addEventListener("animationend", function () { bead.classList.add("laid"); });
+
+  var start = function (el) { el.classList.add("lay"); };
+  if (!("IntersectionObserver" in window)) { start(bead); start(heat); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { start(e.target); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.75 });
+  io.observe(bead);
+  io.observe(heat);
+})();
+</script>
 </body>
 </html>
