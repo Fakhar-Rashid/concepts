@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Duncan Electrical Contractors | Homepage concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --night: #0e1823;
+    --navy: #15263a;
+    --paper: #f4f0e8;
+    --paper-2: #e8e2d6;
+    --ink: #151b22;
+    --muted: #57606a;
+    --line: #d6cebf;
+    --copper: #b4561f;
+    --copper-dark: #8f4418;
+    --hot: #ec8f52;
+    --max: 1180px;
+    --cond: "Barlow Condensed", "Arial Narrow", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { margin: 0; font-family: "Barlow", system-ui, sans-serif; font-size: 17px; line-height: 1.6; color: var(--ink); background: var(--paper); }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--hot); outline-offset: 3px; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+  h1, h2, h3 { font-family: var(--cond); font-weight: 700; line-height: 1; margin: 0; text-transform: uppercase; }
+  h2 { font-size: clamp(40px, 6vw, 64px); font-weight: 800; letter-spacing: .005em; }
+  p { margin: 0; }
+  .eyebrow { font-family: var(--cond); font-weight: 600; font-size: 15px; letter-spacing: .16em; text-transform: uppercase; color: var(--copper); margin-bottom: 12px; }
+
+  .concept { background: var(--paper-2); color: #3d454e; font-size: 13px; line-height: 1.45; text-align: center; padding: 8px 16px; }
+  .concept strong { color: var(--ink); font-weight: 600; }
+
+  /* Dark top: utility, header, hero */
+  .top { position: relative; background: var(--night); color: #dde3e9; overflow: hidden; }
+  .top::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+    background-size: 36px 36px; background-position: -1px -1px;
+    -webkit-mask-image: radial-gradient(120% 90% at 85% 40%, #000 20%, transparent 75%); mask-image: radial-gradient(120% 90% at 85% 40%, #000 20%, transparent 75%); }
+  .utility { position: relative; border-bottom: 1px solid rgba(255,255,255,.1); font-size: 14px; color: #a3afbb; }
+  .utility .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 20px; padding-top: 8px; padding-bottom: 8px; }
+  .utility a { color: var(--hot); font-weight: 600; text-decoration: none; white-space: nowrap; }
+  .utility a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  header { position: relative; }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 16px; padding-bottom: 16px; }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; }
+  .brand svg { flex: none; }
+  .brand b { display: block; font-family: var(--cond); font-weight: 800; font-size: 27px; letter-spacing: .08em; line-height: 1; }
+  .brand small { display: block; font-size: 12.5px; letter-spacing: .03em; color: #a3afbb; margin-top: 4px; line-height: 1.2; }
+  nav ul { display: none; list-style: none; margin: 0; padding: 0; gap: 30px; font-family: var(--cond); font-weight: 600; font-size: 17px; letter-spacing: .08em; text-transform: uppercase; }
+  nav a { text-decoration: none; padding: 4px 0; border-bottom: 2px solid transparent; }
+  nav a:hover { border-color: var(--hot); color: #fff; }
+
+  .btn { display: inline-flex; align-items: center; gap: 10px; font-family: var(--cond); font-weight: 700; font-size: 19px; letter-spacing: .06em; text-transform: uppercase; text-decoration: none; line-height: 1; padding: 15px 22px; border-radius: 3px; border: 2px solid transparent; }
+  .btn:active { transform: translateY(1px); }
+  .btn svg { flex: none; }
+  .btn-copper { background: var(--copper); color: #fff; }
+  .btn-copper:hover { background: var(--copper-dark); }
+  .btn-ghost { border-color: rgba(255,255,255,.35); color: #fff; }
+  .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,.06); }
+  header .btn { padding: 11px 14px; font-size: 16px; }
+  header .btn .long { display: none; }
+
+  .hero { position: relative; padding: 28px 0 64px; }
+  .hero .wrap { display: grid; gap: 48px; align-items: center; }
+  .hero .eyebrow { color: var(--hot); }
+  .hero h1 { font-size: clamp(54px, 9.4vw, 112px); font-weight: 800; line-height: .9; color: #fff; letter-spacing: -.005em; }
+  .hero h1 em { font-style: normal; color: var(--hot); }
+  .lede { font-size: 19px; line-height: 1.55; color: #c2cbd4; max-width: 33em; margin-top: 22px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  .hours { margin-top: 22px; font-size: 15px; color: #93a0ad; max-width: 34em; }
+  .hours strong { color: #dde3e9; font-weight: 600; }
+
+  /* Equipment nameplate with the licenses */
+  .plate-wrap { justify-self: center; width: min(430px, 100%); }
+  .plate { position: relative; padding: 30px 26px 24px; border-radius: 7px; color: #1d242b; text-shadow: 0 1px 0 rgba(255,255,255,.55);
+    background: repeating-linear-gradient(90deg, transparent 0 2px, rgba(255,255,255,.18) 2px 3px), linear-gradient(160deg, #f1f3f4 0%, #c3c9ce 52%, #dfe3e6 100%);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.7), inset 0 0 0 5px rgba(0,0,0,.07), 0 28px 50px -22px rgba(0,0,0,.75); transform: rotate(-1.5deg); }
+  .screw { position: absolute; width: 13px; height: 13px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #fafbfb, #848c93 72%); box-shadow: inset 0 0 0 1px rgba(0,0,0,.28), 0 1px 0 rgba(255,255,255,.7); }
+  .screw::after { content: ""; position: absolute; left: 2px; right: 2px; top: 50%; height: 1.6px; margin-top: -.8px; background: rgba(0,0,0,.5); transform: rotate(var(--r, 35deg)); }
+  .s1 { top: 10px; left: 10px; } .s2 { top: 10px; right: 10px; --r: -20deg; } .s3 { bottom: 10px; left: 10px; --r: 80deg; } .s4 { bottom: 10px; right: 10px; --r: 10deg; }
+  .plate-title { font-family: var(--cond); font-weight: 800; font-size: 21px; letter-spacing: .06em; text-transform: uppercase; line-height: 1.05; text-align: center; }
+  .plate-sub { font-family: var(--cond); font-weight: 600; font-size: 14px; letter-spacing: .2em; text-transform: uppercase; text-align: center; color: #4a545d; margin-top: 6px; }
+  .plate dl { margin: 18px 0 0; }
+  .plate dl div { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; padding: 9px 0; border-top: 1px solid rgba(29,36,43,.25); }
+  .plate dt { font-family: var(--cond); font-weight: 600; font-size: 14px; letter-spacing: .07em; text-transform: uppercase; color: #46505a; line-height: 1.2; }
+  .plate dd { margin: 0; font-family: var(--cond); font-weight: 700; font-size: 20px; letter-spacing: .05em; text-align: right; line-height: 1.15; }
+  .plate-note { font-size: 14px; color: #93a0ad; margin-top: 22px; line-height: 1.5; }
+
+  /* Fact strip */
+  .facts { border-bottom: 1px solid var(--line); }
+  .facts ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; }
+  .facts li { padding: 22px 14px 22px 0; border-top: 1px solid var(--line); font-size: 15px; color: var(--muted); line-height: 1.4; }
+  .facts li:nth-child(-n+2) { border-top: 0; }
+  .facts strong { display: block; font-family: var(--cond); font-weight: 700; font-size: 24px; letter-spacing: .03em; text-transform: uppercase; color: var(--ink); margin-bottom: 4px; }
+
+  section { padding: 72px 0; }
+
+  /* Services: the breaker panel */
+  .svc-grid { display: grid; gap: 44px; }
+  .svc-intro > p { color: var(--muted); font-size: 18px; margin-top: 18px; max-width: 32em; }
+  .groups { margin: 28px 0 0; border-top: 2px solid var(--ink); }
+  .groups div { display: grid; grid-template-columns: 112px 1fr; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .groups dt { font-family: var(--cond); font-weight: 700; font-size: 19px; letter-spacing: .05em; text-transform: uppercase; line-height: 1.3; }
+  .groups dd { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.5; }
+  .led-note { margin-top: 22px; padding-left: 16px; border-left: 4px solid var(--copper); font-weight: 500; }
+
+  .panel { position: relative; border-radius: 10px; padding: 18px 14px 20px;
+    background: linear-gradient(180deg, #e2e5e8, #c6cbd0); box-shadow: inset 0 0 0 1px rgba(0,0,0,.18), inset 0 2px 0 rgba(255,255,255,.7), 0 30px 60px -30px rgba(14,24,35,.55); }
+  .panel-label { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; background: #fbfaf6; border: 1px solid #b9bfc5; border-radius: 3px; padding: 9px 12px; font-family: var(--cond); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; font-size: 15px; line-height: 1.2; }
+  .panel-label span:last-child { font-weight: 600; color: var(--muted); letter-spacing: .06em; font-size: 13px; }
+  .main-row { display: flex; align-items: center; gap: 14px; margin: 14px 0 6px; padding: 10px 12px; background: rgba(14,24,35,.06); border-radius: 4px; }
+  .main-row .t { font-family: var(--cond); font-weight: 700; font-size: 17px; letter-spacing: .08em; text-transform: uppercase; line-height: 1.2; }
+  .main-row .t small { display: block; font-family: "Barlow", sans-serif; font-weight: 500; font-size: 13px; letter-spacing: 0; text-transform: none; color: var(--muted); }
+  .circuits { position: relative; list-style: none; margin: 0; padding: 4px 0 0 20px; }
+  .circuits::before { content: ""; position: absolute; left: 4px; top: 6px; bottom: 6px; width: 8px; border-radius: 2px; background: linear-gradient(90deg, #8d5631, #e3a678 45%, #a8673c); box-shadow: 0 0 0 1px rgba(0,0,0,.18); }
+  .ckt { display: grid; grid-template-columns: 58px 1fr; align-items: center; gap: 12px; min-height: 44px; padding: 5px 0; border-bottom: 1px solid rgba(29,36,43,.12); }
+  .ckt:last-child { border-bottom: 0; }
+  .t { font-size: 15.5px; font-weight: 500; line-height: 1.3; }
+  .t b { font-family: var(--cond); font-weight: 700; font-size: 14px; color: var(--copper-dark); letter-spacing: .04em; margin-right: 7px; font-variant-numeric: tabular-nums; }
+  .brk { position: relative; display: block; width: 58px; height: 28px; border-radius: 4px; background: linear-gradient(#2c3238, #191d22); box-shadow: inset 0 0 0 1px #0b0e11, 0 1px 0 rgba(255,255,255,.55); transform: scaleX(-1); }
+  .brk i { position: absolute; top: 5px; bottom: 5px; right: 5px; width: 27px; border-radius: 2px; background: linear-gradient(90deg, #5d666f, #3a424a); box-shadow: inset 0 1px 0 rgba(255,255,255,.2); }
+  .brk i::after { content: ""; position: absolute; left: 6px; top: 50%; width: 4px; height: 10px; margin-top: -5px; border-radius: 1px; background: var(--hot); box-shadow: 0 0 8px rgba(236,143,82,.85); }
+  .main-row .brk { width: 74px; height: 34px; }
+  .main-row .brk i { width: 36px; }
+
+  /* Projects */
+  .projects { background: var(--navy); color: #dde3e9; }
+  .projects .eyebrow { color: var(--hot); }
+  .projects h2 { color: #fff; }
+  .head > p:last-child { color: #b3bec9; font-size: 18px; margin-top: 18px; max-width: 36em; }
+  .proj-grid { display: grid; gap: 14px; margin-top: 40px; }
+  .types { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .types li { display: flex; flex-direction: column; justify-content: space-between; gap: 22px; min-height: 140px; padding: 18px; border: 1px solid rgba(255,255,255,.14); border-radius: 4px; background: rgba(255,255,255,.03); }
+  .types svg { color: var(--hot); }
+  .types span { font-family: var(--cond); font-weight: 700; font-size: 22px; letter-spacing: .04em; text-transform: uppercase; line-height: 1.05; color: #fff; }
+  .ph { display: flex; align-items: center; justify-content: center; text-align: center; min-height: 220px; padding: 24px; border: 2px dashed rgba(255,255,255,.3); border-radius: 4px; color: #b3bec9; font-size: 15px; line-height: 1.4;
+    background: repeating-linear-gradient(135deg, rgba(255,255,255,.035) 0 12px, transparent 12px 24px); }
+  .ph strong { display: block; font-family: var(--cond); font-weight: 700; font-size: 20px; letter-spacing: .12em; text-transform: uppercase; color: #fff; margin-bottom: 6px; }
+
+  /* Family */
+  .fam-grid { display: grid; gap: 56px; }
+  .timeline { list-style: none; margin: 36px 0 0; padding: 0; }
+  .timeline li { position: relative; display: grid; grid-template-columns: 72px 1fr; gap: 18px; padding-bottom: 26px; }
+  .timeline li::before { content: ""; position: absolute; left: 80px; top: 14px; bottom: -14px; width: 2px; background: var(--copper); opacity: .35; }
+  .timeline li:last-child::before { display: none; }
+  .timeline li::after { content: ""; position: absolute; left: 76px; top: 10px; width: 10px; height: 10px; border-radius: 50%; background: var(--paper); box-shadow: 0 0 0 2px var(--copper); }
+  .timeline b { font-family: var(--cond); font-weight: 800; font-size: 30px; line-height: 1; color: var(--copper); letter-spacing: .01em; }
+  .timeline p { color: var(--muted); padding-left: 18px; }
+  .philosophy { align-self: start; background: #fff; border: 1px solid var(--line); border-top: 6px solid var(--ink); padding: 30px 24px; }
+  .philosophy blockquote { margin: 0; font-family: var(--cond); font-weight: 800; font-size: clamp(40px, 5.2vw, 58px); line-height: .95; text-transform: uppercase; }
+  .philosophy blockquote em { font-style: normal; color: var(--copper); }
+  .philosophy .goal { color: var(--muted); margin-top: 18px; }
+  .philosophy ul { list-style: none; margin: 24px 0 0; padding: 0; }
+  .philosophy li { padding: 14px 0; border-top: 1px solid var(--line); font-size: 15.5px; color: var(--muted); line-height: 1.5; }
+  .philosophy li strong { display: block; color: var(--ink); font-family: var(--cond); font-weight: 700; font-size: 19px; letter-spacing: .04em; text-transform: uppercase; }
+
+  /* Contact */
+  .contact { background: var(--copper-dark); color: #fff; }
+  .contact .eyebrow { color: #ffd2b3; }
+  .contact-grid { display: grid; gap: 40px; }
+  .contact-intro > p { font-size: 18px; color: #fbe6d8; margin-top: 16px; max-width: 30em; }
+  .phones { display: grid; gap: 12px; margin-top: 28px; }
+  .big-phone { display: block; text-decoration: none; background: #fff; color: var(--ink); padding: 14px 18px; border-radius: 4px; font-family: var(--cond); font-weight: 800; font-size: clamp(32px, 4vw, 40px); letter-spacing: .02em; line-height: 1.05; white-space: nowrap; }
+  .big-phone small { display: block; font-weight: 600; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--copper-dark); margin-bottom: 2px; }
+  .big-phone:hover { background: var(--night); color: #fff; }
+  .big-phone:hover small { color: var(--hot); }
+  .details { margin: 0; border-top: 2px solid rgba(255,255,255,.55); }
+  .details div { display: grid; grid-template-columns: 92px 1fr; gap: 14px; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,.22); }
+  .details dt { font-family: var(--cond); font-weight: 700; font-size: 17px; letter-spacing: .08em; text-transform: uppercase; color: #ffd2b3; }
+  .details dd { margin: 0; overflow-wrap: anywhere; }
+  .details a { text-underline-offset: 3px; }
+
+  footer { background: var(--night); color: #9aa6b2; font-size: 14px; padding: 26px 0; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
+
+  /* Phone call bar (sticks to the bottom of the screen on phones) */
+  .callbar { position: sticky; bottom: 0; z-index: 30; display: grid; grid-template-columns: 1.25fr 1fr; gap: 8px; padding: 8px 10px calc(8px + env(safe-area-inset-bottom)); background: rgba(14,24,35,.97); box-shadow: 0 -8px 24px rgba(0,0,0,.25); }
+  .callbar a { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 52px; text-decoration: none; border-radius: 4px; font-family: var(--cond); font-weight: 700; font-size: 19px; letter-spacing: .05em; text-transform: uppercase; line-height: 1.05; }
+  .callbar a small { font-family: "Barlow", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0; text-transform: none; opacity: .85; }
+  .callbar .c1 { background: var(--copper); color: #fff; }
+  .callbar .c2 { border: 2px solid rgba(255,255,255,.35); color: #fff; }
+
+  /* Larger screens */
+  @media (min-width: 640px) {
+    .wrap { padding: 0 28px; }
+    .facts ul { grid-template-columns: repeat(4, 1fr); }
+    .facts li { border-top: 0; padding-right: 22px; }
+    .types { grid-template-columns: repeat(3, 1fr); }
+    .phones { grid-template-columns: 1fr 1fr; }
+    .philosophy { padding: 36px 34px; }
+  }
+  @media (min-width: 761px) {
+    .callbar { display: none; }
+  }
+  @media (min-width: 960px) {
+    nav ul { display: flex; }
+    header .btn .long { display: inline; }
+    header .btn { padding: 12px 18px; }
+    .hero { padding: 48px 0 96px; }
+    .hero .wrap { grid-template-columns: 1.35fr 1fr; gap: 64px; }
+    section { padding: 104px 0; }
+    .svc-grid { grid-template-columns: .82fr 1.18fr; gap: 64px; align-items: start; }
+    .svc-intro { position: sticky; top: 32px; }
+    .panel { padding: 24px 26px 26px; }
+    .circuits { display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; padding: 4px 0 0; }
+    .circuits::before { left: 50%; margin-left: -4px; }
+    .ckt:nth-last-child(2) { border-bottom: 0; }
+    .ckt:nth-child(odd) { grid-template-columns: 1fr 58px; }
+    .ckt:nth-child(odd) .t { order: -1; text-align: right; }
+    .ckt:nth-child(odd) .brk { transform: none; }
+    .main-row { justify-content: center; }
+    .proj-grid { grid-template-columns: 2fr 1fr; gap: 18px; }
+    .types { gap: 18px; }
+    .ph { min-height: 100%; }
+    .fam-grid { grid-template-columns: 1.1fr .9fr; gap: 72px; }
+    .contact-grid { grid-template-columns: 1.1fr 1fr; gap: 72px; align-items: start; }
+    .phones { grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
+    .timeline li { grid-template-columns: 110px 1fr; }
+    .timeline li::before { left: 118px; }
+    .timeline li::after { left: 114px; }
+    .timeline b { font-size: 40px; }
+  }
+
+  /* Motion, only for visitors who haven't asked for reduced motion.
+     The hidden starting states all need the .motion class, which the script adds. */
+  @media (prefers-reduced-motion: no-preference) {
+    .rv { transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.3,1); }
+    .motion .rv:not(.in) { opacity: 0; transform: translateY(22px); }
+    .brk i { transition: transform .26s cubic-bezier(.5,0,.2,1.4); transition-delay: calc(var(--i, 0) * 70ms + 250ms); }
+    .brk i::after { transition: background-color .2s ease, box-shadow .2s ease; transition-delay: calc(var(--i, 0) * 70ms + 400ms); }
+    .t { transition: opacity .3s ease; transition-delay: calc(var(--i, 0) * 70ms + 380ms); }
+    .motion .panel:not(.live) .brk i { transform: translateX(-17px); }
+    .motion .panel:not(.live) .main-row .brk i { transform: translateX(-26px); }
+    .motion .panel:not(.live) .brk i::after { background: #4b3c33; box-shadow: none; }
+    .motion .panel:not(.live) .ckt .t { opacity: .45; }
+    .btn, .big-phone, nav a { transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+  <!-- Microsoft Clarity: anonymous visit stats for this concept -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "zadcpfjdhj");
+  </script>
+</head>
+<body>
+  <div class="concept"><strong>Homepage concept</strong> prepared for Duncan Electrical Contractors by Fakhar Rashid. This is a design preview, not the live website, and it is not affiliated with or approved by Duncan Electrical Contractors.</div>
+
+  <div class="top">
+    <div class="utility"><div class="wrap">
+      <span>Office hours: Monday to Friday, 8:00 AM to 5:00 PM</span>
+      <span>After-hours emergency: <a href="tel:+19034542076">(903) 454-2076</a></span>
+    </div></div>
+
+    <header><div class="wrap">
+      <a class="brand" href="#top" aria-label="Duncan Electrical Contractors, home">
+        <svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true" focusable="false"><rect x="1.5" y="1.5" width="41" height="41" rx="4" fill="none" stroke="#ec8f52" stroke-width="2"/><path d="M25.5 6.5 11.5 25H21l-3 12.5L32.5 18H23l2.5-11.5Z" fill="#ec8f52"/></svg>
+        <span><b>DUNCAN</b><small>Electrical Contractors, Inc.</small></span>
+      </a>
+      <nav aria-label="Main"><ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#family">Our family</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul></nav>
+      <a class="btn btn-copper" href="tel:+19034553636"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2Z"/></svg>Call<span class="long">&nbsp;(903) 455-3636</span></a>
+    </div></header>
+
+    <section class="hero" id="top" aria-labelledby="hero-title"><div class="wrap">
+      <div class="rv">
+        <p class="eyebrow">Electrical &middot; Heating and air &middot; Greenville, Texas</p>
+        <h1 id="hero-title">Building the future in Greenville <em>since 1955.</em></h1>
+        <p class="lede">Duncan Electrical Contractors is a family-owned electrical and heating and air contractor. Whether you want a new home or a new office building, we will help you build it. Small repair or remodel, we will be at your service.</p>
+        <div class="actions">
+          <a class="btn btn-copper" href="tel:+19034553636"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2Z"/></svg>(903) 455-3636</a>
+          <a class="btn btn-ghost" href="#services">See our services</a>
+        </div>
+        <p class="hours"><strong>Something wrong after hours?</strong> Call our emergency line, (903) 454-2076.</p>
+      </div>
+      <div class="plate-wrap rv">
+        <div class="plate">
+          <span class="screw s1" aria-hidden="true"></span><span class="screw s2" aria-hidden="true"></span><span class="screw s3" aria-hidden="true"></span><span class="screw s4" aria-hidden="true"></span>
+          <p class="plate-title">Duncan Electrical Contractors, Inc.</p>
+          <p class="plate-sub">Greenville, Texas &middot; Est. 1955</p>
+          <dl>
+            <div><dt>Electrical Contractors License No.</dt><dd>17057</dd></div>
+            <div><dt>Air Conditioning License No.</dt><dd>TACLB5255E</dd></div>
+            <div><dt>Insurance</dt><dd>Liability &amp; workers comp</dd></div>
+            <div><dt>Office</dt><dd>(903) 455-3636</dd></div>
+          </dl>
+        </div>
+        <p class="plate-note">We stay in compliance with all State of Texas electrical and air conditioning laws and registrations, along with current continuing education requirements.</p>
+      </div>
+    </div></section>
+  </div>
+
+  <main>
+    <div class="facts"><div class="wrap">
+      <ul>
+        <li class="rv"><strong>Since 1955</strong>Founded by Sam and Margaret Duncan</li>
+        <li class="rv"><strong>Family owned</strong>Operated by Sammy and Sandra Duncan</li>
+        <li class="rv"><strong>Homes &amp; businesses</strong>Residential and commercial, new work and repair</li>
+        <li class="rv"><strong>Sales &amp; service</strong>LED lighting distributor and surge protection</li>
+      </ul>
+    </div></div>
+
+    <section id="services" aria-labelledby="services-title"><div class="wrap svc-grid">
+      <div class="svc-intro rv">
+        <p class="eyebrow">Services</p>
+        <h2 id="services-title">Wiring, heat and air, and repairs</h2>
+        <p>New construction or a service call, for homes, businesses, restaurants and apartments.</p>
+        <dl class="groups">
+          <div><dt>Wiring</dt><dd>New residential and commercial wiring, underground wiring and power poles.</dd></div>
+          <div><dt>Heat &amp; air</dt><dd>Installation in new homes and commercial buildings, duct systems, and repair.</dd></div>
+          <div><dt>Repair</dt><dd>Electrical and AC repair for homes, businesses and apartments, plus kitchen equipment.</dd></div>
+          <div><dt>Protection</dt><dd>Lightning protection installation and surge suppression equipment.</dd></div>
+        </dl>
+        <p class="led-note">We're also a distributor of LED lighting products.</p>
+      </div>
+
+      <div class="panel" role="group" aria-label="Full list of services">
+        <div class="panel-label"><span>Circuit directory</span><span>Duncan Electrical Contractors, Inc.</span></div>
+        <div class="main-row"><span class="brk" aria-hidden="true"><i></i></span><span class="t">Main<small>Sales and service, (903) 455-3636</small></span></div>
+        <ol class="circuits">
+          <li class="ckt" style="--i:1"><span class="brk" aria-hidden="true"><i></i></span><span class="t"><b>01</b>New residential wiring</span></li>
+          <li class="ckt" style="--i:2"><span class="brk" aria-hidden="true"><i></i></span><span class="t"><b>02</b>New commercial wiring</span></li>
+          <li class="ckt" style="--i:3"><span class="brk" aria-hidden="true"><i></i></span><span class="t"><b>03</b>New residential heat and air installation</span></li>
+          <li class="ckt" style="--i:4"><span class="brk" aria-hidden="true"><i></i></span><span class="t"><b>04</b>New commercial heat and air installation</span></li>
+          <li class="ckt" style="--i:5"><span class="brk" aria-hidden="true"><i></i></span><span class="t"><b>05</b>Duct system installations</span></li>
+          <li class="ckt" style="--i:6"><span class="brk" aria-hidden="true"><i></i></span><span class="t"><b>06</b>Restaurant electrical construction</span></li>
+          <li class="ckt" style="--i:7"><span class="brk" aria-hidden="true"><i></i></span><span class="t"><b>07</b>Residential electrical repair</span></li>
+          <li class="ckt" style="--i:8"><span class="brk" aria-hidden="true"><i></i></span><span class="t"><b>08</b>Commercial electrical repair</span></li>
+          <li class="ckt" style="--i:9"><span class="brk" aria-hidden="true"><i></i></span><span class="t"><b>09</b>AC and heat residential repair</span></li>
+          <li class="ckt" style="--i:10"><span class="brk" aria-hidden="true"><i></i></span><span class="t"><b>10</b>AC and heat commercial repair</span></li>
+          <li class="ckt" style="--i:11"><span class="brk" aria-hidden="true"><i></i></span><span class="t"><b>11</b>Lightning protection installation</span></li>
+          <li class="ckt" style="--i:12"><span class="brk" aria-hidden="true"><i></i></span><span class="t"><b>12</b>Apartment electrical repair</span></li>
+          <li class="ckt" style="--i:13"><span class="brk" aria-hidden="true"><i></i></span><span class="t"><b>13</b>Apartment AC and heat repair</span></li>
+          <li class="ckt" style="--i:14"><span class="brk" aria-hidden="true"><i></i></span><span class="t"><b>14</b>Underground wiring services</span></li>
+          <li class="ckt" style="--i:15"><span class="brk" aria-hidden="true"><i></i></span><span class="t"><b>15</b>Kitchen equipment repair</span></li>
+          <li class="ckt" style="--i:16"><span class="brk" aria-hidden="true"><i></i></span><span class="t"><b>16</b>Power poles</span></li>
+          <li class="ckt" style="--i:17"><span class="brk" aria-hidden="true"><i></i></span><span class="t"><b>17</b>Surge suppression equipment, residential and commercial</span></li>
+          <li class="ckt" style="--i:18"><span class="brk" aria-hidden="true"><i></i></span><span class="t"><b>18</b>LED lighting products and distributor</span></li>
+        </ol>
+      </div>
+    </div></section>
+
+    <section id="projects" class="projects" aria-labelledby="projects-title"><div class="wrap">
+      <div class="head rv">
+        <p class="eyebrow">Projects</p>
+        <h2 id="projects-title">From new homes to strip malls</h2>
+        <p>Restaurants, apartments, churches, strip malls, businesses, new homes and remodels, across Greenville and the surrounding area.</p>
+      </div>
+      <div class="proj-grid">
+        <ul class="types">
+          <li class="rv"><svg width="44" height="44" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 40h32M12 40V22h24v18M10 22l4-8h20l4 8M20 40v-9h8v9M17 14V8M31 14V8"/></svg><span>Restaurants</span></li>
+          <li class="rv"><svg width="44" height="44" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 40V8h28v32M6 40h36M16 14h4M28 14h4M16 21h4M28 21h4M16 28h4M28 28h4M21 40v-6h6v6"/></svg><span>Apartments</span></li>
+          <li class="rv"><svg width="44" height="44" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M24 4v8M21 7h6M16 40V22l8-10 8 10v18M8 40V28l8-6M40 40V28l-8-6M6 40h36M21 40v-8a3 3 0 0 1 6 0v8"/></svg><span>Churches</span></li>
+          <li class="rv"><svg width="44" height="44" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 40h40M6 40V18h36v22M4 18l3-8h34l3 8M16 18v22M32 18v22M9 26h4M19 26h10M35 26h4"/></svg><span>Strip malls</span></li>
+          <li class="rv"><svg width="44" height="44" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 40V14l16-6v32M24 16h16v24M4 40h40M13 18h5M13 25h5M13 32h5M29 22h6M29 29h6"/></svg><span>Businesses</span></li>
+          <li class="rv"><svg width="44" height="44" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 22 24 8l18 14M11 18v22h26V18M20 40v-10h8v10M34 12v-4h4v7"/></svg><span>New homes &amp; remodels</span></li>
+        </ul>
+        <div class="ph rv" role="img" aria-label="Photo placeholder for a recent Duncan Electrical job"><p><strong>Photo placeholder</strong>A photo of a recent Duncan Electrical job goes here.</p></div>
+      </div>
+    </div></section>
+
+    <section id="family" aria-labelledby="family-title"><div class="wrap fam-grid">
+      <div class="rv">
+        <p class="eyebrow">Our family</p>
+        <h2 id="family-title">A Greenville family business since 1955</h2>
+        <ol class="timeline">
+          <li><b>1955</b><p>Sam Duncan began the company along with his wife Margaret, and served Greenville and the surrounding area until his death in 1997.</p></li>
+          <li><b>1977</b><p>Their son Sammy Duncan joined the business after his graduation.</p></li>
+          <li><b>1990</b><p>Sammy's wife Sandra began working in the business full time.</p></li>
+          <li><b>Today</b><p>Sammy and Sandra operate the family-owned business. They have trained their three sons as electricians, prepared to carry on the business if that is their future desire.</p></li>
+        </ol>
+      </div>
+      <div class="philosophy rv">
+        <blockquote><p>Your project is <em>our project.</em></p></blockquote>
+        <p class="goal">Our goal is high-quality workmanship and a good reputation with customers who can have confidence in our company. We strive to be the best at what we do.</p>
+        <ul>
+          <li><strong>Personal attention to each job</strong>Each client receives one-on-one attention through the entire process from at least one of our highly skilled personnel.</li>
+          <li><strong>Client satisfaction</strong>We invite our clients to provide input during the design process. After all, it's our job to make our clients' dream a reality.</li>
+          <li><strong>Professionalism</strong>We maintain a consistently high level of professional care and responsibility in each project, and we guarantee all of our work to be of the highest quality.</li>
+        </ul>
+      </div>
+    </div></section>
+
+    <section id="contact" class="contact" aria-labelledby="contact-title"><div class="wrap contact-grid">
+      <div class="contact-intro rv">
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-title">Call the office</h2>
+        <p>Office hours are Monday to Friday, 8:00 AM to 5:00 PM. For an emergency after hours, call our after-hours line.</p>
+        <div class="phones">
+          <a class="big-phone" href="tel:+19034553636"><small>Office</small>(903) 455-3636</a>
+          <a class="big-phone" href="tel:+19034542076"><small>After-hours emergency</small>(903) 454-2076</a>
+        </div>
+      </div>
+      <dl class="details rv">
+        <div><dt>Contact</dt><dd>Sammy Duncan</dd></div>
+        <div><dt>Office</dt><dd>4204 Moulton Street<br>Greenville, TX 75401</dd></div>
+        <div><dt>Mail</dt><dd>P.O. Box 1039<br>Greenville, TX 75403</dd></div>
+        <div><dt>Fax</dt><dd>(903) 455-3656</dd></div>
+        <div><dt>Email</dt><dd><a href="mailto:sandrajod@att.net">sandrajod@att.net</a><br><a href="mailto:info@duncanelectric.net">info@duncanelectric.net</a></dd></div>
+      </dl>
+    </div></section>
+  </main>
+
+  <footer><div class="wrap">
+    <span>Duncan Electrical Contractors, Inc., Greenville, Texas</span>
+    <span>Concept by Fakhar Rashid. Content is taken from duncanselectric.com.</span>
+  </div></footer>
+
+  <div class="callbar">
+    <a class="c1" href="tel:+19034553636">Call the office<small>(903) 455-3636</small></a>
+    <a class="c2" href="tel:+19034542076">After hours<small>(903) 454-2076</small></a>
+  </div>
+
+  <script>
+  /* Without this script, or with reduced motion, the page keeps its finished look:
+     everything visible and every breaker switched on. */
+  (function () {
+    var mm = window.matchMedia;
+    if (!mm || mm('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+    document.documentElement.classList.add('motion');
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    [].forEach.call(document.querySelectorAll('.rv'), function (el) { io.observe(el); });
+
+    // The breakers switch on one by one once the panel is mostly in view
+    var panel = document.querySelector('.panel');
+    var pio = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) { panel.classList.add('live'); pio.disconnect(); }
+    }, { threshold: 0.3 });
+    pio.observe(panel);
+  })();
+  </script>
+</body>
+</html>

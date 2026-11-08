@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Mar-Properties, Ltd. | Homepage concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f5f0e6;
+    --paper-2: #ece4d4;
+    --white: #fffdf8;
+    --ink: #1f2623;
+    --muted: #5b6159;
+    --rule: #d8cdb9;
+    --brick: #9c4128;
+    --brick-dk: #7a301c;
+    --oak: #4f5e45;
+    --night: #16233a;
+    --amber: #f0bd5c;
+    --max: 1160px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: "DM Sans", system-ui, sans-serif; font-size: 17px; line-height: 1.6; color: var(--ink); background: var(--paper); }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--brick); outline-offset: 3px; border-radius: 2px; }
+  .tenants a:focus-visible, .tenants button:focus-visible { outline-color: var(--amber); }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+  h1, h2, h3 { font-family: "DM Serif Display", Georgia, serif; font-weight: 400; line-height: 1.05; margin: 0; letter-spacing: -0.005em; }
+  h2 { font-size: clamp(34px, 4.6vw, 54px); }
+  p { margin: 0; }
+  .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--brick); }
+
+  .concept { background: var(--ink); color: #cfd2cb; font-size: 13px; text-align: center; padding: 8px 16px; }
+  .concept strong { color: #fff; font-weight: 600; }
+
+  /* Header */
+  header.top { border-bottom: 1px solid var(--rule); }
+  header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 18px; padding-bottom: 18px; }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .brand-mark { display: flex; align-items: flex-end; gap: 3px; height: 34px; }
+  .brand-mark i { display: block; width: 9px; background: var(--brick); }
+  .brand-mark i:nth-child(1) { height: 18px; }
+  .brand-mark i:nth-child(2) { height: 34px; }
+  .brand-mark i:nth-child(3) { height: 25px; }
+  .brand-name { font-family: "DM Serif Display", Georgia, serif; font-size: 27px; line-height: 1; }
+  .brand-name small { font-family: "DM Sans", sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .16em; margin-left: 6px; color: var(--muted); vertical-align: 3px; }
+  nav.main ul { list-style: none; display: flex; gap: 30px; margin: 0; padding: 0; font-weight: 600; font-size: 15px; }
+  nav.main a { text-decoration: none; padding: 4px 0; background: linear-gradient(var(--brick), var(--brick)) 0 100% / 0 2px no-repeat; }
+  nav.main a:hover, nav.main a:focus-visible { color: var(--brick); background-size: 100% 2px; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; font: inherit; font-weight: 700; font-size: 16px; text-decoration: none; padding: 14px 24px; border-radius: 999px; border: 2px solid transparent; cursor: pointer; }
+  .btn:active { transform: translateY(1px); }
+  .btn-brick { background: var(--brick); color: #fff; }
+  .btn-brick:hover { background: var(--brick-dk); }
+  .btn-line { border-color: var(--ink); color: var(--ink); background: transparent; }
+  .btn-line:hover { background: var(--ink); color: var(--paper); }
+
+  /* Hero */
+  .hero { padding: 64px 0 88px; }
+  .hero .wrap { display: grid; grid-template-columns: 1fr 1.08fr; gap: 56px; align-items: center; }
+  .hero h1 { font-size: clamp(46px, 6.2vw, 80px); margin-top: 16px; }
+  .hero h1 em { font-style: italic; color: var(--brick); }
+  .hero .lede { font-size: 20px; color: var(--muted); max-width: 30em; margin-top: 24px; }
+  .hero .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+
+  .hours { margin-top: 36px; border-top: 2px solid var(--ink); padding-top: 16px; max-width: 30em; }
+  .hours-now { display: flex; align-items: center; gap: 10px; font-weight: 700; margin-bottom: 10px; }
+  .hours-now .dot { width: 10px; height: 10px; border-radius: 50%; background: #5f8a4a; box-shadow: 0 0 0 4px rgba(95,138,74,.18); flex: none; }
+  .hours-now.closed .dot { background: var(--brick); box-shadow: 0 0 0 4px rgba(156,65,40,.18); }
+  .hours dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 18px; font-size: 15px; }
+  .hours dt { color: var(--muted); }
+  .hours dd { margin: 0; font-weight: 600; }
+  a[href^="tel:"] { white-space: nowrap; }
+  .hours a { text-decoration: none; border-bottom: 1px solid var(--rule); }
+  .hours a:hover { color: var(--brick); border-color: currentColor; }
+
+  /* The scene: an office park by day, and after hours with the lights on */
+  .scene-wrap { position: relative; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 0 var(--rule), 0 30px 60px -30px rgba(31,38,35,.35); background: #e8e3d6; }
+  .scene { display: block; width: 100%; height: auto; }
+  .scene-bar { position: absolute; left: 12px; right: 12px; top: 12px; display: flex; justify-content: space-between; align-items: center; gap: 10px; pointer-events: none; }
+  .scene-tag { font-size: 12px; font-weight: 600; letter-spacing: .04em; color: var(--ink); background: rgba(255,253,248,.82); padding: 3px 9px; border-radius: 999px; }
+  .scene-toggle { pointer-events: auto; font: inherit; font-size: 13px; font-weight: 700; color: var(--ink); background: rgba(255,253,248,.92); border: 0; border-radius: 999px; padding: 7px 14px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+  .scene-toggle:hover { background: #fff; }
+  .scene-toggle svg { width: 14px; height: 14px; }
+  .sky-n, .moon, .stars, .glow { opacity: 0; }
+  .sun, .clouds { opacity: 1; }
+  .brick { fill: #a44a2d; } .stone { fill: #ddd1b9; } .stone2 { fill: #e7ddcb; } .cap { fill: #857a69; } .band { fill: #e3d9c5; }
+  .w { fill: #a3b8bf; } .door { fill: #7d979f; } .far { fill: #b9c0a5; } .lawn { fill: #c8c39c; } .walk { fill: #ece5d6; }
+  .lot { fill: #bcb5a8; } .stripe { stroke: #f5f0e6; } .leaf { fill: #5f6f4c; } .leaf2 { fill: #4c5b3d; } .trunk { fill: #5b4936; }
+  .pole { stroke: #3c403d; } .sign-text { fill: #1f2623; } .car1 { fill: #6f7f88; } .car2 { fill: #8f3b25; } .glass { fill: #d9e2e2; }
+  [data-scene="night"] .sky-n, [data-scene="night"] .moon, [data-scene="night"] .stars, [data-scene="night"] .glow { opacity: 1; }
+  [data-scene="night"] .sun, [data-scene="night"] .clouds { opacity: 0; }
+  [data-scene="night"] .brick { fill: #4b2a22; } [data-scene="night"] .stone { fill: #3b404b; } [data-scene="night"] .stone2 { fill: #323947; }
+  [data-scene="night"] .cap { fill: #1f2532; } [data-scene="night"] .band { fill: #444a57; }
+  [data-scene="night"] .w { fill: #1c2537; } [data-scene="night"] .w.on { fill: #f0bd5c; } [data-scene="night"] .door { fill: #f6d58f; }
+  [data-scene="night"] .far { fill: #1d2a3f; } [data-scene="night"] .lawn { fill: #222c2b; } [data-scene="night"] .walk { fill: #363c45; }
+  [data-scene="night"] .lot { fill: #282d35; } [data-scene="night"] .stripe { stroke: #565d67; } [data-scene="night"] .leaf { fill: #1b2925; }
+  [data-scene="night"] .leaf2 { fill: #15201c; } [data-scene="night"] .trunk { fill: #171c1a; } [data-scene="night"] .pole { stroke: #11151b; }
+  [data-scene="night"] .sign-text { fill: #f0bd5c; } [data-scene="night"] .car1 { fill: #39424c; } [data-scene="night"] .car2 { fill: #3d2520; }
+  [data-scene="night"] .glass { fill: #4a5462; }
+  [data-scene="night"] .scene-tag { background: rgba(22,35,58,.8); color: #e8e1cf; }
+
+  /* Strip under the hero */
+  .parks-strip { background: var(--ink); color: #e9e4d8; }
+  .parks-strip ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); }
+  .parks-strip li { padding: 20px 24px 20px 0; font-size: 15px; color: #b9bdb4; }
+  .parks-strip li + li { border-left: 1px solid #3a423e; padding-left: 24px; }
+  .parks-strip strong { display: block; font-family: "DM Serif Display", Georgia, serif; font-weight: 400; font-size: 23px; color: #fff; line-height: 1.2; }
+
+  section { padding: 96px 0; }
+  .section-head { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; margin-bottom: 52px; }
+  .section-head p { color: var(--muted); font-size: 18px; max-width: 32em; }
+  .section-head .eyebrow { margin-bottom: 14px; }
+
+  /* Parks */
+  .park-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .park { background: var(--white); border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
+  .ph { position: relative; aspect-ratio: 4 / 3; display: flex; align-items: flex-end; padding: 14px; background: repeating-linear-gradient(135deg, var(--paper-2) 0 14px, #e4dac7 14px 15px); border-bottom: 1px solid var(--rule); }
+  .ph span { font-size: 13px; font-weight: 600; color: var(--muted); background: rgba(255,253,248,.9); padding: 4px 10px; border-radius: 999px; }
+  .ph svg { position: absolute; top: 50%; left: 50%; width: 46px; height: 46px; margin: -34px 0 0 -23px; color: #b9ad97; }
+  .park-body { padding: 24px 24px 26px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+  .park-num { font-family: "DM Serif Display", Georgia, serif; font-size: 20px; color: var(--brick); }
+  .park h3 { font-size: 31px; }
+  .park address { font-style: normal; color: var(--muted); }
+  .park .note { align-self: flex-start; font-size: 13px; font-weight: 700; color: var(--brick); border: 1.5px solid currentColor; border-radius: 999px; padding: 3px 11px; }
+  .park-links { display: flex; gap: 20px; flex-wrap: wrap; margin-top: auto; padding-top: 6px; font-weight: 700; font-size: 15px; }
+  .park-links a { text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+  .park-links a:hover { color: var(--brick); }
+  .park-links svg { width: 16px; height: 16px; }
+
+  /* Leasing */
+  .leasing { background: var(--paper-2); }
+  .leasing .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; }
+  .quote { font-family: "DM Serif Display", Georgia, serif; font-size: clamp(40px, 5.4vw, 70px); line-height: 1.04; }
+  .quote em { color: var(--brick); }
+  .quote-src { margin-top: 18px; color: var(--muted); font-size: 15px; }
+  .lease-card { background: var(--white); border-radius: 10px; padding: 32px; border: 1px solid var(--rule); }
+  .lease-card h2 { font-size: 34px; }
+  .lease-card p { color: var(--muted); margin-top: 12px; }
+  .broker { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--rule); }
+  .broker strong { display: block; font-size: 19px; }
+  .broker a.big { display: inline-block; margin-top: 4px; font-family: "DM Serif Display", Georgia, serif; font-size: 34px; text-decoration: none; color: var(--brick); }
+  .broker a.big:hover { color: var(--brick-dk); }
+  .broker .site { display: block; margin-top: 2px; font-weight: 600; font-size: 15px; }
+  .placeholder { margin-top: 22px; border: 1.5px dashed #b9ad97; border-radius: 8px; padding: 14px 16px; font-size: 14px; color: var(--muted); }
+  .placeholder b { display: block; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); margin-bottom: 2px; }
+
+  /* Tenants (dark) */
+  .tenants { background: var(--night); color: #e6e0d0; position: relative; overflow: hidden; }
+  .tenants .wrap { position: relative; display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; }
+  .tenants .eyebrow { color: var(--amber); }
+  .tenants h2 { color: #fff; margin-top: 14px; }
+  .tenants p { color: #b8bfca; margin-top: 18px; font-size: 18px; max-width: 30em; }
+  .em-card { border: 1px solid #34425b; border-radius: 10px; padding: 30px; background: rgba(255,255,255,.03); }
+  .em-card .label { font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--amber); display: flex; align-items: center; gap: 10px; }
+  .em-card .label i { width: 9px; height: 9px; border-radius: 50%; background: var(--amber); }
+  .em-card a.big { display: block; margin-top: 8px; font-family: "DM Serif Display", Georgia, serif; font-size: clamp(40px, 5vw, 56px); line-height: 1.1; color: #fff; text-decoration: none; }
+  .em-card a.big:hover { color: var(--amber); }
+  .em-card dl { margin: 22px 0 0; padding-top: 18px; border-top: 1px solid #34425b; display: grid; grid-template-columns: auto 1fr; gap: 8px 18px; font-size: 15px; }
+  .em-card dt { color: #8e98a8; }
+  .em-card dd { margin: 0; color: #e6e0d0; }
+  .em-card dd a { text-decoration: none; border-bottom: 1px solid #4a5874; }
+  .em-card dd a:hover { color: var(--amber); }
+  .tenants-lines { position: absolute; right: -40px; top: -20px; width: 420px; opacity: .5; pointer-events: none; }
+
+  /* Contacts */
+  .contacts .wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; }
+  .office dl { margin: 28px 0 0; display: grid; grid-template-columns: auto 1fr; gap: 14px 22px; }
+  .office dt { font-weight: 700; }
+  .office dd { margin: 0; color: var(--muted); }
+  .office dd a { text-decoration: none; border-bottom: 1px solid var(--rule); color: var(--ink); }
+  .office dd a:hover { color: var(--brick); border-color: currentColor; }
+  .people h3 { font-family: "DM Sans", sans-serif; font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; }
+  .people h3 + ul { margin-bottom: 32px; }
+  .people ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+  .people li { display: grid; grid-template-columns: 1fr auto; gap: 2px 20px; align-items: baseline; padding: 15px 0; border-bottom: 1px solid var(--rule); }
+  .people .name { font-family: "DM Serif Display", Georgia, serif; font-size: 25px; line-height: 1.2; }
+  .people .role { grid-column: 1; color: var(--muted); font-size: 15px; }
+  .people a { grid-column: 2; grid-row: 1 / span 2; align-self: center; font-weight: 600; font-size: 15px; text-decoration: none; color: var(--brick); }
+  .people a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+  footer { background: var(--ink); color: #aeb3aa; font-size: 14px; padding: 28px 0; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+  /* Phone quick-contact bar */
+  .dock { display: none; }
+
+  /* Motion: only when the visitor has not asked for reduced motion. The .motion class is set by the script. */
+  @media (prefers-reduced-motion: no-preference) {
+    .motion .reveal { opacity: 0; transform: translateY(22px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.3,1); transition-delay: calc(var(--rd, 0) * 110ms); }
+    .motion .reveal.in { opacity: 1; transform: none; }
+    .motion .scene * { transition: fill 1.1s ease, opacity 1.1s ease, stroke 1.1s ease; }
+    .motion .scene .w { transition: fill .45s ease calc(500ms + var(--d, 0) * 85ms); }
+    .motion .scene .sun { transition: opacity 1.1s ease, transform 1.4s cubic-bezier(.3,.6,.3,1); }
+    .motion [data-scene="night"] .scene .sun { transform: translateY(60px); }
+    .motion .scene .moon { transition: opacity 1s ease .4s; }
+    .park { transition: transform .3s ease, box-shadow .3s ease; }
+    .park:hover { transform: translateY(-4px); box-shadow: 0 24px 40px -28px rgba(31,38,35,.45); }
+    nav.main a { transition: background-size .25s ease, color .2s; }
+    .hours-now .dot { animation: pulse 2.6s ease-in-out infinite; }
+  }
+  @keyframes pulse { 50% { box-shadow: 0 0 0 7px rgba(95,138,74,0); } }
+
+  @media (max-width: 960px) {
+    .hero .wrap, .section-head, .leasing .wrap, .tenants .wrap, .contacts .wrap { grid-template-columns: 1fr; }
+    .hero .wrap { gap: 44px; }
+    .park-list { grid-template-columns: 1fr 1fr; }
+    section { padding: 72px 0; }
+  }
+  @media (max-width: 720px) {
+    .wrap { padding: 0 20px; }
+    header.top .wrap { flex-direction: column; align-items: flex-start; gap: 12px; padding-top: 14px; padding-bottom: 12px; }
+    header.top .btn { display: none; }
+    nav.main ul { gap: 22px; font-size: 14px; }
+    .hero { padding: 40px 0 64px; }
+    .hero .lede { font-size: 18px; }
+    .hero .actions .btn { flex: 1 1 auto; justify-content: center; }
+    .parks-strip { display: none; }
+    .ph { aspect-ratio: 16 / 9; }
+    .em-card dl, .office dl { grid-template-columns: 1fr; gap: 2px; }
+    .em-card dd + dt, .office dd + dt { margin-top: 12px; }
+    .park-list { grid-template-columns: 1fr; }
+    .lease-card, .em-card { padding: 24px 22px; }
+    .people li { grid-template-columns: 1fr; }
+    .people a { grid-column: 1; grid-row: auto; margin-top: 4px; }
+    .tenants-lines { display: none; }
+    footer { padding-bottom: 104px; }
+    .dock { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); background: rgba(31,38,35,.96); }
+    .dock a { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; border-radius: 999px; font-weight: 700; font-size: 16px; text-decoration: none; color: #fff; border: 1.5px solid #59615c; }
+    .dock a.primary { background: var(--brick); border-color: var(--brick); }
+    .dock svg { width: 18px; height: 18px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  /* Scroll reveals only run when motion is welcome; without this script everything is simply visible. */
+  if ('IntersectionObserver' in window && window.matchMedia && matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+    document.documentElement.classList.add('motion');
+  }
+</script>
+  <!-- Microsoft Clarity: anonymous visit stats for this concept -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "zadcpfjdhj");
+  </script>
+</head>
+<body>
+  <div class="concept"><strong>Homepage concept</strong> prepared for Mar-Properties by Fakhar Rashid. This is a design preview, not the live website, and it is not affiliated with or approved by Mar-Properties.</div>
+
+  <header class="top"><div class="wrap">
+    <a class="brand" href="#top" aria-label="Mar-Properties home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="brand-name">Mar-Properties<small>LTD</small></span>
+    </a>
+    <nav class="main" aria-label="Main"><ul>
+      <li><a href="#parks">Parks</a></li>
+      <li><a href="#leasing">Leasing</a></li>
+      <li><a href="#tenants">Tenants</a></li>
+      <li><a href="#contacts">Contacts</a></li>
+    </ul></nav>
+    <a class="btn btn-brick" href="tel:+19402438527">Call (940) 243-8527</a>
+  </div></header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title"><div class="wrap">
+      <div>
+        <p class="eyebrow">Denton, Texas</p>
+        <h1 id="hero-title">Custom office complexes, <em>built to suit</em> your needs.</h1>
+        <p class="lede">Mar-Properties has three business parks in Denton: Masch Branch, Corbin Road and Denton Creek, with its office on Masch Branch Road and an after-hours line for property emergencies.</p>
+        <div class="actions">
+          <a class="btn btn-brick" href="#leasing">Ask about leasing</a>
+          <a class="btn btn-line" href="#parks">See the three parks</a>
+        </div>
+        <div class="hours">
+          <p class="hours-now" id="now" hidden><span class="dot" aria-hidden="true"></span><span id="now-text"></span></p>
+          <dl>
+            <dt>Office hours</dt><dd>Mon–Fri, 7:00 am–3:30 pm (Central)</dd>
+            <dt>Office</dt><dd><a href="tel:+19402438527">(940) 243-8527</a></dd>
+            <dt>After hours</dt><dd>Property emergency: <a href="tel:+12144161425">(214) 416-1425</a></dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="scene-wrap" id="scene-wrap">
+        <svg class="scene" viewBox="0 24 640 436" role="img" aria-label="Illustration of a low-rise office complex with trees and parking, shown by day or after hours">
+          <defs>
+            <linearGradient id="sky-d" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c7d8dc"/><stop offset="1" stop-color="#f3eee3"/></linearGradient>
+            <linearGradient id="sky-n" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f1a2c"/><stop offset="1" stop-color="#2e3d57"/></linearGradient>
+            <mask id="moon-cut"><rect width="640" height="460" fill="#fff"/><circle cx="577" cy="116" r="19" fill="#000"/></mask>
+            <radialGradient id="glow"><stop offset="0" stop-color="#f6cf7c" stop-opacity=".7"/><stop offset="1" stop-color="#f6cf7c" stop-opacity="0"/></radialGradient>
+          </defs>
+          <rect width="640" height="460" fill="url(#sky-d)"/>
+          <rect class="sky-n" width="640" height="460" fill="url(#sky-n)"/>
+          <circle class="sun" cx="560" cy="126" r="34" fill="#f0bd5c"/>
+          <g class="clouds" fill="#fffdf8" opacity=".75"><path d="M72 112c0-12 10-20 22-20 7 0 13 3 17 9 3-2 7-3 11-3 11 0 19 8 19 18H72z"/><path d="M330 74c0-9 8-15 17-15 6 0 11 3 13 8 2-1 5-2 8-2 8 0 14 6 14 13h-52z"/></g>
+          <g class="moon"><circle cx="566" cy="124" r="22" fill="#f1e7d0" mask="url(#moon-cut)"/></g>
+          <g class="stars" fill="#efe6cf"><circle cx="60" cy="50" r="1.6"/><circle cx="140" cy="96" r="1.2"/><circle cx="210" cy="40" r="1.8"/><circle cx="300" cy="84" r="1.2"/><circle cx="380" cy="34" r="1.5"/><circle cx="430" cy="120" r="1.1"/><circle cx="590" cy="44" r="1.6"/><circle cx="600" cy="150" r="1.1"/><circle cx="250" cy="140" r="1"/><circle cx="34" cy="160" r="1.2"/></g>
+
+          <path class="far" d="M0 300C40 280 70 286 100 292S160 276 200 288 280 270 330 284 420 272 470 286 560 274 640 290V332H0Z"/>
+
+          <!-- back building -->
+          <rect class="cap" x="36" y="252" width="238" height="8"/>
+          <rect class="stone2" x="40" y="260" width="230" height="72"/>
+          <g>
+            <rect class="w on" style="--d:9" x="54" y="276" width="18" height="26"/><rect class="w on" style="--d:11" x="80" y="276" width="18" height="26"/><rect class="w" x="106" y="276" width="18" height="26"/><rect class="w on" style="--d:13" x="132" y="276" width="18" height="26"/><rect class="w on" style="--d:10" x="158" y="276" width="18" height="26"/><rect class="w on" style="--d:14" x="184" y="276" width="18" height="26"/>
+          </g>
+
+          <!-- main two-story building -->
+          <rect class="cap" x="196" y="182" width="292" height="12"/>
+          <rect class="brick" x="202" y="194" width="280" height="138"/>
+          <rect class="band" x="202" y="252" width="280" height="8"/>
+          <g>
+            <rect class="w on" style="--d:0" x="216" y="206" width="25" height="36"/><rect class="w on" style="--d:2" x="249" y="206" width="25" height="36"/><rect class="w" x="282" y="206" width="25" height="36"/><rect class="w on" style="--d:4" x="315" y="206" width="25" height="36"/><rect class="w on" style="--d:1" x="348" y="206" width="25" height="36"/><rect class="w on" style="--d:5" x="381" y="206" width="25" height="36"/><rect class="w on" style="--d:3" x="414" y="206" width="25" height="36"/><rect class="w" x="447" y="206" width="25" height="36"/>
+            <rect class="w on" style="--d:6" x="216" y="270" width="25" height="40"/><rect class="w on" style="--d:8" x="249" y="270" width="25" height="40"/><rect class="w" x="282" y="270" width="25" height="40"/><rect class="w on" style="--d:7" x="381" y="270" width="25" height="40"/><rect class="w on" style="--d:12" x="414" y="270" width="25" height="40"/><rect class="w" x="447" y="270" width="25" height="40"/>
+          </g>
+          <rect class="door" x="322" y="282" width="44" height="50"/>
+          <path d="M344 282V332" stroke-width="2" stroke="#1f2623" opacity=".3"/>
+          <rect class="cap" x="310" y="272" width="68" height="8"/>
+
+          <!-- right one-story building -->
+          <rect class="cap" x="466" y="242" width="156" height="8"/>
+          <rect class="stone" x="470" y="250" width="148" height="82"/>
+          <rect class="brick" x="470" y="250" width="148" height="10"/>
+          <g>
+            <rect class="w on" style="--d:15" x="486" y="272" width="22" height="34"/><rect class="w" x="516" y="272" width="22" height="34"/><rect class="w on" style="--d:16" x="546" y="272" width="22" height="34"/><rect class="w on" style="--d:17" x="576" y="272" width="22" height="34"/>
+          </g>
+
+          <!-- ground, walk and lot -->
+          <rect class="lawn" x="0" y="330" width="640" height="130"/>
+          <rect class="walk" x="0" y="330" width="640" height="10"/>
+          <rect class="lot" x="0" y="352" width="640" height="66"/>
+          <g class="stripe" stroke-width="2"><path d="M20 352v24M70 352v24M120 352v24M170 352v24M220 352v24M270 352v24M320 352v24M370 352v24M420 352v24M470 352v24M520 352v24M570 352v24M620 352v24"/></g>
+          <g class="car1"><rect x="128" y="368" width="58" height="13" rx="5"/><path d="M140 368l7-9h22l8 9z"/></g>
+          <g class="car2"><rect x="428" y="368" width="58" height="13" rx="5"/><path d="M440 368l7-9h22l8 9z"/></g>
+          <g fill="#2a2f2c"><circle cx="142" cy="382" r="5"/><circle cx="172" cy="382" r="5"/><circle cx="442" cy="382" r="5"/><circle cx="472" cy="382" r="5"/></g>
+
+          <!-- lamps -->
+          <circle class="glow" cx="300" cy="350" r="46" fill="url(#glow)"/>
+          <circle class="glow" cx="560" cy="350" r="46" fill="url(#glow)"/>
+          <g class="pole" fill="none" stroke-width="2.5" stroke-linecap="round"><path d="M300 400v-58h-12M560 400v-58h-12"/></g>
+
+          <!-- live oaks -->
+          <rect class="trunk" x="114" y="296" width="9" height="46"/>
+          <g class="leaf"><circle cx="98" cy="292" r="25"/><circle cx="126" cy="280" r="29"/><circle cx="152" cy="296" r="21"/></g>
+          <g class="leaf2"><circle cx="116" cy="306" r="20"/><circle cx="142" cy="308" r="15"/></g>
+          <rect class="trunk" x="604" y="300" width="9" height="42"/>
+          <g class="leaf"><circle cx="588" cy="292" r="21"/><circle cx="612" cy="280" r="27"/><circle cx="636" cy="296" r="20"/></g>
+          <g class="leaf2"><circle cx="604" cy="306" r="17"/></g>
+
+          <!-- monument sign -->
+          <g class="leaf2"><ellipse cx="44" cy="446" rx="26" ry="12"/><ellipse cx="236" cy="446" rx="26" ry="12"/></g>
+          <rect class="stone" x="48" y="404" width="184" height="44" rx="2"/>
+          <rect class="brick" x="48" y="404" width="184" height="8"/>
+          <text class="sign-text" x="140" y="436" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="13" font-weight="700" letter-spacing="3">MAR-PROPERTIES</text>
+        </svg>
+        <div class="scene-bar">
+          <span class="scene-tag">Illustration</span>
+          <button class="scene-toggle" id="scene-toggle" type="button" hidden aria-pressed="false">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10.5 1.5a6.5 6.5 0 1 0 4 11.6A7 7 0 0 1 10.5 1.5z" fill="currentColor"/></svg>
+            <span>See it after hours</span>
+          </button>
+        </div>
+      </div>
+    </div></section>
+
+    <div class="parks-strip"><div class="wrap">
+      <ul>
+        <li><strong>Masch Branch Business Park</strong>2281 N. Masch Branch Rd. ~ Denton, TX 76207</li>
+        <li><strong>Corbin Road Business Park</strong>5000 Corbin Rd. ~ Denton, TX 76207</li>
+        <li><strong>Denton Creek Business Park</strong>2686 Old Alton Rd. ~ Denton, TX 76210</li>
+      </ul>
+    </div></div>
+
+    <section id="parks" aria-labelledby="parks-title"><div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">The parks</p>
+          <h2 id="parks-title">Three business parks, all in Denton</h2>
+        </div>
+        <p>Custom office complexes in three Denton locations. For leasing information on any of them, contact Don Frazier Commercial Real Estate Service.</p>
+      </div>
+      <ul class="park-list">
+        <li class="park reveal" style="--rd:0">
+          <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg><span>Photo placeholder: Masch Branch</span></div>
+          <div class="park-body">
+            <span class="park-num">01</span>
+            <h3>Masch Branch Business Park</h3>
+            <address>2281 N. Masch Branch Rd.<br>Denton, TX 76207</address>
+            <span class="note">Mar-Properties office, Suite 400</span>
+            <div class="park-links">
+              <a href="https://www.google.com/maps/search/?api=1&amp;query=2281+N.+Masch+Branch+Rd.%2C+Denton%2C+TX+76207" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 15s5-4.6 5-8.5A5 5 0 0 0 3 6.5C3 10.4 8 15 8 15z"/><circle cx="8" cy="6.5" r="1.8"/></svg>Directions</a>
+              <a href="#leasing">Ask about space →</a>
+            </div>
+          </div>
+        </li>
+        <li class="park reveal" style="--rd:1">
+          <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg><span>Photo placeholder: Corbin Road</span></div>
+          <div class="park-body">
+            <span class="park-num">02</span>
+            <h3>Corbin Road Business Park</h3>
+            <address>5000 Corbin Rd.<br>Denton, TX 76207</address>
+            <div class="park-links">
+              <a href="https://www.google.com/maps/search/?api=1&amp;query=5000+Corbin+Rd.%2C+Denton%2C+TX+76207" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 15s5-4.6 5-8.5A5 5 0 0 0 3 6.5C3 10.4 8 15 8 15z"/><circle cx="8" cy="6.5" r="1.8"/></svg>Directions</a>
+              <a href="#leasing">Ask about space →</a>
+            </div>
+          </div>
+        </li>
+        <li class="park reveal" style="--rd:2">
+          <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg><span>Photo placeholder: Denton Creek</span></div>
+          <div class="park-body">
+            <span class="park-num">03</span>
+            <h3>Denton Creek Business Park</h3>
+            <address>2686 Old Alton Rd.<br>Denton, TX 76210</address>
+            <div class="park-links">
+              <a href="https://www.google.com/maps/search/?api=1&amp;query=2686+Old+Alton+Rd.%2C+Denton%2C+TX+76210" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 15s5-4.6 5-8.5A5 5 0 0 0 3 6.5C3 10.4 8 15 8 15z"/><circle cx="8" cy="6.5" r="1.8"/></svg>Directions</a>
+              <a href="#leasing">Ask about space →</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div></section>
+
+    <section id="leasing" class="leasing" aria-labelledby="leasing-title"><div class="wrap">
+      <div class="reveal">
+        <p class="quote">“Custom office complexes <em>built to suit</em> your needs.”</p>
+        <p class="quote-src">Mar-Properties, Ltd., Denton</p>
+      </div>
+      <div class="lease-card reveal" style="--rd:1">
+        <p class="eyebrow">Leasing</p>
+        <h2 id="leasing-title">Looking for space?</h2>
+        <p>For leasing information on Masch Branch, Corbin Road or Denton Creek, contact:</p>
+        <div class="broker">
+          <strong>Don Frazier Commercial Real Estate Service</strong>
+          <a class="big" href="tel:+19405660404">(940) 566-0404</a>
+          <a class="site" href="https://www.fraziercommercial.com" target="_blank" rel="noopener">www.fraziercommercial.com</a>
+        </div>
+        <div class="placeholder"><b>Placeholder</b>Available suites, sizes and photos for each park could be listed here, so a prospect can see what's open before they call.</div>
+      </div>
+    </div></section>
+
+    <section id="tenants" class="tenants" aria-labelledby="tenants-title">
+      <svg class="tenants-lines" viewBox="0 0 420 300" fill="none" stroke="#2c3a54" stroke-width="1.2" aria-hidden="true"><path d="M20 280V120h120v160M140 280V60h160v220M300 280V150h100v130"/><path d="M40 140h20v20H40zM80 140h20v20H80zM160 80h20v20h-20zM200 80h20v20h-20zM240 80h20v20h-20zM160 120h20v20h-20zM240 120h20v20h-20zM320 170h20v20h-20zM360 170h20v20h-20z"/></svg>
+      <div class="wrap">
+        <div class="reveal">
+          <p class="eyebrow">For tenants</p>
+          <h2 id="tenants-title">A property problem after hours?</h2>
+          <p>Call the after-hours property emergency line. During office hours, Monday to Friday from 7:00 am to 3:30 pm, call the office.</p>
+        </div>
+        <div class="em-card reveal" style="--rd:1">
+          <p class="label"><i aria-hidden="true"></i>After-hours property emergency</p>
+          <a class="big" href="tel:+12144161425">(214) 416-1425</a>
+          <dl>
+            <dt>Office</dt><dd><a href="tel:+19402438527">(940) 243-8527</a> or <a href="tel:+19402438525">(940) 243-8525</a></dd>
+            <dt>Superintendent</dt><dd>Glen Wood, <a href="mailto:gwood@mar-properties.com">gwood@mar-properties.com</a></dd>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacts" class="contacts" aria-labelledby="contacts-title"><div class="wrap">
+      <div class="office reveal">
+        <p class="eyebrow">Contacts</p>
+        <h2 id="contacts-title" style="margin-top:14px">The Mar-Properties office</h2>
+        <dl>
+          <dt>Address</dt><dd>2281 N. Masch Branch Rd., Ste. 400<br>Denton, TX 76207</dd>
+          <dt>Hours</dt><dd>Monday to Friday, 7:00 am–3:30 pm</dd>
+          <dt>Phone</dt><dd><a href="tel:+19402438527">(940) 243-8527</a><br><a href="tel:+19402438525">(940) 243-8525</a></dd>
+          <dt>Fax</dt><dd>(940) 243-8518</dd>
+          <dt>After hours</dt><dd>Property emergency: <a href="tel:+12144161425">(214) 416-1425</a></dd>
+        </dl>
+      </div>
+      <div class="people reveal" style="--rd:1">
+        <h3>Office</h3>
+        <ul>
+          <li><span class="name">Sherry Gray</span><span class="role">Office Manager</span><a href="mailto:sherry@mar-properties.com">sherry@mar-properties.com</a></li>
+          <li><span class="name">Glen Wood</span><span class="role">Property Superintendent</span><a href="mailto:gwood@mar-properties.com">gwood@mar-properties.com</a></li>
+        </ul>
+        <h3>Partners</h3>
+        <ul>
+          <li><span class="name">JR Marriott</span><span class="role">Partner</span><a href="mailto:jrmarriott@mar-properties.com">jrmarriott@mar-properties.com</a></li>
+          <li><span class="name">Vickie Marriott</span><span class="role">Partner</span><a href="mailto:vmarriott@mar-properties.com">vmarriott@mar-properties.com</a></li>
+          <li><span class="name">Connie Marriott</span><span class="role">Partner</span><a href="mailto:connie@mar-properties.com">connie@mar-properties.com</a></li>
+          <li><span class="name">Ricky Marriott</span><span class="role">Partner</span><a href="mailto:rmarriott@mar-properties.com">rmarriott@mar-properties.com</a></li>
+        </ul>
+      </div>
+    </div></section>
+  </main>
+
+  <footer><div class="wrap">
+    <span>Mar-Properties, Ltd., Denton, Texas</span>
+    <span>Concept by Fakhar Rashid. Content is taken from mar-properties.com.</span>
+  </div></footer>
+
+  <nav class="dock" aria-label="Quick contact">
+    <a class="primary" href="tel:+19402438527"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Call the office</a>
+    <a href="mailto:sherry@mar-properties.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Email Sherry</a>
+  </nav>
+
+  <script>
+  (function () {
+    /* Office status in Denton (Central time), from the published hours: Mon–Fri 7:00–3:30.
+       After hours, the illustration switches to its evening scene. */
+    var wrap = document.getElementById('scene-wrap');
+    var btn = document.getElementById('scene-toggle');
+    var now = document.getElementById('now'), nowText = document.getElementById('now-text');
+    try {
+      var parts = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Chicago', weekday: 'short', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' }).formatToParts(new Date());
+      var get = function (t) { for (var i = 0; i < parts.length; i++) if (parts[i].type === t) return parts[i].value; };
+      var day = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(get('weekday'));
+      var mins = (parseInt(get('hour'), 10) % 24) * 60 + parseInt(get('minute'), 10);
+      var weekday = day >= 1 && day <= 5;
+      var open = weekday && mins >= 420 && mins < 930;
+      var next = (weekday && mins < 420) ? 'today' : (day >= 1 && day <= 4) ? 'tomorrow' : 'Monday';
+      nowText.textContent = open ? 'The office is open now, until 3:30 pm Central.' : 'The office is closed now. It opens ' + next + ' at 7:00 am Central.';
+      if (!open) { now.classList.add('closed'); wrap.setAttribute('data-scene', 'night'); }
+      now.hidden = false;
+    } catch (e) {}
+
+    function label() {
+      var night = wrap.getAttribute('data-scene') === 'night';
+      btn.setAttribute('aria-pressed', night ? 'true' : 'false');
+      btn.querySelector('span').textContent = night ? 'See it by day' : 'See it after hours';
+    }
+    btn.addEventListener('click', function () {
+      if (wrap.getAttribute('data-scene') === 'night') wrap.removeAttribute('data-scene'); else wrap.setAttribute('data-scene', 'night');
+      label();
+    });
+    label();
+    btn.hidden = false;
+
+    /* Gentle scroll reveals */
+    if (!document.documentElement.classList.contains('motion')) return;
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -40px 0px', threshold: 0.12 });
+    [].forEach.call(document.querySelectorAll('.reveal'), function (el) { io.observe(el); });
+  })();
+  </script>
+</body>
+</html>

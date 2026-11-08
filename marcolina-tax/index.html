@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Marcolina Tax &amp; Accounting | Homepage concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f8f3ea;
+    --paper-2: #f0e6d5;
+    --card: #fffdf8;
+    --ink: #2b2420;
+    --muted: #675a50;
+    --rule: #ddcfbb;
+    --accent: #b4471a;
+    --accent-dark: #8f3713;
+    --gilt-1: #6f4f17;
+    --gilt-2: #e9cd88;
+    --gilt-3: #a9802f;
+    --max: 1160px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: "Libre Franklin", system-ui, sans-serif; font-size: 17px; line-height: 1.65; color: var(--ink); background: var(--paper); }
+  a { color: inherit; }
+  a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  .confidence a:focus-visible { outline-color: var(--gilt-2); }
+  p { margin: 0; }
+  h1, h2, h3 { font-family: "Libre Caslon Text", Georgia, serif; font-weight: 400; line-height: 1.14; margin: 0; letter-spacing: -0.005em; }
+  h2 { font-size: clamp(30px, 3.6vw, 44px); }
+  em { font-style: italic; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+  .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+
+  .concept { background: var(--ink); color: #d8cec2; font-size: 13px; line-height: 1.5; text-align: center; padding: 8px 16px; }
+  .concept strong { color: #fff; font-weight: 600; }
+
+  /* Header */
+  .top { border-bottom: 1px solid var(--rule); }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-top: 16px; padding-bottom: 16px; }
+  .brand { text-decoration: none; display: flex; flex-direction: column; line-height: 1; }
+  .brand b { font-family: "Libre Caslon Text", Georgia, serif; font-weight: 700; font-size: 27px; letter-spacing: .01em; }
+  .brand span { font-size: 11.5px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+  .top nav ul { list-style: none; display: flex; gap: 28px; margin: 0; padding: 0; font-size: 15px; font-weight: 500; }
+  .top nav a { text-decoration: none; padding: 4px 0; background: linear-gradient(var(--accent), var(--accent)) 0 100% / 0 1.5px no-repeat; }
+  .top nav a:hover, .top nav a:focus-visible { background-size: 100% 1.5px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font: inherit; font-weight: 600; font-size: 16px; line-height: 1.2; text-decoration: none; padding: 14px 22px; border-radius: 2px; border: 1.5px solid transparent; text-align: center; }
+  .btn:active { transform: translateY(1px); }
+  .btn svg { flex: none; }
+  .btn-accent { background: var(--accent); color: #fff; }
+  .btn-accent:hover { background: var(--accent-dark); }
+  .btn-line { border-color: var(--ink); background: transparent; }
+  .btn-line:hover { background: var(--ink); color: var(--paper); }
+  .top .btn { padding: 11px 18px; font-size: 15px; }
+
+  /* Hero */
+  .hero { position: relative; padding: 72px 0 150px; overflow: hidden; }
+  .hero-grid { display: grid; grid-template-columns: 1.12fr .88fr; gap: 64px; align-items: center; }
+  .hero h1 { font-size: clamp(38px, 5.4vw, 66px); }
+  .hero h1 em { color: var(--accent); }
+  .lede { font-size: 19px; color: var(--muted); max-width: 33em; margin-top: 24px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+  .facts { list-style: none; margin: 40px 0 0; padding: 18px 0 0; border-top: 1px solid var(--rule); display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 8px 36px; font-size: 14px; color: var(--muted); }
+  .facts strong { display: block; font-family: "Libre Caslon Text", Georgia, serif; font-weight: 400; font-size: 22px; color: var(--ink); line-height: 1.2; }
+
+  /* The office door: gilt lettering on frosted glass (the signature moment) */
+  .door-area { display: flex; flex-direction: column; align-items: center; }
+  .door-wrap { margin: 0; width: min(390px, 100%); }
+  .door { position: relative; padding: 22px 22px 92px; border-radius: 5px 5px 0 0;
+    background:
+      repeating-linear-gradient(90deg, rgba(0,0,0,0) 0 7px, rgba(0,0,0,.06) 7px 8px, rgba(0,0,0,0) 8px 19px, rgba(255,255,255,.035) 19px 20px),
+      linear-gradient(90deg, #44291a, #5d3b26 22%, #4b2e1d 48%, #5a3924 76%, #40271a);
+    box-shadow: 0 30px 50px -28px rgba(43,36,32,.55), 0 2px 0 rgba(255,255,255,.12) inset; }
+  .door::before { content: ""; position: absolute; left: 22px; right: 22px; bottom: 22px; height: 48px; border-radius: 2px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.35), inset 0 0 0 5px rgba(255,255,255,.04), inset 0 0 0 6px rgba(0,0,0,.25); }
+  .door::after { content: ""; position: absolute; left: -24px; right: -24px; bottom: -2px; height: 2px; background: var(--rule); }
+  .handle { position: absolute; right: 9px; top: 58%; width: 10px; height: 46px; border-radius: 6px; background: linear-gradient(90deg, #7a5a22, #e6c77f 45%, #9b7430); box-shadow: 0 3px 6px rgba(0,0,0,.4); }
+  .glass { position: relative; overflow: hidden; padding: 34px 26px 30px; text-align: center; border-radius: 2px;
+    background:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E"),
+      radial-gradient(120% 70% at 30% 10%, #f3f6f5 0%, rgba(243,246,245,0) 60%),
+      linear-gradient(165deg, #e4eaea 0%, #d0d9d9 55%, #c2cccc 100%);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.55), inset 0 10px 24px rgba(0,0,0,.16), 0 0 0 4px #3a2417; }
+  .glass::after { content: ""; position: absolute; top: -20%; bottom: -20%; left: 0; width: 45%; background: linear-gradient(100deg, rgba(255,255,255,0), rgba(255,255,255,.55) 50%, rgba(255,255,255,0)); transform: translateX(-160%) skewX(-12deg); pointer-events: none; }
+  .gilt { background: linear-gradient(100deg, var(--gilt-1) 0%, var(--gilt-3) 32%, var(--gilt-2) 46%, var(--gilt-3) 60%, var(--gilt-1) 100%); background-size: 260% 100%; background-position: 0 0; -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 1px 0 rgba(255,255,255,.55)); }
+  .g-suite { font-size: 12px; font-weight: 700; letter-spacing: .32em; text-transform: uppercase; }
+  .g-name { font-family: "Libre Caslon Text", Georgia, serif; font-weight: 700; font-size: clamp(40px, 4.4vw, 54px); line-height: 1.05; margin-top: 18px; }
+  .g-sub { font-family: "Libre Caslon Text", Georgia, serif; font-size: 18px; letter-spacing: .26em; text-transform: uppercase; margin-top: 6px; }
+  .g-rule { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 20px auto 18px; width: 70%; }
+  .g-rule::before, .g-rule::after { content: ""; flex: 1; height: 1.5px; background: linear-gradient(90deg, rgba(169,128,47,0), var(--gilt-3)); }
+  .g-rule::after { transform: scaleX(-1); }
+  .g-rule i { width: 7px; height: 7px; background: var(--gilt-3); transform: rotate(45deg); }
+  .g-ea { font-family: "Libre Caslon Text", Georgia, serif; font-style: italic; font-size: 17px; }
+  .g-hours { margin: 22px auto 0; display: grid; gap: 4px; width: max-content; font-size: 14.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+  .g-hours div { position: relative; display: grid; grid-template-columns: 9.5em auto; gap: 12px; text-align: left; }
+  .g-hours dt, .g-hours dd { margin: 0; }
+  .g-hours .today::before { content: ""; position: absolute; left: -16px; top: 50%; width: 7px; height: 7px; margin-top: -4px; border-radius: 50%; background: var(--accent); }
+  .g-note { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; margin-top: 12px; }
+  .door-status { margin-top: 18px; font-size: 14.5px; color: var(--muted); text-align: center; max-width: 30em; }
+  .door-status:empty { display: none; }
+  .door-status b { color: var(--ink); font-weight: 600; }
+
+  /* Foothills under the hero */
+  .foothills { position: absolute; left: 0; right: 0; bottom: -1px; height: 120px; width: 100%; display: block; }
+
+  /* Services */
+  section { padding: 96px 0; }
+  .services { background: var(--paper-2); padding-top: 40px; }
+  .section-head { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 64px; align-items: end; margin-bottom: 48px; }
+  .section-head p:not(.eyebrow) { color: var(--muted); font-size: 18px; }
+  .svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .svc { position: relative; background: var(--card); padding: 34px 34px 30px 58px; border: 1px solid var(--rule);
+    background-image: linear-gradient(90deg, transparent 33px, rgba(180,71,26,.45) 33px 34.5px, transparent 34.5px 37px, rgba(180,71,26,.45) 37px 38.5px, transparent 38.5px); }
+  .svc h3 { font-size: 30px; }
+  .svc .kicker { font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+  .ledger { list-style: none; margin: 22px 0 0; padding: 0; }
+  .ledger li { display: flex; align-items: baseline; gap: 12px; padding: 11px 0; border-bottom: 1px solid #e5ddd0; font-size: 18px; font-weight: 500; }
+  .ledger li::after { content: ""; flex: 1; border-bottom: 1.5px dotted #cbbca6; transform: translateY(-4px); }
+  .total { position: relative; margin-top: 22px; padding-top: 16px; font-family: "Libre Caslon Text", Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.5; }
+  .total::before, .total::after { content: ""; position: absolute; left: 0; right: 0; height: 1.5px; background: var(--ink); transform-origin: 0 50%; }
+  .total::before { top: 0; }
+  .total::after { top: 4px; }
+
+  /* Every situation is unique */
+  .confidence { background: var(--ink); color: #efe7db; }
+  .conf-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: start; }
+  .confidence .eyebrow { color: var(--gilt-2); }
+  .confidence h2 { font-size: clamp(32px, 4vw, 50px); }
+  .confidence h2 em { color: var(--gilt-2); }
+  .conf-cta { margin-top: 32px; color: #cfc4b6; }
+  .conf-cta .btn { margin-top: 16px; }
+  .questions { list-style: none; margin: 0; padding: 0; counter-reset: q; }
+  .questions li { counter-increment: q; display: grid; grid-template-columns: 52px 1fr; gap: 8px; padding: 22px 0; border-top: 1px solid rgba(239,231,219,.18); font-family: "Libre Caslon Text", Georgia, serif; font-size: clamp(19px, 2vw, 23px); line-height: 1.4; }
+  .questions li:last-child { border-bottom: 1px solid rgba(239,231,219,.18); }
+  .questions li::before { content: counter(q); font-style: italic; color: var(--gilt-2); font-size: 28px; line-height: 1.1; }
+
+  /* About Linda */
+  .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 72px; align-items: center; }
+  .portrait { margin: 0; justify-self: center; width: min(360px, 100%); }
+  .arch { position: relative; aspect-ratio: 4 / 5; border-radius: 999px 999px 4px 4px; overflow: hidden; border: 1.5px solid var(--gilt-3); padding: 10px; background: var(--paper); }
+  .arch-in { position: relative; height: 100%; border-radius: 999px 999px 2px 2px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; background: repeating-linear-gradient(135deg, var(--paper-2) 0 12px, #ebdfcb 12px 13px); }
+  .arch-in b { font-family: "Libre Caslon Text", Georgia, serif; font-style: italic; font-weight: 400; font-size: 64px; line-height: 1; color: var(--gilt-3); }
+  .arch-in span { font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); padding: 0 24px; }
+  .about h2 { max-width: 15em; }
+  .bio { margin: 32px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; }
+  .bio div { padding: 16px 0; border-top: 1px solid var(--rule); }
+  .bio dt { font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .bio dd { margin: 4px 0 0; font-size: 18px; font-weight: 500; }
+  .signoff { margin-top: 28px; font-family: "Libre Caslon Text", Georgia, serif; font-style: italic; font-size: 22px; color: var(--accent); }
+
+  /* Getting started */
+  .start { background: var(--paper-2); }
+  .start h2 { max-width: 20em; }
+  .steps { list-style: none; margin: 48px 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .step { position: relative; background: var(--card); border: 1px solid var(--rule); padding: 36px 32px 32px; clip-path: polygon(0 0, calc(100% - 34px) 0, 100% 34px, 100% 100%, 0 100%); }
+  .step::after { content: ""; position: absolute; top: 0; right: 0; width: 34px; height: 34px; background: linear-gradient(225deg, var(--paper-2) 50%, #e1d3bd 50%); }
+  .step-n { display: block; font-family: "Libre Caslon Text", Georgia, serif; font-style: italic; font-size: 46px; line-height: 1; color: var(--accent); }
+  .step h3 { font-size: 26px; margin-top: 14px; }
+  .step p { color: var(--muted); margin-top: 10px; }
+  .step .btn { margin-top: 24px; }
+  .step .note { font-size: 13.5px; margin-top: 12px; }
+
+  /* Visit */
+  .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .visit dl { margin: 32px 0 0; }
+  .visit dl div { display: grid; grid-template-columns: 7em 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid var(--rule); }
+  .visit dt { font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); padding-top: 4px; }
+  .visit dd { margin: 0; font-size: 18px; overflow-wrap: anywhere; }
+  .visit dd a { text-decoration-color: var(--rule); text-underline-offset: 4px; }
+  .visit dd a:hover { text-decoration-color: var(--accent); }
+  .hours-card { background: var(--card); border: 1px solid var(--rule); padding: 34px; }
+  .hours-card h3 { font-size: 28px; }
+  .hours-card table { width: 100%; border-collapse: collapse; margin-top: 18px; font-size: 18px; }
+  .hours-card th, .hours-card td { text-align: left; padding: 13px 0; border-top: 1px solid var(--rule); font-weight: 500; }
+  .hours-card td { text-align: right; font-variant-numeric: tabular-nums; }
+  .hours-card tr.today th, .hours-card tr.today td { color: var(--accent); font-weight: 700; }
+  .hours-card .muted { color: var(--muted); font-weight: 400; }
+  .hours-card p { margin-top: 14px; font-size: 14.5px; color: var(--muted); }
+  .hours-card .btn { margin-top: 22px; width: 100%; }
+
+  footer { background: var(--ink); color: #b9ada0; font-size: 14px; padding: 28px 0; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; }
+
+  /* Phone call bar */
+  .callbar { display: none; }
+
+  /* Motion. Hiding-for-animation rules all require the .motion class, which the script sets. */
+  @media (prefers-reduced-motion: no-preference) {
+    .btn, .top nav a { transition: background-color .2s ease, color .2s ease, background-size .25s ease; }
+    .motion [data-reveal] { transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.3,1); }
+    .motion [data-reveal]:not(.in) { opacity: 0; transform: translateY(18px); }
+    .motion .total::before, .motion .total::after { transition: transform .8s cubic-bezier(.6,0,.2,1) .35s; }
+    .motion .total::after { transition-delay: .55s; }
+    .motion .svc:not(.in) .total::before, .motion .svc:not(.in) .total::after { transform: scaleX(0); }
+
+    /* the sign-writer letters the door, then light runs across the glass */
+    .motion .g-name { animation: letter 1.3s cubic-bezier(.5,0,.25,1) .35s both; }
+    .motion .g-suite, .motion .g-sub, .motion .g-rule, .motion .g-ea, .motion .g-hours, .motion .g-note { animation: rise .7s ease both; }
+    .motion .g-rule { animation-delay: 1.35s; }
+    .motion .gilt { animation-name: rise, shine; animation-duration: .7s, 2.4s; animation-timing-function: ease, ease-in-out; animation-delay: var(--d, .2s), 2s; animation-fill-mode: both, both; }
+    .motion .g-name.gilt { animation-name: letter, shine; animation-duration: 1.3s, 2.4s; animation-timing-function: cubic-bezier(.5,0,.25,1), ease-in-out; animation-delay: .35s, 2s; }
+    .motion .glass::after { animation: glare 1.9s ease-in-out 2.1s both; }
+  }
+  @keyframes letter { from { clip-path: inset(-10% 100% -10% 0); } to { clip-path: inset(-10% -2% -10% 0); } }
+  @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  @keyframes shine { from { background-position: 0 0; } to { background-position: 100% 0; } }
+  @keyframes glare { from { transform: translateX(-160%) skewX(-12deg); } to { transform: translateX(330%) skewX(-12deg); } }
+
+  @media (max-width: 960px) {
+    .top nav { display: none; }
+    .hero { padding: 48px 0 120px; }
+    .hero-grid, .conf-grid, .about-grid, .visit-grid, .section-head { grid-template-columns: 1fr; gap: 48px; }
+    .section-head { gap: 12px; }
+    .svc-grid, .steps { grid-template-columns: 1fr; }
+    .about-grid { gap: 40px; }
+    .portrait { width: min(300px, 80%); }
+  }
+  @media (max-width: 760px) {
+    section { padding: 72px 0; }
+    .services { padding-top: 24px; }
+    .callbar { display: grid; grid-template-columns: 1.25fr 1fr; gap: 8px; position: fixed; z-index: 10; left: 0; right: 0; bottom: 0; padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); background: rgba(248,243,234,.96); border-top: 1px solid var(--rule); box-shadow: 0 -8px 20px -14px rgba(43,36,32,.5); }
+    .callbar a { padding: 13px 10px; font-size: 15.5px; }
+    footer { padding-bottom: 106px; }
+  }
+  @media (max-width: 520px) {
+    .wrap { padding: 0 20px; }
+    .brand b { font-size: 23px; }
+    .brand span { font-size: 10px; letter-spacing: .16em; }
+    .top .btn { padding: 10px 14px; font-size: 14px; }
+    .hide-sm { display: none; }
+    .lede { font-size: 17.5px; }
+    .actions .btn { width: 100%; }
+    .facts { grid-template-columns: 1fr 1fr; gap: 14px 24px; }
+    .facts li:last-child { grid-column: 1 / -1; }
+    .door { padding: 16px 16px 76px; }
+    .door::before { left: 16px; right: 16px; bottom: 16px; height: 42px; }
+    .glass { padding: 28px 18px 24px; }
+    .g-sub { font-size: 15px; letter-spacing: .2em; }
+    .g-hours { font-size: 13px; }
+    .g-hours div { grid-template-columns: 8.4em auto; }
+    .foothills { height: 80px; }
+    .svc { padding: 28px 22px 26px 52px; background-image: linear-gradient(90deg, transparent 27px, rgba(180,71,26,.45) 27px 28.5px, transparent 28.5px 31px, rgba(180,71,26,.45) 31px 32.5px, transparent 32.5px); }
+    .svc h3 { font-size: 27px; }
+    .bio { grid-template-columns: 1fr; }
+    .step { padding: 30px 22px 26px; }
+    .step .btn { width: 100%; }
+    .visit dl div { grid-template-columns: 1fr; gap: 2px; }
+    .hours-card { padding: 26px 22px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+  <!-- Microsoft Clarity: anonymous visit stats for this concept -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "zadcpfjdhj");
+  </script>
+</head>
+<body>
+  <div class="concept"><strong>Homepage concept</strong> prepared for Marcolina Tax &amp; Accounting by Fakhar Rashid. This is a design preview, not the live website, and it is not affiliated with or approved by Marcolina Tax &amp; Accounting.</div>
+
+  <header class="top"><div class="wrap">
+    <a class="brand" href="#top" aria-label="Marcolina Tax and Accounting, home">
+      <b>Marcolina</b>
+      <span>Tax &amp; Accounting &middot; Est. 2005</span>
+    </a>
+    <nav aria-label="Main"><ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About Linda</a></li>
+      <li><a href="#start">Tax Organizer</a></li>
+      <li><a href="#visit">Office hours</a></li>
+    </ul></nav>
+    <a class="btn btn-accent" href="tel:+13039756981">
+      <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+      Call<span class="hide-sm">&nbsp;303-975-6981</span>
+    </a>
+  </div></header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title"><div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Enrolled Agent &middot; Golden, Colorado</p>
+        <h1 id="hero-title">Master level tax &amp; accounting, <em>tailored to you.</em></h1>
+        <p class="lede">Personal, business and corporate tax preparation, plus bookkeeping, payroll and sales &amp; use tax, from Linda Marcolina, an Enrolled Agent since 2005.</p>
+        <div class="actions">
+          <a class="btn btn-accent" href="tel:+13039756981">Call 303-975-6981</a>
+          <a class="btn btn-line" href="#start">Download the Tax Organizer</a>
+        </div>
+        <ul class="facts">
+          <li><strong>Est. 2005</strong>Established practice</li>
+          <li><strong>35+ years</strong>Instructor and tax preparer</li>
+          <li><strong>Colorado native</strong>Office in Golden</li>
+        </ul>
+      </div>
+
+      <div class="door-area">
+        <figure class="door-wrap" role="img" aria-label="Office door with gold lettering: Marcolina Tax and Accounting, Suite 160, Linda Marcolina, Enrolled Agent, and the office hours.">
+          <div class="door">
+            <div class="glass">
+              <p class="g-suite gilt">Suite 160</p>
+              <p class="g-name gilt">Marcolina</p>
+              <p class="g-sub gilt" style="--d:1.15s">Tax &amp; Accounting</p>
+              <p class="g-rule" aria-hidden="true"><i></i></p>
+              <p class="g-ea gilt" style="--d:1.5s">Linda Marcolina, Enrolled Agent</p>
+              <dl class="g-hours gilt" style="--d:1.65s">
+                <div data-day="1"><dt>Monday</dt><dd>9am &ndash; 2pm</dd></div>
+                <div data-day="3"><dt>Wednesday</dt><dd>9am &ndash; 4pm</dd></div>
+                <div data-day="4"><dt>Thursday</dt><dd>9am &ndash; 2pm</dd></div>
+              </dl>
+              <p class="g-note gilt" style="--d:1.8s">Hours subject to change</p>
+            </div>
+            <span class="handle" aria-hidden="true"></span>
+          </div>
+        </figure>
+        <p class="door-status" id="door-status"></p>
+      </div>
+    </div>
+    <svg class="foothills" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 92 L120 70 L210 84 L330 46 L420 72 L520 58 L640 88 L760 52 L850 66 L980 30 L1090 70 L1200 56 L1320 80 L1440 62 L1440 120 L0 120 Z" fill="#e6d8c2"/>
+      <path d="M0 104 L160 88 L280 100 L400 80 L560 98 L700 84 L860 100 L1010 78 L1160 96 L1300 86 L1440 98 L1440 120 L0 120 Z" fill="#f0e6d5"/>
+    </svg>
+    </section>
+
+    <section id="services" class="services" aria-labelledby="services-title"><div class="wrap">
+      <div class="section-head" data-reveal>
+        <div>
+          <p class="eyebrow">What we do</p>
+          <h2 id="services-title">Tax preparation and accounting</h2>
+        </div>
+        <p>Personal, business and corporate returns, and the bookkeeping, payroll and sales &amp; use tax work behind them.</p>
+      </div>
+      <div class="svc-grid">
+        <article class="svc" data-reveal>
+          <h3>Tax Preparation</h3>
+          <p class="kicker">Returns</p>
+          <ul class="ledger">
+            <li>Personal</li>
+            <li>Business</li>
+            <li>Corporate</li>
+          </ul>
+          <p class="total">We make sure you&rsquo;re 100% legal while maximizing your advantages.</p>
+        </article>
+        <article class="svc" data-reveal>
+          <h3>Accounting</h3>
+          <p class="kicker">The books</p>
+          <ul class="ledger">
+            <li>Bookkeeping</li>
+            <li>Payroll</li>
+            <li>Sales &amp; use tax</li>
+          </ul>
+          <p class="total">We do it all, and we do it right, so you never have to stress.</p>
+        </article>
+      </div>
+    </div></section>
+
+    <section class="confidence" aria-labelledby="conf-title"><div class="wrap conf-grid">
+      <div data-reveal>
+        <p class="eyebrow">Every situation is unique</p>
+        <h2 id="conf-title">Are you <em>100% confident</em> that&hellip;</h2>
+        <div class="conf-cta">
+          <p>Please call to make an appointment.</p>
+          <a class="btn btn-accent" href="tel:+13039756981">Call 303-975-6981</a>
+        </div>
+      </div>
+      <ol class="questions" data-reveal>
+        <li>Your tax preparer or accountant is listening to your needs?</li>
+        <li>You have no worries if contacted by the IRS?</li>
+        <li>You&rsquo;re getting every advantage that&rsquo;s legally yours?</li>
+        <li>You have professional, trustworthy advice at your fingertips?</li>
+        <li>Your overall strategy is serving your future?</li>
+      </ol>
+    </div></section>
+
+    <section id="about" class="about" aria-labelledby="about-title"><div class="wrap about-grid">
+      <figure class="portrait" data-reveal>
+        <div class="arch"><div class="arch-in">
+          <b aria-hidden="true">LM</b>
+          <span>Photo of Linda Marcolina<br>(placeholder)</span>
+        </div></div>
+      </figure>
+      <div data-reveal>
+        <p class="eyebrow">About Linda Marcolina</p>
+        <h2 id="about-title">A Colorado native, and an Enrolled Agent since 2005.</h2>
+        <dl class="bio">
+          <div><dt>Credential</dt><dd>Enrolled Agent since 2005</dd></div>
+          <div><dt>Experience</dt><dd>Instructor and tax preparer, 35+ years</dd></div>
+          <div><dt>Roots</dt><dd>Colorado native</dd></div>
+          <div><dt>Family</dt><dd>Married; mother of 2</dd></div>
+        </dl>
+        <p class="signoff">We&rsquo;re looking forward to helping you!</p>
+      </div>
+    </div></section>
+
+    <section id="start" class="start" aria-labelledby="start-title"><div class="wrap">
+      <div data-reveal>
+        <p class="eyebrow">Getting started</p>
+        <h2 id="start-title">Download the Tax Organizer and call to schedule an appointment.</h2>
+      </div>
+      <ol class="steps">
+        <li class="step" data-reveal>
+          <span class="step-n" aria-hidden="true">1</span>
+          <h3>Download the Tax Organizer</h3>
+          <p>The free Tax Organizer, as a Word document.</p>
+          <a class="btn btn-line" href="#start">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19.5h14"/></svg>
+            Download the Tax Organizer
+          </a>
+          <p class="note">In the finished site, this button serves the current year&rsquo;s organizer.</p>
+        </li>
+        <li class="step" data-reveal>
+          <span class="step-n" aria-hidden="true">2</span>
+          <h3>Call to schedule an appointment</h3>
+          <p>Office hours are Monday, Wednesday and Thursday. Please call to make an appointment.</p>
+          <a class="btn btn-accent" href="tel:+13039756981">Call 303-975-6981</a>
+        </li>
+      </ol>
+    </div></section>
+
+    <section id="visit" class="visit" aria-labelledby="visit-title"><div class="wrap visit-grid">
+      <div data-reveal>
+        <p class="eyebrow">Visit the office</p>
+        <h2 id="visit-title">Suite 160 on Youngfield Street, Golden.</h2>
+        <dl>
+          <div><dt>Address</dt><dd>2801 Youngfield St, Suite 160<br>Golden, CO 80401</dd></div>
+          <div><dt>Phone</dt><dd><a href="tel:+13039756981">303-975-6981</a></dd></div>
+          <div><dt>Email</dt><dd><a href="mailto:office@marcolinatax.com">office@marcolinatax.com</a></dd></div>
+        </dl>
+      </div>
+      <div class="hours-card" data-reveal>
+        <h3>Office hours</h3>
+        <table>
+          <tr data-day="1"><th scope="row">Monday</th><td>9am &ndash; 2pm</td></tr>
+          <tr data-day="3"><th scope="row">Wednesday</th><td>9am &ndash; 4pm</td></tr>
+          <tr data-day="4"><th scope="row">Thursday</th><td>9am &ndash; 2pm</td></tr>
+        </table>
+        <p>Hours are subject to change. Please call to make an appointment.</p>
+        <a class="btn btn-accent" href="tel:+13039756981">Call 303-975-6981</a>
+      </div>
+    </div></section>
+  </main>
+
+  <footer><div class="wrap">
+    <span>Marcolina Tax &amp; Accounting, 2801 Youngfield St, Suite 160, Golden, CO 80401</span>
+    <span>Concept by Fakhar Rashid. Content is taken from marcolinatax.com.</span>
+  </div></footer>
+
+  <nav class="callbar" aria-label="Contact the office">
+    <a class="btn btn-accent" href="tel:+13039756981">
+      <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+      Call the office
+    </a>
+    <a class="btn btn-line" href="mailto:office@marcolinatax.com">Email us</a>
+  </nav>
+
+  <script>
+  /* Without this script the page shows its finished, static look: nothing is hidden. */
+  (function () {
+    // Mark today's office hours (Mountain time) and say when the office is next open.
+    var hours = { 1: [9, 14, 'Monday'], 3: [9, 16, 'Wednesday'], 4: [9, 14, 'Thursday'] };
+    function fmt(h) { return h === 12 ? '12pm' : h > 12 ? (h - 12) + 'pm' : h + 'am'; }
+    try {
+      var parts = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Denver', weekday: 'short', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' }).formatToParts(new Date());
+      var get = function (t) { for (var i = 0; i < parts.length; i++) if (parts[i].type === t) return parts[i].value; return ''; };
+      var day = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(get('weekday'));
+      var now = (parseInt(get('hour'), 10) % 24) + parseInt(get('minute'), 10) / 60;
+      var status = document.getElementById('door-status'), msg = '';
+      var today = hours[day];
+      if (today) {
+        var rows = document.querySelectorAll('[data-day="' + day + '"]');
+        for (var r = 0; r < rows.length; r++) rows[r].classList.add('today');
+      }
+      if (today && now >= today[0] && now < today[1]) {
+        msg = '<b>Open today until ' + fmt(today[1]) + '</b> (Mountain time).';
+      } else if (today && now < today[0]) {
+        msg = '<b>Opens today at ' + fmt(today[0]) + '</b> (Mountain time).';
+      } else {
+        for (var k = 1; k <= 7; k++) {
+          var d = (day + k) % 7;
+          if (hours[d]) { msg = 'Closed now. <b>Next office day: ' + hours[d][2] + ', ' + fmt(hours[d][0]) + ' &ndash; ' + fmt(hours[d][1]) + '</b>.'; break; }
+        }
+      }
+      if (day >= 0 && msg) status.innerHTML = msg + ' Hours are subject to change.';
+    } catch (e) {}
+
+    var mm = window.matchMedia;
+    if (!mm || mm('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+    document.documentElement.classList.add('motion');
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -40px 0px', threshold: 0 });
+    var els = document.querySelectorAll('[data-reveal]');
+    for (var i = 0; i < els.length; i++) io.observe(els[i]);
+  })();
+  </script>
+</body>
+</html>

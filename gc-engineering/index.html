@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>GC Engineering, Inc. | Homepage concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700;800;900&family=Red+Hat+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f5f5f0;
+    --white: #ffffff;
+    --navy: #0f2147;
+    --navy-2: #1a3263;
+    --ink: #111a2e;
+    --muted: #55607a;
+    --rule: #d8dbe2;
+    --road: #e3a008;
+    --drain: #2470b8;
+    --traffic: #d4462c;
+    --water: #0f8a7c;
+    --max: 1200px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: "Red Hat Display", system-ui, sans-serif; font-size: 17.5px; line-height: 1.6; color: var(--ink); background: var(--paper); }
+  a { color: inherit; }
+  a:focus-visible { outline: 3px solid var(--drain); outline-offset: 3px; }
+  .on-navy a:focus-visible { outline-color: var(--road); }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
+  h1, h2, h3 { line-height: 1.04; margin: 0; letter-spacing: -0.02em; }
+  h2 { font-size: clamp(32px, 4.4vw, 52px); font-weight: 800; }
+  p { margin: 0; }
+  .mono { font-family: "Red Hat Mono", ui-monospace, monospace; font-size: 13.5px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; }
+
+  .concept { background: var(--navy); color: #c8d0e0; font-size: 13px; text-align: center; padding: 8px 16px; line-height: 1.5; }
+  .concept strong { color: var(--white); font-weight: 700; }
+
+  /* Header */
+  header.top { border-bottom: 1px solid var(--rule); background: var(--paper); position: relative; z-index: 2; }
+  header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 16px; padding-bottom: 16px; }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .mark { display: grid; place-items: center; width: 46px; height: 46px; background: var(--navy); color: var(--white); font-family: "Red Hat Mono", monospace; font-weight: 600; font-size: 14px; letter-spacing: .06em; border-radius: 2px; position: relative; }
+  .mark::after { content: ""; position: absolute; left: 7px; right: 7px; bottom: 8px; height: 2px; background: repeating-linear-gradient(90deg, var(--road) 0 6px, transparent 6px 10px); }
+  .brand-name { font-weight: 800; font-size: 20px; line-height: 1; letter-spacing: -.01em; }
+  .brand-name span { display: block; font-family: "Red Hat Mono", monospace; font-weight: 500; font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+  nav ul { list-style: none; display: flex; gap: 28px; margin: 0; padding: 0; font-weight: 600; font-size: 15.5px; }
+  nav a { text-decoration: none; padding: 4px 0; background: linear-gradient(var(--road), var(--road)) 0 100% / 0 2px no-repeat; }
+  nav a:hover { background-size: 100% 2px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font: inherit; font-weight: 700; font-size: 16px; text-decoration: none; padding: 14px 22px; border-radius: 999px; border: 2px solid transparent; line-height: 1.2; cursor: pointer; }
+  .btn:active { transform: translateY(1px); }
+  .btn-navy { background: var(--navy); color: var(--white); }
+  .btn-navy:hover { background: var(--navy-2); }
+  .btn-line { border-color: var(--navy); color: var(--navy); }
+  .btn-line:hover { background: var(--navy); color: var(--white); }
+  .btn-amber { background: var(--road); color: var(--ink); }
+  .btn-amber:hover { background: #f2b52a; }
+  .btn-ghost { border-color: rgba(255,255,255,.5); color: var(--white); }
+  .btn-ghost:hover { background: var(--white); color: var(--navy); }
+
+  /* Hero */
+  .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--rule); }
+  .topo { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+  .topo path { fill: none; stroke: rgba(15,33,71,.10); stroke-width: 1.3; }
+  .topo path:nth-child(4n+1) { stroke: rgba(15,33,71,.17); stroke-width: 1.6; }
+  .hero .lede { text-shadow: 0 0 6px var(--paper), 0 0 2px var(--paper); }
+  .hero .wrap { position: relative; display: grid; grid-template-columns: 1.35fr .85fr; gap: 56px; align-items: center; padding-top: 80px; padding-bottom: 88px; }
+  .eyebrow { color: var(--muted); display: flex; align-items: center; gap: 12px; }
+  .eyebrow::before { content: ""; width: 34px; height: 3px; background: repeating-linear-gradient(90deg, var(--road) 0 8px, transparent 8px 12px); }
+  .hero h1 { font-size: clamp(40px, 4.6vw, 60px); font-weight: 900; margin-top: 22px; letter-spacing: -.035em; line-height: .98; }
+  .hero h1 span { display: block; color: var(--drain); font-weight: 800; }
+  .hero .lede { font-size: 20px; color: var(--muted); max-width: 33em; margin-top: 26px; }
+  .hero .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 34px; }
+  .board { background: var(--white); border: 1px solid var(--rule); box-shadow: 0 24px 48px -28px rgba(15,33,71,.35); padding: 22px 24px 20px; }
+  .board .mono { color: var(--muted); font-size: 12.5px; }
+  .board ul { list-style: none; margin: 14px 0 0; padding: 0; }
+  .board li { display: grid; grid-template-columns: 14px 1fr; gap: 12px; padding: 11px 0; border-top: 1px solid var(--rule); font-weight: 700; font-size: 16px; line-height: 1.3; }
+  .board li i { width: 12px; height: 12px; border-radius: 50%; border: 3px solid var(--c); margin-top: 3px; }
+  .board li span { display: block; font-family: "Red Hat Mono", monospace; font-weight: 400; font-size: 12.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; margin-top: 3px; }
+  .board a { display: inline-block; margin-top: 10px; font-weight: 700; font-size: 15px; color: var(--drain); text-decoration: none; }
+  .board a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+  section { padding: 96px 0; }
+  .head { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 64px; align-items: end; margin-bottom: 44px; }
+  .head .mono { display: block; color: var(--drain); margin-bottom: 14px; }
+  .head p { color: var(--muted); font-size: 18.5px; max-width: 34em; }
+
+  /* Services along an alignment */
+  .alignment { display: block; width: 100%; height: auto; margin: 0 0 8px; overflow: visible; }
+  .phases { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .phases li { padding: 26px 30px 6px; border-left: 1px solid var(--rule); }
+  .phases li:first-child { border-left: 0; padding-left: 0; }
+  .phases .sta { color: var(--muted); font-size: 12.5px; }
+  .phases h3 { font-size: 30px; font-weight: 800; margin-top: 6px; }
+  .phases p { color: var(--muted); margin-top: 10px; }
+  .tags { list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .tags li { padding: 5px 12px !important; border: 1px solid var(--rule) !important; border-radius: 999px; background: var(--white); font-size: 14.5px; font-weight: 600; }
+  .delivery-note { margin-top: 14px !important; font-size: 16px; }
+
+  /* Statement band */
+  .statement { background: var(--navy); color: var(--white); position: relative; overflow: hidden; }
+  .statement::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 2px; background: repeating-linear-gradient(90deg, rgba(227,160,8,.35) 0 26px, transparent 26px 44px); }
+  .statement .wrap { position: relative; }
+  .statement blockquote { margin: 0; font-size: clamp(26px, 3.4vw, 42px); font-weight: 700; line-height: 1.2; letter-spacing: -.015em; max-width: 28em; background: var(--navy); padding: 6px 0; }
+  .statement blockquote em { font-style: normal; color: var(--road); }
+  .pillars { list-style: none; margin: 56px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; background: var(--navy); }
+  .pillars li { padding: 22px 28px 0 0; border-top: 2px solid #33497a; color: #c9d2e5; }
+  .pillars li + li { padding-left: 28px; border-left: 1px solid #2a3f6d; }
+  .pillars .mono { display: block; color: var(--road); margin-bottom: 8px; }
+
+  /* Projects: a route map, one line per practice area */
+  .routes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px 28px; }
+  .line { position: relative; }
+  .line header { display: flex; align-items: center; gap: 12px; padding-bottom: 16px; border-bottom: 3px solid var(--c); }
+  .code { flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--c); color: var(--white); font-family: "Red Hat Mono", monospace; font-weight: 600; font-size: 14px; }
+  .line[data-k="road"] .code { color: var(--ink); }
+  .line h3 { font-size: 21px; font-weight: 800; line-height: 1.1; }
+  .line h3 span { display: block; font-family: "Red Hat Mono", monospace; font-weight: 400; font-size: 12.5px; color: var(--muted); letter-spacing: .04em; text-transform: uppercase; margin-top: 4px; }
+  .rail { position: relative; padding: 18px 0 0 34px; }
+  .track { position: absolute; left: 10px; top: 0; bottom: 14px; width: 6px; margin-left: -3px; background: #e3e5ea; border-radius: 3px; overflow: hidden; }
+  .fill { position: absolute; inset: 0; background: var(--c); transform-origin: 50% 0; transform: scaleY(var(--p, 1)); }
+  .stops { list-style: none; margin: 0; padding: 0; }
+  .stops li { position: relative; padding: 0 0 15px; font-weight: 600; font-size: 15.5px; line-height: 1.35; }
+  .stops li::before { content: ""; position: absolute; left: -32px; top: 2px; width: 16px; height: 16px; border-radius: 50%; background: var(--white); border: 4px solid var(--c); box-sizing: border-box; box-shadow: 0 0 0 2px var(--paper); }
+  .stops li small { display: block; font-weight: 500; font-size: 14px; color: var(--muted); margin-top: 3px; }
+  .stops li.junction { font-family: "Red Hat Mono", monospace; font-weight: 500; font-size: 12.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; padding-top: 4px; }
+  .stops li.junction::before { width: 22px; height: 22px; left: -35px; top: 0; background: var(--paper); border-width: 3px; }
+  .stops li.junction:first-child { padding-top: 0; }
+  .photo-note { margin-top: 36px; display: flex; align-items: center; gap: 16px; padding: 18px 20px; border: 1.5px dashed #a9b0c0; color: var(--muted); font-size: 15.5px; background: repeating-linear-gradient(135deg, transparent 0 12px, rgba(15,33,71,.035) 12px 24px); }
+  .photo-note strong { color: var(--ink); }
+  .photo-note svg { flex: none; }
+
+  /* Philosophy */
+  .philosophy { background: var(--white); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .philosophy .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: start; }
+  .philosophy .mono { color: var(--drain); }
+  .philosophy blockquote { margin: 16px 0 0; font-size: clamp(26px, 3vw, 36px); font-weight: 700; line-height: 1.22; letter-spacing: -.015em; }
+  .philosophy .after { color: var(--muted); margin-top: 22px; max-width: 34em; }
+  .tenets { list-style: none; margin: 0; padding: 0; }
+  .tenets li { display: grid; grid-template-columns: 44px 1fr; gap: 6px 16px; padding: 22px 0; border-top: 1px solid var(--rule); }
+  .tenets li:last-child { border-bottom: 1px solid var(--rule); }
+  .tenets .n { font-family: "Red Hat Mono", monospace; font-size: 14px; color: var(--muted); padding-top: 4px; }
+  .tenets h3 { font-size: 21px; font-weight: 800; }
+  .tenets p { grid-column: 2; color: var(--muted); font-size: 16.5px; }
+
+  /* Management placeholder */
+  .team .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .ph { border: 1.5px dashed #a9b0c0; padding: 18px; background: repeating-linear-gradient(135deg, transparent 0 12px, rgba(15,33,71,.035) 12px 24px); }
+  .ph .img { aspect-ratio: 16 / 9; display: grid; place-items: center; background: #e6e8ee; color: var(--muted); font-family: "Red Hat Mono", monospace; font-size: 12.5px; text-transform: uppercase; letter-spacing: .05em; text-align: center; }
+  .ph .img svg { display: block; margin: 0 auto 8px; }
+  .ph .line-1 { margin-top: 14px; height: 14px; width: 62%; background: #d6dae3; border-radius: 2px; }
+  .ph .line-2 { margin-top: 8px; height: 10px; width: 40%; background: #e1e4ea; border-radius: 2px; }
+  .team .note { margin-top: 18px; color: var(--muted); font-size: 15.5px; }
+  .team .note strong { color: var(--ink); }
+
+  /* Careers */
+  .careers { padding-top: 0; }
+  .job { display: grid; grid-template-columns: 1.1fr 1fr; gap: 32px 56px; align-items: center; background: var(--white); border: 1px solid var(--rule); border-top: 6px solid var(--road); padding: 44px 48px; }
+  .hiring { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); }
+  .hiring::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--traffic); box-shadow: 0 0 0 4px rgba(212,70,44,.18); }
+  .job h2 { margin-top: 14px; }
+  .job p { color: var(--muted); margin-top: 16px; }
+  .job dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 0; border-top: 1px solid var(--rule); }
+  .job dt, .job dd { padding: 14px 0; border-bottom: 1px solid var(--rule); margin: 0; }
+  .job dt { font-family: "Red Hat Mono", monospace; font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); padding-right: 24px; padding-top: 17px; }
+  .job dd { font-weight: 700; font-size: 18px; }
+  .job .btn { margin-top: 24px; }
+
+  /* Contact */
+  .contact { background: var(--navy); color: var(--white); }
+  .contact .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px 64px; align-items: start; }
+  .contact .mono { color: var(--road); }
+  .contact h2 { margin-top: 14px; }
+  .contact p { color: #c9d2e5; font-size: 18.5px; margin-top: 16px; max-width: 30em; }
+  .phone-big { display: inline-block; margin-top: 26px; font-size: clamp(34px, 5vw, 56px); font-weight: 900; letter-spacing: -.02em; line-height: 1; text-decoration: none; }
+  .phone-big:hover { color: var(--road); }
+  .contact .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  .contact dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 16px 28px; border-top: 1px solid #2f4677; padding-top: 20px; font-size: 17px; }
+  .contact dt { font-family: "Red Hat Mono", monospace; font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: #93a1c2; padding-top: 3px; }
+  .contact dd { margin: 0; }
+  .contact dd a { text-decoration: none; border-bottom: 1px solid #4a5f8f; }
+  .contact dd a:hover { border-bottom-color: var(--white); }
+
+  footer { background: #0a1733; color: #93a1c2; font-size: 14px; padding: 26px 0; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; }
+
+  .callbar { display: none; }
+
+  /* Motion, only when the visitor hasn't asked for less of it */
+  @media (prefers-reduced-motion: no-preference) {
+    .lane { animation: drive 2.4s linear infinite; }
+    .motion .rv { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.3,1); }
+    .motion .rv.in { opacity: 1; transform: none; }
+    .motion .fill { transform: scaleY(var(--p, 0)); }
+    .motion .stops li::before { transition: background-color .25s ease, transform .25s ease; }
+    .motion .stops li:not(.on)::before { border-color: #c4c9d4; }
+    .motion .stops li.on::before { transform: scale(1.12); }
+    .motion .stops li.junction.on::before { transform: none; }
+    .station { transition: transform .3s ease; }
+  }
+  @keyframes drive { to { stroke-dashoffset: -76; } }
+
+  @media (max-width: 1100px) {
+    .routes { grid-template-columns: 1fr 1fr; gap: 48px 36px; }
+  }
+  @media (max-width: 960px) {
+    nav ul { display: none; }
+    .hero .wrap, .head, .philosophy .wrap, .job, .contact .wrap { grid-template-columns: 1fr; }
+    .hero .wrap { padding-top: 56px; padding-bottom: 60px; gap: 40px; }
+    .phases { grid-template-columns: 1fr; }
+    .phases li, .phases li:first-child { border-left: 0; padding: 24px 0 18px; border-top: 1px solid var(--rule); }
+    .pillars { grid-template-columns: 1fr; }
+    .statement::before { display: none; }
+    .pillars li, .pillars li + li { padding: 18px 0; border-left: 0; }
+    .team .grid { grid-template-columns: 1fr 1fr; }
+    section { padding: 68px 0; }
+    .careers { padding-top: 0; }
+    .job { padding: 32px 28px; }
+  }
+  @media (max-width: 760px) {
+    body { padding-bottom: 74px; }
+    .callbar { display: grid; grid-template-columns: 1.3fr 1fr; gap: 8px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); background: rgba(15,33,71,.97); border-top: 1px solid #2f4677; }
+    .callbar a { display: flex; align-items: center; justify-content: center; padding: 13px 10px; font-weight: 800; font-size: 15px; text-decoration: none; border-radius: 999px; }
+    .callbar .c1 { background: var(--road); color: var(--ink); }
+    .callbar .c2 { background: var(--white); color: var(--navy); }
+    .routes { grid-template-columns: 1fr; }
+    header.top .btn { display: none; }
+    .alignment .num { display: none; }
+    .topo { opacity: .45; }
+  }
+  @media (max-width: 520px) {
+    .wrap { padding: 0 20px; }
+    .hero h1 { font-size: 43px; }
+    .hero .lede { font-size: 18px; }
+    .hero .actions .btn { flex: 1 1 100%; }
+    .board { padding: 18px 18px 16px; }
+    .team .grid { grid-template-columns: 1fr; }
+    .team .grid .ph:nth-child(n+2) { display: none; }
+    .job { padding: 26px 20px; }
+    .job dl { grid-template-columns: 1fr; }
+    .job dt { padding: 12px 0 0; border-bottom: 0; }
+    .job dd { padding: 2px 0 12px; }
+    .contact dl { grid-template-columns: 1fr; gap: 2px; }
+    .contact dd { margin-bottom: 12px; }
+    .contact .actions .btn { flex: 1 1 100%; }
+    .photo-note { align-items: flex-start; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+  <!-- Microsoft Clarity: anonymous visit stats for this concept -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "zadcpfjdhj");
+  </script>
+</head>
+<body>
+  <div class="concept"><strong>Homepage concept</strong> prepared for GC Engineering by Fakhar Rashid. This is a design preview, not the live website, and it is not affiliated with or approved by GC Engineering.</div>
+
+  <header class="top"><div class="wrap">
+    <a class="brand" href="#top" aria-label="GC Engineering home">
+      <span class="mark" aria-hidden="true">GCE</span>
+      <span class="brand-name">GC Engineering, Inc.<span>Pearland, Texas</span></span>
+    </a>
+    <nav aria-label="Main"><ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#philosophy">Philosophy</a></li>
+      <li><a href="#careers">Careers</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul></nav>
+    <a class="btn btn-navy" href="tel:+12814127008">(281) 412-7008</a>
+  </div></header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title" style="padding:0">
+      <svg class="topo" viewBox="0 0 1400 560" preserveAspectRatio="xMaxYMid slice" aria-hidden="true" focusable="false">
+        <path d="M1088 250C1086 285 1071 324 1047 352C1022 380 976 394 941 418C906 443 882 479 837 499C792 519 719 548 671 539C623 530 579 478 550 445C520 413 521 377 496 344C470 312 407 286 395 250C383 214 391 157 423 130C455 103 541 103 586 89C632 75 654 65 697 45C740 26 795 -25 846 -29C897 -32 969 -6 1004 23C1040 52 1046 105 1060 143C1074 181 1090 215 1088 250Z"/>
+        <path d="M1053 246C1051 276 1036 310 1016 335C995 360 957 373 927 396C898 419 876 455 836 472C796 489 729 510 688 500C646 490 612 441 586 413C560 385 556 358 531 330C507 302 449 277 439 246C430 215 447 166 477 143C506 120 578 122 617 108C656 94 670 77 708 58C746 39 799 -4 843 -5C888 -7 948 23 978 49C1008 76 1012 121 1025 154C1037 187 1054 216 1053 246Z"/>
+        <path d="M1018 242C1018 268 1003 296 986 318C968 340 939 353 914 374C889 395 869 429 834 443C799 457 740 470 705 460C669 450 644 406 621 382C598 358 589 339 567 315C544 292 492 269 486 242C480 215 502 175 529 155C555 136 614 138 646 125C677 111 687 90 720 73C752 55 802 20 840 20C879 21 926 51 951 75C977 99 980 136 991 164C1002 192 1019 216 1018 242Z"/>
+        <path d="M985 238C984 259 971 283 957 302C943 321 921 333 900 351C879 370 861 400 831 412C802 423 752 429 722 419C693 409 675 372 655 353C635 333 622 320 602 301C582 282 539 260 535 238C531 216 556 183 579 167C602 151 647 153 673 140C698 127 705 104 732 89C759 74 804 47 836 49C869 51 905 80 926 101C946 122 949 150 959 173C969 196 985 217 985 238Z"/>
+        <path d="M952 234C952 251 940 270 929 286C918 301 902 313 885 328C869 344 853 370 828 378C804 386 763 387 739 379C716 370 703 340 686 325C670 309 655 301 638 286C621 271 587 252 585 234C583 216 609 191 627 178C646 165 679 166 698 154C718 143 723 120 745 108C767 95 806 76 832 79C858 82 885 108 901 125C917 143 921 164 929 182C937 200 952 217 952 234Z"/>
+        <path d="M919 230C919 243 909 257 901 270C893 282 883 292 870 304C857 317 844 337 825 343C806 348 774 346 756 339C738 331 730 309 717 298C703 287 689 282 675 271C662 260 637 244 637 230C636 216 659 199 673 188C688 178 709 178 724 168C738 158 742 138 759 129C776 119 807 107 827 110C847 114 865 136 877 149C889 162 893 177 900 191C907 204 919 217 919 230Z"/>
+        <path d="M886 226C887 235 880 245 874 254C869 263 862 271 854 279C845 288 834 302 821 306C807 309 786 306 773 300C761 295 755 280 746 273C736 265 723 263 714 255C704 248 688 236 689 226C689 216 707 205 717 198C727 190 739 190 749 182C758 174 761 159 773 152C785 146 808 139 822 143C835 146 847 162 855 171C864 180 867 190 872 199C878 208 886 217 886 226Z"/>
+        <path d="M854 222C854 227 850 233 847 238C844 243 841 248 836 253C831 258 824 266 816 268C808 270 796 266 789 263C782 260 779 252 774 248C768 244 759 244 754 239C748 235 740 227 741 222C742 217 753 211 758 206C764 202 769 201 774 196C779 192 781 182 789 178C796 175 809 173 817 175C824 177 830 186 835 192C840 197 842 201 845 207C849 212 853 217 854 222Z"/>
+        <path d="M1396 40C1375 65 1337 71 1323 91C1309 111 1325 139 1311 161C1296 184 1269 216 1237 226C1206 237 1159 230 1124 223C1088 216 1051 201 1026 183C1001 165 981 137 974 114C966 90 978 64 979 40C980 16 973 -7 980 -31C988 -56 997 -92 1023 -106C1048 -120 1099 -116 1132 -115C1166 -113 1187 -98 1222 -98C1258 -97 1306 -119 1344 -112C1381 -105 1440 -81 1449 -56C1458 -31 1417 15 1396 40Z"/>
+        <path d="M1350 36C1334 56 1311 60 1302 77C1293 95 1309 120 1297 139C1286 158 1260 182 1233 190C1207 197 1169 191 1140 184C1112 178 1082 166 1063 151C1043 136 1028 114 1022 95C1015 75 1024 56 1024 36C1023 16 1015 -3 1020 -23C1026 -43 1037 -72 1059 -82C1080 -93 1121 -87 1148 -87C1175 -86 1192 -78 1222 -79C1251 -80 1294 -98 1324 -92C1353 -85 1396 -62 1400 -40C1405 -19 1367 16 1350 36Z"/>
+        <path d="M1311 32C1299 47 1288 51 1283 64C1278 78 1290 100 1281 115C1272 129 1250 147 1229 152C1208 157 1179 150 1157 145C1135 140 1113 130 1098 119C1084 107 1074 91 1069 76C1063 62 1068 47 1067 32C1066 17 1058 1 1062 -14C1067 -29 1078 -51 1095 -58C1111 -66 1143 -60 1163 -61C1184 -61 1197 -58 1220 -60C1243 -61 1279 -75 1301 -69C1323 -63 1350 -42 1352 -25C1353 -8 1322 17 1311 32Z"/>
+        <path d="M1276 28C1269 38 1265 41 1263 51C1261 61 1270 78 1263 88C1257 99 1239 109 1224 112C1209 115 1189 110 1174 106C1159 102 1144 96 1134 88C1124 80 1117 68 1114 58C1110 48 1112 39 1111 28C1109 17 1102 5 1106 -5C1109 -15 1118 -30 1131 -35C1143 -40 1164 -35 1178 -36C1193 -36 1202 -37 1218 -38C1235 -40 1261 -49 1276 -44C1290 -39 1306 -22 1306 -10C1306 2 1283 18 1276 28Z"/>
+      </svg>
+      <div class="wrap">
+        <div>
+          <p class="mono eyebrow">Civil and transportation engineering</p>
+          <h1 id="hero-title">Roadways, drainage, traffic, water and&nbsp;sewer.<span>Planned, engineered and delivered.</span></h1>
+          <p class="lede">GC Engineering, Inc. is a full service professional engineering firm in Pearland, Texas, providing services in transportation, civil engineering, planning and program management.</p>
+          <div class="actions">
+            <a class="btn btn-navy" href="#projects">See our projects</a>
+            <a class="btn btn-line" href="tel:+12814127008">Call (281) 412-7008</a>
+          </div>
+        </div>
+        <aside class="board" aria-labelledby="board-title">
+          <p class="mono" id="board-title">Selected projects</p>
+          <ul>
+            <li><i style="--c:var(--road)"></i><div>Sam Houston Tollway Widening<span>Roadway / highway</span></div></li>
+            <li><i style="--c:var(--road)"></i><div>Hardy Toll Road Widening<span>Roadway / highway</span></div></li>
+            <li><i style="--c:var(--drain)"></i><div>Harris County Flood Control District channel rehabilitation<span>Drainage</span></div></li>
+            <li><i style="--c:var(--traffic)"></i><div>City of Pearland Travel Demand Forecast Model<span>Traffic</span></div></li>
+            <li><i style="--c:var(--water)"></i><div>Brazoria County MUD No. 55, Water Supply Plant #1<span>Water and sewer</span></div></li>
+          </ul>
+          <a href="#projects">All featured projects &rarr;</a>
+        </aside>
+      </div>
+    </section>
+
+    <section id="services" aria-labelledby="services-title"><div class="wrap">
+      <div class="head rv">
+        <div>
+          <span class="mono">Services</span>
+          <h2 id="services-title">From feasibility study to construction inspection</h2>
+        </div>
+        <p>Planning, engineering and project delivery for transportation and civil engineering work.</p>
+      </div>
+      <svg class="alignment rv" viewBox="0 0 1200 150" aria-hidden="true" focusable="false">
+        <path d="M0 104C260 104 380 44 600 52C820 60 940 112 1200 84" fill="none" stroke="#273352" stroke-width="44"/>
+        <path d="M0 104C260 104 380 44 600 52C820 60 940 112 1200 84" fill="none" stroke="#e8ebf1" stroke-width="36"/>
+        <path d="M0 104C260 104 380 44 600 52C820 60 940 112 1200 84" fill="none" stroke="#273352" stroke-width="33"/>
+        <path class="lane" d="M0 104C260 104 380 44 600 52C820 60 940 112 1200 84" fill="none" stroke="#e3a008" stroke-width="3" stroke-dasharray="24 14"/>
+        <g class="station"><circle cx="200" cy="91.6" r="17" fill="#fff" stroke="#0f2147" stroke-width="4"/><text class="num" x="200" y="97" text-anchor="middle" font-family="Red Hat Mono, monospace" font-weight="600" font-size="15" fill="#0f2147">1</text></g>
+        <g class="station"><circle cx="600" cy="52" r="17" fill="#fff" stroke="#0f2147" stroke-width="4"/><text class="num" x="600" y="57.4" text-anchor="middle" font-family="Red Hat Mono, monospace" font-weight="600" font-size="15" fill="#0f2147">2</text></g>
+        <g class="station"><circle cx="1000" cy="91.1" r="17" fill="#fff" stroke="#0f2147" stroke-width="4"/><text class="num" x="1000" y="96.5" text-anchor="middle" font-family="Red Hat Mono, monospace" font-weight="600" font-size="15" fill="#0f2147">3</text></g>
+      </svg>
+      <ol class="phases">
+        <li class="rv">
+          <span class="mono sta">Station 1</span>
+          <h3>Planning</h3>
+          <p>Including conceptual planning and feasibility studies.</p>
+        </li>
+        <li class="rv">
+          <span class="mono sta">Station 2</span>
+          <h3>Engineering</h3>
+          <p>Including detailed design and preparation of contract documents.</p>
+        </li>
+        <li class="rv">
+          <span class="mono sta">Station 3</span>
+          <h3>Project delivery</h3>
+          <p>Including program management, and construction engineering and inspection.</p>
+          <ul class="tags"><li>Construction management</li><li>Program management</li><li>Design-build</li></ul>
+          <p class="delivery-note">Our staff have worked in various roles on project delivery teams, or directly representing owners or investors.</p>
+        </li>
+      </ol>
+    </div></section>
+
+    <section class="statement on-navy" aria-label="Our reputation"><div class="wrap">
+      <blockquote class="rv">By drawing upon the imagination, experience and versatility of staff, the firm has built a reputation for delivering <em>outstanding quality</em> coupled with <em>on-time and within budget</em> performance.</blockquote>
+      <ul class="pillars rv">
+        <li><span class="mono">Innovative solutions</span>Developed for difficult and challenging problems.</li>
+        <li><span class="mono">Local conditions</span>Maximum responsiveness to local conditions.</li>
+        <li><span class="mono">Resources</span>A strong resource base and a rapid response capability.</li>
+      </ul>
+    </div></section>
+
+    <section id="projects" aria-labelledby="projects-title"><div class="wrap">
+      <div class="head rv">
+        <div>
+          <span class="mono">Projects</span>
+          <h2 id="projects-title">Featured projects</h2>
+        </div>
+        <p>Four practice areas, from tollway widenings and channel rehabilitation to traffic models, water plants and wastewater treatment.</p>
+      </div>
+      <div class="routes">
+        <div class="line" data-k="road" style="--c:var(--road)">
+          <header><span class="code" aria-hidden="true">RD</span><h3>Roadway / highway<span>9 projects</span></h3></header>
+          <div class="rail"><span class="track" aria-hidden="true"><span class="fill"></span></span>
+            <ol class="stops">
+              <li>Sam Houston Tollway Widening</li>
+              <li>County Road 101 Widening</li>
+              <li>Orange Street Widening</li>
+              <li>Seven Oaks Development</li>
+              <li>McHard Road Extension</li>
+              <li>Hardy Toll Road Widening</li>
+              <li>University Boulevard Construction</li>
+              <li>Langston Boulevard Extension</li>
+              <li>Fannin Street Reconstruction</li>
+            </ol>
+          </div>
+        </div>
+        <div class="line" data-k="drain" style="--c:var(--drain)">
+          <header><span class="code" aria-hidden="true">DR</span><h3>Drainage<span>5 projects</span></h3></header>
+          <div class="rail"><span class="track" aria-hidden="true"><span class="fill"></span></span>
+            <ol class="stops">
+              <li>Harris County Flood Control District channel rehabilitation projects<small>Outfall pipe and slope erosion repair; channel rehabilitation and spot repair</small></li>
+              <li>Chocolate Bayou Watershed Master Drainage Study</li>
+              <li>Sub-Regional Master Plan Development</li>
+              <li>Cullen Road Sub-Regional Detention Pond</li>
+              <li>Drainage Improvements at Grade Separations, Packages II and&nbsp;III</li>
+            </ol>
+          </div>
+        </div>
+        <div class="line" data-k="traffic" style="--c:var(--traffic)">
+          <header><span class="code" aria-hidden="true">TR</span><h3>Traffic<span>8 projects</span></h3></header>
+          <div class="rail"><span class="track" aria-hidden="true"><span class="fill"></span></span>
+            <ol class="stops">
+              <li class="junction">Traffic and transportation studies</li>
+              <li>Traffic Study for Jacintoport Boulevard</li>
+              <li>Traffic Engineering Services for High Level Road</li>
+              <li>City of Pearland Travel Demand Forecast Model</li>
+              <li>League City Traffic Model</li>
+              <li class="junction">Signalization</li>
+              <li>Cullen Boulevard (FM 865) Traffic Engineering</li>
+              <li>Traffic Engineering for Port Road, Bay Area Boulevard to SH&nbsp;146</li>
+              <li>Traffic Signal Design for T.C. Jester Boulevard</li>
+              <li>Traffic Engineering for Choate Road</li>
+            </ol>
+          </div>
+        </div>
+        <div class="line" data-k="water" style="--c:var(--water)">
+          <header><span class="code" aria-hidden="true">WS</span><h3>Water and sewer<span>9 projects</span></h3></header>
+          <div class="rail"><span class="track" aria-hidden="true"><span class="fill"></span></span>
+            <ol class="stops">
+              <li class="junction">Water</li>
+              <li>McHard Road Waterline Design, Business Drive to FM-865</li>
+              <li>Hunter-wood (now Hawk’s Landing) Water Plant</li>
+              <li>Brazoria County MUD No. 55, Water Supply Plant #1</li>
+              <li>Hunter’s Creek Subdivision, Section&nbsp;1<small>Water and sanitary sewer master plans, H.C.M.U.D. #459</small></li>
+              <li>Dawson Ridge Master Drainage Plan, Master Sanitary Sewer Plan and Master Water Plan Development</li>
+              <li class="junction">Wastewater</li>
+              <li>Walnut Street Wastewater Lift Station</li>
+              <li>Sanitary Sewer System Design at McAdoo Acres Subdivision</li>
+              <li>Brazoria County MUD No. 55, Wastewater Treatment Plant No.&nbsp;1</li>
+              <li>Dawson Ridge Development Master Sanitary Sewer Plan</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="photo-note rv">
+        <svg width="40" height="32" viewBox="0 0 40 32" aria-hidden="true" focusable="false"><rect x="1.5" y="1.5" width="37" height="29" rx="2" fill="none" stroke="#55607a" stroke-width="2" stroke-dasharray="4 3"/><path d="M7 25L15 15L21 21L26 16L33 25Z" fill="#c4c9d4"/><circle cx="28" cy="9" r="3" fill="#c4c9d4"/></svg>
+        <p><strong>Photo placeholder.</strong> On the real site, each project opens a short page with the client, the scope and GC Engineering's own project photos.</p>
+      </div>
+    </div></section>
+
+    <section id="philosophy" class="philosophy" aria-labelledby="philosophy-title"><div class="wrap">
+      <div class="rv">
+        <span class="mono" id="philosophy-title">Philosophy</span>
+        <blockquote>We strive to provide professional services and products that exceed clients' expectations in terms of creativity, attention to detail, and adherence to schedule.</blockquote>
+        <p class="after">We believe that our efforts in this regard will result in a dynamic organization that is a contributing member of the community, a leader in the industry, and a source of exciting opportunities for those who are a part of it.</p>
+      </div>
+      <ul class="tenets rv">
+        <li><span class="n">01</span><h3>Every level of government, and private enterprise</h3><p>GCE is committed to working with entities at all levels of government and private enterprise, adapting to changing regulations and demands in varying environments.</p></li>
+        <li><span class="n">02</span><h3>Infrastructure at fair costs</h3><p>A reliable track record of improving infrastructure at fair costs in a timely manner, as an asset to the surrounding community.</p></li>
+        <li><span class="n">03</span><h3>A broad range of skill areas</h3><p>GCE staff work in a broad range of skill areas and collaborate to operate efficiently and without error.</p></li>
+      </ul>
+    </div></section>
+
+    <section id="team" class="team" aria-labelledby="team-title"><div class="wrap">
+      <div class="head rv">
+        <div>
+          <span class="mono">Management</span>
+          <h2 id="team-title">The people behind the projects</h2>
+        </div>
+        <p>This section introduces GC Engineering's management, with a photo and a short bio for each person.</p>
+      </div>
+      <div class="grid rv">
+        <div class="ph"><div class="img"><div><svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true" focusable="false"><circle cx="22" cy="16" r="9" fill="#c4c9d4"/><path d="M5 42C7 31 14 27 22 27S37 31 39 42Z" fill="#c4c9d4"/></svg>Photo placeholder</div></div><div class="line-1"></div><div class="line-2"></div></div>
+        <div class="ph"><div class="img"><div><svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true" focusable="false"><circle cx="22" cy="16" r="9" fill="#c4c9d4"/><path d="M5 42C7 31 14 27 22 27S37 31 39 42Z" fill="#c4c9d4"/></svg>Photo placeholder</div></div><div class="line-1"></div><div class="line-2"></div></div>
+        <div class="ph"><div class="img"><div><svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true" focusable="false"><circle cx="22" cy="16" r="9" fill="#c4c9d4"/><path d="M5 42C7 31 14 27 22 27S37 31 39 42Z" fill="#c4c9d4"/></svg>Photo placeholder</div></div><div class="line-1"></div><div class="line-2"></div></div>
+      </div>
+      <p class="note rv"><strong>Placeholder:</strong> names, titles and bios to be supplied by GC Engineering.</p>
+    </div></section>
+
+    <section id="careers" class="careers" aria-labelledby="careers-title"><div class="wrap">
+      <div class="job rv">
+        <div>
+          <span class="mono hiring">Now hiring</span>
+          <h2 id="careers-title">Project Manager</h2>
+          <p>Join the Pearland team behind the roadway, drainage, traffic and water projects above.</p>
+          <a class="btn btn-navy" href="mailto:info@gc-engineering.com?subject=Project%20Manager%20role">Ask about the role</a>
+        </div>
+        <dl>
+          <dt>License</dt><dd>Texas PE</dd>
+          <dt>Experience</dt><dd>8 to 15 years</dd>
+          <dt>Focus</dt><dd>Roadway and drainage design</dd>
+        </dl>
+      </div>
+    </div></section>
+
+    <section id="contact" class="contact on-navy" aria-labelledby="contact-title"><div class="wrap">
+      <div class="rv">
+        <span class="mono">Contact us</span>
+        <h2 id="contact-title">Talk to GC Engineering about your next project</h2>
+        <p>Call the Pearland office, or email us with the project, the location and what you need.</p>
+        <a class="phone-big" href="tel:+12814127008">(281) 412-7008</a>
+        <div class="actions">
+          <a class="btn btn-amber" href="tel:+12814127008">Call the office</a>
+          <a class="btn btn-ghost" href="mailto:info@gc-engineering.com">Email info@gc-engineering.com</a>
+        </div>
+      </div>
+      <dl class="rv">
+        <dt>Office</dt><dd>GC Engineering, Inc.<br>2505 Park Avenue<br>Pearland, TX 77581</dd>
+        <dt>Phone</dt><dd><a href="tel:+12814127008">(281) 412-7008</a></dd>
+        <dt>Fax</dt><dd>(281) 412-4623</dd>
+        <dt>Email</dt><dd><a href="mailto:info@gc-engineering.com">info@gc-engineering.com</a></dd>
+      </dl>
+    </div></section>
+  </main>
+
+  <footer><div class="wrap">
+    <span>GC Engineering, Inc. · 2505 Park Avenue, Pearland, TX 77581</span>
+    <span>Concept by Fakhar Rashid. Content is taken from gc-engineering.com.</span>
+  </div></footer>
+
+  <div class="callbar" aria-label="Contact GC Engineering">
+    <a class="c1" href="tel:+12814127008">Call (281) 412-7008</a>
+    <a class="c2" href="mailto:info@gc-engineering.com">Email us</a>
+  </div>
+
+  <script>
+  /* Scroll reveals and the project lines filling in as you scroll.
+     Without this script (or with reduced motion) every line is drawn and every stop is shown. */
+  (function () {
+    var mm = window.matchMedia;
+    if (!mm || mm('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+    var root = document.documentElement;
+    root.classList.add('motion');
+
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -40px 0px', threshold: 0.06 });
+    [].forEach.call(document.querySelectorAll('.rv'), function (el) { io.observe(el); });
+
+    var lines = [].map.call(document.querySelectorAll('.line'), function (el) {
+      return { el: el, track: el.querySelector('.track'), stops: el.querySelectorAll('.stops li'), offs: [], vis: false };
+    });
+    var vh = innerHeight, queued = false;
+    function measure() {
+      vh = innerHeight;
+      lines.forEach(function (l) {
+        var t = l.track.getBoundingClientRect().top;
+        l.offs = [].map.call(l.stops, function (li) { return li.getBoundingClientRect().top - t + 10; });
+      });
+    }
+    function frame() {
+      queued = false;
+      lines.forEach(function (l) {
+        if (!l.vis) return;
+        var r = l.track.getBoundingClientRect();
+        var reach = vh * 0.72 - r.top;
+        var p = Math.max(0, Math.min(1, reach / r.height));
+        l.el.style.setProperty('--p', p.toFixed(3));
+        for (var i = 0; i < l.stops.length; i++) l.stops[i].classList.toggle('on', l.offs[i] <= reach);
+      });
+    }
+    function queue() { if (!queued) { queued = true; requestAnimationFrame(frame); } }
+    var seen = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { lines.forEach(function (l) { if (l.el === e.target) l.vis = e.isIntersecting; }); });
+      queue();
+    }, { rootMargin: '200px 0px' });
+    lines.forEach(function (l) { seen.observe(l.el); });
+    measure();
+    addEventListener('scroll', queue, { passive: true });
+    addEventListener('resize', function () { measure(); queue(); });
+    addEventListener('load', function () { measure(); queue(); });
+    queue();
+  })();
+  </script>
+</body>
+</html>

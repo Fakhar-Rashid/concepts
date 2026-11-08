@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Bliss Business &amp; Industrial Park | Homepage concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+  /* Motion is opt-in: reveal targets only start hidden when this class is set. */
+  if ('IntersectionObserver' in window && window.matchMedia && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('motion');
+  }
+</script>
+<style>
+  :root {
+    --kraft: #f1ebdf;
+    --paper: #faf7f1;
+    --sand: #e6dccb;
+    --navy: #1b2a3a;
+    --navy-2: #26394d;
+    --ink: #1d232a;
+    --muted: #5d636a;
+    --rule: #d6ccba;
+    --ochre: #d69c2b;
+    --ochre-dark: #8a5a06;
+    --max: 1180px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: "Work Sans", system-ui, sans-serif; font-size: 17px; line-height: 1.6; color: var(--ink); background: var(--kraft); }
+  a { color: inherit; }
+  a:focus-visible { outline: 3px solid var(--ochre); outline-offset: 3px; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+  h1, h2, h3 { font-family: "Zilla Slab", Georgia, serif; font-weight: 700; line-height: 1.05; margin: 0; letter-spacing: -0.005em; }
+  h2 { font-size: clamp(32px, 4.2vw, 48px); }
+  p { margin: 0; }
+  .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ochre-dark); }
+
+  .concept { background: var(--navy); color: #c9d2db; font-size: 13px; text-align: center; padding: 8px 16px; }
+  .concept strong { color: #fff; font-weight: 600; }
+
+  .utility { border-bottom: 1px solid var(--rule); font-size: 14px; color: var(--muted); }
+  .utility .wrap { display: flex; justify-content: space-between; gap: 6px 16px; padding-top: 8px; padding-bottom: 8px; flex-wrap: wrap; }
+  .utility a { color: var(--ink); font-weight: 700; text-decoration: none; }
+  .utility a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+  header.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 16px; padding-bottom: 16px; }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .brand svg { flex: none; }
+  .brand-name { font-family: "Zilla Slab", Georgia, serif; font-weight: 700; font-size: 26px; line-height: .9; letter-spacing: .01em; }
+  .brand-name span { display: block; font-family: "Work Sans", sans-serif; font-weight: 600; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+  nav ul { list-style: none; display: flex; gap: 30px; margin: 0; padding: 0; font-weight: 600; font-size: 15px; }
+  nav a { text-decoration: none; padding: 4px 0; background: linear-gradient(var(--ochre), var(--ochre)) 0 100% / 0 2px no-repeat; }
+  nav a:hover, nav a:focus-visible { background-size: 100% 2px; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; font: inherit; font-weight: 700; font-size: 16px; text-decoration: none; padding: 14px 22px; border-radius: 2px; border: 2px solid transparent; }
+  .btn:active { transform: translateY(1px); }
+  .btn .s { display: none; }
+  .btn-navy { background: var(--navy); color: #fff; }
+  .btn-navy:hover { background: var(--navy-2); }
+  .btn-line { border-color: var(--navy); color: var(--navy); }
+  .btn-line:hover { background: var(--navy); color: #fff; }
+  .btn-ochre { background: var(--ochre); color: var(--navy); }
+  .btn-ochre:hover { background: #e5ae40; }
+
+  /* Hero */
+  .hero { padding: 56px 0 0; overflow: hidden; }
+  .hero .wrap { display: grid; grid-template-columns: 1.02fr 1fr; gap: 48px; align-items: end; }
+  .hero-text { padding-bottom: 64px; }
+  .hero h1 { font-size: clamp(40px, 5vw, 64px); margin-top: 16px; }
+  .hero h1 em { font-style: normal; color: var(--ochre-dark); }
+  .hero .lede { font-size: 19px; color: var(--muted); max-width: 32em; margin-top: 22px; }
+  .hero .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+  .elevation { display: block; width: 100%; height: auto; overflow: visible; }
+  .elevation .slats-a { transform: translateY(-90px); }
+  .elevation .slats-b { transform: translateY(-46px); }
+
+  /* Nameplate facts under the hero */
+  .plate { background: var(--navy); color: #fff; }
+  .plate ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); }
+  .plate li { padding: 26px 24px 28px 0; }
+  .plate li + li { padding-left: 24px; border-left: 1px solid #3a4f65; }
+  .plate strong { display: block; font-family: "Zilla Slab", Georgia, serif; font-size: clamp(28px, 3vw, 38px); font-weight: 700; line-height: 1; color: var(--ochre); font-variant-numeric: lining-nums; }
+  .plate span { display: block; margin-top: 8px; font-size: 15px; color: #c9d2db; }
+
+  section { padding: 92px 0; }
+  .section-head { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 48px; align-items: end; margin-bottom: 52px; }
+  .section-head h2 { margin-top: 12px; }
+  .section-head p { color: var(--muted); font-size: 18px; max-width: 34em; }
+  .section-head p.eyebrow { color: var(--ochre-dark); font-size: 13px; max-width: none; }
+
+  /* Buildings: the to-scale size chart beside the five building types */
+  .buildings-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: start; }
+  .scale-card { position: sticky; top: 24px; background: var(--paper); border: 1px solid var(--rule); padding: 28px 28px 22px; }
+  .scale-card h3 { font-size: 22px; }
+  .scale-card > p { font-size: 15px; color: var(--muted); margin-top: 6px; }
+  .scale { display: block; width: 100%; height: auto; margin-top: 20px; overflow: visible; }
+  .scale rect { fill: rgba(27,42,58,.06); stroke: var(--navy); stroke-width: 1.5; transform-box: fill-box; transform-origin: 0 100%; }
+  .scale text { font-family: "Zilla Slab", Georgia, serif; font-weight: 700; font-size: 13px; fill: var(--navy); }
+  .scale [data-b].on rect { fill: rgba(214,156,43,.7); }
+  .scale-note { display: flex; justify-content: space-between; gap: 12px; margin-top: 16px; padding-top: 12px; border-top: 1px dashed var(--rule); font-size: 13px; color: var(--muted); }
+
+  .bldg-list { list-style: none; margin: 0; padding: 0; border-top: 3px solid var(--navy); }
+  .bldg { display: grid; grid-template-columns: 64px 1fr; gap: 4px 20px; padding: 28px 0; border-bottom: 1px solid var(--rule); }
+  .bldg-no { font-family: "Zilla Slab", Georgia, serif; font-weight: 700; font-size: 40px; line-height: 1; color: var(--rule); grid-row: span 3; }
+  .bldg.on .bldg-no { color: var(--ochre); }
+  .bldg h3 { font-size: 30px; }
+  .bldg h3 small { font-family: "Work Sans", sans-serif; font-size: 15px; font-weight: 600; color: var(--muted); margin-left: 6px; }
+  .bldg .kind { font-weight: 600; color: var(--ochre-dark); font-size: 15px; letter-spacing: .02em; }
+  .bldg dl { margin: 12px 0 0; display: grid; grid-template-columns: 80px 1fr; gap: 6px 16px; font-size: 16px; }
+  .bldg dt { font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding-top: 3px; }
+  .bldg dd { margin: 0; }
+  .ask { margin-top: 32px; display: flex; gap: 16px 28px; align-items: center; justify-content: space-between; flex-wrap: wrap; background: var(--sand); padding: 22px 24px; border-left: 6px solid var(--ochre); }
+  .ask p { font-size: 17px; max-width: 30em; }
+  .ask strong { font-family: "Zilla Slab", Georgia, serif; font-size: 22px; display: block; }
+
+  /* About + location */
+  .about { background: var(--paper); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .about .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .about h2 { margin-top: 12px; }
+  .about p.body { color: var(--muted); font-size: 18px; margin-top: 18px; max-width: 32em; }
+  .facts { list-style: none; margin: 28px 0 0; padding: 0; border-top: 1px solid var(--rule); }
+  .facts li { display: grid; grid-template-columns: 150px 1fr; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--rule); font-size: 16px; }
+  .facts b { font-family: "Zilla Slab", Georgia, serif; font-size: 18px; }
+  .photo-spot { position: relative; aspect-ratio: 4 / 3; border: 2px dashed #b9ad97; background:
+      repeating-linear-gradient(135deg, transparent 0 14px, rgba(27,42,58,.035) 14px 15px), var(--kraft);
+    display: grid; place-items: center; text-align: center; padding: 24px; color: var(--muted); }
+  .photo-spot svg { display: block; margin: 0 auto 12px; }
+  .photo-spot strong { display: block; color: var(--ink); font-size: 16px; }
+  .photo-spot span { font-size: 14px; }
+
+  /* Mobile homes */
+  .homes .wrap { display: grid; grid-template-columns: auto 1fr auto; gap: 28px 40px; align-items: center; }
+  .homes h2 { font-size: clamp(28px, 3.2vw, 38px); margin-top: 10px; }
+  .homes ul { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .homes li { border: 1px solid var(--rule); background: var(--paper); padding: 6px 14px; font-size: 15px; font-weight: 500; border-radius: 2px; }
+
+  /* Contact */
+  .contact { background: var(--navy); color: #fff; }
+  .contact .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: start; }
+  .contact .eyebrow { color: var(--ochre); }
+  .contact h2 { margin-top: 12px; }
+  .contact p.body { margin-top: 18px; font-size: 18px; color: #c9d2db; max-width: 30em; }
+  .contact .phone { display: inline-block; margin-top: 26px; font-family: "Zilla Slab", Georgia, serif; font-weight: 700; font-size: clamp(36px, 5vw, 56px); line-height: 1; color: var(--ochre); text-decoration: none; }
+  .contact .phone:hover { color: #f0bd55; }
+  .contact .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+  .contact .btn-line { border-color: #fff; color: #fff; }
+  .contact .btn-line:hover { background: #fff; color: var(--navy); }
+  .contact dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 14px 24px; font-size: 17px; border-top: 1px solid #3a4f65; padding-top: 20px; }
+  .contact dt { font-weight: 700; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: #9fb0c1; padding-top: 3px; }
+  .contact dd { margin: 0; }
+  .contact dd a { color: #fff; text-underline-offset: 3px; }
+  footer { background: #121d28; color: #9fb0c1; font-size: 14px; padding: 26px 0; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 10px 16px; flex-wrap: wrap; }
+
+  /* Call bar on phones */
+  .callbar { display: none; }
+
+  /* Motion: only when the visitor has not asked for reduced motion. Hidden-until-revealed states need .motion (set by script). */
+  @media (prefers-reduced-motion: no-preference) {
+    nav a { transition: background-size .25s ease; }
+    .scale rect { transition: fill .25s ease; }
+    .bldg-no { transition: color .25s ease; }
+    .elevation .slats-a { animation: roll-a 1.9s cubic-bezier(.5,0,.2,1) .5s both; }
+    .elevation .slats-b { animation: roll-b 1.5s cubic-bezier(.5,0,.2,1) 1.1s both; }
+    .elevation .glow-a { animation: glow 1.9s ease .5s both; }
+    .elevation .glow-b { animation: glow-b 1.5s ease 1.1s both; }
+    .elevation .plane { animation: fly 9s ease-out .2s both; }
+    .motion .rv { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.3,1); }
+    .motion .rv.in { opacity: 1; transform: none; }
+    .motion .scale rect { transform: scale(0); transition: transform .8s cubic-bezier(.2,.7,.3,1), fill .25s ease; }
+    .motion .scale text { opacity: 0; transition: opacity .5s ease; }
+    .motion .scale.in rect { transform: none; }
+    .motion .scale.in text { opacity: 1; }
+    .motion .scale.in [data-b="1"] rect { transition-delay: 0s; }
+    .motion .scale.in [data-b="2"] rect { transition-delay: .12s; }
+    .motion .scale.in [data-b="3"] rect { transition-delay: .24s; }
+    .motion .scale.in [data-b="4"] rect { transition-delay: .36s; }
+    .motion .scale.in [data-b="5"] rect { transition-delay: .48s; }
+    .motion .scale.in text { transition-delay: .7s; }
+  }
+  @keyframes roll-a { from { transform: translateY(0); } to { transform: translateY(-90px); } }
+  @keyframes roll-b { from { transform: translateY(0); } to { transform: translateY(-46px); } }
+  @keyframes fly { from { transform: translateX(120px); opacity: 0; } 20% { opacity: 1; } to { transform: none; opacity: 1; } }
+  @keyframes glow { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes glow-b { from { opacity: 0; } to { opacity: .7; } }
+
+  @media (max-width: 960px) {
+    nav ul { display: none; }
+    .hero .wrap, .section-head, .buildings-grid, .about .wrap, .contact .wrap { grid-template-columns: 1fr; }
+    .hero .wrap { gap: 8px; }
+    .hero-text { padding-bottom: 8px; }
+    .plate ul { grid-template-columns: 1fr 1fr; }
+    .plate li:nth-child(3) { padding-left: 0; border-left: 0; }
+    .plate li:nth-child(n+3) { border-top: 1px solid #3a4f65; }
+    .scale-card { position: static; max-width: 460px; }
+    .homes .wrap { grid-template-columns: 1fr; }
+    section { padding: 68px 0; }
+  }
+  @media (max-width: 760px) {
+    body { padding-bottom: 68px; }
+    .callbar { display: grid; grid-template-columns: 1.4fr 1fr; gap: 8px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; padding: 8px 10px calc(8px + env(safe-area-inset-bottom)); background: rgba(27,42,58,.97); box-shadow: 0 -6px 18px rgba(0,0,0,.18); }
+    .callbar a { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; font-weight: 700; font-size: 16px; text-decoration: none; border-radius: 2px; }
+    .callbar .call { background: var(--ochre); color: var(--navy); }
+    .callbar .mail { border: 2px solid #fff; color: #fff; }
+  }
+  @media (max-width: 520px) {
+    .wrap { padding: 0 20px; }
+    .utility .wrap { font-size: 13px; }
+    .brand-name { font-size: 22px; }
+    .brand-name span { font-size: 10px; letter-spacing: .12em; }
+    header.nav .btn { padding: 10px 14px; font-size: 15px; }
+    header.nav .btn .l { display: none; }
+    header.nav .btn .s { display: inline; }
+    .scale-note { flex-direction: column; gap: 2px; }
+    .hero { padding-top: 36px; }
+    .hero .lede { font-size: 17px; }
+    .hero .actions .btn { flex: 1 1 100%; justify-content: center; }
+    .plate li { padding: 20px 12px 22px 0; }
+    .plate li + li { padding-left: 14px; }
+    .plate li:nth-child(3) { padding-left: 0; }
+    .plate span { font-size: 14px; }
+    .scale-card { padding: 20px 18px 16px; }
+    .bldg { grid-template-columns: 1fr; }
+    .bldg-no { grid-row: auto; font-size: 18px; color: var(--ochre-dark); }
+    .bldg h3 { font-size: 27px; }
+    .bldg dl { grid-template-columns: 1fr; gap: 0; }
+    .bldg dt { padding-top: 10px; }
+    .facts li { grid-template-columns: 1fr; gap: 2px; }
+    .contact dl { grid-template-columns: 1fr; gap: 2px; }
+    .contact dd { margin-bottom: 12px; }
+    .contact .actions .btn { flex: 1 1 100%; justify-content: center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+  <!-- Microsoft Clarity: anonymous visit stats for this concept -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "zadcpfjdhj");
+  </script>
+</head>
+<body>
+  <div class="concept"><strong>Homepage concept</strong> prepared for Bliss Business &amp; Industrial Park by Fakhar Rashid. This is a design preview, not the live website, and it is not affiliated with or approved by Bliss Business &amp; Industrial Park.</div>
+
+  <div class="utility"><div class="wrap">
+    <span>Family owned in Greeley, Colorado, since 1964</span>
+    <span>Mike Bliss: <a href="tel:+19703531864">970-353-1864</a></span>
+  </div></div>
+
+  <header class="nav"><div class="wrap">
+    <a class="brand" href="#top" aria-label="Bliss Business and Industrial Park home">
+      <svg width="44" height="40" viewBox="0 0 44 40" aria-hidden="true" focusable="false">
+        <path d="M2 14L22 4L42 14V38H2Z" fill="#1b2a3a"/>
+        <rect x="9" y="20" width="26" height="18" fill="#d69c2b"/>
+        <path d="M9 24.5H35M9 29H35M9 33.5H35" stroke="#1b2a3a" stroke-width="1.6"/>
+      </svg>
+      <span class="brand-name">Bliss<span>Business &amp; Industrial Park</span></span>
+    </a>
+    <nav aria-label="Main"><ul>
+      <li><a href="#buildings">Buildings</a></li>
+      <li><a href="#about">Location</a></li>
+      <li><a href="#homes">Mobile homes</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul></nav>
+    <a class="btn btn-navy" href="#contact"><span class="l">Ask about space</span><span class="s">Contact</span></a>
+  </div></header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title"><div class="wrap">
+      <div class="hero-text">
+        <p class="eyebrow">Your commercial rental source</p>
+        <h1 id="hero-title">Commercial buildings for lease in <em>Greeley, Colorado.</em></h1>
+        <p class="lede">Office, warehouse and manufacturing buildings from 2,800 to 20,000 sq ft, in a family-owned park next to the Greeley/Weld Airport. Large or small, Bliss Business &amp; Industrial Park is here to suit your needs.</p>
+        <div class="actions">
+          <a class="btn btn-navy" href="tel:+19703531864">Call 970-353-1864</a>
+          <a class="btn btn-line" href="#buildings">See the five building sizes</a>
+        </div>
+      </div>
+      <svg class="elevation" viewBox="0 -50 560 430" role="img" aria-label="Illustration of a metal industrial building with two overhead doors rolling up" focusable="false">
+        <defs>
+          <pattern id="rib" width="9" height="10" patternUnits="userSpaceOnUse"><path d="M4.5 0V10" stroke="#1b2a3a" stroke-opacity=".13" stroke-width="1.6"/></pattern>
+          <pattern id="hazard" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="12" fill="#d69c2b"/><rect x="6" width="6" height="12" fill="#1b2a3a"/></pattern>
+          <linearGradient id="inside" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#16222f"/><stop offset="1" stop-color="#2c4259"/></linearGradient>
+          <linearGradient id="spill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3c66a" stop-opacity=".0"/><stop offset="1" stop-color="#f3c66a" stop-opacity=".55"/></linearGradient>
+          <clipPath id="door-a"><rect x="74" y="196" width="128" height="134"/></clipPath>
+          <clipPath id="door-b"><rect x="230" y="196" width="128" height="134"/></clipPath>
+        </defs>
+        <circle cx="452" cy="86" r="50" fill="#d69c2b" fill-opacity=".22"/>
+        <path d="M-1600 330H2200V380H-1600Z" fill="#e6dccb"/>
+        <g class="plane" fill="#1b2a3a" fill-opacity=".8"><path d="M96 0C104 -4 122 -5 140 -4L151 -13H156L153 -3L158 -2L155 1C135 3 110 3 96 0Z"/><path d="M114 -6H134V-4.5H114Z"/><path d="M162 -2H250" stroke="#1b2a3a" stroke-opacity=".25" stroke-width="1.2" stroke-dasharray="5 6"/></g>
+        <path d="M24 146L280 106L536 146Z" fill="#1b2a3a"/>
+        <rect x="40" y="144" width="480" height="186" fill="#ece6da"/>
+        <rect x="40" y="144" width="480" height="186" fill="url(#rib)"/>
+        <rect x="40" y="144" width="480" height="186" fill="none" stroke="#1b2a3a" stroke-width="2.5"/>
+        <rect x="176" y="154" width="208" height="26" fill="#1b2a3a"/>
+        <text x="280" y="172" text-anchor="middle" font-family="Zilla Slab, Georgia, serif" font-weight="700" font-size="13" letter-spacing="2.2" fill="#f1ebdf">BLISS BUSINESS PARK</text>
+        <!-- door A -->
+        <rect x="74" y="196" width="128" height="134" fill="url(#inside)"/>
+        <rect class="glow-a" x="74" y="300" width="128" height="30" fill="url(#spill)"/>
+        <g clip-path="url(#door-a)"><g class="slats-a">
+          <rect x="74" y="196" width="128" height="134" fill="#f7f3ea"/>
+          <path d="M74 209.4H202M74 222.8H202M74 236.2H202M74 249.6H202M74 263H202M74 276.4H202M74 289.8H202M74 303.2H202M74 316.6H202" stroke="#b6ab98" stroke-width="1.4"/>
+          <rect x="74" y="324" width="128" height="6" fill="#1b2a3a"/>
+        </g></g>
+        <rect x="74" y="196" width="128" height="134" fill="none" stroke="#1b2a3a" stroke-width="3"/>
+        <!-- door B -->
+        <rect x="230" y="196" width="128" height="134" fill="url(#inside)"/>
+        <rect class="glow-b" x="230" y="300" width="128" height="30" fill="url(#spill)"/>
+        <g clip-path="url(#door-b)"><g class="slats-b">
+          <rect x="230" y="196" width="128" height="134" fill="#f7f3ea"/>
+          <path d="M230 209.4H358M230 222.8H358M230 236.2H358M230 249.6H358M230 263H358M230 276.4H358M230 289.8H358M230 303.2H358M230 316.6H358" stroke="#b6ab98" stroke-width="1.4"/>
+          <rect x="230" y="324" width="128" height="6" fill="#1b2a3a"/>
+        </g></g>
+        <rect x="230" y="196" width="128" height="134" fill="none" stroke="#1b2a3a" stroke-width="3"/>
+        <!-- 14 ft dimension -->
+        <g stroke="#8a5a06" stroke-width="1.2"><path d="M58 196V330"/><path d="M53 196H63M53 330H63"/></g>
+        <text x="50" y="268" transform="rotate(-90 50 268)" text-anchor="middle" font-family="Work Sans, sans-serif" font-weight="700" font-size="11" fill="#8a5a06">14 FT</text>
+        <!-- office window and door -->
+        <rect x="392" y="200" width="96" height="40" fill="#2c4259" stroke="#1b2a3a" stroke-width="2.5"/>
+        <path d="M424 200V240M456 200V240" stroke="#ece6da" stroke-width="2"/>
+        <rect x="400" y="262" width="34" height="68" fill="#1b2a3a"/>
+        <circle cx="427" cy="298" r="2.2" fill="#d69c2b"/>
+        <!-- loading dock -->
+        <rect x="520" y="300" width="34" height="30" fill="#ece6da" stroke="#1b2a3a" stroke-width="2"/>
+        <rect x="520" y="300" width="34" height="7" fill="url(#hazard)"/>
+        <path d="M-1600 330H2200" stroke="#1b2a3a" stroke-width="2.5"/>
+      </svg>
+    </div></section>
+
+    <div class="plate"><div class="wrap">
+      <ul>
+        <li><strong>1964</strong><span>Established in Greeley</span></li>
+        <li><strong>I-3</strong><span>Industrial zoning</span></li>
+        <li><strong>2,800&ndash;20,000</strong><span>Square feet per building</span></li>
+        <li><strong>3-phase</strong><span>Power in all five building types</span></li>
+      </ul>
+    </div></div>
+
+    <section id="buildings" aria-labelledby="buildings-title"><div class="wrap">
+      <div class="section-head rv">
+        <div>
+          <p class="eyebrow">Buildings for lease</p>
+          <h2 id="buildings-title">Five building sizes. Find the one that fits.</h2>
+        </div>
+        <p>Manufacturing, warehouse, storage and office/warehouse space, all with electric overhead doors. Loading docks are available on request.</p>
+      </div>
+      <div class="buildings-grid">
+        <div class="scale-card rv">
+          <h3>Sizes side by side</h3>
+          <p>Floor areas drawn to scale, from the largest building to the smallest.</p>
+          <svg class="scale" viewBox="0 0 300 300" role="img" aria-label="Five squares drawn to relative floor area: 20,000, 14,400, 7,500, 5,000 and 2,800 square feet" focusable="false">
+            <g data-b="1"><rect x="14" y="20" width="270" height="270"/><text x="276" y="38" text-anchor="end">20,000</text></g>
+            <g data-b="2"><rect x="14" y="61" width="229" height="229"/><text x="235" y="79" text-anchor="end">14,400</text></g>
+            <g data-b="3"><rect x="14" y="125" width="165" height="165"/><text x="171" y="142" text-anchor="end">7,500</text></g>
+            <g data-b="4"><rect x="14" y="155" width="135" height="135"/><text x="141" y="172" text-anchor="end">5,000</text></g>
+            <g data-b="5"><rect x="14" y="189" width="101" height="101"/><text x="107" y="206" text-anchor="end">2,800</text></g>
+          </svg>
+          <div class="scale-note"><span>Square feet</span><span>Squares show area, not building shape</span></div>
+        </div>
+        <div>
+          <ol class="bldg-list">
+            <li class="bldg rv" data-b="1" tabindex="0">
+              <span class="bldg-no">01</span>
+              <h3>20,000 sq ft <small>1 building</small></h3>
+              <p class="kind">Showroom, offices and loading dock</p>
+              <dl>
+                <dt>Doors</dt><dd>Three 14 ft electric overhead doors, plus a 12 ft overhead door connecting to the loading dock</dd>
+                <dt>Inside</dt><dd>Four offices and one showroom</dd>
+                <dt>Power</dt><dd>3-phase and single phase</dd>
+              </dl>
+            </li>
+            <li class="bldg rv" data-b="2" tabindex="0">
+              <span class="bldg-no">02</span>
+              <h3>14,400 sq ft <small>1 building</small></h3>
+              <p class="kind">Manufacturing</p>
+              <dl>
+                <dt>Doors</dt><dd>Two 14 ft electric overhead doors</dd>
+                <dt>Inside</dt><dd>Three offices and a lunchroom</dd>
+                <dt>Power</dt><dd>Single phase and three phase</dd>
+                <dt>Dock</dt><dd>Loading dock near the building</dd>
+              </dl>
+            </li>
+            <li class="bldg rv" data-b="3" tabindex="0">
+              <span class="bldg-no">03</span>
+              <h3>7,500 sq ft <small>1 building</small></h3>
+              <p class="kind">Manufacturing</p>
+              <dl>
+                <dt>Doors</dt><dd>Two 14 ft electric overhead doors</dd>
+                <dt>Inside</dt><dd>Two offices</dd>
+                <dt>Power</dt><dd>Single phase and 3-phase</dd>
+                <dt>Dock</dt><dd>Loading dock available on request</dd>
+              </dl>
+            </li>
+            <li class="bldg rv" data-b="4" tabindex="0">
+              <span class="bldg-no">04</span>
+              <h3>5,000 sq ft <small>8 buildings</small></h3>
+              <p class="kind">Warehouse and storage</p>
+              <dl>
+                <dt>Doors</dt><dd>Two 14 ft electric overhead doors</dd>
+                <dt>Inside</dt><dd>Open span design, very well insulated</dd>
+                <dt>Power</dt><dd>Single and 3-phase</dd>
+                <dt>Dock</dt><dd>Loading docks available on request</dd>
+              </dl>
+            </li>
+            <li class="bldg rv" data-b="5" tabindex="0">
+              <span class="bldg-no">05</span>
+              <h3>2,800 sq ft <small>5 buildings</small></h3>
+              <p class="kind">Office / warehouse, built in 2003</p>
+              <dl>
+                <dt>Doors</dt><dd>Two 14 ft electric overhead doors, drive through</dd>
+                <dt>Inside</dt><dd>One to three offices available in units</dd>
+                <dt>Power</dt><dd>3-phase</dd>
+              </dl>
+            </li>
+          </ol>
+          <div class="ask rv">
+            <p><strong>Prices and availability</strong>Contact us for availability and prices, or for a more detailed description of any building.</p>
+            <a class="btn btn-navy" href="tel:+19703531864">Call Mike Bliss</a>
+          </div>
+        </div>
+      </div>
+    </div></section>
+
+    <section id="about" class="about" aria-labelledby="about-title"><div class="wrap">
+      <div class="rv">
+        <p class="eyebrow">About the park</p>
+        <h2 id="about-title">A family-owned business, in Greeley since 1964.</h2>
+        <p class="body">We provide commercial buildings for lease to a wide range of businesses, and we continue to strive to meet all commercial building applications.</p>
+        <ul class="facts">
+          <li><b>Zoning</b><span>I-3</span></li>
+          <li><b>Location</b><span>Just outside the city limits, adjacent to the Greeley/Weld Airport</span></li>
+          <li><b>Address</b><span>2438 E. 8th St., Greeley, CO 80631</span></li>
+        </ul>
+      </div>
+      <div class="photo-spot rv" role="img" aria-label="Placeholder for an aerial photo of the park">
+        <div>
+          <svg width="56" height="44" viewBox="0 0 56 44" aria-hidden="true" focusable="false"><rect x="2" y="8" width="52" height="34" rx="3" fill="none" stroke="#8b8170" stroke-width="2.5"/><path d="M18 8L22 2H34L38 8" fill="none" stroke="#8b8170" stroke-width="2.5"/><circle cx="28" cy="25" r="10" fill="none" stroke="#8b8170" stroke-width="2.5"/></svg>
+          <strong>Photo placeholder</strong>
+          <span>Your aerial photo of the park goes here in the real site.</span>
+        </div>
+      </div>
+    </div></section>
+
+    <section id="homes" class="homes" aria-labelledby="homes-title"><div class="wrap rv">
+      <svg width="88" height="64" viewBox="0 0 88 64" aria-hidden="true" focusable="false">
+        <rect x="4" y="22" width="80" height="34" fill="#faf7f1" stroke="#1b2a3a" stroke-width="2.5"/>
+        <path d="M2 24L10 12H78L86 24" fill="#1b2a3a"/>
+        <rect x="14" y="32" width="16" height="12" fill="#d69c2b"/><rect x="58" y="32" width="16" height="12" fill="#d69c2b"/>
+        <rect x="38" y="30" width="12" height="26" fill="#1b2a3a"/>
+        <path d="M0 58H88" stroke="#1b2a3a" stroke-width="2.5"/>
+      </svg>
+      <div>
+        <p class="eyebrow">Also for rent</p>
+        <h2 id="homes-title">Five 3-bedroom mobile homes</h2>
+        <ul>
+          <li>Built in 2000</li><li>Quiet country setting</li><li>Close to downtown</li><li>Attached storage shed</li><li>New A/C</li><li>Retirees welcome</li>
+        </ul>
+      </div>
+      <a class="btn btn-line" href="tel:+19703531864">Call for monthly rent</a>
+    </div></section>
+
+    <section id="contact" class="contact" aria-labelledby="contact-title"><div class="wrap">
+      <div class="rv">
+        <p class="eyebrow">Availability and prices</p>
+        <h2 id="contact-title">Talk to Mike Bliss about space.</h2>
+        <p class="body">Call or email for availability, prices and a more detailed description of the buildings or mobile homes.</p>
+        <a class="phone" href="tel:+19703531864">970-353-1864</a>
+        <div class="actions">
+          <a class="btn btn-ochre" href="tel:+19703531864">Call Mike</a>
+          <a class="btn btn-line" href="mailto:mike@blissbusinesspark.com">Email mike@blissbusinesspark.com</a>
+        </div>
+      </div>
+      <dl class="rv">
+        <dt>Office</dt><dd>2438 E. 8th St., Greeley, CO 80631</dd>
+        <dt>Mail</dt><dd>P.O. Box 816, Greeley, CO 80632</dd>
+        <dt>Phone</dt><dd><a href="tel:+19703531864">970-353-1864</a></dd>
+        <dt>Fax</dt><dd>970-351-7007</dd>
+        <dt>Email</dt><dd><a href="mailto:mike@blissbusinesspark.com">mike@blissbusinesspark.com</a></dd>
+        <dt>Hours</dt><dd>Monday to Friday, 7:30 am to 4:00 pm</dd>
+      </dl>
+    </div></section>
+  </main>
+
+  <footer><div class="wrap">
+    <span>Bliss Business &amp; Industrial Park, Greeley, Colorado. Family owned since 1964.</span>
+    <span>Concept by Fakhar Rashid. Content is taken from blissbusinesspark.com.</span>
+  </div></footer>
+
+  <div class="callbar" aria-label="Contact Bliss Business Park">
+    <a class="call" href="tel:+19703531864">Call 970-353-1864</a>
+    <a class="mail" href="mailto:mike@blissbusinesspark.com">Email</a>
+  </div>
+
+  <script>
+  /* Without this script (or with reduced motion) everything is shown in its finished state. */
+  (function () {
+    var root = document.documentElement;
+    // Hovering or focusing a building lights its square in the size chart
+    var chart = document.querySelector('.scale');
+    [].forEach.call(document.querySelectorAll('.bldg[data-b]'), function (el) {
+      var g = chart && chart.querySelector('[data-b="' + el.getAttribute('data-b') + '"]');
+      if (!g) return;
+      function on() { g.classList.add('on'); el.classList.add('on'); }
+      function off() { g.classList.remove('on'); el.classList.remove('on'); }
+      el.addEventListener('pointerenter', on); el.addEventListener('pointerleave', off);
+      el.addEventListener('focusin', on); el.addEventListener('focusout', off);
+    });
+
+    if (!root.classList.contains('motion')) return;
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    [].forEach.call(document.querySelectorAll('.rv, .scale'), function (el) { io.observe(el); });
+  })();
+  </script>
+</body>
+</html>

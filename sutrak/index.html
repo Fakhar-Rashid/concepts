@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>SUTRAK Corporation | Homepage concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira:wght@400..700&family=Saira+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --night: #0c1a2a;
+    --night-2: #142739;
+    --night-line: #26405a;
+    --ink: #0f1d2b;
+    --muted: #4c5d6d;
+    --ice: #eaf0f4;
+    --rule: #cfdae2;
+    --white: #ffffff;
+    --orange: #f26b1d;
+    --orange-dk: #c24f0e;
+    --led: #ffb020;
+    --cool: #8fd0ec;
+    --max: 1180px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: "Saira", system-ui, sans-serif; font-size: 17px; line-height: 1.6; color: var(--ink); background: var(--white); }
+  a { color: inherit; }
+  a:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 2px; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+  h1, h2, h3, .cond { font-family: "Saira Condensed", "Saira", sans-serif; font-weight: 800; line-height: 1; margin: 0; text-transform: uppercase; letter-spacing: .005em; }
+  h2 { font-size: clamp(38px, 5vw, 62px); }
+  p { margin: 0; }
+  .eyebrow { font-family: "Saira Condensed", sans-serif; font-size: 15px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--orange-dk); }
+  .dark .eyebrow { color: var(--orange); }
+
+  .concept { background: #05101b; color: #b9c4cf; font-size: 13px; text-align: center; padding: 8px 16px; }
+  .concept strong { color: #fff; font-weight: 600; }
+
+  .utility { background: var(--night); color: #9fb0c0; font-size: 14px; border-bottom: 1px solid var(--night-line); }
+  .utility .wrap { display: flex; justify-content: space-between; gap: 8px 16px; padding-top: 8px; padding-bottom: 8px; flex-wrap: wrap; }
+  .utility a { color: #fff; font-weight: 600; text-decoration: none; }
+  .utility a:hover { color: var(--led); }
+
+  header.top { background: var(--night); color: #fff; }
+  header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 18px; padding-bottom: 18px; }
+  .brand { display: flex; flex-direction: column; text-decoration: none; line-height: 1; }
+  .brand b { font-family: "Saira Condensed", sans-serif; font-weight: 800; font-size: 34px; letter-spacing: .02em; color: var(--orange); font-style: italic; }
+  .brand span { font-size: 10px; font-weight: 600; letter-spacing: .42em; color: #9fb0c0; margin-top: 3px; }
+  nav.main ul { list-style: none; display: flex; gap: 28px; margin: 0; padding: 0; font-weight: 500; font-size: 15px; }
+  nav.main a { text-decoration: none; color: #d4dde6; padding: 4px 0; border-bottom: 2px solid transparent; }
+  nav.main a:hover, nav.main a:focus-visible { color: #fff; border-bottom-color: var(--orange); }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 19px; letter-spacing: .04em; text-transform: uppercase; text-decoration: none; padding: 12px 24px; border: 2px solid transparent; border-radius: 4px; cursor: pointer; }
+  .btn:active { transform: translateY(1px); }
+  .btn-orange { background: var(--orange); color: #10171e; }
+  .btn-orange:hover { background: #ff8a45; }
+  .btn-ghost { border-color: #4d6a86; color: #fff; }
+  .btn-ghost:hover { border-color: #fff; }
+  .btn svg { width: 18px; height: 18px; }
+
+  /* Hero */
+  .hero { background: var(--night); color: #fff; padding: 36px 0 0; position: relative; overflow: hidden; }
+  .hero::before { content: ""; position: absolute; right: -6%; top: 20%; width: 46%; height: 70%; background: repeating-linear-gradient(180deg, rgba(143,208,236,.07) 0 3px, transparent 3px 14px); -webkit-mask-image: linear-gradient(90deg, transparent, #000 40%); mask-image: linear-gradient(90deg, transparent, #000 40%); pointer-events: none; }
+  .hero > .wrap { position: relative; }
+
+  /* The destination sign: the hero's signature */
+  .headsign { background: #1b2026; border-radius: 12px; padding: 10px; box-shadow: 0 0 0 1px #2b333c, 0 24px 50px -24px rgba(0,0,0,.7); }
+  .hs-screen { position: relative; height: 116px; overflow: hidden; border-radius: 5px; background: #111417; }
+  .hs-screen::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle, transparent 0 1.25px, #050607 1.75px) 0 0 / 4px 4px; pointer-events: none; }
+  .hs-track { margin: 0; padding: 0; list-style: none; }
+  .hs-track li { height: 116px; display: flex; align-items: center; gap: 28px; padding: 0 28px; font-family: "Saira Condensed", sans-serif; font-weight: 800; text-transform: uppercase; color: var(--led); text-shadow: 0 0 10px rgba(255,176,32,.55); white-space: nowrap; }
+  .hs-route { font-size: 82px; line-height: 1; min-width: 2.3em; text-align: center; border-right: 4px solid rgba(255,176,32,.55); padding-right: 22px; }
+  .hs-text { display: flex; flex-direction: column; line-height: 1; }
+  .hs-text b { font-weight: 800; font-size: 56px; letter-spacing: .02em; }
+  .hs-text span { font-weight: 700; font-size: 26px; letter-spacing: .08em; margin-top: 6px; }
+
+  .hero-grid { display: grid; grid-template-columns: 1.25fr .75fr; gap: 56px; align-items: center; padding: 56px 0 64px; }
+  .hero h1 { font-size: clamp(46px, 6.4vw, 86px); line-height: .94; }
+  .hero h1 em { font-style: normal; color: var(--cool); }
+  .hero .lede { font-size: 20px; color: #bccad6; max-width: 32em; margin-top: 22px; }
+  .hero .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+
+  /* Equipment nameplate */
+  .plate { position: relative; background: linear-gradient(160deg, #d9e0e6, #b8c3cc 55%, #cdd5dc); color: #18232e; border-radius: 6px; padding: 26px 28px 22px; box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 18px 40px -20px rgba(0,0,0,.7); }
+  .plate::before, .plate::after { content: ""; position: absolute; top: 10px; width: 9px; height: 9px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #f3f5f7, #7d8894); box-shadow: 0 1px 1px rgba(0,0,0,.35); }
+  .plate::before { left: 10px; } .plate::after { right: 10px; }
+  .plate .rivets::before, .plate .rivets::after { content: ""; position: absolute; bottom: 10px; width: 9px; height: 9px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #f3f5f7, #7d8894); box-shadow: 0 1px 1px rgba(0,0,0,.35); }
+  .plate .rivets::before { left: 10px; } .plate .rivets::after { right: 10px; }
+  .plate h2 { font-size: 22px; letter-spacing: .08em; border-bottom: 2px solid #18232e; padding-bottom: 8px; }
+  .plate dl { margin: 12px 0 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; font-size: 14.5px; }
+  .plate dt { font-family: "Saira Condensed", sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+  .plate dd { margin: 0; border-bottom: 1px solid rgba(24,35,46,.25); }
+  .plate .made { margin-top: 16px; display: flex; justify-content: space-between; align-items: center; font-family: "Saira Condensed", sans-serif; font-weight: 800; letter-spacing: .3em; font-size: 13px; }
+  .plate .made i { font-style: normal; color: var(--orange-dk); letter-spacing: .04em; font-size: 22px; }
+
+  .facts { border-top: 1px solid var(--night-line); }
+  .facts ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); }
+  .facts li { padding: 24px 24px 28px 0; color: #9fb0c0; font-size: 15px; line-height: 1.45; }
+  .facts li + li { padding-left: 24px; border-left: 1px solid var(--night-line); }
+  .facts strong { display: block; font-family: "Saira Condensed", sans-serif; font-weight: 800; font-size: 38px; line-height: 1.05; color: #fff; margin-bottom: 4px; }
+
+  section { padding: 96px 0; }
+  .section-head { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; margin-bottom: 48px; }
+  .section-head p { color: var(--muted); font-size: 18px; max-width: 34em; }
+  .section-head .eyebrow { margin-bottom: 12px; }
+
+  /* Systems */
+  .systems { background: var(--ice); }
+  .sys-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .sys { background: var(--white); border: 1px solid var(--rule); border-radius: 6px; padding: 24px 24px 26px; display: flex; flex-direction: column; gap: 10px; color: var(--ink); }
+  .sys .kind { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 14px; letter-spacing: .12em; text-transform: uppercase; color: var(--orange-dk); }
+  .sys h3 { font-size: 40px; letter-spacing: .01em; }
+  .sys p { color: var(--muted); font-size: 16px; }
+  .sys svg.pic { width: 132px; height: 46px; color: #33475a; margin-bottom: 4px; }
+  .pic .u { fill: var(--orange); }
+  .sys.flag { grid-column: span 2; background: var(--night); border-color: var(--night); color: #fff; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 32px; align-content: start; }
+  .sys.flag .kind { color: var(--led); }
+  .sys.flag h3 { font-size: 56px; }
+  .sys.flag p { color: #bccad6; }
+  .sys.flag svg.pic { color: #b9c8d6; width: 100%; max-width: 320px; height: auto; grid-column: 2; grid-row: 1 / span 4; align-self: center; justify-self: center; }
+  .sys.flag .tag { align-self: start; justify-self: start; font-family: "Saira Condensed", sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; font-size: 13px; color: #10171e; background: var(--led); border-radius: 3px; padding: 2px 10px; }
+
+  /* Electric (dark) */
+  .electric { background: var(--night); color: #fff; }
+  .electric .section-head p { color: #bccad6; }
+  .idle { display: grid; grid-template-columns: auto 1fr; gap: 12px 40px; align-items: center; padding: 30px 0; border-top: 1px solid var(--night-line); border-bottom: 1px solid var(--night-line); margin-bottom: 48px; }
+  .idle .big { font-family: "Saira Condensed", sans-serif; font-weight: 800; text-transform: uppercase; font-size: clamp(64px, 9vw, 120px); line-height: .9; color: var(--cool); }
+  .idle p { font-size: 22px; color: #e3eaf0; max-width: 28em; line-height: 1.45; }
+  .idle small { display: block; font-size: 15px; color: #8fa3b5; margin-top: 10px; }
+  .why { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .why li { border-top: 3px solid var(--orange); padding-top: 18px; }
+  .why .n { font-family: "Saira Condensed", sans-serif; font-weight: 800; font-size: 20px; color: var(--orange); }
+  .why h3 { font-size: 30px; margin: 6px 0 10px; }
+  .why p { color: #bccad6; font-size: 16px; }
+  .electric .longest { margin-top: 48px; font-size: 18px; color: #e3eaf0; padding-left: 18px; border-left: 4px solid var(--cool); max-width: 46em; }
+
+  /* Story timeline */
+  .story .wrap { display: grid; grid-template-columns: .8fr 1.2fr; gap: 64px; }
+  .story-intro { position: sticky; top: 32px; align-self: start; }
+  .story-intro p { color: var(--muted); font-size: 18px; margin-top: 18px; }
+  .timeline { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--rule); }
+  .timeline li { position: relative; padding: 0 0 36px 32px; }
+  .timeline li:last-child { padding-bottom: 0; }
+  .timeline li::before { content: ""; position: absolute; left: -8px; top: 10px; width: 14px; height: 14px; border-radius: 50%; background: var(--white); border: 3px solid var(--orange); }
+  .timeline .yr { font-family: "Saira Condensed", sans-serif; font-weight: 800; font-size: 34px; line-height: 1.1; color: var(--orange-dk); }
+  .timeline h3 { font-size: 24px; margin: 4px 0 8px; }
+  .timeline p { color: var(--muted); }
+  .timeline ul { margin: 10px 0 0; padding-left: 18px; color: var(--muted); }
+  .timeline ul li { padding: 0 0 4px; }
+  .timeline ul li::before { display: none; }
+
+  /* Projects: a departures board */
+  .projects { background: var(--ice); }
+  .board { border-radius: 8px; overflow: hidden; background: var(--night); color: #e3eaf0; box-shadow: 0 30px 60px -36px rgba(12,26,42,.7); }
+  .board-head, .run { display: grid; grid-template-columns: 130px 1.3fr 1fr 1.6fr; gap: 20px; padding: 16px 24px; align-items: baseline; }
+  .board-head { font-family: "Saira Condensed", sans-serif; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; font-size: 13px; color: #8fa3b5; background: #081320; }
+  .run { border-top: 1px solid var(--night-line); }
+  .run .yr { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 22px; color: var(--led); font-variant-numeric: tabular-nums; }
+  .run .who { font-weight: 600; font-size: 18px; color: #fff; }
+  .run .sys-code { font-family: "Saira Condensed", sans-serif; font-weight: 800; font-size: 24px; text-transform: uppercase; color: var(--cool); }
+  .run .sys-code small { display: block; font-family: "Saira", sans-serif; font-weight: 500; font-size: 13px; text-transform: none; color: #8fa3b5; letter-spacing: 0; }
+  .run .veh { color: #bccad6; font-size: 15.5px; }
+  .gallery-ph { margin-top: 24px; border: 1.5px dashed #9fb0c0; border-radius: 8px; padding: 18px 20px; display: flex; gap: 12px 28px; flex-wrap: wrap; align-items: center; color: var(--muted); font-size: 15px; }
+  .gallery-ph b { font-family: "Saira Condensed", sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); font-size: 14px; }
+  .gallery-ph ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .gallery-ph li { background: var(--white); border: 1px solid var(--rule); border-radius: 3px; padding: 3px 10px; font-size: 14px; }
+
+  /* Support */
+  .support-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .desk { border: 1px solid var(--rule); border-top: 4px solid var(--ink); border-radius: 4px; padding: 24px; display: flex; flex-direction: column; gap: 8px; }
+  .desk h3 { font-size: 28px; }
+  .desk p { color: var(--muted); font-size: 16px; }
+  .desk .ext { font-family: "Saira Condensed", sans-serif; font-weight: 800; font-size: 30px; text-decoration: none; margin-top: auto; padding-top: 10px; }
+  .desk .ext span { color: var(--orange-dk); }
+  .desk .ext:hover { color: var(--orange-dk); }
+  .desk .mail { font-weight: 600; font-size: 15px; color: var(--orange-dk); text-decoration: none; }
+  .desk .mail:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .desk .person { font-weight: 600; color: var(--ink); }
+
+  /* People + careers */
+  .people { background: var(--ice); }
+  .people .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 64px; }
+  .leaders { list-style: none; margin: 28px 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0 28px; }
+  .leaders li { border-top: 1px solid var(--rule); padding: 16px 0; }
+  .leaders b { display: block; font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 26px; text-transform: uppercase; line-height: 1.1; }
+  .leaders span { color: var(--muted); font-size: 15px; }
+  .careers { background: var(--white); border: 1px solid var(--rule); border-radius: 6px; padding: 30px; }
+  .careers h2 { font-size: 40px; margin-top: 10px; }
+  .careers p { color: var(--muted); margin-top: 14px; }
+  .careers a { color: var(--orange-dk); font-weight: 600; }
+
+  /* Contact */
+  .contact { background: var(--orange-dk); color: #fff; }
+  .contact .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: start; }
+  .contact .eyebrow { color: #ffe0c9; }
+  .contact h2 { margin-top: 12px; }
+  .contact .lead { margin-top: 18px; font-size: 19px; color: #fff3ea; max-width: 30em; }
+  .contact .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  .contact .btn-white { background: #fff; color: var(--ink); }
+  .contact .btn-white:hover { background: var(--night); color: #fff; }
+  .contact .btn-line { border-color: rgba(255,255,255,.7); color: #fff; }
+  .contact .btn-line:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+  .contact a:focus-visible { outline-color: #fff; }
+  .contact dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 10px 22px; font-size: 16.5px; }
+  .contact dt { font-family: "Saira Condensed", sans-serif; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #ffe0c9; }
+  .contact dd { margin: 0; }
+  .contact dd a { text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.5); }
+
+  footer { background: #05101b; color: #8fa3b5; font-size: 14px; padding: 28px 0; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+  a[href^="tel:"] { white-space: nowrap; }
+  .dock { display: none; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hs-track { animation: headsign 16s steps(1, end) infinite; }
+    .hs-track li { animation: flicker 4s linear infinite; }
+    .motion .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.3,1); transition-delay: calc(var(--rd, 0) * 100ms); }
+    .motion .reveal.in { opacity: 1; transform: none; }
+    .sys { transition: transform .25s ease, box-shadow .25s ease; }
+    .sys:hover { transform: translateY(-3px); box-shadow: 0 18px 30px -22px rgba(12,26,42,.55); }
+    .run { transition: background .2s; }
+    .run:hover { background: var(--night-2); }
+    .motion .timeline li::before { transition: background .4s ease .2s; }
+    .motion .timeline li.in::before { background: var(--orange); }
+  }
+  /* A sign flips between messages instantly, with a dark beat between, like a real LED head sign */
+  @keyframes headsign {
+    0%   { transform: translateY(0); }
+    25%  { transform: translateY(-25%); }
+    50%  { transform: translateY(-50%); }
+    75%  { transform: translateY(-75%); }
+  }
+  @keyframes flicker { 0%, 96% { opacity: 1; } 97%, 100% { opacity: 0; } }
+
+  @media (max-width: 960px) {
+    nav.main ul { display: none; }
+    .hero-grid, .section-head, .story .wrap, .people .wrap, .contact .wrap { grid-template-columns: 1fr; }
+    .hero-grid { gap: 40px; }
+    .facts ul { grid-template-columns: 1fr 1fr; }
+    .facts li:nth-child(3) { border-left: 0; padding-left: 0; }
+    .facts li:nth-child(n+3) { border-top: 1px solid var(--night-line); }
+    .sys-grid, .support-grid { grid-template-columns: 1fr 1fr; }
+    .why { grid-template-columns: 1fr; gap: 28px; }
+    .story-intro { position: static; }
+    .board-head { display: none; }
+    .run { grid-template-columns: 1fr; gap: 4px; padding: 18px 20px; }
+    section { padding: 72px 0; }
+  }
+  @media (max-width: 720px) {
+    .wrap { padding: 0 18px; }
+    .utility .wrap > span:first-child { display: none; }
+    header.top .btn { padding: 8px 14px; font-size: 16px; }
+    .hero { padding-top: 22px; }
+    .headsign { padding: 7px; border-radius: 9px; }
+    .hs-screen, .hs-track li { height: 86px; }
+    .hs-screen::after { background-size: 3px 3px; background-image: radial-gradient(circle, transparent 0 .9px, #050607 1.3px); }
+    .hs-track li { gap: 14px; padding: 0 14px; }
+    .hs-route { font-size: 48px; padding-right: 12px; border-right-width: 3px; min-width: 0; }
+    .hs-text b { font-size: 33px; }
+    .hs-text span { font-size: 16.5px; letter-spacing: .05em; margin-top: 4px; }
+    .hero-grid { padding: 36px 0 48px; }
+    .hero .lede { font-size: 18px; }
+    .hero .actions .btn { flex: 1 1 100%; }
+    .facts li, .facts li + li { padding: 18px 12px 20px 0; }
+    .facts li:nth-child(even) { padding-left: 14px; }
+    .facts strong { font-size: 30px; }
+    .sys-grid, .support-grid { grid-template-columns: 1fr; }
+    .sys { padding: 20px 20px 22px; gap: 8px; }
+    .sys h3 { font-size: 34px; }
+    .sys svg.pic { width: 112px; height: 39px; }
+    .sys.flag { grid-column: auto; grid-template-columns: 1fr; }
+    .sys.flag h3 { font-size: 46px; }
+    .sys.flag svg.pic { grid-column: auto; grid-row: auto; justify-self: start; max-width: 240px; }
+    .idle { grid-template-columns: 1fr; }
+    .idle p { font-size: 19px; }
+    .leaders { grid-template-columns: 1fr; }
+    .careers { padding: 24px 22px; }
+    .contact .actions .btn { flex: 1 1 100%; }
+    .contact dl { grid-template-columns: 1fr; gap: 2px; }
+    .contact dd + dt { margin-top: 12px; }
+    footer { padding-bottom: 104px; }
+    .dock { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); background: rgba(12,26,42,.97); border-top: 1px solid var(--night-line); }
+    .dock a { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; border-radius: 4px; font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 18px; letter-spacing: .04em; text-transform: uppercase; text-decoration: none; color: #fff; border: 1.5px solid #4d6a86; }
+    .dock a.primary { background: var(--orange); border-color: var(--orange); color: #10171e; }
+    .dock svg { width: 18px; height: 18px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  /* Scroll reveals only run when motion is welcome; without this script everything is simply visible. */
+  if ('IntersectionObserver' in window && window.matchMedia && matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+    document.documentElement.classList.add('motion');
+  }
+</script>
+  <!-- Microsoft Clarity: anonymous visit stats for this concept -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "zadcpfjdhj");
+  </script>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <g id="bus">
+        <rect x="3" y="12" width="112" height="22" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M12 19.5h76" stroke="currentColor" stroke-width="6" stroke-dasharray="11 4" opacity=".3"/>
+        <path d="M100 16v18" stroke="currentColor" stroke-width="2"/>
+        <circle cx="25" cy="35" r="5" fill="#fff" stroke="currentColor" stroke-width="2"/>
+        <circle cx="90" cy="35" r="5" fill="#fff" stroke="currentColor" stroke-width="2"/>
+      </g>
+    </defs>
+  </svg>
+
+  <div class="concept"><strong>Homepage concept</strong> prepared for SUTRAK by Fakhar Rashid. This is a design preview, not the live website, and it is not affiliated with or approved by SUTRAK.</div>
+
+  <div class="utility"><div class="wrap">
+    <span>Commerce City, Colorado, 20 minutes from Denver International Airport</span>
+    <span>Parts and service: <a href="tel:+13032872700">303-287-2700</a>, ext. 208</span>
+  </div></div>
+
+  <header class="top"><div class="wrap">
+    <a class="brand" href="#top" aria-label="SUTRAK home"><b>SUTRAK</b><span>MADE IN THE U.S.A.</span></a>
+    <nav class="main" aria-label="Main"><ul>
+      <li><a href="#systems">Systems</a></li>
+      <li><a href="#electric">Electric HVAC</a></li>
+      <li><a href="#story">Our story</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#support">Parts &amp; service</a></li>
+    </ul></nav>
+    <a class="btn btn-orange" href="#contact">Contact sales</a>
+  </div></header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap">
+        <div class="headsign" aria-hidden="true">
+          <div class="hs-screen">
+            <ul class="hs-track">
+              <li><span class="hs-route">USA</span><span class="hs-text"><b>Transit HVAC</b><span>Made in the USA</span></span></li>
+              <li><span class="hs-route">ACE</span><span class="hs-text"><b>Electric HVAC</b><span>Air Conditioning Electric</span></span></li>
+              <li><span class="hs-route">CO</span><span class="hs-text"><b>Commerce City</b><span>In Colorado since 1981</span></span></li>
+              <li><span class="hs-route">BUS</span><span class="hs-text"><b>Bus · LRV · APM</b><span>Passenger transit HVAC</span></span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hero-grid">
+          <div>
+            <p class="eyebrow">Innovation · Design · Engineering · Manufacturing</p>
+            <h1 id="hero-title" style="margin-top:14px">U.S. manufacturer of passenger transit <em>HVAC systems</em></h1>
+            <p class="lede">HVAC systems for transit buses, light rail vehicles and automated people movers, built in Commerce City, Colorado. SUTRAK pioneered roof mount technology and today leads with ACE, Air Conditioning Electric.</p>
+            <div class="actions">
+              <a class="btn btn-orange" href="#contact">New system sales</a>
+              <a class="btn btn-ghost" href="#support">Parts and service</a>
+            </div>
+          </div>
+          <div class="plate" role="group" aria-label="Company data plate">
+            <span class="rivets" aria-hidden="true"></span>
+            <h2>SUTRAK Corporation</h2>
+            <dl>
+              <dt>Address</dt><dd>6897 E. 49th Ave., Commerce City, CO 80022</dd>
+              <dt>In Colorado</dt><dd>Since 1981</dd>
+              <dt>Ownership</dt><dd>Independently owned since 1996</dd>
+              <dt>Systems</dt><dd>Transit bus, LRV, APM</dd>
+              <dt>Technology</dt><dd>ACE (Air Conditioning Electric)</dd>
+            </dl>
+            <p class="made">MADE IN THE U.S.A.<i>SUTRAK USA</i></p>
+          </div>
+        </div>
+      </div>
+      <div class="facts"><div class="wrap">
+        <ul>
+          <li><strong>1970s</strong>SUTRAK patented roof-mounted HVAC for buses</li>
+          <li><strong>1981</strong>Manufacturing site established in Colorado</li>
+          <li><strong>2006</strong>First to deploy generator-powered electric HVAC on production buses</li>
+          <li><strong>6 continents</strong>SUTRAK expanded worldwide on roof mount HVAC</li>
+        </ul>
+      </div></div>
+    </section>
+
+    <section id="systems" class="systems" aria-labelledby="systems-title"><div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">Transit bus HVAC and more</p>
+          <h2 id="systems-title">Systems we design and build</h2>
+        </div>
+        <p>SUTRAK systems have been installed on virtually every major bus, LRV and APM OEM manufacturer in the United States. ACE systems are among the industry's most energy efficient and environmentally responsible HVAC systems.</p>
+      </div>
+      <div class="sys-grid">
+        <article class="sys flag reveal">
+          <svg class="pic" viewBox="0 0 120 42" aria-hidden="true"><use href="#bus"/><rect class="u" x="36" y="5" width="48" height="7" rx="2"/></svg>
+          <span class="tag">Flagship</span>
+          <span class="kind">Roof mount electric, dual loop</span>
+          <h3>ACE234DLGS</h3>
+          <p>SUTRAK's flagship roof mount electric system for transit buses. Since 2008, the ACE234DLS has been a popular choice for our roof mount customers, and its dual compressor option has helped mitigate A/C related road calls in Broward County, FL.</p>
+        </article>
+        <article class="sys reveal" style="--rd:1">
+          <svg class="pic" viewBox="0 0 120 42" aria-hidden="true"><use href="#bus"/><rect class="u" x="40" y="5" width="40" height="7" rx="2"/></svg>
+          <span class="kind">Roof mount</span>
+          <h3>ACE 234 Series</h3>
+          <p>Roof mount ACE (Air Conditioning Electric) HVAC for transit buses.</p>
+        </article>
+        <article class="sys reveal">
+          <svg class="pic" viewBox="0 0 120 42" aria-hidden="true"><use href="#bus"/><rect class="u" x="40" y="5" width="40" height="7" rx="2"/></svg>
+          <span class="kind">Roof mount</span>
+          <h3>ACE 235 Series</h3>
+          <p>The evolution of the original AC235 platform. Single or dual compressors, air cooled inverters as the application requires, and glycol or electric heat.</p>
+        </article>
+        <article class="sys reveal" style="--rd:1">
+          <svg class="pic" viewBox="0 0 120 42" aria-hidden="true"><use href="#bus"/><rect class="u" x="104" y="14" width="10" height="16" rx="1.5"/></svg>
+          <span class="kind">Rear mount electric</span>
+          <h3>ACE 219 Series</h3>
+          <p>Rear mount electric HVAC. Full electric ACE219G systems went on Dallas Area Rapid Transit's New Flyer Xcelsior 40-ft CNG buses from 2016 to 2019.</p>
+        </article>
+        <article class="sys reveal" style="--rd:2">
+          <svg class="pic" viewBox="0 0 120 42" aria-hidden="true"><rect x="3" y="12" width="62" height="22" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><rect x="69" y="12" width="46" height="22" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M65 15h4v16h-4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="20" cy="35" r="5" fill="#fff" stroke="currentColor" stroke-width="2"/><circle cx="52" cy="35" r="5" fill="#fff" stroke="currentColor" stroke-width="2"/><circle cx="98" cy="35" r="5" fill="#fff" stroke="currentColor" stroke-width="2"/><rect class="u" x="14" y="5" width="32" height="7" rx="2"/><rect class="u" x="76" y="5" width="32" height="7" rx="2"/></svg>
+          <span class="kind">Articulated bus roof mount</span>
+          <h3>ACE238DLGS</h3>
+          <p>Roof mount HVAC for articulated buses. On the Antelope Valley Transit Association's BYD articulated electric bus, the ACE238DLS combines two ACE234DLS packages.</p>
+        </article>
+        <article class="sys reveal">
+          <svg class="pic" viewBox="0 0 120 42" aria-hidden="true"><use href="#bus"/><rect class="u" x="66" y="23" width="22" height="8" rx="1.5"/></svg>
+          <span class="kind">Diesel and CNG bus</span>
+          <h3>Power generation</h3>
+          <p>A power generation package that allows all electric HVAC on CNG and diesel buses. Air cooled components keep it simple, and it has proven very reliable.</p>
+        </article>
+        <article class="sys reveal" style="--rd:1">
+          <svg class="pic" viewBox="0 0 120 42" aria-hidden="true"><use href="#bus"/><rect class="u" x="40" y="5" width="40" height="7" rx="2" opacity=".55"/><rect class="u" x="104" y="14" width="10" height="16" rx="1.5" opacity=".55"/></svg>
+          <span class="kind">Belt driven</span>
+          <h3>Conventional HVAC</h3>
+          <p>Conventional roof top and rear mounted system designs, with either 4 or 6 cylinder compressors.</p>
+        </article>
+        <article class="sys reveal" style="--rd:2">
+          <svg class="pic" viewBox="0 0 120 42" aria-hidden="true"><rect x="3" y="11" width="114" height="22" rx="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 18.5h88" stroke="currentColor" stroke-width="6" stroke-dasharray="12 4" opacity=".3"/><g fill="#fff" stroke="currentColor" stroke-width="2"><circle cx="22" cy="35" r="3.5"/><circle cx="34" cy="35" r="3.5"/><circle cx="86" cy="35" r="3.5"/><circle cx="98" cy="35" r="3.5"/></g><rect class="u" x="44" y="4" width="32" height="7" rx="2"/></svg>
+          <span class="kind">APM, LRV and more</span>
+          <h3>Rail and people movers</h3>
+          <p>HVAC for automated people movers around the world, light rail vehicles, heavy rail test vehicles, school and shuttle buses, and other custom applications.</p>
+        </article>
+      </div>
+    </div></section>
+
+    <section id="electric" class="electric dark" aria-labelledby="electric-title"><div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">Electric HVAC for bus</p>
+          <h2 id="electric-title">What's all the hype about?</h2>
+        </div>
+        <p>Operational and efficiency benefits are at the heart of the matter. SUTRAK has the longest running experience in production deliveries of all electric HVAC systems.</p>
+      </div>
+      <div class="idle reveal">
+        <p class="big" aria-hidden="true">Nearly half</p>
+        <p>of the average bus's life is spent at idle. Electric HVAC can deliver full capacity while idling, when it is needed most.<small>A bus at a stop for one minute on a very hot day, doors open, with heat soaked passengers getting on board.</small></p>
+      </div>
+      <ol class="why">
+        <li class="reveal"><span class="n">#1</span><h3>Full capacity at idle</h3><p>Conventional compressor output follows engine RPM, so conventional systems are heavily restricted at idle. Electric systems maximize performance while idling.</p></li>
+        <li class="reveal" style="--rd:1"><span class="n">#2</span><h3>Self-contained designs</h3><p>Locating the compressor inside the HVAC package eliminates the refrigerant tubing and its potential leak points. It speeds up installation and improves testing and reliability.</p></li>
+        <li class="reveal" style="--rd:2"><span class="n">#3</span><h3>Scroll compressors</h3><p>Electric scroll compressors handle liquid better than piston or screw designs, with fewer moving parts. Their hermetic design eliminates shaft seal problems.</p></li>
+      </ol>
+      <p class="longest reveal">With the advent of battery electric buses, SUTRAK is well positioned to provide electric HVAC designs, backed by nearly two decades of electric HVAC design, manufacturing and operation in the field.</p>
+    </div></section>
+
+    <section id="story" class="story" aria-labelledby="story-title"><div class="wrap">
+      <div class="story-intro reveal">
+        <p class="eyebrow">SUTRAK's story</p>
+        <h2 id="story-title" style="margin-top:12px">A run of firsts</h2>
+        <p>Nearly 50 years of global design, innovation and uncompromising performance, and a leading manufacturer of HVAC systems for buses, light rail vehicles and automated people movers.</p>
+      </div>
+      <ol class="timeline">
+        <li class="reveal"><p class="yr">1970s</p><h3>Roof mount, patented</h3><p>SUTRAK patented roof mounted HVAC technology for buses. Before this, only skirt mounted and rear mounted systems existed. SUTRAK expanded to 6 continents, and roof mounted technology is now ubiquitous around the globe.</p></li>
+        <li class="reveal"><p class="yr">1981</p><h3>Manufacturing in Colorado</h3><p>SUTRAK established a manufacturing site in Colorado. It served as the North American headquarters until the 2006 expansion.</p></li>
+        <li class="reveal"><p class="yr">1996</p><h3>Independently owned</h3><p>After a corporate sale of the international divisions, SUTRAK Corporation (SUTRAK USA) became independently owned.</p></li>
+        <li class="reveal"><p class="yr">2002</p><h3>Electric, presented in Las Vegas</h3><p>SUTRAK presented its electric technologies to the U.S. transit industry, which led to a series of firsts for production buses in the United States:</p>
+          <ul>
+            <li>The first production self-contained rear mount HVAC on gas electric buses (New Flyer ISE)</li>
+            <li>The first self-contained HVAC to integrate dual scroll compressors for production buses</li>
+          </ul>
+        </li>
+        <li class="reveal"><p class="yr">2006</p><h3>Generator-powered, articulated</h3><p>The first generator-powered electric HVAC on articulated diesel buses (New Flyer).</p></li>
+        <li class="reveal"><p class="yr">2007–2008</p><h3>Generator-powered, 40-foot</h3><p>The first generator-powered electric HVAC on 40-foot diesel buses (NABI), with multiple projects from 2009 to 2019.</p></li>
+      </ol>
+    </div></section>
+
+    <section id="projects" class="projects" aria-labelledby="projects-title"><div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">Recent projects</p>
+          <h2 id="projects-title">On the road and on the rails</h2>
+        </div>
+        <p>SUTRAK projects go back to the 1960s. These are some samples of more recent projects.</p>
+      </div>
+      <div class="board reveal" role="table" aria-label="Recent projects">
+        <div class="board-head" role="row"><span role="columnheader">Years</span><span role="columnheader">Customer</span><span role="columnheader">System</span><span role="columnheader">Vehicle</span></div>
+        <div class="run" role="row"><span class="yr" role="cell">2014–2015</span><span class="who" role="cell">Broward County Transit</span><span class="sys-code" role="cell">ACE238G<small>Full electric</small></span><span class="veh" role="cell">New Flyer Xcelsior 60-ft diesel, including power generation package</span></div>
+        <div class="run" role="row"><span class="yr" role="cell">2016–2019</span><span class="who" role="cell">Dallas Area Rapid Transit</span><span class="sys-code" role="cell">ACE219G<small>Full electric</small></span><span class="veh" role="cell">New Flyer Xcelsior 40-ft CNG, including power generation package</span></div>
+        <div class="run" role="row"><span class="yr" role="cell">2017–2019</span><span class="who" role="cell">HART Trolley</span><span class="sys-code" role="cell">ACE236<small>Full electric</small></span><span class="veh" role="cell">HART Trolley HVAC replacement</span></div>
+        <div class="run" role="row"><span class="yr" role="cell">2017</span><span class="who" role="cell">Antelope Valley Transit Association, CA</span><span class="sys-code" role="cell">ACE238<small>Full electric</small></span><span class="veh" role="cell">BYD articulated electric bus, including two ACE234DLS packages (ACE238DLS)</span></div>
+      </div>
+      <div class="gallery-ph reveal">
+        <b>Placeholder: photo galleries</b>
+        <ul><li>APM</li><li>LRV &amp; rail</li><li>Electric HVAC transit bus</li><li>Traditional HVAC bus</li></ul>
+      </div>
+    </div></section>
+
+    <section id="support" aria-labelledby="support-title"><div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">Parts and service</p>
+          <h2 id="support-title">Keep your fleet running at optimum</h2>
+        </div>
+        <p>Original SUTRAK replacement parts, plus service and warranty repairs through SUTRAK's mobile technicians or authorized third-party service companies. Call 303-287-2700 and enter the extension.</p>
+      </div>
+      <div class="support-grid">
+        <div class="desk reveal">
+          <h3>Replacement parts</h3>
+          <p>Quality OEM replacement parts keep your vehicle's HVAC system working at optimum performance. Contact the Replacement Parts Group to order.</p>
+          <a class="mail" href="mailto:partsales@sutrakusa.com">partsales@sutrakusa.com</a>
+          <a class="ext" href="tel:+13032872700">Ext. <span>209</span></a>
+        </div>
+        <div class="desk reveal" style="--rd:1">
+          <h3>Service and warranty</h3>
+          <p><span class="person">Mac Stuttz</span>, Customer Service and Warranty Administration. On-site help from SUTRAK's mobile technicians or authorized third-party representatives.</p>
+          <a class="mail" href="mailto:warranty@sutrakusa.com">warranty@sutrakusa.com</a>
+          <a class="mail" href="mailto:customerservice@sutrakusa.com">customerservice@sutrakusa.com</a>
+          <a class="ext" href="tel:+13032872700">Ext. <span>208</span></a>
+        </div>
+        <div class="desk reveal" style="--rd:2">
+          <h3>New system sales</h3>
+          <p><span class="person">Scott Imamura</span>, VP of Sales and Marketing, for APM, LRV and transit bus HVAC. Bus customers can also contact their TMG representative.</p>
+          <a class="mail" href="mailto:info@sutrakusa.com">info@sutrakusa.com</a>
+          <a class="ext" href="tel:+13032872700">Ext. <span>103</span></a>
+        </div>
+      </div>
+    </div></section>
+
+    <section class="people" aria-labelledby="people-title"><div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow">Leadership team</p>
+        <h2 id="people-title" style="margin-top:12px">Who runs SUTRAK</h2>
+        <ul class="leaders">
+          <li><b>Dr. Hugh Ferdows</b><span>CEO and Founder</span></li>
+          <li><b>Christina Ferdows</b><span>VP Administration</span></li>
+          <li><b>Dan van der Hoop</b><span>Engineering VP</span></li>
+          <li><b>Scott Imamura</b><span>VP of Sales and Marketing</span></li>
+        </ul>
+      </div>
+      <div class="careers reveal" style="--rd:1">
+        <p class="eyebrow">Careers</p>
+        <h2>Build transit HVAC in Commerce City</h2>
+        <p>Send your resume to have on file, so SUTRAK can contact you about upcoming opportunities in production, engineering, service, accounting and operations management.</p>
+        <p>Applications and inquiries: <a href="mailto:jobs@sutrakusa.com">jobs@sutrakusa.com</a></p>
+      </div>
+    </div></section>
+
+    <section id="contact" class="contact" aria-labelledby="contact-title"><div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow">Hours and info</p>
+        <h2 id="contact-title">Talk to SUTRAK</h2>
+        <p class="lead">For HVAC systems for automated people movers, light rail vehicles and transit buses, contact the Sales group.</p>
+        <div class="actions">
+          <a class="btn btn-white" href="tel:+13032872700"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>303-287-2700</a>
+          <a class="btn btn-line" href="mailto:info@sutrakusa.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>info@sutrakusa.com</a>
+        </div>
+      </div>
+      <dl class="reveal" style="--rd:1">
+        <dt>Address</dt><dd>6897 E. 49th Avenue<br>Commerce City, CO 80022</dd>
+        <dt>Office</dt><dd>8:00 am–5:00 pm</dd>
+        <dt>Production</dt><dd>7:30 am–4:00 pm</dd>
+        <dt>Deliveries</dt><dd>Accepted 8:00 am–3:45 pm</dd>
+        <dt>Extensions</dt><dd>Sales 103 · Service and warranty 208 · Parts 209</dd>
+      </dl>
+    </div></section>
+  </main>
+
+  <footer><div class="wrap">
+    <span>SUTRAK Corporation (SUTRAK USA), Commerce City, Colorado</span>
+    <span>Concept by Fakhar Rashid. Content is taken from sutrakusa.com.</span>
+  </div></footer>
+
+  <nav class="dock" aria-label="Quick contact">
+    <a class="primary" href="tel:+13032872700"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Call</a>
+    <a href="mailto:info@sutrakusa.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Email sales</a>
+  </nav>
+
+  <script>
+  (function () {
+    if (!document.documentElement.classList.contains('motion')) return;
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -40px 0px', threshold: 0.12 });
+    [].forEach.call(document.querySelectorAll('.reveal'), function (el) { io.observe(el); });
+  })();
+  </script>
+</body>
+</html>
